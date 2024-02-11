@@ -60,17 +60,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""31f51885-1091-4ee4-b0ae-446a964fc79e"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mouse"",
-                    ""action"": ""Touch"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""613b958b-c586-4655-b9fb-eb97979977b8"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
