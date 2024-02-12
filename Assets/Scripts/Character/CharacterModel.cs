@@ -76,15 +76,6 @@ public class CharacterModel : MonoBehaviour
         Yello
     }
 
-    private void Awake()
-    {
-        
-    }
-
-    private void Start()
-    {
-    }
-
     [System.Serializable]
     public struct CharacterModelPair
     {
