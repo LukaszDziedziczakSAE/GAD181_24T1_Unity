@@ -185,6 +185,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 2523684936624092361}
   buttonText: {fileID: 3711658375619034007}
+  sceneNames:
+  - Bootstrap
+  - Main Menu
+  - Test
 --- !u!1 &8880392293495964149
 GameObject:
   m_ObjectHideFlags: 0

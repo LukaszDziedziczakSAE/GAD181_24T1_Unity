@@ -9,6 +9,7 @@ public class UI_SceneSelectButton : MonoBehaviour
 {
     [SerializeField] Button button;
     [SerializeField] TMP_Text buttonText;
+    [SerializeField] string[] sceneNames;
     int index;
 
     Scene scene =>
@@ -32,6 +33,6 @@ public class UI_SceneSelectButton : MonoBehaviour
     public void Initilize(int index)
     {
         this.index = index;
-        buttonText.text = "(" + index + ") ";
+        buttonText.text = "(" + index + ") " + sceneNames[this.index];
     }
 }
