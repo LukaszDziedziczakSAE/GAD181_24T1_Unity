@@ -44,9 +44,11 @@ public class Game : MonoBehaviour
         playerCharacter = FindPlayersCharacter();
         playerCharacter?.Model.SetNewConfig(player.CharacterConfig);
 
-
         if (level == 1) Debug.Log("Main Menu loaded");
         else Debug.Log("Level " + level + " loaded");
+
+        Match = FindObjectOfType<MinigameMatch>();
+        if (Match != null) Match.MatchStart();
     }
 
     private static Character FindPlayersCharacter()

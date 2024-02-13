@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class CharacterState
 {
-    Character character;
+    protected Character character;
 
     public CharacterState(Character character)
     {
