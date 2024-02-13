@@ -35,8 +35,11 @@ public class Game : MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
-        Debug.Log("Bootstrap Loaded");
-        if (level == 0) return;
+        if (level == 0)
+        {
+            Debug.Log("Bootstrap Loaded");
+            return;
+        }
 
         player = FindAnyObjectByType<Player>();
         UI = FindAnyObjectByType<UI_Main>();
@@ -54,7 +57,7 @@ public class Game : MonoBehaviour
     private static Character FindPlayersCharacter()
     {
         Character[] characters = FindObjectsOfType<Character>();
-        Debug.Log("found " + characters.Length + " characters");
+        //Debug.Log("found " + characters.Length + " characters");
         foreach (Character character in characters)
         {
             if (character.PlayerIndex == 0) return character;
