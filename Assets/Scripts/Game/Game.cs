@@ -52,6 +52,7 @@ public class Game : MonoBehaviour
     private static Character FindPlayersCharacter()
     {
         Character[] characters = FindObjectsOfType<Character>();
+        Debug.Log("found " + characters.Length + " characters");
         foreach (Character character in characters)
         {
             if (character.PlayerIndex == 0) return character;
