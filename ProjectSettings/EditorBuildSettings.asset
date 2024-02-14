@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test.unity
     guid: 1d28534ab5e14974cb8c0a0036c45a8a
+  - enabled: 0
+    path: Assets/Scenes/ArrowShoot.unity
+    guid: 8f07fc8551ea482459cacac6225c5002
   m_configObjects: {}
