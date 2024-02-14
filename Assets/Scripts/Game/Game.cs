@@ -44,14 +44,17 @@ public class Game : MonoBehaviour
         playerCharacter = FindPlayersCharacter();
         playerCharacter?.Model.SetNewConfig(player.CharacterConfig);
 
-
         if (level == 1) Debug.Log("Main Menu loaded");
         else Debug.Log("Level " + level + " loaded");
+
+        Match = FindObjectOfType<MinigameMatch>();
+        if (Match != null) Match.MatchStart();
     }
 
     private static Character FindPlayersCharacter()
     {
         Character[] characters = FindObjectsOfType<Character>();
+        Debug.Log("found " + characters.Length + " characters");
         foreach (Character character in characters)
         {
             if (character.PlayerIndex == 0) return character;

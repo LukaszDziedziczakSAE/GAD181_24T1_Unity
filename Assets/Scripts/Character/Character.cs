@@ -12,7 +12,12 @@ public class Character : MonoBehaviour
     [field: SerializeField] public CapsuleCollider CapsuleCollider { get; private set; }
     [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
     [field: SerializeField] public NavMeshAgent NavMeshAgent { get; private set; }
-    [field: SerializeField] public CharacterState State { get; private set; }
+    /*[field: SerializeField]*/ public CharacterState State { get; private set; }
+
+    private void Start()
+    {
+        if (PlayerIndex != 0) Model.SetNewConfig(StartingConfig);
+    }
 
     private void Update()
     {
@@ -26,6 +31,7 @@ public class Character : MonoBehaviour
 
     public void SetNewState(CharacterState newState)
     {
+        Debug.Log(name + ": Setting new state " + newState.GetType().ToString());
         if (State != null) State.StateEnd();
         State = newState;
         State.StateStart();
