@@ -12,7 +12,8 @@ public class UI_CharacterListRow : MonoBehaviour
 
     public void Initilise(int level)
     {
-        this.level.text = level.ToString();
+        if ( level > 0) this.level.text = level.ToString();
+        else this.level.gameObject.SetActive(false);
 
         foreach(CharacterConfig config in Game.ConfigsUnlockedAt(level))
         {

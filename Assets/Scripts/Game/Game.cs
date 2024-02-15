@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class Game : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class Game : MonoBehaviour
     public static InputReader InputReader => Instance.input;
     public static Player Player => Instance.player;
     public static Character PlayerCharacter => Instance.playerCharacter;
-    public static MinigameMatch Match {  get; private set; }
+    public static MinigameMatch Match { get; private set; }
     public static UI_Main UI { get; private set; }
 
     private void Awake()
@@ -85,5 +86,21 @@ public class Game : MonoBehaviour
         }
 
         return configsAtLevel.ToArray();
+    }
+
+    public static int HighestLevel
+    {
+        get
+        {
+            CharacterConfig[] configs = PlayerCharacter.Model.Configs;
+            int highestLevel = 0;
+            foreach (CharacterConfig character in configs)
+            {
+                if (character.UnlockLevel > highestLevel) highestLevel = character.UnlockLevel;
+
+            }
+
+            return highestLevel;
+        }
     }
 }

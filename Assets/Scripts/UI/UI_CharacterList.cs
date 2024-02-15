@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class UI_CharacterList : MonoBehaviour
 {
@@ -22,8 +23,10 @@ public class UI_CharacterList : MonoBehaviour
         }
         rows.Clear();
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i <= Game.HighestLevel; i++)
         {
+            if (Game.ConfigsUnlockedAt(i).Length == 0) continue;
+
             UI_CharacterListRow row = Instantiate(rowPrefab, content);
             row.Initilise(i);
             rows.Add(row);
