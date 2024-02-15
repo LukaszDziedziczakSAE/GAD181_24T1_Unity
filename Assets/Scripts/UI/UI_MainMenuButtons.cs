@@ -46,6 +46,7 @@ public class UI_MainMenuButtons : MonoBehaviour
 
     private void OnDebugButtonPress()
     {
-
+        MainMenu.CloseAll();
+        MainMenu.CharacterList.gameObject.SetActive(true);
     }
 }

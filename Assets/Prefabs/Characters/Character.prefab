@@ -48,7 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1e8b95ba66f2de488b292f04899a7d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <StartingModel>k__BackingField: 4
+  <PlayerIndex>k__BackingField: 0
+  <StartingConfig>k__BackingField:
+    <Variant>k__BackingField: 22
+    <Skin>k__BackingField: 0
+    <Color>k__BackingField: 0
   <Model>k__BackingField: {fileID: 446359429324784074}
   <Animator>k__BackingField: {fileID: 5348626877554781363}
   <CapsuleCollider>k__BackingField: {fileID: 9047708930033450011}
@@ -6372,99 +6376,115 @@ MonoBehaviour:
     <Skin>k__BackingField: 0
     <Color>k__BackingField: 0
   <CurrentMeshRenderer>k__BackingField: {fileID: 0}
-  CharacterModelPairs:
-  - <Variant>k__BackingField: 1
-    <Model>k__BackingField: {fileID: 5435061980608625773}
-  - <Variant>k__BackingField: 2
-    <Model>k__BackingField: {fileID: 5434951162884967101}
-  - <Variant>k__BackingField: 3
-    <Model>k__BackingField: {fileID: 5435022382315988353}
-  - <Variant>k__BackingField: 5
-    <Model>k__BackingField: {fileID: 5433647832857603643}
-  - <Variant>k__BackingField: 6
-    <Model>k__BackingField: {fileID: 5435445882554395505}
-  - <Variant>k__BackingField: 7
-    <Model>k__BackingField: {fileID: 5435329051741909845}
-  - <Variant>k__BackingField: 8
-    <Model>k__BackingField: {fileID: 5435191466296076391}
-  - <Variant>k__BackingField: 9
-    <Model>k__BackingField: {fileID: 5435808500422938149}
-  - <Variant>k__BackingField: 10
-    <Model>k__BackingField: {fileID: 5434950553814421453}
-  - <Variant>k__BackingField: 11
-    <Model>k__BackingField: {fileID: 5435627286169598503}
-  - <Variant>k__BackingField: 12
-    <Model>k__BackingField: {fileID: 5435473446174083201}
-  - <Variant>k__BackingField: 13
-    <Model>k__BackingField: {fileID: 5435757173832612779}
-  - <Variant>k__BackingField: 14
-    <Model>k__BackingField: {fileID: 5435444030193833883}
-  - <Variant>k__BackingField: 15
-    <Model>k__BackingField: {fileID: 5435160183541503557}
-  - <Variant>k__BackingField: 16
-    <Model>k__BackingField: {fileID: 5435743967815349289}
-  - <Variant>k__BackingField: 17
-    <Model>k__BackingField: {fileID: 5434937818323204687}
-  - <Variant>k__BackingField: 18
-    <Model>k__BackingField: {fileID: 5435196911363722889}
-  - <Variant>k__BackingField: 19
-    <Model>k__BackingField: {fileID: 5433667688064693585}
-  - <Variant>k__BackingField: 20
-    <Model>k__BackingField: {fileID: 5433603939859213869}
-  - <Variant>k__BackingField: 21
-    <Model>k__BackingField: {fileID: 5435278776990273953}
-  - <Variant>k__BackingField: 22
-    <Model>k__BackingField: {fileID: 5433626626248556635}
-  - <Variant>k__BackingField: 23
-    <Model>k__BackingField: {fileID: 5435227308517232409}
-  - <Variant>k__BackingField: 24
-    <Model>k__BackingField: {fileID: 5435624197157714679}
-  - <Variant>k__BackingField: 25
-    <Model>k__BackingField: {fileID: 5435563976994682605}
-  - <Variant>k__BackingField: 26
-    <Model>k__BackingField: {fileID: 5435200659361152493}
-  - <Variant>k__BackingField: 27
-    <Model>k__BackingField: {fileID: 5435532016645270957}
-  - <Variant>k__BackingField: 28
-    <Model>k__BackingField: {fileID: 5435405653656693263}
-  - <Variant>k__BackingField: 29
-    <Model>k__BackingField: {fileID: 5435016680803028215}
-  - <Variant>k__BackingField: 30
-    <Model>k__BackingField: {fileID: 5435613502699336089}
-  - <Variant>k__BackingField: 31
-    <Model>k__BackingField: {fileID: 5435542596765521281}
-  - <Variant>k__BackingField: 32
-    <Model>k__BackingField: {fileID: 5435673689080128477}
-  - <Variant>k__BackingField: 33
-    <Model>k__BackingField: {fileID: 5435562310338847831}
-  - <Variant>k__BackingField: 34
-    <Model>k__BackingField: {fileID: 5434950587661404915}
-  - <Variant>k__BackingField: 35
-    <Model>k__BackingField: {fileID: 5433706663611486107}
-  - <Variant>k__BackingField: 36
-    <Model>k__BackingField: {fileID: 5435345299602132689}
-  - <Variant>k__BackingField: 37
-    <Model>k__BackingField: {fileID: 5435614665902162885}
-  - <Variant>k__BackingField: 38
-    <Model>k__BackingField: {fileID: 5435842915489761303}
-  - <Variant>k__BackingField: 39
-    <Model>k__BackingField: {fileID: 5435133469890616467}
-  - <Variant>k__BackingField: 40
-    <Model>k__BackingField: {fileID: 5435686789862207873}
-  - <Variant>k__BackingField: 41
-    <Model>k__BackingField: {fileID: 5435625353459473773}
-  - <Variant>k__BackingField: 42
-    <Model>k__BackingField: {fileID: 5435301698341993163}
-  - <Variant>k__BackingField: 43
-    <Model>k__BackingField: {fileID: 5435559813423135839}
-  - <Variant>k__BackingField: 44
-    <Model>k__BackingField: {fileID: 5435288220905370373}
-  - <Variant>k__BackingField: 45
-    <Model>k__BackingField: {fileID: 5435468347644924461}
-  - <Variant>k__BackingField: 46
-    <Model>k__BackingField: {fileID: 5435328191791329325}
-  - <Variant>k__BackingField: 47
-    <Model>k__BackingField: {fileID: 5435223667214890189}
+  characters:
+  - {fileID: 11400000, guid: 58f4c7486ac40114ea5b3092e70989a5, type: 2}
+  - {fileID: 11400000, guid: e2bde64a53d3fed43a29ef95eb3781de, type: 2}
+  - {fileID: 11400000, guid: 7d2edcf88cc9aaf4f8df1361bb902079, type: 2}
+  - {fileID: 11400000, guid: f3f32454df0c5b740b11e2dadc1b54fc, type: 2}
+  - {fileID: 11400000, guid: ac57aa9f74590fd40a252f6e2f7609b9, type: 2}
+  - {fileID: 11400000, guid: bcea05681e189d9408312b2418f571db, type: 2}
+  - {fileID: 11400000, guid: 0da0e7b264ad3674897169c777a1b378, type: 2}
+  - {fileID: 11400000, guid: 35dda1f0546321a4ebff151be962e187, type: 2}
+  - {fileID: 11400000, guid: e5935b16a9461d743a338d58593f95bb, type: 2}
+  - {fileID: 11400000, guid: 995ffbaa904935742b4d26e773614b19, type: 2}
+  - {fileID: 11400000, guid: 6cddc8b98161e214093032e5b9c09262, type: 2}
+  - {fileID: 11400000, guid: be65cf3956545fa48b00f0ec656e4c02, type: 2}
+  - {fileID: 11400000, guid: fd923343b407d5f459f1811e975dd742, type: 2}
+  - {fileID: 11400000, guid: 3ea79ce7cc42030449bf87c8807024b6, type: 2}
+  - {fileID: 11400000, guid: 13a4e9ec2ed32e34e8e3cfd948e6b664, type: 2}
+  - {fileID: 11400000, guid: ee6c21ebd7ee4b143b43e2610b0ac2bb, type: 2}
+  - {fileID: 11400000, guid: 1ff8fc75b875b1c43a9174ffdfb0a576, type: 2}
+  - {fileID: 11400000, guid: cbecce3ad83b69942973e78056350d6b, type: 2}
+  - {fileID: 11400000, guid: 793994d8d36a1b8439ea3b50f3e07c7d, type: 2}
+  - {fileID: 11400000, guid: e1fabc21d8b527f4ca7a528777d8cdb9, type: 2}
+  - {fileID: 11400000, guid: eb24ddeefece26e438109504c2e02e9f, type: 2}
+  - {fileID: 11400000, guid: d53c07c51628a99479e864d6dca7f632, type: 2}
+  - {fileID: 11400000, guid: a05c74ff910f76a4aa5f0b1e97681faa, type: 2}
+  - {fileID: 11400000, guid: 20496d5367f5daa48908a067aeff502c, type: 2}
+  - {fileID: 11400000, guid: 50ac57ce3a5ab144a992c1fa3198ed8a, type: 2}
+  - {fileID: 11400000, guid: 19e8ebb1944decf4384c4ea3489fa2f7, type: 2}
+  - {fileID: 11400000, guid: 3c2f4a8aa683459428ba4aed2937235a, type: 2}
+  - {fileID: 11400000, guid: 321e654c859ab9b4f9b3af62048981ef, type: 2}
+  - {fileID: 11400000, guid: b90b74aad2972c2408ac8c6afaec1ce9, type: 2}
+  - {fileID: 11400000, guid: c8f978de2e0bc1d43ab27706fa557644, type: 2}
+  - {fileID: 11400000, guid: 8d57d39799d90894bb12273c138db02d, type: 2}
+  - {fileID: 11400000, guid: 424976f8cf913344a894edcb696151fb, type: 2}
+  - {fileID: 11400000, guid: e0d547aa0a4b1d04fb73ad2c99d73a86, type: 2}
+  - {fileID: 11400000, guid: 7281e606bc1838445be4a352dc297788, type: 2}
+  - {fileID: 11400000, guid: 6ac1bb4e98271c74b8c4ceca8a1cf5f0, type: 2}
+  - {fileID: 11400000, guid: bcfdb6cbfc6fbcf46a97029e922a579a, type: 2}
+  - {fileID: 11400000, guid: 842bd2c2871aaff43b93bb609b96e042, type: 2}
+  - {fileID: 11400000, guid: 7a45011e719a0de478f8edac6445cf32, type: 2}
+  - {fileID: 11400000, guid: 56e025557216b854aa20ba3bee9ed14b, type: 2}
+  - {fileID: 11400000, guid: b4d1ff38b41f55348aa81ec32c5eca25, type: 2}
+  - {fileID: 11400000, guid: daaee32cc81a3304b83f972fdb28b2ae, type: 2}
+  - {fileID: 11400000, guid: 9885b869e8e11f94ca08ca8ad288949a, type: 2}
+  - {fileID: 11400000, guid: 5c35c38e7e583074690335c51678be1d, type: 2}
+  - {fileID: 11400000, guid: c1f68825da3305148af17da5818542fb, type: 2}
+  - {fileID: 11400000, guid: ec06fa29d22370b4887397cd8c2283ff, type: 2}
+  - {fileID: 11400000, guid: b0f82d9faf7eef24c892a0ce78bef968, type: 2}
+  - {fileID: 11400000, guid: c65bed94d81ec7144b8e51451728e18b, type: 2}
+  parts:
+  - {fileID: 5435061980608625773}
+  - {fileID: 5434951162884967101}
+  - {fileID: 5435022382315988353}
+  - {fileID: 5435819601273170397}
+  - {fileID: 5433647832857603643}
+  - {fileID: 5435445882554395505}
+  - {fileID: 5435329051741909845}
+  - {fileID: 5435191466296076391}
+  - {fileID: 5435808500422938149}
+  - {fileID: 5434950553814421453}
+  - {fileID: 5435627286169598503}
+  - {fileID: 5435473446174083201}
+  - {fileID: 5435757173832612779}
+  - {fileID: 5435444030193833883}
+  - {fileID: 5435160183541503557}
+  - {fileID: 5435743967815349289}
+  - {fileID: 5434937818323204687}
+  - {fileID: 5435196911363722889}
+  - {fileID: 5433667688064693585}
+  - {fileID: 5433603939859213869}
+  - {fileID: 5435278776990273953}
+  - {fileID: 5433626626248556635}
+  - {fileID: 5435227308517232409}
+  - {fileID: 5435624197157714679}
+  - {fileID: 5435563976994682605}
+  - {fileID: 5435200659361152493}
+  - {fileID: 5435532016645270957}
+  - {fileID: 5435405653656693263}
+  - {fileID: 5435016680803028215}
+  - {fileID: 5435613502699336089}
+  - {fileID: 5435542596765521281}
+  - {fileID: 5435673689080128477}
+  - {fileID: 5435526463049507953}
+  - {fileID: 5435800014953185495}
+  - {fileID: 5435562310338847831}
+  - {fileID: 5435511873667543069}
+  - {fileID: 5435586239795755357}
+  - {fileID: 5434950587661404915}
+  - {fileID: 5433706663611486107}
+  - {fileID: 5435345299602132689}
+  - {fileID: 5435614665902162885}
+  - {fileID: 5435842915489761303}
+  - {fileID: 5435133469890616467}
+  - {fileID: 5433624368838612567}
+  - {fileID: 5435686789862207873}
+  - {fileID: 5435625353459473773}
+  - {fileID: 5435301698341993163}
+  - {fileID: 5435559813423135839}
+  - {fileID: 5435288220905370373}
+  - {fileID: 5435468347644924461}
+  - {fileID: 5435328191791329325}
+  - {fileID: 5435223667214890189}
+  - {fileID: 5435761843372251801}
+  - {fileID: 5435663836150449997}
+  - {fileID: 5435505671058965075}
+  - {fileID: 5433631218898679687}
+  - {fileID: 5435837123109355851}
+  - {fileID: 5435592678306359329}
+  - {fileID: 5435773118902379935}
+  - {fileID: 5435683550133971853}
   defaultColorMaterials:
   - {fileID: 2100000, guid: 5ec5815f62a0d37488d95601e3f0129f, type: 2}
   - {fileID: 2100000, guid: bd447d9c14c590947b6d77f5243fe951, type: 2}

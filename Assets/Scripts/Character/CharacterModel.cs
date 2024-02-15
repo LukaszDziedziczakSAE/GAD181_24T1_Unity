@@ -1,11 +1,15 @@
 using System;
+using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class CharacterModel : MonoBehaviour
 {
     [field: SerializeField] public CharacterModel.Config CurrentConfig {  get; private set; }
     [field: SerializeField] public SkinnedMeshRenderer CurrentMeshRenderer { get; private set; }
-    [SerializeField] CharacterModelPair[] CharacterModelPairs;
+    //[SerializeField] Character[] characters;
+    [SerializeField] CharacterConfig[] characters;
+    [SerializeField] GameObject[] parts;
     [SerializeField] Material[] defaultColorMaterials;
     [SerializeField] Material[] blueColorMaterials;
     [SerializeField] Material[] greenColorMaterials;
@@ -48,7 +52,7 @@ public class CharacterModel : MonoBehaviour
         Fantasy_Wizard_01,
         Knights_Dark_01,
         Knights_Light_01,
-        Kights_Soldier_01,
+        Knights_Soldier_01,
         Pirates_Deckhand_01,
         Pirates_FemalePirate_01,
         Pirates_Firstmate_01,
@@ -59,7 +63,7 @@ public class CharacterModel : MonoBehaviour
         Samurai_SamuraiWarrior_01,
         Samurai_Sensei_01,
         Samurai_VillageMan_01,
-        Samurai_VillageWorman_01,
+        Samurai_VillageWoman_01,
         Vikings_Chief_01,
         Vikings_ShieldMaiden_01,
         Vikings_Warrior_01,
@@ -77,10 +81,11 @@ public class CharacterModel : MonoBehaviour
     }
 
     [System.Serializable]
-    public struct CharacterModelPair
+    public struct Character
     {
         [field: SerializeField] public EVariant Variant { get; private set; }
         [field: SerializeField] public GameObject Model { get; private set; }
+
     }
 
     [System.Serializable]
@@ -100,12 +105,17 @@ public class CharacterModel : MonoBehaviour
 
     public void HideAllModels()
     {
-        Transform[] children = GetComponentsInChildren<Transform>();
+        /*Transform[] children = GetComponentsInChildren<Transform>();
         foreach (Transform child in children)
         {
             if (child.name == "root" || child.name == "Model") continue;
 
             child.gameObject.SetActive(false);
+        }*/
+
+        foreach (GameObject part in parts)
+        {
+            part.SetActive(false);
         }
     }
 
@@ -115,24 +125,20 @@ public class CharacterModel : MonoBehaviour
 
         if (variant == EVariant.Random)
         {
-            int random = UnityEngine.Random.Range(0, CharacterModelPairs.Length);
-            CharacterModelPairs[random].Model.SetActive(true);
-            CurrentMeshRenderer = CharacterModelPairs[random].Model.GetComponent<SkinnedMeshRenderer>();
+            int random = UnityEngine.Random.Range(0, characters.Length);
+            GameObject part = PartByName(characters[random].PartName);
+            part.SetActive(true);
+            CurrentMeshRenderer = part.GetComponent<SkinnedMeshRenderer>();
         }
 
         else
         {
-            foreach (CharacterModelPair pair in CharacterModelPairs)
-            {
-                if (pair.Variant == variant)
-                {
-                    pair.Model.SetActive(true);
-                    CurrentMeshRenderer = pair.Model.GetComponent<SkinnedMeshRenderer>();
-                }
-            }
+            GameObject part = PartByName(CharacterConfig(variant).PartName);
+            part.SetActive(true);
+            CurrentMeshRenderer = part.GetComponent<SkinnedMeshRenderer>();
         }
-        
 
+        Debug.Log(name + ": SetVariant " + variant);
     }
 
     public void SetMaterial(Material material)
@@ -187,4 +193,56 @@ public class CharacterModel : MonoBehaviour
         Debug.LogError("Could not find EVariant = " + name);
         return (EVariant)0;
     }
+
+    public CharacterConfig[] CharacterConfigs
+    {
+        get
+        {
+            List<CharacterConfig> configs = new List<CharacterConfig>();
+
+            /*foreach (Character character in Game.PlayerCharacter.Model.characters)
+            {
+                CharacterConfig config = ScriptableObject.CreateInstance<CharacterConfig>();
+                config.CreateNew(character.Variant, character.Model.name);
+            }*/
+
+            Type enumType = CharacterModel.EVariant.Random.GetType();
+
+            for (int i = 1; i < Enum.GetNames(enumType).Length; i++)
+            {
+                CharacterConfig config = ScriptableObject.CreateInstance<CharacterConfig>();
+                config.CreateNew(((EVariant)i), PartByName("Chr_" + Enum.GetName(enumType, i)).name);
+                config.name = ((EVariant)i).ToString();
+                configs.Add(config);
+            }
+
+            print("Created " + configs.Count + " configs");
+            return configs.ToArray();
+        }
+    }
+
+    private GameObject PartByName(string partName)
+    {
+        //Transform[] parts = GetComponentsInChildren<Transform>();
+
+        foreach (GameObject part in parts)
+        {
+            //if (part.name == "Random") continue;
+            if (part.name.Contains(partName)) return part;
+            //print(part.name + " " + ("Chr_" + partName));
+        }
+        Debug.LogError(name + ": could not find partName " + ("Chr_" + partName) + " in " + parts.Length + " parts");
+        return null;
+    }
+
+    private CharacterConfig CharacterConfig(EVariant variant)
+    {
+        foreach(CharacterConfig config in CharacterConfigs)
+        {
+            if (config.Variant == variant) return config;
+        }
+        return null;
+    }
+
+    public CharacterConfig[] Configs => characters;
 }

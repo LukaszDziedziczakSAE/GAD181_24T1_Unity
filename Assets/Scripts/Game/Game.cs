@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -65,6 +66,24 @@ public class Game : MonoBehaviour
         return null;
     }
 
+    public static void CreateCharacterConfigs()
+    {
+        foreach (CharacterConfig character in PlayerCharacter.Model.CharacterConfigs)
+        {
+            AssetDatabase.CreateAsset(character, "Assets/Prefabs/Characters/" + character.name + ".asset");
+            AssetDatabase.SaveAssets();
+        }
+    }
 
+    public static CharacterConfig[] ConfigsUnlockedAt(int level)
+    {
+        CharacterConfig[] configs = PlayerCharacter.Model.Configs;
+        List<CharacterConfig> configsAtLevel = new List<CharacterConfig>();
+        foreach (CharacterConfig character in configs)
+        {
+            if (character.UnlockLevel == level) configsAtLevel.Add(character);
+        }
 
+        return configsAtLevel.ToArray();
+    }
 }
