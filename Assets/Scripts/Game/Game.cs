@@ -30,7 +30,7 @@ public class Game : MonoBehaviour
         //PlayerCharacter.Model.SetNewConfig(Player.CharacterConfig);
     }
 
-    public void LoadSceneMainMenu()
+    public static void LoadMainMenu()
     {
         SceneManager.LoadScene(1);
     }
@@ -102,5 +102,15 @@ public class Game : MonoBehaviour
 
             return highestLevel;
         }
+    }
+
+    public static void LoadPortraitMaker()
+    {
+        SceneManager.LoadScene("PortraitMaker");
+    }
+
+    public static Texture Portrait(string name)
+    {
+        return AssetDatabase.LoadAssetAtPath<Texture>("Assets/Textures/" + name + ".png");
     }
 }

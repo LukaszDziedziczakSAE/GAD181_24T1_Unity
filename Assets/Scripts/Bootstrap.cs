@@ -6,6 +6,6 @@ public class Bootstrap : MonoBehaviour
 {
     private void Start()
     {
-        Game.Instance.LoadSceneMainMenu();
+        Game.LoadMainMenu();
     }
 }

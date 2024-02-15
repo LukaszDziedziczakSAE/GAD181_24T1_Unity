@@ -216,7 +216,7 @@ public class CharacterModel : MonoBehaviour
                 configs.Add(config);
             }
 
-            print("Created " + configs.Count + " configs");
+            //print("Created " + configs.Count + " configs");
             return configs.ToArray();
         }
     }

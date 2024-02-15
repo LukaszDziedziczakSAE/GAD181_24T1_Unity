@@ -38,4 +38,9 @@ public class CharacterConfig : ScriptableObject
             return name;
         }
     }
+
+    public void SetIcon(Texture newTexture)
+    {
+        Icon = newTexture;
+    }
 }

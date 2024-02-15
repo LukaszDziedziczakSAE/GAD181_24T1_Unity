@@ -48,5 +48,7 @@ public class UI_MainMenuButtons : MonoBehaviour
     {
         MainMenu.CloseAll();
         MainMenu.CharacterList.gameObject.SetActive(true);
+
+        //Game.LoadPortraitMaker();
     }
 }

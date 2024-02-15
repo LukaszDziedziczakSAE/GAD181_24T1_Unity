@@ -42,6 +42,11 @@ public class UI_CharacterListIcon : MonoBehaviour
             characterPrice.gameObject.SetActive(false);
         }
 
+        if (config.Icon == null)
+        {
+            config.SetIcon(Game.Portrait(config.name));
+        }
+
         if (config.Icon != null)
         {
             characterImage.texture = config.Icon;
