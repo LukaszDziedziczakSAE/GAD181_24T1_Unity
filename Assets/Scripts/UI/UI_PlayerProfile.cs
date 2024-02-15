@@ -10,6 +10,8 @@ public class UI_PlayerProfile : MonoBehaviour
     [SerializeField] Button closeButton;
     [SerializeField] TMP_InputField nameField;
     [SerializeField] TMP_Dropdown characterVerient;
+    [SerializeField] Button varientButton;
+    [SerializeField] TMP_Text varientButtonText;
     [SerializeField] Button skin0Button;
     [SerializeField] Button skin1Button;
     [SerializeField] Button skin2Button;
@@ -39,9 +41,9 @@ public class UI_PlayerProfile : MonoBehaviour
         purpleColorButton.onClick.AddListener(OnPurpleColorButtonPress);
         redColorButton.onClick.AddListener(OnRedColorButtonPress);
         yellowColorButton.onClick.AddListener(OnYellowColorButtonPress);
+        varientButton.onClick.AddListener(OnVarientButtonPress);
 
     }
-
 
     private void OnDisable()
     {
@@ -57,6 +59,7 @@ public class UI_PlayerProfile : MonoBehaviour
         purpleColorButton.onClick.RemoveListener(OnPurpleColorButtonPress);
         redColorButton.onClick.RemoveListener(OnRedColorButtonPress);
         yellowColorButton.onClick.RemoveListener(OnYellowColorButtonPress);
+        varientButton.onClick.RemoveListener(OnVarientButtonPress);
     }
 
     public void UpdateCharacterProfile()
@@ -76,6 +79,9 @@ public class UI_PlayerProfile : MonoBehaviour
         nameField.text = Game.Player.PlayerName;
         if (characterVerient.options.Count <= 1) BuildDropDownList();
         if (Game.Player != null) characterVerient.value = (int)Game.Player.CharacterConfig.Variant;
+        if (Game.PlayerCharacter.Model.CharacterConfig.CharacterName == null || Game.PlayerCharacter.Model.CharacterConfig.CharacterName == "")
+            varientButtonText.text = Game.Player.CharacterConfig.Variant.ToString();
+        else varientButtonText.text = Game.PlayerCharacter.Model.CharacterConfig.CharacterName;
         UpdateSkinButtons();
         UpdateColorButtons();
 
@@ -251,5 +257,11 @@ public class UI_PlayerProfile : MonoBehaviour
 
             return list;
         }
+    }
+
+    private void OnVarientButtonPress()
+    {
+        mainMenu.PlayerProfile.gameObject.SetActive(false);
+        mainMenu.CharacterList.gameObject.SetActive(true);
     }
 }

@@ -1,9 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Cinemachine.DocumentationSortingAttribute;
 
 public class Game : MonoBehaviour
 {
@@ -67,14 +65,14 @@ public class Game : MonoBehaviour
         return null;
     }
 
-    public static void CreateCharacterConfigs()
+    /*public static void CreateCharacterConfigs()
     {
         foreach (CharacterConfig character in PlayerCharacter.Model.CharacterConfigs)
         {
             AssetDatabase.CreateAsset(character, "Assets/Prefabs/Characters/" + character.name + ".asset");
             AssetDatabase.SaveAssets();
         }
-    }
+    }*/
 
     public static CharacterConfig[] ConfigsUnlockedAt(int level)
     {
@@ -109,8 +107,8 @@ public class Game : MonoBehaviour
         SceneManager.LoadScene("PortraitMaker");
     }
 
-    public static Texture Portrait(string name)
+    /*public static Texture Portrait(string name)
     {
         return AssetDatabase.LoadAssetAtPath<Texture>("Assets/Textures/" + name + ".png");
-    }
+    }*/
 }

@@ -17,6 +17,7 @@ public class UI_MainMenuButtons : MonoBehaviour
         playerProfileButton.onClick.AddListener(OnPlayerProfileButtonPress);
         settingsButton.onClick.AddListener(OnSettingsButtonPress);
         debugButton.onClick.AddListener(OnDebugButtonPress);
+        debugButton.interactable = false;
     }
 
     private void OnDisable()
@@ -47,8 +48,8 @@ public class UI_MainMenuButtons : MonoBehaviour
     private void OnDebugButtonPress()
     {
         MainMenu.CloseAll();
-        MainMenu.CharacterList.gameObject.SetActive(true);
 
+        //MainMenu.CharacterList.gameObject.SetActive(true);
         //Game.LoadPortraitMaker();
     }
 }

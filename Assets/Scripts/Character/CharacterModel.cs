@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using static UnityEditor.UIElements.ToolbarMenu;
 
 public class CharacterModel : MonoBehaviour
 {
@@ -16,6 +16,7 @@ public class CharacterModel : MonoBehaviour
     [SerializeField] Material[] purpleColorMaterials;
     [SerializeField] Material[] redColorMaterials;
     [SerializeField] Material[] yellowColorMaterials;
+    [SerializeField] Texture[] textures;
 
 
     public enum EVariant
@@ -95,6 +96,8 @@ public class CharacterModel : MonoBehaviour
         [field: SerializeField, Range(0,2)] public int Skin { get; private set; }
         [field: SerializeField] public EColor Color { get; private set; }
 
+        
+
         public Config(EVariant variant, int skinIndex, EColor color)
         {
             Variant = variant;
@@ -103,16 +106,16 @@ public class CharacterModel : MonoBehaviour
         }
     }
 
+    public CharacterConfig CharacterConfig
+    {
+        get
+        {
+            return CharacterConfigByName(CurrentConfig.Variant.ToString());
+        }
+    }
+
     public void HideAllModels()
     {
-        /*Transform[] children = GetComponentsInChildren<Transform>();
-        foreach (Transform child in children)
-        {
-            if (child.name == "root" || child.name == "Model") continue;
-
-            child.gameObject.SetActive(false);
-        }*/
-
         foreach (GameObject part in parts)
         {
             part.SetActive(false);
@@ -133,7 +136,7 @@ public class CharacterModel : MonoBehaviour
 
         else
         {
-            GameObject part = PartByName(CharacterConfig(variant).PartName);
+            GameObject part = PartByName(CharacterConfigByVarient(variant).PartName);
             part.SetActive(true);
             CurrentMeshRenderer = part.GetComponent<SkinnedMeshRenderer>();
         }
@@ -235,7 +238,7 @@ public class CharacterModel : MonoBehaviour
         return null;
     }
 
-    private CharacterConfig CharacterConfig(EVariant variant)
+    private CharacterConfig CharacterConfigByVarient(EVariant variant)
     {
         foreach(CharacterConfig config in CharacterConfigs)
         {
@@ -245,4 +248,22 @@ public class CharacterModel : MonoBehaviour
     }
 
     public CharacterConfig[] Configs => characters;
+
+    public Texture FindTextureByName(string name)
+    {
+        foreach (Texture texture in textures)
+        {
+            if (texture.name.Contains(name)) return texture;
+        }
+        return null;
+    }
+
+    public CharacterConfig CharacterConfigByName(string name)
+    {
+        foreach (CharacterConfig config in CharacterConfigs)
+        {
+            if (config.name == name) return config;
+        }
+        return null;
+    }
 }
