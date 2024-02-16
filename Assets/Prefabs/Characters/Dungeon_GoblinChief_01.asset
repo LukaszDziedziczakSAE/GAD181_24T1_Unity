@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
+  m_Name: Dungeon_GoblinChief_01
+  m_EditorClassIdentifier: 
+  <CharacterName>k__BackingField: 
+  <Variant>k__BackingField: 5
+  <PartName>k__BackingField: Chr_Dungeon_GoblinChief_01
+  <DefaultColor>k__BackingField: 0
+  <DefaultSkinIndex>k__BackingField: 0
+  <UnlockLevel>k__BackingField: 7
+  <UnlockPrice>k__BackingField: 700
+  <Icon>k__BackingField: {fileID: 2800000, guid: 478342d8020c9b54e8e0019742bfad4a,
+    type: 3}
