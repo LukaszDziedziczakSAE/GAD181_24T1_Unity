@@ -64,6 +64,7 @@ public class UI_CharacterListIcon : MonoBehaviour
         UI_MainMenu mainMenu = (UI_MainMenu)Game.UI;
 
         Game.Player.SetCharacterVarient(config.Variant);
+        Game.SaveSystem.SaveGameFile();
         mainMenu.CharacterList.gameObject.SetActive(false);
         mainMenu.PlayerProfile.gameObject.SetActive(true);
     }

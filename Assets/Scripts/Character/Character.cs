@@ -17,6 +17,7 @@ public class Character : MonoBehaviour
     private void Start()
     {
         if (PlayerIndex != 0) Model.SetNewConfig(StartingConfig);
+        //else Model.HideAllModels();
     }
 
     private void Update()

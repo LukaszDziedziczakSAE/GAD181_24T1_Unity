@@ -140,7 +140,7 @@ public class CharacterModel : MonoBehaviour
             CurrentMeshRenderer = part.GetComponent<SkinnedMeshRenderer>();
         }
 
-        Debug.Log(name + ": SetVariant " + variant);
+        //Debug.Log(name + ": SetVariant " + variant);
     }
 
     public void SetMaterial(Material material)
@@ -152,6 +152,11 @@ public class CharacterModel : MonoBehaviour
     public void SetNewConfig(Config newConfig)
     {
         CurrentConfig = newConfig;
+        UpdateModel();
+    }
+
+    public void UpdateModel()
+    {
         SetVariant(CurrentConfig.Variant);
         SetMaterial(MaterialByColors(CurrentConfig.Skin, CurrentConfig.Color));
     }

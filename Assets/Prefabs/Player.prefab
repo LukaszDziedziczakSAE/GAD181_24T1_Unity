@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6928945961872197463}
   - component: {fileID: 4642971408700261291}
+  - component: {fileID: 4327718262612923786}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -46,6 +47,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PlayerName>k__BackingField: 
   <CharacterConfig>k__BackingField:
-    <Variant>k__BackingField: 21
-    <Skin>k__BackingField: 1
-    <Color>k__BackingField: 3
+    <Variant>k__BackingField: 1
+    <Skin>k__BackingField: 0
+    <Color>k__BackingField: 0
+--- !u!114 &4327718262612923786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4811235781750494160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074f27b486dafac4b961c5a805b529e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: Player

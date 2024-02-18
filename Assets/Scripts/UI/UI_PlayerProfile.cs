@@ -9,6 +9,8 @@ public class UI_PlayerProfile : MonoBehaviour
     [SerializeField] UI_MainMenu mainMenu;
     [SerializeField] Button closeButton;
     [SerializeField] TMP_InputField nameField;
+    [SerializeField] Button nameButton;
+    [SerializeField] TMP_Text nameButtonText;
     [SerializeField] TMP_Dropdown characterVerient;
     [SerializeField] Button varientButton;
     [SerializeField] TMP_Text varientButtonText;
@@ -30,8 +32,8 @@ public class UI_PlayerProfile : MonoBehaviour
         UpdateCharacterProfile();
 
         closeButton.onClick.AddListener(OnCloseButtonPress);
-        nameField.onValueChanged.AddListener(NameFieldValueChanged);
-        characterVerient.onValueChanged.AddListener(CharacterVerientValueChanged);
+        //nameField.onValueChanged.AddListener(NameFieldValueChanged);
+        //characterVerient.onValueChanged.AddListener(CharacterVerientValueChanged);
         skin0Button.onClick.AddListener(OnSkin0ButtonPress);
         skin1Button.onClick.AddListener(OnSkin1ButtonPress);
         skin2Button.onClick.AddListener(OnSkin2ButtonPress);
@@ -42,14 +44,14 @@ public class UI_PlayerProfile : MonoBehaviour
         redColorButton.onClick.AddListener(OnRedColorButtonPress);
         yellowColorButton.onClick.AddListener(OnYellowColorButtonPress);
         varientButton.onClick.AddListener(OnVarientButtonPress);
-
+        nameButton.onClick.AddListener(OnNameButtonPress);
     }
 
     private void OnDisable()
     {
         closeButton.onClick.RemoveListener(OnCloseButtonPress);
-        nameField.onValueChanged.RemoveListener(NameFieldValueChanged);
-        characterVerient.onValueChanged.RemoveListener(CharacterVerientValueChanged);
+        //nameField.onValueChanged.RemoveListener(NameFieldValueChanged);
+        //characterVerient.onValueChanged.RemoveListener(CharacterVerientValueChanged);
         skin0Button.onClick.RemoveListener(OnSkin0ButtonPress);
         skin1Button.onClick.RemoveListener(OnSkin1ButtonPress);
         skin2Button.onClick.RemoveListener(OnSkin2ButtonPress);
@@ -60,6 +62,7 @@ public class UI_PlayerProfile : MonoBehaviour
         redColorButton.onClick.RemoveListener(OnRedColorButtonPress);
         yellowColorButton.onClick.RemoveListener(OnYellowColorButtonPress);
         varientButton.onClick.RemoveListener(OnVarientButtonPress);
+        nameButton.onClick.RemoveListener(OnNameButtonPress);
     }
 
     public void UpdateCharacterProfile()
@@ -76,8 +79,9 @@ public class UI_PlayerProfile : MonoBehaviour
             return;
         }
 
-        nameField.text = Game.Player.PlayerName;
-        if (characterVerient.options.Count <= 1) BuildDropDownList();
+        //nameField.text = Game.Player.PlayerName;
+        nameButtonText.text = Game.Player.PlayerName;
+        //if (characterVerient.options.Count <= 1) BuildDropDownList();
         if (Game.Player != null) characterVerient.value = (int)Game.Player.CharacterConfig.Variant;
         if (Game.PlayerCharacter.Model.CharacterConfig.CharacterName == null || Game.PlayerCharacter.Model.CharacterConfig.CharacterName == "")
             varientButtonText.text = Game.Player.CharacterConfig.Variant.ToString();
@@ -176,64 +180,75 @@ public class UI_PlayerProfile : MonoBehaviour
         CharacterModel.EVariant variant = CharacterModel.VariantName(verientName);
         //print("verientName=" + verientName + ", enumVal=" + ((CharacterModel.EVariant)newIndex).ToString() + ", characterName=" + CharacterNames[newIndex]);
         Game.Player.SetCharacterVarient(variant);
+        Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
     }
 
     private void NameFieldValueChanged(string newString)
     {
         Game.Player.ChangePlayerName(newString);
+        Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
     }
     private void OnSkin0ButtonPress()
     {
         Game.Player.SetCharacterSkin(0);
+        Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
     }
 
     private void OnSkin1ButtonPress()
     {
         Game.Player.SetCharacterSkin(1);
+        Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
     }
     private void OnSkin2ButtonPress()
     {
         Game.Player.SetCharacterSkin(2);
+        Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
     }
 
     private void OnYellowColorButtonPress()
     {
         Game.Player.SetCharacterColor(CharacterModel.EColor.Yello);
+        Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
     }
 
     private void OnRedColorButtonPress()
     {
         Game.Player.SetCharacterColor(CharacterModel.EColor.Red);
+        Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
     }
 
     private void OnPurpleColorButtonPress()
     {
         Game.Player.SetCharacterColor(CharacterModel.EColor.Purple);
+        Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
     }
 
     private void OnGreenColorButtonPress()
     {
         Game.Player.SetCharacterColor(CharacterModel.EColor.Green);
+        Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
     }
 
     private void OnBlueColorButtonPress()
     {
         Game.Player.SetCharacterColor(CharacterModel.EColor.Blue);
+        Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
     }
 
     private void OnDefaultColorButtonPress()
     {
         Game.Player.SetCharacterColor(CharacterModel.EColor.Default);
+        Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
     }
 
@@ -241,6 +256,7 @@ public class UI_PlayerProfile : MonoBehaviour
     {
         mainMenu.MainMenuButtons.gameObject.SetActive(true);
         gameObject.SetActive(false);
+        Game.SaveSystem.SaveGameFile();
     }
 
     private List<string> GetCharacterNames
@@ -263,5 +279,12 @@ public class UI_PlayerProfile : MonoBehaviour
     {
         mainMenu.PlayerProfile.gameObject.SetActive(false);
         mainMenu.CharacterList.gameObject.SetActive(true);
+    }
+
+
+    private void OnNameButtonPress()
+    {
+        mainMenu.EnterNameDialog.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 }

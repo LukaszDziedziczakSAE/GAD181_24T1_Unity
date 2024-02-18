@@ -34,7 +34,7 @@ public abstract class MinigameMatch : MonoBehaviour
 
     protected void Start()
     {
-        SetNewState(EState.preMatch);
+        //SetNewState(EState.preMatch);
     }
 
     protected void Update()

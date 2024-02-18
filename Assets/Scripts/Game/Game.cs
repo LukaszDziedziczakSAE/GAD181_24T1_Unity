@@ -14,9 +14,11 @@ public class Game : MonoBehaviour
     public static Character PlayerCharacter => Instance.playerCharacter;
     public static MinigameMatch Match { get; private set; }
     public static UI_Main UI { get; private set; }
+    public static SaveSystem SaveSystem { get; private set; }
 
     private void Awake()
     {
+        SaveSystem = GetComponent<SaveSystem>();
         if (Instance == null) Instance = this;
         else Destroy(this.gameObject);
 
@@ -25,7 +27,8 @@ public class Game : MonoBehaviour
 
     private void Start()
     {
-        //PlayerCharacter.Model.SetNewConfig(Player.CharacterConfig);
+        if (SaveSystem.SaveFileExists) SaveSystem.LoadGameFile();
+        else SaveSystem.SaveGameFile();
     }
 
     public static void LoadMainMenu()
@@ -45,13 +48,18 @@ public class Game : MonoBehaviour
         UI = FindAnyObjectByType<UI_Main>();
         if (player == null) return;
         playerCharacter = FindPlayersCharacter();
-        playerCharacter?.Model.SetNewConfig(player.CharacterConfig);
+        UpdatePlayersCharacterModel();
 
         if (level == 1) Debug.Log("Main Menu loaded");
         else Debug.Log("Level " + level + " loaded");
 
         Match = FindObjectOfType<MinigameMatch>();
-        if (Match != null) Match.MatchStart();
+        if (Match != null) Match.Mode = MinigameMatch.EState.preMatch;
+    }
+
+    public static void UpdatePlayersCharacterModel()
+    {
+        Instance.playerCharacter?.Model.SetNewConfig(Instance.player.CharacterConfig);
     }
 
     private static Character FindPlayersCharacter()

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static CharacterModel;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ISaveable
 {
-    [field: SerializeField] public string PlayerName {  get; private set; }
+    [field: SerializeField] public string PlayerName { get; private set; } = "";
     [field: SerializeField] public  CharacterModel.Config CharacterConfig { get; private set; }
 
     private void Awake()
@@ -34,4 +34,35 @@ public class Player : MonoBehaviour
         PlayerName = newName;
     }
 
+    public object CaptureState()
+    {
+        Dictionary<string, object> state = new Dictionary<string, object>();
+
+        state.Add("PlayerName", PlayerName);
+        state.Add("CharacterConfig", CharacterConfig);
+
+        return state;
+    }
+
+    public void RestoreState(object state)
+    {
+        Dictionary<string, object> restoredState = (Dictionary<string, object>)state;
+
+        PlayerName = (string)restoredState["PlayerName"];
+        CharacterConfig = (CharacterModel.Config)restoredState["CharacterConfig"];
+    }
+
+    public void NewPlayer(string name)
+    {
+        ChangePlayerName(name);
+        SetCharacterVarient(CharacterModel.EVariant.Adventure_Peasant_01);
+        SetCharacterColor(CharacterModel.EColor.Default);
+        SetCharacterSkin(0);
+    }
+
+    public void ClearPlayer()
+    {
+        NewPlayer("");
+
+    }
 }
