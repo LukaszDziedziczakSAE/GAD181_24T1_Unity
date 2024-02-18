@@ -39,12 +39,17 @@ public class UI_EnterName : MonoBehaviour
 
     private void UpdateInputField()
     {
-         inputField.text = Game.Player.PlayerName;
+        inputField.text = Game.Player.PlayerName;
+        enterButton.interactable = inputField.text.Length > 0;
     }
 
     private void OnInputFieldChange(string newInput)
     {
-        if (NewPlayer) return;
+        if (NewPlayer)
+        {
+            enterButton.interactable = inputField.text.Length > 0;
+            return;
+        }
 
         Game.Player.ChangePlayerName(newInput);
         UpdateInputField();

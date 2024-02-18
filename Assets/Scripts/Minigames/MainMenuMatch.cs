@@ -1,3 +1,4 @@
+using QFSW.QC;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,5 +19,6 @@ public class MainMenuMatch : MinigameMatch
 
         ui.OpenMainMenu();
         Game.UpdatePlayersCharacterModel();
+        QuantumConsole.Instance.Deactivate();
     }
 }

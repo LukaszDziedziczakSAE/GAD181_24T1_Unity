@@ -256,7 +256,7 @@ public class UI_PlayerProfile : MonoBehaviour
     {
         mainMenu.MainMenuButtons.gameObject.SetActive(true);
         gameObject.SetActive(false);
-        Game.SaveSystem.SaveGameFile();
+        //Game.SaveSystem.SaveGameFile();
     }
 
     private List<string> GetCharacterNames

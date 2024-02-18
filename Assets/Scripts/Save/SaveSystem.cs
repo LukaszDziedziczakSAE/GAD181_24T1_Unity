@@ -112,14 +112,14 @@ public class SaveSystem : MonoBehaviour
     {
         get
         {
-            if (File.Exists(GetPathFromSaveFile(gameFileName)))
+            /*if (File.Exists(GetPathFromSaveFile(gameFileName)))
             {
                 Debug.Log("Save file exists");
             }
             else
             {
                 Debug.Log("No save file exists");
-            }
+            }*/
             
             return File.Exists(GetPathFromSaveFile(gameFileName));
         }

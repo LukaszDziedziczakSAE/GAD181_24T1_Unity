@@ -1,3 +1,4 @@
+using QFSW.QC;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class UI_MainMenuButtons : MonoBehaviour
         playerProfileButton.onClick.AddListener(OnPlayerProfileButtonPress);
         settingsButton.onClick.AddListener(OnSettingsButtonPress);
         debugButton.onClick.AddListener(OnDebugButtonPress);
-        debugButton.interactable = false;
+        debugButton.interactable = true;
     }
 
     private void OnDisable()
@@ -47,9 +48,11 @@ public class UI_MainMenuButtons : MonoBehaviour
 
     private void OnDebugButtonPress()
     {
-        MainMenu.CloseAll();
+        //MainMenu.CloseAll();
 
         //MainMenu.CharacterList.gameObject.SetActive(true);
         //Game.LoadPortraitMaker();
+
+        QuantumConsole.Instance.Activate();
     }
 }

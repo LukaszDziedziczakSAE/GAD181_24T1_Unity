@@ -59,7 +59,9 @@ public class Game : MonoBehaviour
 
     public static void UpdatePlayersCharacterModel()
     {
-        Instance.playerCharacter?.Model.SetNewConfig(Instance.player.CharacterConfig);
+        if (Instance.player.PlayerName == null || Instance.player.PlayerName == "")
+            Instance.playerCharacter?.Model.HideAllModels();
+        else Instance.playerCharacter?.Model.SetNewConfig(Instance.player.CharacterConfig);
     }
 
     private static Character FindPlayersCharacter()
