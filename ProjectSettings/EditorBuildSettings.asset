@@ -12,12 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 3f64dfbd828c77c4b9be12192ef54b27
   - enabled: 1
-    path: Assets/Scenes/Test.unity
-    guid: 1d28534ab5e14974cb8c0a0036c45a8a
-  - enabled: 1
     path: Assets/Scenes/TargetShooting.unity
     guid: 39d8eacbd09d07f4a9f77483b5ac5ee3
   - enabled: 1
-    path: Assets/Scenes/ArrowShoot.unity
-    guid: 8f07fc8551ea482459cacac6225c5002
+    path: Assets/Scenes/ArrowSupply.unity
+    guid: 3e52f14b1bbc04a4db1f03588259d88c
+  - enabled: 1
+    path: Assets/Scenes/Jousting.unity
+    guid: 0690692ad02ac5f4da0324ab54e1d29f
   m_configObjects: {}
