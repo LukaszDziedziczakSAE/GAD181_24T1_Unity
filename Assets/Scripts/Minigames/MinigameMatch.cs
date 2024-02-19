@@ -52,31 +52,31 @@ public abstract class MinigameMatch : MonoBehaviour
         }
     }
 
-    public virtual void PrematchStart()
+    protected virtual void PrematchStart()
     {
         Mode = EState.inProgress;
     }
-    public abstract void MatchStart();
-    public virtual void PostMatchStart()
+    protected abstract void MatchStart();
+    protected virtual void PostMatchStart()
     {
         // show postmatch UI
     }
 
-    public virtual void PrematchEnd() { }
-    public virtual void MatchEnd() { }
-    public virtual void PostMatchEnd()
+    protected virtual void PrematchEnd() { }
+    protected virtual void MatchEnd() { }
+    protected virtual void PostMatchEnd()
     {
         Game.LoadMainMenu();
     }
 
-    public virtual void PrematchTick() { }
-    public virtual void MatchTick()
+    protected virtual void PrematchTick() { }
+    protected virtual void MatchTick()
     {
         matchTime += Time.deltaTime;
     }
-    public virtual void PostMatchTick() { }
+    protected virtual void PostMatchTick() { }
 
-    public abstract MatchResult DetermineResult();
+    protected abstract MatchResult DetermineResult();
 
     protected Character[] Compeditors
     {
@@ -93,7 +93,7 @@ public abstract class MinigameMatch : MonoBehaviour
         }
     }
 
-    public void SetNewState(EState newMode)
+    protected void SetNewState(EState newMode)
     {
         switch (mode)
         {

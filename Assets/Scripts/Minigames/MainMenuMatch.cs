@@ -8,12 +8,12 @@ public class MainMenuMatch : MinigameMatch
     UI_MainMenu ui;
 
 
-    public override MatchResult DetermineResult()
+    protected override MatchResult DetermineResult()
     {
         return new MatchResult();
     }
 
-    public override void MatchStart()
+    protected override void MatchStart()
     {
         ui = (UI_MainMenu)Game.UI;
 

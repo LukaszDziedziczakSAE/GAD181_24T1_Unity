@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ArrowSupplyMatch : MinigameMatch
 {
-    public override MatchResult DetermineResult()
+    protected override MatchResult DetermineResult()
     {
         return new MatchResult();
     }
 
-    public override void MatchStart()
+    protected override void MatchStart()
     {
         foreach(Character character in Compeditors) 
         {
