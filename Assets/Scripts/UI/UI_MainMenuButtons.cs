@@ -37,8 +37,9 @@ public class UI_MainMenuButtons : MonoBehaviour
 
     private void OnPlayerProfileButtonPress()
     {
+        Game.CameraManager.SwitchTo(((MainMenuMatch)Game.Match).CharacterCamera, ((MainMenuMatch)Game.Match).CameraBlendTime);
         MainMenu.CloseAll();
-        MainMenu.PlayerProfile.gameObject.SetActive(true);
+        Game.CameraManager.BlendComplete += PlayerProfileCamBlendFinish;
     }
 
     private void OnSettingsButtonPress()
@@ -54,5 +55,10 @@ public class UI_MainMenuButtons : MonoBehaviour
         //Game.LoadPortraitMaker();
 
         QuantumConsole.Instance.Activate();
+    }
+
+    private void PlayerProfileCamBlendFinish()
+    {
+        MainMenu.PlayerProfile.gameObject.SetActive(true);
     }
 }

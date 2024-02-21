@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Game : MonoBehaviour
 {
     public static Game Instance { get; private set; }
+    [SerializeField] CameraManager cameraManager;
     [SerializeField] InputReader input;
     [SerializeField] Player player;
     [SerializeField] Character playerCharacter;
@@ -15,6 +16,7 @@ public class Game : MonoBehaviour
     public static MinigameMatch Match { get; private set; }
     public static UI_Main UI { get; private set; }
     public static SaveSystem SaveSystem { get; private set; }
+    public static CameraManager CameraManager => Instance.cameraManager;
 
     private void Awake()
     {
@@ -44,6 +46,7 @@ public class Game : MonoBehaviour
             return;
         }
 
+        cameraManager.OnSceneLoad();
         player = FindAnyObjectByType<Player>();
         UI = FindAnyObjectByType<UI_Main>();
         if (player == null) return;

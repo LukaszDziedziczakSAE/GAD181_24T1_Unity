@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2416845722095306909}
   - component: {fileID: 5454981912204759713}
   - component: {fileID: 1930825340700568776}
+  - component: {fileID: 8263145923874966928}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -46,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682f9d89d8b060b4ca466c0670febd06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraManager: {fileID: 8263145923874966928}
   input: {fileID: 5454981912204759713}
   player: {fileID: 0}
   playerCharacter: {fileID: 0}
@@ -74,3 +76,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameFileName: PlayerState
+--- !u!114 &8263145923874966928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6878257758344584217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d2e3df415e9d646b8da5dd0193aad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camPriortyNormal: 10
+  camPriortyCurrentActive: 20

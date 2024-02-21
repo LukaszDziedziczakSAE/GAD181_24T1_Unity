@@ -1,3 +1,4 @@
+using Cinemachine;
 using QFSW.QC;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,7 +7,9 @@ using UnityEngine;
 public class MainMenuMatch : MinigameMatch
 {
     UI_MainMenu ui;
-
+    [field: SerializeField] public CinemachineVirtualCamera MainMenuCamera {  get; private set; }
+    [field: SerializeField] public CinemachineVirtualCamera CharacterCamera { get; private set; }
+    [field: SerializeField] public float CameraBlendTime { get; private set; } = 0.2f;
 
     protected override MatchResult DetermineResult()
     {
@@ -17,8 +20,9 @@ public class MainMenuMatch : MinigameMatch
     {
         ui = (UI_MainMenu)Game.UI;
 
-        ui.OpenMainMenu();
         Game.UpdatePlayersCharacterModel();
         QuantumConsole.Instance.Deactivate();
+        Game.CameraManager.SwitchTo(MainMenuCamera);
+        ui.OpenMainMenu();
     }
 }

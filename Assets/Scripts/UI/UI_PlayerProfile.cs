@@ -254,9 +254,15 @@ public class UI_PlayerProfile : MonoBehaviour
 
     private void OnCloseButtonPress()
     {
-        mainMenu.MainMenuButtons.gameObject.SetActive(true);
+        Game.CameraManager.SwitchTo(((MainMenuMatch)Game.Match).MainMenuCamera, ((MainMenuMatch)Game.Match).CameraBlendTime);
+        Game.CameraManager.BlendComplete += OnBackToMainMenuBlendComplete;
         gameObject.SetActive(false);
         //Game.SaveSystem.SaveGameFile();
+    }
+
+    private void OnBackToMainMenuBlendComplete()
+    {
+        mainMenu.MainMenuButtons.gameObject.SetActive(true);
     }
 
     private List<string> GetCharacterNames
