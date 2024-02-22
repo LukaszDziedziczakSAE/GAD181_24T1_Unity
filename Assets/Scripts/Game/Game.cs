@@ -48,8 +48,11 @@ public class Game : MonoBehaviour
 
         cameraManager.OnSceneLoad();
         player = FindAnyObjectByType<Player>();
+
         UI = FindAnyObjectByType<UI_Main>();
+        if (UI != null) UI.LevelLoaded();
         if (player == null) return;
+
         playerCharacter = FindPlayersCharacter();
         UpdatePlayersCharacterModel();
 

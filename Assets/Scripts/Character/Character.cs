@@ -11,6 +11,8 @@ public class Character : MonoBehaviour
     [field: SerializeField] public Animator Animator { get; private set; }
     [field: SerializeField] public CapsuleCollider CapsuleCollider { get; private set; }
     [field: SerializeField] public Rigidbody Rigidbody { get; private set; }
+    [field: SerializeField] public Transform RightHand { get; private set; }
+    [field: SerializeField] public Transform LeftHand { get; private set; }
     [field: SerializeField] public NavMeshAgent NavMeshAgent { get; private set; }
     /*[field: SerializeField]*/ public CharacterState State { get; private set; }
 

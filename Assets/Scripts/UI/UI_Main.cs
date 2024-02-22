@@ -4,4 +4,5 @@ using UnityEngine;
 
 public abstract class  UI_Main : MonoBehaviour
 {
+    public abstract void LevelLoaded();
 }

@@ -42,13 +42,16 @@ public abstract class MinigameMatch : MonoBehaviour
         switch (mode)
         {
             case EState.preMatch: 
-                PrematchTick(); break;
+                PrematchTick(); 
+                break;
 
             case EState.inProgress:
-                MatchTick(); break;
+                MatchTick(); 
+                break;
 
             case EState.postMatch:
-                PostMatchTick(); break;
+                PostMatchTick(); 
+                break;
         }
     }
 

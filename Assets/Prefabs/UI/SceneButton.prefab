@@ -191,6 +191,7 @@ MonoBehaviour:
   - Target Shooting
   - Arrow Supply
   - Jousting
+  - Scavanger Hunt
 --- !u!1 &8880392293495964149
 GameObject:
   m_ObjectHideFlags: 0

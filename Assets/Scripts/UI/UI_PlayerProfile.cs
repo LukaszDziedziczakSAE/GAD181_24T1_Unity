@@ -8,10 +8,10 @@ public class UI_PlayerProfile : MonoBehaviour
 {
     [SerializeField] UI_MainMenu mainMenu;
     [SerializeField] Button closeButton;
-    [SerializeField] TMP_InputField nameField;
+    //[SerializeField] TMP_InputField nameField;
     [SerializeField] Button nameButton;
     [SerializeField] TMP_Text nameButtonText;
-    [SerializeField] TMP_Dropdown characterVerient;
+    //[SerializeField] TMP_Dropdown characterVerient;
     [SerializeField] Button varientButton;
     [SerializeField] TMP_Text varientButtonText;
     [SerializeField] Button skin0Button;
@@ -67,11 +67,11 @@ public class UI_PlayerProfile : MonoBehaviour
 
     public void UpdateCharacterProfile()
     {
-        if (nameField == null)
+        /*if (nameField == null)
         {
             Debug.LogError(name + ": missing nameField referance");
             return;
-        }
+        }*/
 
         if (Game.Player == null)
         {
@@ -82,7 +82,7 @@ public class UI_PlayerProfile : MonoBehaviour
         //nameField.text = Game.Player.PlayerName;
         nameButtonText.text = Game.Player.PlayerName;
         //if (characterVerient.options.Count <= 1) BuildDropDownList();
-        if (Game.Player != null) characterVerient.value = (int)Game.Player.CharacterConfig.Variant;
+        //if (Game.Player != null) characterVerient.value = (int)Game.Player.CharacterConfig.Variant;
         if (Game.PlayerCharacter.Model.CharacterConfig.CharacterName == null || Game.PlayerCharacter.Model.CharacterConfig.CharacterName == "")
             varientButtonText.text = Game.Player.CharacterConfig.Variant.ToString();
         else varientButtonText.text = Game.PlayerCharacter.Model.CharacterConfig.CharacterName;
@@ -93,7 +93,7 @@ public class UI_PlayerProfile : MonoBehaviour
     }
 
 
-    private void BuildDropDownList()
+    /*private void BuildDropDownList()
     {
         string selectedVariant = Game.Player.CharacterConfig.Variant.ToString();
 
@@ -102,7 +102,7 @@ public class UI_PlayerProfile : MonoBehaviour
         //Type enumType = CharacterModel.EVariant.Random.GetType();
         List< TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>();
         int current = 0;
-        for (int i = 0; i < /*Enum.GetNames(enumType).Length*/ characterNames.Count; i++)
+        for (int i = 0; i < *//*Enum.GetNames(enumType).Length*//* characterNames.Count; i++)
         {
             TMP_Dropdown.OptionData optionData = new TMP_Dropdown.OptionData(characterNames[i]);
             options.Add(optionData);
@@ -113,7 +113,7 @@ public class UI_PlayerProfile : MonoBehaviour
         if (current == 0) Debug.LogWarning(name + ": could not find " + Game.Player.CharacterConfig.Variant.ToString());
 
         
-    }
+    }*/
 
     private void UpdateSkinButtons()
     {
@@ -174,7 +174,7 @@ public class UI_PlayerProfile : MonoBehaviour
         }
     }
 
-    private void CharacterVerientValueChanged(int newIndex)
+    /*private void CharacterVerientValueChanged(int newIndex)
     {
         string verientName = characterVerient.options[newIndex].text;
         CharacterModel.EVariant variant = CharacterModel.VariantName(verientName);
@@ -189,7 +189,8 @@ public class UI_PlayerProfile : MonoBehaviour
         Game.Player.ChangePlayerName(newString);
         Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
-    }
+    }*/
+
     private void OnSkin0ButtonPress()
     {
         Game.Player.SetCharacterSkin(0);

@@ -57,6 +57,8 @@ MonoBehaviour:
   <Animator>k__BackingField: {fileID: 5348626877554781363}
   <CapsuleCollider>k__BackingField: {fileID: 9047708930033450011}
   <Rigidbody>k__BackingField: {fileID: 7283365616956909958}
+  <RightHand>k__BackingField: {fileID: 5439207758885815481}
+  <LeftHand>k__BackingField: {fileID: 5439068935292717451}
   <NavMeshAgent>k__BackingField: {fileID: 252950230933403302}
 --- !u!136 &9047708930033450011
 CapsuleCollider:

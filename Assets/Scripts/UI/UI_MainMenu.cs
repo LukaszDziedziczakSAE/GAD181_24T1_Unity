@@ -36,4 +36,8 @@ public class UI_MainMenu : UI_Main
         MainMenuButtons.gameObject.SetActive(false);
         PlayerProfile.gameObject.SetActive(false);
     }
+
+    public override void LevelLoaded()
+    {
+    }
 }
