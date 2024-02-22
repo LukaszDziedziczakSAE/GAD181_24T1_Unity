@@ -30,6 +30,12 @@ public class CameraManager : MonoBehaviour
 
     public void SwitchTo(CinemachineVirtualCamera nextCamera, float transitionTime = 0)
     {
+        if (cinemachineBrain == null)
+        {
+            Debug.LogWarning("CameraManager is missing CinemachineBrain referance.");
+            return;
+        }
+
         if (transitionTime == 0)
         {
             cinemachineBrain.m_DefaultBlend.m_Style = CinemachineBlendDefinition.Style.Cut;
