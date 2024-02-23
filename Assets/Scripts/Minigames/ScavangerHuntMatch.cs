@@ -6,6 +6,7 @@ public class ScavangerHuntMatch : MinigameMatch
 {
     [SerializeField] float matchLength = 120;
     [SerializeField] GameObject selectionIndicatorPrefab;
+    [SerializeField] PickUpSpawner pickUpSpawner;
     public int itemsPickedUp;
 
     public float MatchTimeRemaining => matchLength - MatchTime;
@@ -13,6 +14,21 @@ public class ScavangerHuntMatch : MinigameMatch
     protected override MatchResult DetermineResult()
     {
         return new MatchResult();
+    }
+
+    protected async override void PrematchStart()
+    {
+        await pickUpSpawner.SpawnPickUpsTask();
+    }
+
+    protected override void PrematchTick()
+    {
+        base.PrematchTick();
+
+        if (pickUpSpawner == null || pickUpSpawner.SpawnComplete)
+        {
+            Mode = EState.inProgress;
+        }
     }
 
     protected override void MatchStart()

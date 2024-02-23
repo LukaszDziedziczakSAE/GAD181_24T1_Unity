@@ -14,11 +14,14 @@ public class PickUpSpawner : MonoBehaviour
     List<PickUp> PickUps = new List<PickUp>();
     [SerializeField] int numberToSpawn;
     [SerializeField] float proximity;
+    [SerializeField] LayerMask spherCastLayers;
 
-    private async void OnEnable()
+    public bool SpawnComplete => PickUps.Count >= numberToSpawn;
+
+    /*private async void OnEnable()
     {
         await SpawnPickUpsTask();
-    }
+    }*/
 
     private void Update()
     {
@@ -40,11 +43,15 @@ public class PickUpSpawner : MonoBehaviour
     private void SpawnPickup()
     {
         Vector3 position = nextPosition;
-        if (InProximityToOthers(position)) return;
-        PickUp pickUp = Instantiate(PickUpPrefab, position, Quaternion.identity);
-        PickUps.Add(pickUp);
-        pickUp.Spawner(this);
-        pickUp.transform.parent = transform;
+        //if (InProximityToOthers(position)) return;
+
+        if (Physics.SphereCastAll(position, proximity, Vector3.up, proximity, spherCastLayers).Length == 0)
+        {
+            PickUp pickUp = Instantiate(PickUpPrefab, position, Quaternion.identity);
+            PickUps.Add(pickUp);
+            pickUp.Spawner(this);
+            pickUp.transform.parent = transform;
+        }
     }
 
     private Vector3 nextPosition
