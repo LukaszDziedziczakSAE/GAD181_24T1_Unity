@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     ScavangerHuntMatch match => (ScavangerHuntMatch)Game.Match;
+    PickUpSpawner spawner;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,5 +19,15 @@ public class PickUp : MonoBehaviour
     {
         match.PlayerPickedUp();
         Destroy(this.gameObject);
+    }
+
+    public void Spawner(PickUpSpawner pickUpSpawner)
+    {
+        spawner = pickUpSpawner;
+    }
+
+    private void OnDestroy()
+    {
+        spawner?.RemovePickUp(this);
     }
 }

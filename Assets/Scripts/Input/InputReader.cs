@@ -106,7 +106,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
             }
             else
             {
-                Debug.LogWarning("No Hit");
+                //Debug.LogWarning("No Hit");
                 return new RaycastHit();
             }
 

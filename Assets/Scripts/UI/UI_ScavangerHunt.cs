@@ -8,6 +8,7 @@ public class UI_ScavangerHunt : UI_Main
     ScavangerHuntMatch match => (ScavangerHuntMatch)Game.Match;
     [SerializeField] TMP_Text touchPoint;
     [SerializeField] TMP_Text pickedUpAmount;
+    [SerializeField] TMP_Text timeLeft;
 
     private void OnDisable()
     {
@@ -19,6 +20,7 @@ public class UI_ScavangerHunt : UI_Main
     {
         touchPoint.text = Game.InputReader.TouchPosition.ToString();
         pickedUpAmount.text = match.itemsPickedUp.ToString();
+        timeLeft.text = match.MatchTimeRemaining.ToString("F0");
     }
 
     private void OnTouchPress()
