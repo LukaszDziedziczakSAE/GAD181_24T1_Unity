@@ -18,7 +18,7 @@ public class ScavangerHuntMatch : MinigameMatch
 
     protected async override void PrematchStart()
     {
-        await pickUpSpawner.SpawnPickUpsTask();
+        if (pickUpSpawner != null) await pickUpSpawner.SpawnPickUpsTask();
     }
 
     protected override void PrematchTick()

@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 3f64dfbd828c77c4b9be12192ef54b27
   - enabled: 1
+    path: Assets/Scenes/ScavangerHunt.unity
+    guid: c48f88e440de4fd48bdfd30ece732063
+  - enabled: 1
     path: Assets/Scenes/TargetShooting.unity
     guid: 39d8eacbd09d07f4a9f77483b5ac5ee3
   - enabled: 1
@@ -20,7 +23,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Jousting.unity
     guid: 0690692ad02ac5f4da0324ab54e1d29f
-  - enabled: 1
-    path: Assets/Scenes/ScavangerHunt.unity
-    guid: c48f88e440de4fd48bdfd30ece732063
   m_configObjects: {}

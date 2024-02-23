@@ -33,6 +33,6 @@ public class UI_SceneSelectButton : MonoBehaviour
     public void Initilize(int index)
     {
         this.index = index;
-        buttonText.text = "(" + index + ") " + sceneNames[this.index];
+        buttonText.text = /*"(" + index + ") " + */sceneNames[this.index];
     }
 }

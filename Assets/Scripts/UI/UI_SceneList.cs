@@ -27,7 +27,7 @@ public class UI_SceneList : MonoBehaviour
     {
         ClearList();
         //print("SceneManager.sceneCountInBuildSettings=" + SceneManager.sceneCountInBuildSettings);
-        for (int i = 1; i < SceneManager.sceneCountInBuildSettings; i++)
+        for (int i = 2; i < SceneManager.sceneCountInBuildSettings; i++)
         {
             UI_SceneSelectButton sceneButton = Instantiate(sceneButtonPrefab, content);
             sceneSelectButtons.Add(sceneButton);
