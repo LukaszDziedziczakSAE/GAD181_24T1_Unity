@@ -9,6 +9,7 @@ public class UI_ScavangerHunt : UI_Main
     [SerializeField] TMP_Text touchPoint;
     [SerializeField] TMP_Text pickedUpAmount;
     [SerializeField] TMP_Text timeLeft;
+    [SerializeField] UI_MatchTitleCard matchStart;
 
     private void OnDisable()
     {
@@ -39,5 +40,7 @@ public class UI_ScavangerHunt : UI_Main
         Game.InputReader.OnTouchPressed += OnTouchPress;
         Game.InputReader.OnTouchReleased += OnTouchRelease;
         touchPoint.gameObject.SetActive(false);
+        matchStart.gameObject.SetActive(false);
+
     }
 }
