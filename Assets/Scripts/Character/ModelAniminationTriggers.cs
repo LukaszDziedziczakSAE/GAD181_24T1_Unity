@@ -13,11 +13,16 @@ public class ModelAniminationTriggers : MonoBehaviour
 
     void PickUpStart()
     {
+        if (character.State.GetType() != new CS_ScavangerPickUp(character, null).GetType()) return;
+
         ((CS_ScavangerPickUp)character.State).Grab();
     }
 
     void PickUpFinish()
     {
+        if (character.State.GetType() != new CS_ScavangerPickUp(character, null).GetType()) return;
+
+
         ((CS_ScavangerPickUp)character.State).GrabComplete();
         //((ScavangerHuntMatch)Game.Match).PlayerPickedUp();
     }
