@@ -65,6 +65,10 @@ public abstract class MinigameMatch : MonoBehaviour
     protected abstract void MatchStart();
     protected virtual void PostMatchStart()
     {
+        foreach (Character character in Compeditors)
+        {
+            character.SetNewState(new CS_StandingIdle(character));
+        }
         Game.UI.MatchStatus.gameObject.SetActive(false);
         Game.UI.MatchEnd.gameObject.SetActive(true);
     }

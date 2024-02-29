@@ -13,6 +13,8 @@ public class PickUp : MonoBehaviour
     {
         if (other.TryGetComponent<Character>(out Character character))
         {
+            if (character.State.GetType() != new CS_ScavangerLocomotion(character).GetType()) return;
+
             characterInProx = character;
             character.SetNewState(new CS_ScavangerPickUp(character, this));
         }
@@ -20,6 +22,9 @@ public class PickUp : MonoBehaviour
 
     public void CompletePickUp()
     {
+        if (characterInProx == null) return;
+
+
         match.AwardPlayerPoints(characterInProx.PlayerIndex, pointsAward);
         Game.UI.UpdateMatchStatus();
         Destroy(this.gameObject);
