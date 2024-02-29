@@ -51,8 +51,8 @@ public class Game : MonoBehaviour
 
         UI = FindAnyObjectByType<UI_Main>();
         if (UI != null) UI.LevelLoaded();
-        if (player == null) return;
 
+        if (player == null) return;
         playerCharacter = FindPlayersCharacter();
         UpdatePlayersCharacterModel();
 
