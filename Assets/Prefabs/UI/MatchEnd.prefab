@@ -140,7 +140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Total Gold:'
+  m_text: ' Gold:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f1357ebbcb043434baef98dbf70b00d8, type: 2}
   m_sharedMaterial: {fileID: 4772825523563164886, guid: f1357ebbcb043434baef98dbf70b00d8,
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -692,13 +692,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7407105028694544943}
-  - {fileID: 483635172790915961}
-  - {fileID: 8443572370212143127}
   - {fileID: 4652491348116381494}
-  - {fileID: 1333398202675049106}
   - {fileID: 2848799994316173970}
   - {fileID: 455157284659195189}
   - {fileID: 277838873457233023}
+  - {fileID: 1333398202675049106}
+  - {fileID: 8443572370212143127}
+  - {fileID: 483635172790915961}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -721,7 +721,7 @@ MonoBehaviour:
   backgroundButton: {fileID: 6808977451644315370}
   playAgainButton: {fileID: 2389763470316277941}
   mainMenuButton: {fileID: 2248361302754938923}
-  matchEndListPrefab: {fileID: 6956585828985953166, guid: 212c54f65805e6c43be7961301735626,
+  matchEndListPrefab: {fileID: 6489075760917119458, guid: 212c54f65805e6c43be7961301735626,
     type: 3}
   matchEndList: {fileID: 4652491348116381494}
   playerCurrency: {fileID: 6625778290697529441}
@@ -1004,7 +1004,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 88888
+  m_text: +888
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f1357ebbcb043434baef98dbf70b00d8, type: 2}
   m_sharedMaterial: {fileID: 4772825523563164886, guid: f1357ebbcb043434baef98dbf70b00d8,
@@ -1453,7 +1453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7029550936408906363
 RectTransform:
   m_ObjectHideFlags: 0

@@ -65,7 +65,8 @@ public abstract class MinigameMatch : MonoBehaviour
     protected abstract void MatchStart();
     protected virtual void PostMatchStart()
     {
-        // show postmatch UI
+        Game.UI.MatchStatus.gameObject.SetActive(false);
+        Game.UI.MatchEnd.gameObject.SetActive(true);
     }
 
     protected virtual void PrematchEnd() { }

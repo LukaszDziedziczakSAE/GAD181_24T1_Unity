@@ -55,7 +55,7 @@ public class ScavangerHuntMatch : MinigameMatch
     protected override void PostMatchStart()
     {
         base.PostMatchStart();
-        Mode = EState.none;
+        //Mode = EState.none;
     }
 
     public void ShowTouchIndicator(Vector3 position)
