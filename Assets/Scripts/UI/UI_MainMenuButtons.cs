@@ -44,7 +44,8 @@ public class UI_MainMenuButtons : MonoBehaviour
 
     private void OnSettingsButtonPress()
     {
-
+        Game.UI.SettingsMenu.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     private void OnDebugButtonPress()

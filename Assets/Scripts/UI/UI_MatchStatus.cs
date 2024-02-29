@@ -7,16 +7,19 @@ using UnityEngine.UI;
 public class UI_MatchStatus : MonoBehaviour
 {
     [SerializeField] TMP_Text matchTimer;
-    [SerializeField] TMP_Text player1Name;
+   /* [SerializeField] TMP_Text player1Name;
     [SerializeField] TMP_Text player1Score;
     [SerializeField] TMP_Text player2Name;
     [SerializeField] TMP_Text player2Score;
     [SerializeField] TMP_Text player3Name;
     [SerializeField] TMP_Text player3Score;
     [SerializeField] TMP_Text player4Name;
-    [SerializeField] TMP_Text player4Score;
+    [SerializeField] TMP_Text player4Score;*/
     [SerializeField] Button pauseButton;
-
+    [SerializeField] UI_MatchStatusPlayerBox playerBox1;
+    [SerializeField] UI_MatchStatusPlayerBox playerBox2;
+    [SerializeField] UI_MatchStatusPlayerBox playerBox3;
+    [SerializeField] UI_MatchStatusPlayerBox playerBox4;
 
     private void OnEnable()
     {
@@ -69,14 +72,14 @@ public class UI_MatchStatus : MonoBehaviour
 
     private void OnPauseButtonPress()
     {
-
+        Game.UI.PauseMenu.gameObject.SetActive(true);
     }
 
     public void InitiliseStatus()
     {
         print("Initilizing MatchStatus for " + Game.Match.Result.Scores.Count + " players");
 
-        if (Game.Match.Result.Scores.ContainsKey(0))
+        /*if (Game.Match.Result.Scores.ContainsKey(0))
         {
             player1Name.gameObject.SetActive(true);
             player1Score.gameObject.SetActive(true);
@@ -130,12 +133,40 @@ public class UI_MatchStatus : MonoBehaviour
         {
             player4Name.gameObject.SetActive(false);
             player4Score.gameObject.SetActive(false);
+        }*/
+
+        if (Game.Match.Result.Scores.ContainsKey(0))
+        {
+            playerBox1.gameObject.SetActive(true);
+            playerBox1.Initilise(0);
         }
+        else playerBox1.gameObject.SetActive(false);
+
+        if (Game.Match.Result.Scores.ContainsKey(1))
+        {
+            playerBox2.gameObject.SetActive(true);
+            playerBox2.Initilise(1);
+        }
+        else playerBox2.gameObject.SetActive(false);
+
+        if (Game.Match.Result.Scores.ContainsKey(2))
+        {
+            playerBox3.gameObject.SetActive(true);
+            playerBox3.Initilise(2);
+        }
+        else playerBox3.gameObject.SetActive(false);
+
+        if (Game.Match.Result.Scores.ContainsKey(3))
+        {
+            playerBox4.gameObject.SetActive(true);
+            playerBox4.Initilise(3);
+        }
+        else playerBox4.gameObject.SetActive(false);
     }
 
     public void UpdateStatus()
     {
-        if (player1Score.gameObject.activeSelf)
+        /*if (player1Score.gameObject.activeSelf)
         {
             player1Score.text = Game.Match.Result.Scores[0].ToString();
         }
@@ -153,6 +184,11 @@ public class UI_MatchStatus : MonoBehaviour
         if (player4Score.gameObject.activeSelf)
         {
             player4Score.text = Game.Match.Result.Scores[3].ToString();
-        }
+        }*/
+
+        if (playerBox1.gameObject.activeSelf) playerBox1.UpdatePlayerScore();
+        if (playerBox2.gameObject.activeSelf) playerBox2.UpdatePlayerScore();
+        if (playerBox3.gameObject.activeSelf) playerBox3.UpdatePlayerScore();
+        if (playerBox4.gameObject.activeSelf) playerBox4.UpdatePlayerScore();
     }
 }
