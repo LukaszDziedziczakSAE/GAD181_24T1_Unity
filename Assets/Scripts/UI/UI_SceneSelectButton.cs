@@ -27,6 +27,7 @@ public class UI_SceneSelectButton : MonoBehaviour
 
     private void OnButtonPress()
     {
+        Game.Sound.PlayButtonPressConfirmSound();
         SceneManager.LoadScene(index);
     }
 

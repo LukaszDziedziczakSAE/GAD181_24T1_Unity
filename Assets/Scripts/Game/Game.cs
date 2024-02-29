@@ -10,6 +10,7 @@ public class Game : MonoBehaviour
     [SerializeField] InputReader input;
     [SerializeField] Player player;
     [SerializeField] Character playerCharacter;
+    [SerializeField] Sound_UI sound;
     public static InputReader InputReader => Instance.input;
     public static Player Player => Instance.player;
     public static Character PlayerCharacter => Instance.playerCharacter;
@@ -17,6 +18,7 @@ public class Game : MonoBehaviour
     public static UI_Main UI { get; private set; }
     public static SaveSystem SaveSystem { get; private set; }
     public static CameraManager CameraManager => Instance.cameraManager;
+    public static Sound_UI Sound => Instance.sound;
 
     private void Awake()
     {
@@ -81,15 +83,6 @@ public class Game : MonoBehaviour
         return null;
     }
 
-    /*public static void CreateCharacterConfigs()
-    {
-        foreach (CharacterConfig character in PlayerCharacter.Model.CharacterConfigs)
-        {
-            AssetDatabase.CreateAsset(character, "Assets/Prefabs/Characters/" + character.name + ".asset");
-            AssetDatabase.SaveAssets();
-        }
-    }*/
-
     public static CharacterConfig[] ConfigsUnlockedAt(int level)
     {
         CharacterConfig[] configs = PlayerCharacter.Model.Configs;
@@ -122,9 +115,4 @@ public class Game : MonoBehaviour
     {
         SceneManager.LoadScene("PortraitMaker");
     }
-
-    /*public static Texture Portrait(string name)
-    {
-        return AssetDatabase.LoadAssetAtPath<Texture>("Assets/Textures/" + name + ".png");
-    }*/
 }

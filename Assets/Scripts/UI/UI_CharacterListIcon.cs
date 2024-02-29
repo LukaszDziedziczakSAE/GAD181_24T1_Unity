@@ -61,6 +61,7 @@ public class UI_CharacterListIcon : MonoBehaviour
 
     private void OnButtonPress()
     {
+        Game.Sound.PlayButtonPressSound();
         UI_MainMenu mainMenu = (UI_MainMenu)Game.UI;
 
         Game.Player.SetCharacterVarient(config.Variant);

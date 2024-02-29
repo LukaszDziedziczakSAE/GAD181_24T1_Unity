@@ -53,11 +53,13 @@ public class UI_MatchEnd : MonoBehaviour
 
     private void OnBackgroundButtonPress()
     {
+        Game.Sound.PlayButtonPressConfirmSound();
         Debug.Log("Background Button Pressed");
     }
 
     private void OnPlayAgainButtonPress()
     {
+        Game.Sound.PlayButtonPressConfirmSound();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

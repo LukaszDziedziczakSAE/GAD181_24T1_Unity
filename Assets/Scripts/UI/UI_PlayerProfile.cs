@@ -193,6 +193,7 @@ public class UI_PlayerProfile : MonoBehaviour
 
     private void OnSkin0ButtonPress()
     {
+        Game.Sound.PlayButtonPressSound();
         Game.Player.SetCharacterSkin(0);
         Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
@@ -200,12 +201,14 @@ public class UI_PlayerProfile : MonoBehaviour
 
     private void OnSkin1ButtonPress()
     {
+        Game.Sound.PlayButtonPressSound();
         Game.Player.SetCharacterSkin(1);
         Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
     }
     private void OnSkin2ButtonPress()
     {
+        Game.Sound.PlayButtonPressSound();
         Game.Player.SetCharacterSkin(2);
         Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
@@ -213,6 +216,7 @@ public class UI_PlayerProfile : MonoBehaviour
 
     private void OnYellowColorButtonPress()
     {
+        Game.Sound.PlayButtonPressSound();
         Game.Player.SetCharacterColor(CharacterModel.EColor.Yello);
         Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
@@ -220,6 +224,7 @@ public class UI_PlayerProfile : MonoBehaviour
 
     private void OnRedColorButtonPress()
     {
+        Game.Sound.PlayButtonPressSound();
         Game.Player.SetCharacterColor(CharacterModel.EColor.Red);
         Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
@@ -227,6 +232,7 @@ public class UI_PlayerProfile : MonoBehaviour
 
     private void OnPurpleColorButtonPress()
     {
+        Game.Sound.PlayButtonPressSound();
         Game.Player.SetCharacterColor(CharacterModel.EColor.Purple);
         Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
@@ -234,6 +240,7 @@ public class UI_PlayerProfile : MonoBehaviour
 
     private void OnGreenColorButtonPress()
     {
+        Game.Sound.PlayButtonPressSound();
         Game.Player.SetCharacterColor(CharacterModel.EColor.Green);
         Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
@@ -241,6 +248,7 @@ public class UI_PlayerProfile : MonoBehaviour
 
     private void OnBlueColorButtonPress()
     {
+        Game.Sound.PlayButtonPressSound();
         Game.Player.SetCharacterColor(CharacterModel.EColor.Blue);
         Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
@@ -248,6 +256,7 @@ public class UI_PlayerProfile : MonoBehaviour
 
     private void OnDefaultColorButtonPress()
     {
+        Game.Sound.PlayButtonPressSound();
         Game.Player.SetCharacterColor(CharacterModel.EColor.Default);
         Game.SaveSystem.SaveGameFile();
         UpdateCharacterProfile();
@@ -255,6 +264,7 @@ public class UI_PlayerProfile : MonoBehaviour
 
     private void OnCloseButtonPress()
     {
+        Game.Sound.PlayButtonPressConfirmSound();
         Game.CameraManager.SwitchTo(((MainMenuMatch)Game.Match).MainMenuCamera, ((MainMenuMatch)Game.Match).CameraBlendTime);
         Game.CameraManager.BlendComplete += OnBackToMainMenuBlendComplete;
         gameObject.SetActive(false);
@@ -284,6 +294,7 @@ public class UI_PlayerProfile : MonoBehaviour
 
     private void OnVarientButtonPress()
     {
+        Game.Sound.PlayButtonPressSound();
         mainMenu.PlayerProfile.gameObject.SetActive(false);
         mainMenu.CharacterList.gameObject.SetActive(true);
     }
@@ -291,6 +302,7 @@ public class UI_PlayerProfile : MonoBehaviour
 
     private void OnNameButtonPress()
     {
+        Game.Sound.PlayButtonPressSound();
         mainMenu.EnterNameDialog.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }
