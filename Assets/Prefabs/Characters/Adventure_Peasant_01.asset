@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CharacterName>k__BackingField: Peasant
   <Variant>k__BackingField: 1
-  <PartName>k__BackingField: Peasant
+  <PartName>k__BackingField: Chr_Adventure_Peasant_01
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
   <UnlockLevel>k__BackingField: 0

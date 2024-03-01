@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CharacterName>k__BackingField: 
   <Variant>k__BackingField: 32
-  <PartName>k__BackingField: Soldier
+  <PartName>k__BackingField: Chr_Knights_Soldier_01
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
   <UnlockLevel>k__BackingField: 7
