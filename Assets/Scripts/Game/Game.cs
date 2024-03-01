@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static Cinemachine.DocumentationSortingAttribute;
 
 public class Game : MonoBehaviour
 {
@@ -28,36 +26,7 @@ public class Game : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(this.gameObject);
 
-        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
-
         DontDestroyOnLoad(this);
-    }
-
-    private void SceneManager_sceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
-    {
-        int level = scene.buildIndex;
-
-        if (level == 0)
-        {
-            Debug.Log("Bootstrap Loaded");
-            return;
-        }
-
-        cameraManager.OnSceneLoad();
-        player = FindAnyObjectByType<Player>();
-
-        UI = FindAnyObjectByType<UI_Main>();
-        if (UI != null) UI.LevelLoaded();
-
-        if (player == null) return;
-        playerCharacter = FindPlayersCharacter();
-        UpdatePlayersCharacterModel();
-
-        if (level == 1) Debug.Log("Main Menu loaded");
-        else Debug.Log("Level " + level + " loaded");
-
-        Match = FindObjectOfType<MinigameMatch>();
-        if (Match != null) Match.Mode = MinigameMatch.EState.preMatch;
     }
 
     private void Start()
@@ -71,7 +40,7 @@ public class Game : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    /*private void OnLevelWasLoaded(int level)
+    private void OnLevelWasLoaded(int level)
     {
         if (level == 0)
         {
@@ -94,7 +63,7 @@ public class Game : MonoBehaviour
 
         Match = FindObjectOfType<MinigameMatch>();
         if (Match != null) Match.Mode = MinigameMatch.EState.preMatch;
-    }*/
+    }
 
     public static void UpdatePlayersCharacterModel()
     {
