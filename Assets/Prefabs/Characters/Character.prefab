@@ -486,7 +486,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5438931202239489999
 Transform:
   m_ObjectHideFlags: 0
@@ -1991,7 +1991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5438801726774298201
 Transform:
   m_ObjectHideFlags: 0
@@ -2027,7 +2027,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 35cb0cf592f349e469810c0953d26b14, type: 2}
+  - {fileID: 2100000, guid: 5ec5815f62a0d37488d95601e3f0129f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6488,29 +6488,29 @@ MonoBehaviour:
   - {fileID: 5435773118902379935}
   - {fileID: 5435683550133971853}
   defaultColorMaterials:
-  - {fileID: 2100000, guid: 35cb0cf592f349e469810c0953d26b14, type: 2}
-  - {fileID: 2100000, guid: 695e2ce45c3eab74cbeeb242bcf7cbef, type: 2}
-  - {fileID: 2100000, guid: 07d3bfdd15c3521408eb8e1f3811959e, type: 2}
+  - {fileID: 2100000, guid: 5ec5815f62a0d37488d95601e3f0129f, type: 2}
+  - {fileID: 2100000, guid: bd447d9c14c590947b6d77f5243fe951, type: 2}
+  - {fileID: 2100000, guid: e754fc27989b55644b3671f714122224, type: 2}
   blueColorMaterials:
-  - {fileID: 2100000, guid: 498c868e2f9452f42bdef32fcddb295e, type: 2}
-  - {fileID: 2100000, guid: e9324c65f63dfe44e8cb251f1fbe49c1, type: 2}
-  - {fileID: 2100000, guid: 82eff32f86c8dbb488095e48e38b7440, type: 2}
+  - {fileID: 2100000, guid: c506a8eda85a3b5449a92646c528bc23, type: 2}
+  - {fileID: 2100000, guid: f92e6d0555fc24d41b669f6935bfacf0, type: 2}
+  - {fileID: 2100000, guid: 44656ff1dff0ff849af1b78143509106, type: 2}
   greenColorMaterials:
-  - {fileID: 2100000, guid: 0db493edd912fad4da9f0814a260ae17, type: 2}
-  - {fileID: 2100000, guid: 5b2d333fd2128164eba003c43bce0085, type: 2}
-  - {fileID: 2100000, guid: c8f9c8ae0e3df2f48b0b269f4a553a45, type: 2}
+  - {fileID: 2100000, guid: 6fca2bd19ca39f746b2553bfd211725e, type: 2}
+  - {fileID: 2100000, guid: 2c224392925fc914fb3a7f18a4c778a4, type: 2}
+  - {fileID: 2100000, guid: 0003b2b35368919419cc5a40ffd13341, type: 2}
   purpleColorMaterials:
-  - {fileID: 2100000, guid: 518b5bf3840e2024491dbaf9b7aa68cb, type: 2}
-  - {fileID: 2100000, guid: 02fc06e0363fae7449fee0b0be5f62e8, type: 2}
-  - {fileID: 2100000, guid: 81451afd1eb722c4782757103d4941f0, type: 2}
+  - {fileID: 2100000, guid: d407658f94087df4798552d4179fdb80, type: 2}
+  - {fileID: 2100000, guid: 777f9c516f55e2d4ebd4da771475b8dc, type: 2}
+  - {fileID: 2100000, guid: 8c9ebe9bff34cfd4bad1d6586949d9b7, type: 2}
   redColorMaterials:
-  - {fileID: 2100000, guid: 691999b6c8ff41842bc933dfde6590de, type: 2}
-  - {fileID: 2100000, guid: 725df727949b1da45b020a53c62bdc3a, type: 2}
-  - {fileID: 2100000, guid: d70251e8350da6342bb10b68afb727b9, type: 2}
+  - {fileID: 2100000, guid: a36be0a1d6fb59848974fd12f0a9cabf, type: 2}
+  - {fileID: 2100000, guid: 68da7bfdb99e4cd4cb82adf6191be6e2, type: 2}
+  - {fileID: 2100000, guid: 07b6e0bb39eed7d48902548cbda3b615, type: 2}
   yellowColorMaterials:
-  - {fileID: 2100000, guid: 3e601539b198d46479df9311b980544a, type: 2}
-  - {fileID: 2100000, guid: 31a8c7003921921418510f2d9255668b, type: 2}
-  - {fileID: 2100000, guid: d2f639d2c6d124a41a341e04ce21c158, type: 2}
+  - {fileID: 2100000, guid: b5bdb3f2ca161ef419c8e2471ca13dc2, type: 2}
+  - {fileID: 2100000, guid: 302f862e595747c49ad82812aad0f2d8, type: 2}
+  - {fileID: 2100000, guid: e4fe55d22485694409b6a0115baf41c3, type: 2}
   textures:
   - {fileID: 2800000, guid: 8b287b3cdc2082e4183b792ac7130d4b, type: 3}
   - {fileID: 2800000, guid: 61678172f1c8ecb4cae9629aa9555801, type: 3}
