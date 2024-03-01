@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CharacterName>k__BackingField: 
   <Variant>k__BackingField: 12
-  <PartName>k__BackingField: Chr_Dungeon_KnightMale_01
+  <PartName>k__BackingField: Knight Male
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
-  <UnlockLevel>k__BackingField: 2
-  <UnlockPrice>k__BackingField: 200
+  <UnlockLevel>k__BackingField: 4
+  <UnlockPrice>k__BackingField: 800
   <Icon>k__BackingField: {fileID: 2800000, guid: 6f72d3b18f92d2e4b97013fd60a43fd2,
     type: 3}

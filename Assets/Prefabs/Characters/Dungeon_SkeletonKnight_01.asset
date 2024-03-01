@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Dungeon_SkeletonKnight_01
   m_EditorClassIdentifier: 
+  <CharacterName>k__BackingField: 
   <Variant>k__BackingField: 15
-  <PartName>k__BackingField: Chr_Dungeon_SkeletonKnight_01
+  <PartName>k__BackingField: Skeleton Knight
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
-  <UnlockLevel>k__BackingField: 7
-  <UnlockPrice>k__BackingField: 700
+  <UnlockLevel>k__BackingField: 13
+  <UnlockPrice>k__BackingField: 6250
+  <Icon>k__BackingField: {fileID: 2800000, guid: 9da4fd4e4935ff94eb5ca13353b5cdf1,
+    type: 3}

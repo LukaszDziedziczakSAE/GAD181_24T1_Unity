@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Pirates_Deckhand_01
   m_EditorClassIdentifier: 
+  <CharacterName>k__BackingField: 
   <Variant>k__BackingField: 33
-  <PartName>k__BackingField: Chr_Pirates_Deckhand_01
+  <PartName>k__BackingField: Deckhand
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
-  <UnlockLevel>k__BackingField: 2
-  <UnlockPrice>k__BackingField: 200
+  <UnlockLevel>k__BackingField: 3
+  <UnlockPrice>k__BackingField: 700
+  <Icon>k__BackingField: {fileID: 2800000, guid: 4dab58325da85ab46b739365d4383219,
+    type: 3}

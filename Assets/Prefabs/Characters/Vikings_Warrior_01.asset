@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Vikings_Warrior_01
   m_EditorClassIdentifier: 
+  <CharacterName>k__BackingField: 
   <Variant>k__BackingField: 46
-  <PartName>k__BackingField: Chr_Vikings_Warrior_01
+  <PartName>k__BackingField: Viking Warrior 1
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
-  <UnlockLevel>k__BackingField: 8
-  <UnlockPrice>k__BackingField: 800
+  <UnlockLevel>k__BackingField: 16
+  <UnlockPrice>k__BackingField: 7900
+  <Icon>k__BackingField: {fileID: 2800000, guid: c6330c16eb206204091025c905b5ea61,
+    type: 3}

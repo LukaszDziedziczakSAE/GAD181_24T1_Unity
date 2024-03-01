@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Knights_Dark_01
   m_EditorClassIdentifier: 
+  <CharacterName>k__BackingField: 
   <Variant>k__BackingField: 30
-  <PartName>k__BackingField: Chr_Knights_Dark_01
+  <PartName>k__BackingField: Dark Kight
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
-  <UnlockLevel>k__BackingField: 9
-  <UnlockPrice>k__BackingField: 900
+  <UnlockLevel>k__BackingField: 17
+  <UnlockPrice>k__BackingField: 8000
+  <Icon>k__BackingField: {fileID: 2800000, guid: eebc23b22a3af544083ae4ce923d73a3,
+    type: 3}

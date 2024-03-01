@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Fantasy_MalePeasant_01
   m_EditorClassIdentifier: 
+  <CharacterName>k__BackingField: 
   <Variant>k__BackingField: 23
-  <PartName>k__BackingField: Chr_Fantasy_MalePeasant_01
+  <PartName>k__BackingField: Male Peasant
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
   <UnlockLevel>k__BackingField: 1
-  <UnlockPrice>k__BackingField: 100
+  <UnlockPrice>k__BackingField: 250
+  <Icon>k__BackingField: {fileID: 2800000, guid: 48a0dbf8421a54c4e8a805822972a3b3,
+    type: 3}

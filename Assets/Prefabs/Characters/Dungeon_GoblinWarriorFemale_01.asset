@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CharacterName>k__BackingField: 
   <Variant>k__BackingField: 9
-  <PartName>k__BackingField: Chr_Dungeon_GoblinWarriorFemale_01
+  <PartName>k__BackingField: Goblin Warrior Female
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
-  <UnlockLevel>k__BackingField: 3
-  <UnlockPrice>k__BackingField: 300
+  <UnlockLevel>k__BackingField: 5
+  <UnlockPrice>k__BackingField: 1000
   <Icon>k__BackingField: {fileID: 2800000, guid: bf6d0b8ce4cfbfa4cac1349146b37b3a,
     type: 3}

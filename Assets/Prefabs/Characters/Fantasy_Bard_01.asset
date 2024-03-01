@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Fantasy_Bard_01
   m_EditorClassIdentifier: 
+  <CharacterName>k__BackingField: 
   <Variant>k__BackingField: 18
-  <PartName>k__BackingField: Chr_Fantasy_Bard_01
+  <PartName>k__BackingField: 'Bard '
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
-  <UnlockLevel>k__BackingField: 3
-  <UnlockPrice>k__BackingField: 300
+  <UnlockLevel>k__BackingField: 6
+  <UnlockPrice>k__BackingField: 1800
+  <Icon>k__BackingField: {fileID: 2800000, guid: 8a43a25d1917aaa478bd2d4b7a1ce03d,
+    type: 3}

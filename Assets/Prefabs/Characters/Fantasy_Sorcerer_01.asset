@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Fantasy_Sorcerer_01
   m_EditorClassIdentifier: 
+  <CharacterName>k__BackingField: 
   <Variant>k__BackingField: 27
-  <PartName>k__BackingField: Chr_Fantasy_Sorcerer_01
+  <PartName>k__BackingField: Sorcerer
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
-  <UnlockLevel>k__BackingField: 6
-  <UnlockPrice>k__BackingField: 600
+  <UnlockLevel>k__BackingField: 12
+  <UnlockPrice>k__BackingField: 5600
+  <Icon>k__BackingField: {fileID: 2800000, guid: 4b1976afd0c279341bc48c2ff1a371f7,
+    type: 3}
