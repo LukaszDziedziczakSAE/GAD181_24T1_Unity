@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CS_ScavangerPickUp : CharacterState
 {
-    PickUp pickUpObject;
+    ScavangerHunt_PickUp pickUpObject;
 
-    public CS_ScavangerPickUp(Character character, PickUp pickUp) : base(character)
+    public CS_ScavangerPickUp(Character character, ScavangerHunt_PickUp pickUp) : base(character)
     {
         pickUpObject = pickUp;
     }

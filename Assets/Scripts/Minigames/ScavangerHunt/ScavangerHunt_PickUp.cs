@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour
+public class ScavangerHunt_PickUp : MonoBehaviour
 {
     [SerializeField] int pointsAward = 10;
     ScavangerHuntMatch match => (ScavangerHuntMatch)Game.Match;
-    PickUpSpawner spawner;
+    ScavangerHunt_PickUpSpawner spawner;
     Character characterInProx;
 
     private void OnTriggerEnter(Collider other)
@@ -30,7 +30,7 @@ public class PickUp : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public void Spawner(PickUpSpawner pickUpSpawner)
+    public void Spawner(ScavangerHunt_PickUpSpawner pickUpSpawner)
     {
         spawner = pickUpSpawner;
     }

@@ -4,14 +4,14 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class PickUpSpawner : MonoBehaviour
+public class ScavangerHunt_PickUpSpawner : MonoBehaviour
 {
     [SerializeField] float minX;
     [SerializeField] float maxX;
     [SerializeField] float minY;
     [SerializeField] float maxY;
-    [SerializeField] PickUp PickUpPrefab;
-    List<PickUp> PickUps = new List<PickUp>();
+    [SerializeField] ScavangerHunt_PickUp PickUpPrefab;
+    List<ScavangerHunt_PickUp> PickUps = new List<ScavangerHunt_PickUp>();
     [SerializeField] int numberToSpawn;
     [SerializeField] float proximity;
     [SerializeField] LayerMask spherCastLayers;
@@ -47,7 +47,7 @@ public class PickUpSpawner : MonoBehaviour
 
         if (Physics.SphereCastAll(position, proximity, Vector3.up, proximity, spherCastLayers).Length == 0)
         {
-            PickUp pickUp = Instantiate(PickUpPrefab, position, Quaternion.identity);
+            ScavangerHunt_PickUp pickUp = Instantiate(PickUpPrefab, position, Quaternion.identity);
             PickUps.Add(pickUp);
             pickUp.Spawner(this);
             pickUp.transform.parent = transform;
@@ -69,14 +69,14 @@ public class PickUpSpawner : MonoBehaviour
 
     private bool InProximityToOthers(Vector3 position)
     {
-        foreach(PickUp pickUp in PickUps)
+        foreach(ScavangerHunt_PickUp pickUp in PickUps)
         {
             if (Vector3.Distance(pickUp.transform.position, position) <= proximity) return true;
         }
         return false;
     }
 
-    public void RemovePickUp(PickUp pickUp)
+    public void RemovePickUp(ScavangerHunt_PickUp pickUp)
     {
         PickUps.Remove(pickUp);
     }

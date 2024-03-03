@@ -6,7 +6,7 @@ public class ScavangerHuntMatch : MinigameMatch
 {
     [SerializeField] float matchLength = 120;
     [SerializeField] GameObject selectionIndicatorPrefab;
-    [SerializeField] PickUpSpawner pickUpSpawner;
+    [SerializeField] ScavangerHunt_PickUpSpawner pickUpSpawner;
     public int itemsPickedUp = 0;
 
     public float MatchTimeRemaining => matchLength - MatchTime;
