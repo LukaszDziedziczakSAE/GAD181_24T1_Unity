@@ -6,8 +6,8 @@ public class ScavangerHuntMatch : MinigameMatch
 {
     [SerializeField] float matchLength = 120;
     [SerializeField] GameObject selectionIndicatorPrefab;
-    [SerializeField] PickUpSpawner pickUpSpawner;
-    public int itemsPickedUp;
+    [SerializeField] ScavangerHunt_PickUpSpawner pickUpSpawner;
+    public int itemsPickedUp = 0;
 
     public float MatchTimeRemaining => matchLength - MatchTime;
 
@@ -19,16 +19,17 @@ public class ScavangerHuntMatch : MinigameMatch
     protected async override void PrematchStart()
     {
         if (pickUpSpawner != null) await pickUpSpawner.SpawnPickUpsTask();
+        base.PrematchStart();
     }
 
     protected override void PrematchTick()
     {
         base.PrematchTick();
 
-        if (pickUpSpawner == null || pickUpSpawner.SpawnComplete)
+        /*if (pickUpSpawner == null || pickUpSpawner.SpawnComplete)
         {
             Mode = EState.inProgress;
-        }
+        }*/
     }
 
     protected override void MatchStart()
@@ -37,6 +38,8 @@ public class ScavangerHuntMatch : MinigameMatch
         {
             character.SetNewState(new CS_ScavangerLocomotion(character));
         }
+
+        Game.UI.MatchStatus.gameObject.SetActive(true);
     }
 
     protected override void MatchTick()
@@ -52,7 +55,7 @@ public class ScavangerHuntMatch : MinigameMatch
     protected override void PostMatchStart()
     {
         base.PostMatchStart();
-        Mode = EState.none;
+        //Mode = EState.none;
     }
 
     public void ShowTouchIndicator(Vector3 position)

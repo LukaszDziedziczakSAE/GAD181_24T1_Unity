@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class Game : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class Game : MonoBehaviour
     [SerializeField] InputReader input;
     [SerializeField] Player player;
     [SerializeField] Character playerCharacter;
+    [SerializeField] Sound_UI sound;
     public static InputReader InputReader => Instance.input;
     public static Player Player => Instance.player;
     public static Character PlayerCharacter => Instance.playerCharacter;
@@ -17,6 +20,7 @@ public class Game : MonoBehaviour
     public static UI_Main UI { get; private set; }
     public static SaveSystem SaveSystem { get; private set; }
     public static CameraManager CameraManager => Instance.cameraManager;
+    public static Sound_UI Sound => Instance.sound;
 
     private void Awake()
     {
@@ -24,7 +28,36 @@ public class Game : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(this.gameObject);
 
+        SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+
         DontDestroyOnLoad(this);
+    }
+
+    private void SceneManager_sceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+    {
+        int level = scene.buildIndex;
+
+        if (level == 0)
+        {
+            Debug.Log("Bootstrap Loaded");
+            return;
+        }
+
+        cameraManager.OnSceneLoad();
+        player = FindAnyObjectByType<Player>();
+
+        UI = FindAnyObjectByType<UI_Main>();
+        if (UI != null) UI.LevelLoaded();
+
+        if (player == null) return;
+        playerCharacter = FindPlayersCharacter();
+        UpdatePlayersCharacterModel();
+
+        if (level == 1) Debug.Log("Main Menu loaded");
+        else Debug.Log("Level " + level + " loaded");
+
+        Match = FindObjectOfType<MinigameMatch>();
+        if (Match != null) Match.Mode = MinigameMatch.EState.preMatch;
     }
 
     private void Start()
@@ -38,7 +71,7 @@ public class Game : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    private void OnLevelWasLoaded(int level)
+    /*private void OnLevelWasLoaded(int level)
     {
         if (level == 0)
         {
@@ -51,8 +84,8 @@ public class Game : MonoBehaviour
 
         UI = FindAnyObjectByType<UI_Main>();
         if (UI != null) UI.LevelLoaded();
-        if (player == null) return;
 
+        if (player == null) return;
         playerCharacter = FindPlayersCharacter();
         UpdatePlayersCharacterModel();
 
@@ -61,7 +94,7 @@ public class Game : MonoBehaviour
 
         Match = FindObjectOfType<MinigameMatch>();
         if (Match != null) Match.Mode = MinigameMatch.EState.preMatch;
-    }
+    }*/
 
     public static void UpdatePlayersCharacterModel()
     {
@@ -80,15 +113,6 @@ public class Game : MonoBehaviour
         }
         return null;
     }
-
-    /*public static void CreateCharacterConfigs()
-    {
-        foreach (CharacterConfig character in PlayerCharacter.Model.CharacterConfigs)
-        {
-            AssetDatabase.CreateAsset(character, "Assets/Prefabs/Characters/" + character.name + ".asset");
-            AssetDatabase.SaveAssets();
-        }
-    }*/
 
     public static CharacterConfig[] ConfigsUnlockedAt(int level)
     {
@@ -122,9 +146,4 @@ public class Game : MonoBehaviour
     {
         SceneManager.LoadScene("PortraitMaker");
     }
-
-    /*public static Texture Portrait(string name)
-    {
-        return AssetDatabase.LoadAssetAtPath<Texture>("Assets/Textures/" + name + ".png");
-    }*/
 }

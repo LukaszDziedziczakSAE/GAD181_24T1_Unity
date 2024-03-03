@@ -16,6 +16,12 @@ public class MainMenuMatch : MinigameMatch
         return new MatchResult();
     }
 
+    protected override void PrematchStart()
+    {
+        //base.PrematchStart();
+        Mode = EState.inProgress;
+    }
+
     protected override void MatchStart()
     {
         ui = (UI_MainMenu)Game.UI;

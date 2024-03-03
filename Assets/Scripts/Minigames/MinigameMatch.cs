@@ -7,6 +7,7 @@ public abstract class MinigameMatch : MonoBehaviour
 {
     protected EState mode = EState.none;
     protected float matchTime;
+    public MatchResult Result { get; private set; }
 
     public EState Mode
     {
@@ -57,12 +58,19 @@ public abstract class MinigameMatch : MonoBehaviour
 
     protected virtual void PrematchStart()
     {
-        Mode = EState.inProgress;
+        //Mode = EState.inProgress;
+        if (Game.UI.MatchStart != null) Game.UI.MatchStart.gameObject.SetActive(true);
+        Result = new MatchResult(Compeditors.Length);
     }
     protected abstract void MatchStart();
     protected virtual void PostMatchStart()
     {
-        // show postmatch UI
+        foreach (Character character in Compeditors)
+        {
+            character.SetNewState(new CS_StandingIdle(character));
+        }
+        Game.UI.MatchStatus.gameObject.SetActive(false);
+        Game.UI.MatchEnd.gameObject.SetActive(true);
     }
 
     protected virtual void PrematchEnd() { }
@@ -123,5 +131,10 @@ public abstract class MinigameMatch : MonoBehaviour
             case EState.postMatch:
                 PostMatchStart(); break;
         }
+    }
+
+    public void AwardPlayerPoints(int playerNumber, int points)
+    {
+        Result.AwardPointsToPlayer(playerNumber, points);
     }
 }

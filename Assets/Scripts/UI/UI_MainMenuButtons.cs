@@ -31,12 +31,14 @@ public class UI_MainMenuButtons : MonoBehaviour
 
     private void OnStartMatchButtonPress()
     {
+        Game.Sound.PlayButtonPressSound();
         MainMenu.CloseAll();
         MainMenu.SceneList.gameObject.SetActive(true);
     }
 
     private void OnPlayerProfileButtonPress()
     {
+        Game.Sound.PlayButtonPressSound();
         Game.CameraManager.SwitchTo(((MainMenuMatch)Game.Match).CharacterCamera, ((MainMenuMatch)Game.Match).CameraBlendTime);
         MainMenu.CloseAll();
         Game.CameraManager.BlendComplete += PlayerProfileCamBlendFinish;
@@ -44,11 +46,14 @@ public class UI_MainMenuButtons : MonoBehaviour
 
     private void OnSettingsButtonPress()
     {
-
+        Game.Sound.PlayButtonPressSound();
+        Game.UI.SettingsMenu.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     private void OnDebugButtonPress()
     {
+        Game.Sound.PlayButtonPressSound();
         //MainMenu.CloseAll();
 
         //MainMenu.CharacterList.gameObject.SetActive(true);

@@ -4,8 +4,21 @@ using UnityEngine;
 
 public class Bootstrap : MonoBehaviour
 {
-    private void Start()
+    [SerializeField] float showTime;
+    float timer;
+
+    private void Update()
     {
-        Game.LoadMainMenu();
+        timer += Time.deltaTime;
+
+        if (timer >= showTime)
+        {
+            Game.LoadMainMenu();
+        }
+    }
+
+    public void Skip()
+    {
+        timer = showTime;
     }
 }
