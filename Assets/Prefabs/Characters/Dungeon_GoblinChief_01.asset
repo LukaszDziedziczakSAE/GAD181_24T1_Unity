@@ -17,7 +17,7 @@ MonoBehaviour:
   <PartName>k__BackingField: Chr_Dungeon_GoblinChief_01
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
-  <UnlockLevel>k__BackingField: 7
-  <UnlockPrice>k__BackingField: 700
+  <UnlockLevel>k__BackingField: 14
+  <UnlockPrice>k__BackingField: 6800
   <Icon>k__BackingField: {fileID: 2800000, guid: 478342d8020c9b54e8e0019742bfad4a,
     type: 3}

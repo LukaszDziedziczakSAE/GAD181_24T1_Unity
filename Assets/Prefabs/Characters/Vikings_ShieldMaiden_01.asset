@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Vikings_ShieldMaiden_01
   m_EditorClassIdentifier: 
+  <CharacterName>k__BackingField: 
   <Variant>k__BackingField: 45
   <PartName>k__BackingField: Chr_Vikings_ShieldMaiden_01
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
-  <UnlockLevel>k__BackingField: 4
-  <UnlockPrice>k__BackingField: 400
+  <UnlockLevel>k__BackingField: 8
+  <UnlockPrice>k__BackingField: 2800
+  <Icon>k__BackingField: {fileID: 2800000, guid: 900e76f7e15e38d48b828b60dfc5ebbb,
+    type: 3}

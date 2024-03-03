@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Fantasy_PeasantWoman_01
   m_EditorClassIdentifier: 
+  <CharacterName>k__BackingField: 
   <Variant>k__BackingField: 24
   <PartName>k__BackingField: Chr_Fantasy_PeasantWoman_01
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
   <UnlockLevel>k__BackingField: 1
-  <UnlockPrice>k__BackingField: 100
+  <UnlockPrice>k__BackingField: 250
+  <Icon>k__BackingField: {fileID: 2800000, guid: ce189a891101202468de954b4164334f,
+    type: 3}

@@ -8,4 +8,5 @@ public class UI_MatchTitleCard : MonoBehaviour
 {
     [SerializeField] TMP_Text matchTitle;
     [SerializeField] RawImage matchSplashImage;
+    [SerializeField] TMP_Text matchDescription;
 }

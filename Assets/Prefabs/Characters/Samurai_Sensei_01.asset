@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Samurai_Sensei_01
   m_EditorClassIdentifier: 
+  <CharacterName>k__BackingField: 
   <Variant>k__BackingField: 41
   <PartName>k__BackingField: Chr_Samurai_Sensei_01
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
-  <UnlockLevel>k__BackingField: 9
-  <UnlockPrice>k__BackingField: 900
+  <UnlockLevel>k__BackingField: 17
+  <UnlockPrice>k__BackingField: 8000
+  <Icon>k__BackingField: {fileID: 2800000, guid: f503c0d4cf4e9fe43ab6b0ef4b047875,
+    type: 3}

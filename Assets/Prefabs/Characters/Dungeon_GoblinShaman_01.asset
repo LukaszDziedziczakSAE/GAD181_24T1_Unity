@@ -17,7 +17,7 @@ MonoBehaviour:
   <PartName>k__BackingField: Chr_Dungeon_GoblinShaman_01
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
-  <UnlockLevel>k__BackingField: 5
-  <UnlockPrice>k__BackingField: 500
+  <UnlockLevel>k__BackingField: 9
+  <UnlockPrice>k__BackingField: 4500
   <Icon>k__BackingField: {fileID: 2800000, guid: 0be15cc3650cbce4080ead4df5413afe,
     type: 3}

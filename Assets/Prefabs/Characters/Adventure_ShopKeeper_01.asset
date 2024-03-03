@@ -18,6 +18,6 @@ MonoBehaviour:
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
   <UnlockLevel>k__BackingField: 1
-  <UnlockPrice>k__BackingField: 100
+  <UnlockPrice>k__BackingField: 200
   <Icon>k__BackingField: {fileID: 2800000, guid: 61678172f1c8ecb4cae9629aa9555801,
     type: 3}

@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Pirates_Gentleman_01
   m_EditorClassIdentifier: 
+  <CharacterName>k__BackingField: 
   <Variant>k__BackingField: 36
   <PartName>k__BackingField: Chr_Pirates_Gentleman_01
   <DefaultColor>k__BackingField: 0
   <DefaultSkinIndex>k__BackingField: 0
-  <UnlockLevel>k__BackingField: 5
-  <UnlockPrice>k__BackingField: 500
+  <UnlockLevel>k__BackingField: 9
+  <UnlockPrice>k__BackingField: 4000
+  <Icon>k__BackingField: {fileID: 2800000, guid: 68ee47dc84e8919469a4210b99f582b9,
+    type: 3}
