@@ -7,6 +7,8 @@ public class Player : MonoBehaviour, ISaveable
 {
     [field: SerializeField] public string PlayerName { get; private set; } = "";
     [field: SerializeField] public  CharacterModel.Config CharacterConfig { get; private set; }
+    [field: SerializeField] public PlayerLevel Level { get; private set; }
+    [field: SerializeField] public PlayerCurrency Currency { get; private set; }
 
     private void Awake()
     {
