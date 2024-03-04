@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CS_Jousting_Idle : CharacterState
+{
+    public CS_Jousting_Idle(Character character) : base(character)
+    {
+    }
+
+    public override void StateStart()
+    {
+        Debug.Log("You've entered riding state");
+    }
+
+    public override void Tick()
+    {
+
+    }
+
+    public override void FixedTick()
+    {
+
+    }
+
+    public override void StateEnd()
+    {
+
+    }
+}

@@ -114,6 +114,17 @@ public class Game : MonoBehaviour
         return null;
     }
 
+    public static Character CharacterByIndex(int index)
+    {
+        Character[] characters = FindObjectsOfType<Character>();
+        //Debug.Log("found " + characters.Length + " characters");
+        foreach (Character character in characters)
+        {
+            if (character.PlayerIndex == index) return character;
+        }
+        return null;
+    }
+
     public static CharacterConfig[] ConfigsUnlockedAt(int level)
     {
         CharacterConfig[] configs = PlayerCharacter.Model.Configs;
