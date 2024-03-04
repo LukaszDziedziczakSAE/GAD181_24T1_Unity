@@ -8,6 +8,15 @@ public class CS_Archering_Standing : CharacterState
     {
     }
 
+    public override void StateStart()
+    {
+        Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
+    }
+    
+    public override void Tick()
+    {
+        
+    }
     public override void FixedTick()
     {
         
@@ -15,16 +24,14 @@ public class CS_Archering_Standing : CharacterState
 
     public override void StateEnd()
     {
-       
+        Game.InputReader.OnTouchPressed -= InputReader_OnTouchPressed;
     }
 
-    public override void StateStart()
+
+    private void InputReader_OnTouchPressed()
     {
-        
+        character.SetNewState(new CS_Archering_Drawing(character));
     }
 
-    public override void Tick()
-    {
-        
-    }
+
 }

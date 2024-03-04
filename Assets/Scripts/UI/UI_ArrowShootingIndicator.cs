@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UI_ArrowShootingIndicator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private TMP_Text drawDistance;
 
-    // Update is called once per frame
-    void Update()
+
+
+    public void UpdateDrawDistance(float distance)
     {
-        
+        drawDistance.text = distance.ToString("F0");
     }
 }
