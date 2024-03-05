@@ -12,6 +12,17 @@ public class UI_MatchTitleCard : MonoBehaviour
     [SerializeField] float timeToShow;
 
     float timer;
+    Minigames.Game miniGame;
+
+    public void Initilize(Minigames.Game game)
+    {
+        miniGame = game;
+        matchTitle.text = game.Name;
+        matchDescription.text = game.Description;
+        if (game.startTitleCardPicture != null) matchSplashImage.texture = game.startTitleCardPicture;
+
+        timer = 0;
+    }
 
     private void Update()
     {
@@ -19,9 +30,10 @@ public class UI_MatchTitleCard : MonoBehaviour
 
         if (timer >= timeToShow)
         {
-            Game.Match.Mode = MinigameMatch.EState.inProgress;
+            //Game.Match.Mode = MinigameMatch.EState.inProgress;
 
-            gameObject.SetActive(false);
+            miniGame.Play();
+            //gameObject.SetActive(false);
         }
     }
 }

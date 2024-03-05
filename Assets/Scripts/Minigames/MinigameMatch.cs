@@ -58,9 +58,9 @@ public abstract class MinigameMatch : MonoBehaviour
 
     protected virtual void PrematchStart()
     {
-        //Mode = EState.inProgress;
-        if (Game.UI.MatchStart != null) Game.UI.MatchStart.gameObject.SetActive(true);
+        //if (Game.UI.MatchStart != null) Game.UI.MatchStart.gameObject.SetActive(true);
         Result = new MatchResult(Compeditors.Length);
+        Mode = EState.inProgress;
     }
     protected abstract void MatchStart();
     protected virtual void PostMatchStart()

@@ -16,6 +16,7 @@ public class UI_MinigameCard : MonoBehaviour
     private void OnEnable()
     {
         button.onClick.AddListener(OnButtonPress);
+        
     }
 
     private void OnDisable()
@@ -23,8 +24,9 @@ public class UI_MinigameCard : MonoBehaviour
         button.onClick.RemoveListener(OnButtonPress);
     }
 
-    public void Initilize(Minigames.Game game)
+    public void Initilize(Minigames.Game game, UI_SceneList ui)
     {
+        sceneList = ui;
         miniGame = game;
         gameTitle.text = miniGame.Name;
         if (miniGame.selectionCardPicture != null) gameCardImage.texture = miniGame.selectionCardPicture;
@@ -33,6 +35,7 @@ public class UI_MinigameCard : MonoBehaviour
     private void OnButtonPress()
     {
         Game.Sound.PlayButtonPressConfirmSound();
-        miniGame.Play();
+        //miniGame.Play();
+        sceneList.PlayMiniGame(miniGame);
     }
 }

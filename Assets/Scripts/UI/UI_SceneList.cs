@@ -31,7 +31,7 @@ public class UI_SceneList : MonoBehaviour
         {
             UI_MinigameCard card = Instantiate(minigameCardPrefab, content);
             minigameCards.Add(card);
-            card.Initilize(game);
+            card.Initilize(game, this);
         }
     }
 
@@ -49,5 +49,11 @@ public class UI_SceneList : MonoBehaviour
         Game.Sound.PlayButtonPressCancelSound();
         mainMenu.MainMenuButtons.gameObject.SetActive(true);
         gameObject.SetActive(false);
+    }
+
+    public void PlayMiniGame(Minigames.Game game)
+    {
+        mainMenu.MatchStart.gameObject.SetActive(true);
+        mainMenu.MatchStart.Initilize(game);
     }
 }

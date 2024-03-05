@@ -116,8 +116,10 @@ MonoBehaviour:
   - buildIndex: 2
     Name: Scavenger Hunt
     Description: 
-    selectionCardPicture: {fileID: 0}
-    startTitleCardPicture: {fileID: 0}
+    selectionCardPicture: {fileID: 2800000, guid: b6f982216c7fd5f4080150dc93282b1b,
+      type: 3}
+    startTitleCardPicture: {fileID: 2800000, guid: b6f982216c7fd5f4080150dc93282b1b,
+      type: 3}
   - buildIndex: 3
     Name: Target Shooting
     Description: 
