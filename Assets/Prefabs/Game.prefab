@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5454981912204759713}
   - component: {fileID: 1930825340700568776}
   - component: {fileID: 8263145923874966928}
+  - component: {fileID: 6296692167148012357}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -53,6 +54,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerCharacter: {fileID: 0}
   sound: {fileID: 2036831096888145539}
+  minigames: {fileID: 6296692167148012357}
 --- !u!114 &5454981912204759713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +100,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camPriortyNormal: 10
   camPriortyCurrentActive: 20
+--- !u!114 &6296692167148012357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6878257758344584217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0181ca8ba6c2e604db596a0204d8be03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Games>k__BackingField:
+  - buildIndex: 2
+    Name: Scavenger Hunt
+    Description: 
+    selectionCardPicture: {fileID: 0}
+    startTitleCardPicture: {fileID: 0}
+  - buildIndex: 3
+    Name: Target Shooting
+    Description: 
+    selectionCardPicture: {fileID: 0}
+    startTitleCardPicture: {fileID: 0}
+  - buildIndex: 4
+    Name: Arrow Supply
+    Description: 
+    selectionCardPicture: {fileID: 0}
+    startTitleCardPicture: {fileID: 0}
+  - buildIndex: 5
+    Name: Jousting
+    Description: 
+    selectionCardPicture: {fileID: 0}
+    startTitleCardPicture: {fileID: 0}
 --- !u!1001 &6007520545337775008
 PrefabInstance:
   m_ObjectHideFlags: 0

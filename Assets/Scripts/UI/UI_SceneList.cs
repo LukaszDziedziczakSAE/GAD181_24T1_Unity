@@ -9,8 +9,8 @@ public class UI_SceneList : MonoBehaviour
     [SerializeField] UI_MainMenu mainMenu;
     [SerializeField] Button backButton;
     [SerializeField] Transform content;
-    [SerializeField] UI_SceneSelectButton sceneButtonPrefab;
-    List<UI_SceneSelectButton> sceneSelectButtons = new List<UI_SceneSelectButton>();
+    [SerializeField] UI_MinigameCard minigameCardPrefab;
+    List<UI_MinigameCard> minigameCards = new List<UI_MinigameCard>();
 
     private void OnEnable()
     {
@@ -26,22 +26,22 @@ public class UI_SceneList : MonoBehaviour
     public void UpdateList()
     {
         ClearList();
-        //print("SceneManager.sceneCountInBuildSettings=" + SceneManager.sceneCountInBuildSettings);
-        for (int i = 2; i < SceneManager.sceneCountInBuildSettings; i++)
+
+        foreach (Minigames.Game game in Game.Minigames.Games)
         {
-            UI_SceneSelectButton sceneButton = Instantiate(sceneButtonPrefab, content);
-            sceneSelectButtons.Add(sceneButton);
-            sceneButton.Initilize(i);
+            UI_MinigameCard card = Instantiate(minigameCardPrefab, content);
+            minigameCards.Add(card);
+            card.Initilize(game);
         }
     }
 
     public void ClearList()
     {
-        foreach (UI_SceneSelectButton button in sceneSelectButtons)
+        foreach (UI_MinigameCard card in minigameCards)
         {
-            Destroy(button.gameObject);
+            Destroy(card.gameObject);
         }
-        sceneSelectButtons.Clear();
+        minigameCards.Clear();
     }
 
     public void OnBackButtonPress()
