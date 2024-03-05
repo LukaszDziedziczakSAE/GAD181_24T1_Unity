@@ -25,4 +25,20 @@ public class PlayerCurrency : MonoBehaviour, ISaveable
         AmountHeld = (int)restoredState["AmountHeld"];
         PurchasedCharacters = (List<CharacterModel.EVariant>)restoredState["PurchasedCharacters"];
     }
+
+    public void AddCurrency(int amount)
+    {
+        AmountHeld += amount;
+    }
+
+    public void UnlockCharacter(CharacterConfig config)
+    {
+        AmountHeld -= config.UnlockPrice;
+        PurchasedCharacters.Add(config.Variant);
+    }
+
+    public bool CanAffordCharacter(CharacterConfig config)
+    {
+        return AmountHeld >= config.UnlockPrice;
+    }
 }
