@@ -7,8 +7,8 @@ using static Cinemachine.DocumentationSortingAttribute;
 public class UI_CharacterList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] UI_CharacterListRow rowPrefab;
-    List<UI_CharacterListRow> rows = new List<UI_CharacterListRow>();
+    [SerializeField] UI_CharacterCard characterCardPrefab;
+    List<UI_CharacterCard> characterCards = new List<UI_CharacterCard>();
 
     private void OnEnable()
     {
@@ -17,19 +17,22 @@ public class UI_CharacterList : MonoBehaviour
 
     private void Initilise()
     {
-        foreach (UI_CharacterListRow row in  rows)
+        foreach (UI_CharacterCard card in characterCards)
         {
-            Destroy(row.gameObject);
+            Destroy(card.gameObject);
         }
-        rows.Clear();
+        characterCards.Clear();
 
         for (int i = 0; i <= Game.HighestLevel; i++)
         {
             if (Game.ConfigsUnlockedAt(i).Length == 0) continue;
 
-            UI_CharacterListRow row = Instantiate(rowPrefab, content);
-            row.Initilise(i);
-            rows.Add(row);
+            foreach (CharacterConfig config in Game.ConfigsUnlockedAt(i))
+            {
+                UI_CharacterCard card = Instantiate(characterCardPrefab, content);
+                card.Initilise(config);
+                characterCards.Add(card);
+            }
         }
     }
 

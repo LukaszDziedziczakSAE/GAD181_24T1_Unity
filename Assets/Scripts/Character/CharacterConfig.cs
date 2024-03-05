@@ -7,6 +7,7 @@ using static CharacterModel;
 public class CharacterConfig : ScriptableObject
 {
     [field: SerializeField] public string CharacterName { get; private set; }
+    [field: SerializeField] public string CharacterDescription { get; private set; }
     [field: SerializeField] public EVariant Variant { get; private set; }
     [field: SerializeField] public string PartName { get; private set; }
     [field: SerializeField] public CharacterModel.EColor DefaultColor { get; private set; } 
