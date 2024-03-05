@@ -3658,6 +3658,7 @@ MonoBehaviour:
   content: {fileID: 9015185474276155871}
   characterCardPrefab: {fileID: 988625368815631239, guid: 921989f9848647d4ab0c6b6ebf60fd9f,
     type: 3}
+  backButton: {fileID: 1817570216681370722}
 --- !u!222 &2379384559510820063
 CanvasRenderer:
   m_ObjectHideFlags: 0

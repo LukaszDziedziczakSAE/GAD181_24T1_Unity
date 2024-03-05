@@ -39,7 +39,7 @@ public class UI_CharacterCard : MonoBehaviour
         if (characterDescription != null) characterDescription.text = config.CharacterDescription;
 
         if (config.UnlockPrice > 0)
-            characterPrice.text = config.UnlockPrice.ToString();
+            characterPrice.text = "$" + config.UnlockPrice.ToString();
         else characterPrice.gameObject.SetActive(false);
 
         if (config.UnlockLevel > 0) characterLevel.text = config.UnlockLevel.ToString();
