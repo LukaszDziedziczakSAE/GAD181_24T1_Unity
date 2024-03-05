@@ -6,6 +6,7 @@ public class UI_JoustingIndicator : MonoBehaviour
 {
     [SerializeField] TMP_Text distance;
     [SerializeField] Image _image;
+    //[SerializeField] Button button;
 
     public void UpdateDistanceIndicator(float distance)
     { 
