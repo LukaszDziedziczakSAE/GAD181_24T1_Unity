@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class PlayerLevel : MonoBehaviour, ISaveable
 {
+    [field: SerializeField] public int Level {  get; private set; }
+    [field: SerializeField] public int Experiance { get; private set; }
+    [field: SerializeField] public int[] ExperianceRequriments { get; private set; }
+
     public object CaptureState()
     {
-        return new object();
+        Dictionary<string, object> state = new Dictionary<string, object>();
+
+        state.Add("Level", Level);
+        state.Add("Experiance", Experiance);
+
+        return state;
     }
 
     public void RestoreState(object state)
     {
+        Dictionary<string, object> restoredState = (Dictionary<string, object>)state;
+
+        Level = (int)restoredState["Level"];
+        Experiance = (int)restoredState["Experiance"];
     }
 }

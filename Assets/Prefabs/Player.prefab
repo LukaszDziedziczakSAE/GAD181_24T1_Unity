@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2228aca5053dd3d4b8477da1690a8de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AmountHeld>k__BackingField: 0
+  <PurchasedCharacters>k__BackingField: 
 --- !u!114 &7239244319229656088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,3 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d09c1d8a71f4a6740838997e6aa128ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Level>k__BackingField: 0
+  <Experiance>k__BackingField: 0
+  <ExperianceRequriments>k__BackingField: f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000f4010000
