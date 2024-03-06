@@ -10,7 +10,9 @@ public class CS_Archering_Standing : CharacterState
 
     public override void StateStart()
     {
+        
         Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
+        character.Animator.CrossFade("TargetShooting_BowIdle", 0.1f);
     }
     
     public override void Tick()
@@ -30,6 +32,10 @@ public class CS_Archering_Standing : CharacterState
 
     private void InputReader_OnTouchPressed()
     {
+        if (character.PlayerIndex != 0)
+        {
+            return;
+        }
         character.SetNewState(new CS_Archering_Drawing(character));
     }
 

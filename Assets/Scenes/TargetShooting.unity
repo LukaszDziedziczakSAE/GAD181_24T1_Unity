@@ -1639,7 +1639,7 @@ PrefabInstance:
     - target: {fileID: 5148530311918736658, guid: 96e415dcd80e7764fb89fe7ea155c74b,
         type: 3}
       propertyPath: m_Name
-      value: Character2
+      value: Character1
       objectReference: {fileID: 0}
     - target: {fileID: 5869033966178870261, guid: 96e415dcd80e7764fb89fe7ea155c74b,
         type: 3}
@@ -3299,13 +3299,13 @@ PrefabInstance:
     - target: {fileID: 5148530311918736658, guid: 96e415dcd80e7764fb89fe7ea155c74b,
         type: 3}
       propertyPath: m_Name
-      value: Character
+      value: Character0
       objectReference: {fileID: 0}
     - target: {fileID: 5348626877554781363, guid: 96e415dcd80e7764fb89fe7ea155c74b,
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: fbc19e8261381cf4e9c9a7a903015944, type: 2}
+      objectReference: {fileID: 9100000, guid: 5eddf8cea22d3da4b8b36a7b7c5a7537, type: 2}
     - target: {fileID: 5869033966178870261, guid: 96e415dcd80e7764fb89fe7ea155c74b,
         type: 3}
       propertyPath: <PlayerIndex>k__BackingField
