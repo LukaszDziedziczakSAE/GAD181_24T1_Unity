@@ -32,13 +32,14 @@ public class CS_Jousting_Riding : CharacterState
 
     public override void Tick()
     {
-        character.transform.position += character.transform.forward * match.HorseSpeed * Time.deltaTime;;
+        character.transform.position += character.transform.forward * match.HorseSpeed * Time.deltaTime;
 
         if (character.PlayerIndex == 0 )
         {
             ui.JoustingIndicator.UpdateDistanceIndicator(Distance());
             ui.JoustingIndicator.UpdateStrikingDistanceIndicator(IsWithinJoustingDistance());
             ui.EndIndicator.UpdateEndIndicator(ReachedEnd());
+            match.PlayerReachedEnd(character);
         }
 
         else if (character.PlayerIndex == 1 ) 

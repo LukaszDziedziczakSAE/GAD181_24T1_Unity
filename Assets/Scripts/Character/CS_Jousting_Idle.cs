@@ -13,14 +13,13 @@ public class CS_Jousting_Idle : CharacterState
 
     public override void StateStart()
     {
+        ui.EndIndicator.UpdateEndIndicator(true);
         Debug.Log("Player in idle state");
     }
 
     public override void Tick()
     {
-        character.transform.position += character.transform.forward * 0 * Time.deltaTime;
 
-        ui.EndIndicator.UpdateEndIndicator(ReachedEnd());
     }
 
     public override void FixedTick()
@@ -35,6 +34,6 @@ public class CS_Jousting_Idle : CharacterState
 
     public bool ReachedEnd()
     {
-        return character.PlayerIndex == 0 && character.transform.position.z == 16;
+        return character.PlayerIndex == 0 && character.transform.position.z == 16f;
     }
 }

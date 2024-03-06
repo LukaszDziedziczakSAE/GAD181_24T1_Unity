@@ -39,15 +39,12 @@ public class JoustingMatch : MinigameMatch
         return null;
     }
 
-    //public void PlayerReachedEnd()
-    //{
-    //    foreach(Character character in Compeditors)
-    //    {
-    //        if (character.PlayerIndex == 0 && character.transform.position.z == 16)
-    //        {
-    //            character.SetNewState(new CS_Jousting_Idle(character));
-    //            Debug.Log("Player Reached End");
-    //        }
-    //    }
-    //}    
+    public void PlayerReachedEnd(Character character)
+    {
+        if (character.transform.position.z >= EndDistance)
+        {
+            character.SetNewState(new CS_Jousting_Idle(character));
+            Debug.Log("Player Reached End");
+        }
+    }
 }
