@@ -109,7 +109,7 @@ public class CharacterModel : MonoBehaviour
     {
         get
         {
-            return CharacterConfigByName(CurrentConfig.Variant.ToString());
+            return CharacterConfigByVarient(CurrentConfig.Variant);
         }
     }
 
@@ -242,12 +242,13 @@ public class CharacterModel : MonoBehaviour
         return null;
     }
 
-    private CharacterConfig CharacterConfigByVarient(EVariant variant)
+    public CharacterConfig CharacterConfigByVarient(EVariant variant)
     {
         foreach(CharacterConfig config in CharacterConfigs)
         {
             if (config.Variant == variant) return config;
         }
+        Debug.LogError("Could not find CharacterConfig of varient = " + variant);
         return null;
     }
 
@@ -268,6 +269,7 @@ public class CharacterModel : MonoBehaviour
         {
             if (config.name == name) return config;
         }
+        Debug.LogWarning("Did not find CharacterConfig with name = " + name);
         return null;
     }
 }

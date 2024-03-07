@@ -102,7 +102,7 @@ public class Game : MonoBehaviour
     {
         if (Instance.player.PlayerName == null || Instance.player.PlayerName == "")
             Instance.playerCharacter?.Model.HideAllModels();
-        else Instance.playerCharacter?.Model.SetNewConfig(Instance.player.CharacterConfig);
+        else Instance.playerCharacter?.Model.SetNewConfig(Instance.player.CharacterModelConfig);
     }
 
     private static Character FindPlayersCharacter()
@@ -137,6 +137,16 @@ public class Game : MonoBehaviour
         }
 
         return configsAtLevel.ToArray();
+    }
+
+    public static CharacterConfig CharacterConfigByVarient(CharacterModel.EVariant variant)
+    {
+        CharacterConfig[] configs = PlayerCharacter.Model.Configs;
+        foreach (CharacterConfig config in configs)
+        {
+            if (variant == config.Variant) return config;
+        }
+        return null;
     }
 
     public static int HighestLevel

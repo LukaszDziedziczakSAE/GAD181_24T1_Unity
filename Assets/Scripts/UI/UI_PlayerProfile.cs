@@ -76,15 +76,35 @@ public class UI_PlayerProfile : MonoBehaviour
         }
 
         nameButtonText.text = Game.Player.PlayerName;
-        levelIndicatorText.text = Game.Player.Level.Level.ToString() + " (" + Game.Player.Level.Experiance.ToString() + "/" + Game.Player.Level.CurrentRequriment.ToString() + ")" ;
+        levelIndicatorText.text = Game.Player.Level.Level.ToString() + " (" + Game.Player.Level.Experiance.ToString() + "/" + Game.Player.Level.CurrentRequriment.ToString() + ")";
         goldIndicatorText.text = Game.Player.Currency.AmountHeld.ToString();
-        if (Game.PlayerCharacter.Model.CharacterConfig.CharacterName != null && Game.PlayerCharacter.Model.CharacterConfig.CharacterName != "")
-            varientButtonText.text = Game.PlayerCharacter.Model.CharacterConfig.CharacterName;  
-        else varientButtonText.text = Game.Player.CharacterConfig.Variant.ToString();
+
+        UpdateCharacterName();
+
         UpdateSkinButtons();
         UpdateColorButtons();
 
-        Game.PlayerCharacter.Model.SetNewConfig(Game.Player.CharacterConfig);
+        Game.PlayerCharacter.Model.SetNewConfig(Game.Player.CharacterModelConfig);
+    }
+
+    private void UpdateCharacterName()
+    {
+
+        if (Game.Player.CharacterConfig == null)
+        {
+            Debug.LogError("Player CharacterConfig not found");
+            return;
+        }
+
+        if (Game.Player.CharacterConfig.CharacterName != null && Game.Player.CharacterConfig.CharacterName != "")
+            varientButtonText.text = Game.Player.CharacterConfig.CharacterName;
+
+        else
+        {
+            if (Game.Player.CharacterConfig.CharacterName == null) Debug.LogError(Game.Player.CharacterConfig.name + " has null Character Name");
+            else if (Game.Player.CharacterConfig.CharacterName == "") Debug.LogError(Game.Player.CharacterConfig.name + " Character Name is empty");
+            varientButtonText.text = Game.Player.CharacterModelConfig.Variant.ToString();
+        }
     }
 
     private void UpdateSkinButtons()
@@ -93,7 +113,7 @@ public class UI_PlayerProfile : MonoBehaviour
         skin1Button.interactable = true;
         skin2Button.interactable = true;
 
-        switch (Game.Player.CharacterConfig.Skin)
+        switch (Game.Player.CharacterModelConfig.Skin)
         {
             case 0:
                 skin0Button.interactable = false;
@@ -118,7 +138,7 @@ public class UI_PlayerProfile : MonoBehaviour
         redColorButton.interactable = true; 
         yellowColorButton.interactable = true;
 
-        switch(Game.Player.CharacterConfig.Color)
+        switch(Game.Player.CharacterModelConfig.Color)
         {
             case CharacterModel.EColor.Default:
                 defaultColorButton.interactable = false;
