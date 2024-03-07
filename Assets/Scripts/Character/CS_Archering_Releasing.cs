@@ -13,6 +13,7 @@ public class CS_Archering_Releasing : CharacterState
     public override void StateStart()
     {
         character.SetNewState(new CS_Archering_Standing(character));
+        character.Animator.CrossFade("TargetShooting_BowIdle", 0.1f);
     }
 
     public override void Tick()

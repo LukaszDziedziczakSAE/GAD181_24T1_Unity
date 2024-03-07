@@ -17,11 +17,16 @@ public class CS_Archering_Drawing : CharacterState
     {
         Game.InputReader.OnTouchReleased += InputReader_OnTouchReleased;
         ui.ArrowShootingIndicator.gameObject.SetActive(true);
-        startingYPostition = Game.InputReader.TouchPosition.y; 
+        startingYPostition = Game.InputReader.TouchPosition.y;
+        character.Animator.CrossFade("TargetShooting_DrawBlend", 0.1f);
     }
 
     public override void Tick()
     {
+        if(character.PlayerIndex != 0)
+        {
+            return;
+        }
         float currentYPosition= Game.InputReader.TouchPosition.y;
         float distance = startingYPostition - currentYPosition;
         if (distance < 0) 
@@ -29,6 +34,10 @@ public class CS_Archering_Drawing : CharacterState
             distance = 0;        
         }
         ui.ArrowShootingIndicator.UpdateDrawDistance(distance);
+
+        float distanceNormalized = distance / match.MaximumDrawDistanceToFire;
+        distanceNormalized = Mathf.Clamp(distanceNormalized, 0, 1);
+        character.Animator.SetFloat("DrawStrength", distanceNormalized);
     }
     public override void FixedTick()
     {
