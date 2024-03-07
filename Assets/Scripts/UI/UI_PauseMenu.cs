@@ -42,6 +42,7 @@ public class UI_PauseMenu : MonoBehaviour
 
     private void OnExitMatchButtonPress()
     {
+        Time.timeScale = 1;
         Game.LoadMainMenu();
     }
 }
