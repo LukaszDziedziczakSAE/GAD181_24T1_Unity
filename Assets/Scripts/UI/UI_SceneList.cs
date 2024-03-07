@@ -27,7 +27,7 @@ public class UI_SceneList : MonoBehaviour
     {
         ClearList();
 
-        foreach (Minigames.Game game in Game.Minigames.Games)
+        foreach (Minigames.Game game in Game.Minigames.RandomGames)
         {
             UI_MinigameCard card = Instantiate(minigameCardPrefab, content);
             minigameCards.Add(card);

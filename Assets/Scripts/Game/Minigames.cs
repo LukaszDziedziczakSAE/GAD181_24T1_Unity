@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,6 +21,23 @@ public class Minigames : MonoBehaviour
         public void Play()
         {
             SceneManager.LoadScene(buildIndex);
+        }
+    }
+
+    public Game[] RandomGames
+    {
+        get
+        {
+            List<Game> temp = Games.ToList();
+            List<Game> list = new List<Game>();
+            while (temp.Count > 0)
+            {
+                int random = UnityEngine.Random.Range(0, temp.Count);
+                list.Add(temp[random]);
+                temp.RemoveAt(random);
+
+            }
+            return list.ToArray();
         }
     }
 }
