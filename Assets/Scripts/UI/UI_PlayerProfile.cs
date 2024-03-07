@@ -6,12 +6,12 @@ using Button = UnityEngine.UI.Button;
 
 public class UI_PlayerProfile : MonoBehaviour
 {
-    [SerializeField] UI_MainMenu mainMenu;
+    [SerializeField, Header("Referances")] UI_MainMenu mainMenu;
     [SerializeField] Button closeButton;
-    //[SerializeField] TMP_InputField nameField;
     [SerializeField] Button nameButton;
     [SerializeField] TMP_Text nameButtonText;
-    //[SerializeField] TMP_Dropdown characterVerient;
+    [SerializeField] TMP_Text levelIndicatorText;
+    [SerializeField] TMP_Text goldIndicatorText;
     [SerializeField] Button varientButton;
     [SerializeField] TMP_Text varientButtonText;
     [SerializeField] Button skin0Button;
@@ -24,7 +24,7 @@ public class UI_PlayerProfile : MonoBehaviour
     [SerializeField] Button redColorButton;
     [SerializeField] Button yellowColorButton;
 
-    [SerializeField] List<string> characterNames;
+    [SerializeField, Header("DEBUG")] List<string> characterNames;
 
     private void OnEnable()
     {
@@ -32,8 +32,6 @@ public class UI_PlayerProfile : MonoBehaviour
         UpdateCharacterProfile();
 
         closeButton.onClick.AddListener(OnCloseButtonPress);
-        //nameField.onValueChanged.AddListener(NameFieldValueChanged);
-        //characterVerient.onValueChanged.AddListener(CharacterVerientValueChanged);
         skin0Button.onClick.AddListener(OnSkin0ButtonPress);
         skin1Button.onClick.AddListener(OnSkin1ButtonPress);
         skin2Button.onClick.AddListener(OnSkin2ButtonPress);
@@ -50,8 +48,6 @@ public class UI_PlayerProfile : MonoBehaviour
     private void OnDisable()
     {
         closeButton.onClick.RemoveListener(OnCloseButtonPress);
-        //nameField.onValueChanged.RemoveListener(NameFieldValueChanged);
-        //characterVerient.onValueChanged.RemoveListener(CharacterVerientValueChanged);
         skin0Button.onClick.RemoveListener(OnSkin0ButtonPress);
         skin1Button.onClick.RemoveListener(OnSkin1ButtonPress);
         skin2Button.onClick.RemoveListener(OnSkin2ButtonPress);
@@ -79,10 +75,9 @@ public class UI_PlayerProfile : MonoBehaviour
             return;
         }
 
-        //nameField.text = Game.Player.PlayerName;
         nameButtonText.text = Game.Player.PlayerName;
-        //if (characterVerient.options.Count <= 1) BuildDropDownList();
-        //if (Game.Player != null) characterVerient.value = (int)Game.Player.CharacterConfig.Variant;
+        levelIndicatorText.text = Game.Player.Level.Level.ToString() + " (" + Game.Player.Level.Experiance.ToString() + "/" + Game.Player.Level.CurrentRequriment.ToString() + ")" ;
+        goldIndicatorText.text = Game.Player.Currency.AmountHeld.ToString();
         if (Game.PlayerCharacter.Model.CharacterConfig.CharacterName == null || Game.PlayerCharacter.Model.CharacterConfig.CharacterName == "")
             varientButtonText.text = Game.Player.CharacterConfig.Variant.ToString();
         else varientButtonText.text = Game.PlayerCharacter.Model.CharacterConfig.CharacterName;
@@ -91,29 +86,6 @@ public class UI_PlayerProfile : MonoBehaviour
 
         Game.PlayerCharacter.Model.SetNewConfig(Game.Player.CharacterConfig);
     }
-
-
-    /*private void BuildDropDownList()
-    {
-        string selectedVariant = Game.Player.CharacterConfig.Variant.ToString();
-
-        characterVerient.ClearOptions();
-        characterNames = GetCharacterNames;
-        //Type enumType = CharacterModel.EVariant.Random.GetType();
-        List< TMP_Dropdown.OptionData> options = new List<TMP_Dropdown.OptionData>();
-        int current = 0;
-        for (int i = 0; i < *//*Enum.GetNames(enumType).Length*//* characterNames.Count; i++)
-        {
-            TMP_Dropdown.OptionData optionData = new TMP_Dropdown.OptionData(characterNames[i]);
-            options.Add(optionData);
-
-            if (optionData.text == selectedVariant) current = i;
-        }
-        characterVerient.AddOptions(options);
-        if (current == 0) Debug.LogWarning(name + ": could not find " + Game.Player.CharacterConfig.Variant.ToString());
-
-        
-    }*/
 
     private void UpdateSkinButtons()
     {
@@ -173,23 +145,6 @@ public class UI_PlayerProfile : MonoBehaviour
                 break;
         }
     }
-
-    /*private void CharacterVerientValueChanged(int newIndex)
-    {
-        string verientName = characterVerient.options[newIndex].text;
-        CharacterModel.EVariant variant = CharacterModel.VariantName(verientName);
-        //print("verientName=" + verientName + ", enumVal=" + ((CharacterModel.EVariant)newIndex).ToString() + ", characterName=" + CharacterNames[newIndex]);
-        Game.Player.SetCharacterVarient(variant);
-        Game.SaveSystem.SaveGameFile();
-        UpdateCharacterProfile();
-    }
-
-    private void NameFieldValueChanged(string newString)
-    {
-        Game.Player.ChangePlayerName(newString);
-        Game.SaveSystem.SaveGameFile();
-        UpdateCharacterProfile();
-    }*/
 
     private void OnSkin0ButtonPress()
     {
