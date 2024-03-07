@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Fantasy_King_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Arthur
+  <CharacterDescription>k__BackingField: Mightiest of the Knights of the round table,
+    he wields the sword Excalibur to claim his rule
   <Variant>k__BackingField: 22
   <PartName>k__BackingField: Chr_Fantasy_King_01
   <DefaultColor>k__BackingField: 0

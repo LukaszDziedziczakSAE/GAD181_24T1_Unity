@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Fantasy_Queen_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Queen Elizbeth
+  <CharacterDescription>k__BackingField: Wow, she really was old!
   <Variant>k__BackingField: 25
   <PartName>k__BackingField: Chr_Fantasy_Queen_01
   <DefaultColor>k__BackingField: 0

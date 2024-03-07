@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Vikings_Chief_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Olafur
+  <CharacterDescription>k__BackingField: The oldest and wisest of the vikings. He
+    has survived more battles
   <Variant>k__BackingField: 44
   <PartName>k__BackingField: Chr_Vikings_Chief_01
   <DefaultColor>k__BackingField: 0

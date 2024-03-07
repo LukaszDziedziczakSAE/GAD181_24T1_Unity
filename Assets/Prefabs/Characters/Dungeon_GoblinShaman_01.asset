@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Dungeon_GoblinShaman_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Gzrd
+  <CharacterDescription>k__BackingField: "Practices dark goblin magic, he\u2019s
+    the goblin wizard, Gzrd!"
   <Variant>k__BackingField: 8
   <PartName>k__BackingField: Chr_Dungeon_GoblinShaman_01
   <DefaultColor>k__BackingField: 0

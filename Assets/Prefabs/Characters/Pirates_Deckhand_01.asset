@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Pirates_Deckhand_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Steve
+  <CharacterDescription>k__BackingField: "Also known as Scurvy Steve.  Spends all
+    day cleaning the decks but can\u2019t find time to clean himself, the dirty dog."
   <Variant>k__BackingField: 33
   <PartName>k__BackingField: Chr_Pirates_Deckhand_01
   <DefaultColor>k__BackingField: 0

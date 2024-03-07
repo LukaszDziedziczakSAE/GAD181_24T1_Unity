@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Vikings_ShieldMaiden_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Lara
+  <CharacterDescription>k__BackingField: "Not as strong as a man you say? Tell her
+    that yourself!! Provided you don\u2019t mind losing a limb or two"
   <Variant>k__BackingField: 45
   <PartName>k__BackingField: Chr_Vikings_ShieldMaiden_01
   <DefaultColor>k__BackingField: 0

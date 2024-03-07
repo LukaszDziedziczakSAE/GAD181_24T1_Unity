@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Fantasy_Wizard_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Merlin
+  <CharacterDescription>k__BackingField: Trusted wizard of King Arthur. His magical
+    powers are unmatched throughout the land
   <Variant>k__BackingField: 29
   <PartName>k__BackingField: Chr_Fantasy_Wizard_01
   <DefaultColor>k__BackingField: 0

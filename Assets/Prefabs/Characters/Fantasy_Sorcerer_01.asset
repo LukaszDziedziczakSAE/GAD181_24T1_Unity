@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Fantasy_Sorcerer_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Sir Mark
+  <CharacterDescription>k__BackingField: Has been knighted by royalty to the disdain
+    of the public. In protest everyone addresses him as Skid instead of Sir.
   <Variant>k__BackingField: 27
   <PartName>k__BackingField: Chr_Fantasy_Sorcerer_01
   <DefaultColor>k__BackingField: 0

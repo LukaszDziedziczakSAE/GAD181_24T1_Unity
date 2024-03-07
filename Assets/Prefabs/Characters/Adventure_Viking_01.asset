@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Adventure_Viking_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Bjorn
+  <CharacterDescription>k__BackingField: "Bjorn\u2019s his name and pillaging\u2019s
+    his game, he loves to run a muck"
   <Variant>k__BackingField: 3
   <PartName>k__BackingField: Chr_Adventure_Viking_01
   <DefaultColor>k__BackingField: 0

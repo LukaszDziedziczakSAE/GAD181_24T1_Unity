@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Samurai_VillageWoman_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Helga
+  <CharacterDescription>k__BackingField: The town's baker. She really knows how to
+    make a loaf of bread!
   <Variant>k__BackingField: 43
   <PartName>k__BackingField: Chr_Samurai_VillageWoman_01
   <DefaultColor>k__BackingField: 0

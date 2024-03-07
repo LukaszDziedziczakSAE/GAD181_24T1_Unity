@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Pirates_FemalePirate_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Eliza
+  <CharacterDescription>k__BackingField: "She knows how to make you walk the plank.
+    Be careful you don't find yourself in Davy Jones\u2019s locker"
   <Variant>k__BackingField: 34
   <PartName>k__BackingField: Chr_Pirates_FemalePirate_01
   <DefaultColor>k__BackingField: 0

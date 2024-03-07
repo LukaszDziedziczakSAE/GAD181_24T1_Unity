@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Fantasy_RougeMale_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Richard
+  <CharacterDescription>k__BackingField: "Eldritch\u2019s brother, no one likes him.
+    Everyone calls him by another name to show their disliking of him. "
   <Variant>k__BackingField: 26
   <PartName>k__BackingField: Chr_Fantasy_RougeMale_01
   <DefaultColor>k__BackingField: 0

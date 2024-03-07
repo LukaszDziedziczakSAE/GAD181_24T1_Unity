@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Knights_Light_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Sir Percival
+  <CharacterDescription>k__BackingField: One of the Knights of the round table. An
+    adept warrior with a keen eye with the bow
   <Variant>k__BackingField: 31
   <PartName>k__BackingField: Chr_Knights_Light_01
   <DefaultColor>k__BackingField: 0
