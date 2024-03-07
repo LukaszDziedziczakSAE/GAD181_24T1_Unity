@@ -6,7 +6,7 @@ using static CharacterModel;
 public class Player : MonoBehaviour, ISaveable
 {
     [field: SerializeField] public string PlayerName { get; private set; } = "";
-    [field: SerializeField] public  CharacterModel.Config CharacterConfig { get; private set; }
+    [field: SerializeField] public  CharacterModel.Config CharacterModelConfig { get; private set; }
     [field: SerializeField] public PlayerLevel Level { get; private set; }
     [field: SerializeField] public PlayerCurrency Currency { get; private set; }
 
@@ -15,20 +15,27 @@ public class Player : MonoBehaviour, ISaveable
         DontDestroyOnLoad(this);
     }
 
+    public CharacterConfig CharacterConfig
+    {
+        get
+        {
+            return Game.CharacterConfigByVarient(CharacterModelConfig.Variant);
+        }
+    }
 
     public void SetCharacterVarient(CharacterModel.EVariant newVarient)
     {
-        CharacterConfig = new CharacterModel.Config(newVarient, CharacterConfig.Skin, CharacterConfig.Color);
+        CharacterModelConfig = new CharacterModel.Config(newVarient, CharacterModelConfig.Skin, CharacterModelConfig.Color);
     }
 
     public void SetCharacterSkin(int skinIndex)
     {
-        CharacterConfig = new CharacterModel.Config(CharacterConfig.Variant, skinIndex, CharacterConfig.Color);
+        CharacterModelConfig = new CharacterModel.Config(CharacterModelConfig.Variant, skinIndex, CharacterModelConfig.Color);
     }
 
     public void SetCharacterColor(CharacterModel.EColor newColor)
     {
-        CharacterConfig = new CharacterModel.Config(CharacterConfig.Variant, CharacterConfig.Skin, newColor);
+        CharacterModelConfig = new CharacterModel.Config(CharacterModelConfig.Variant, CharacterModelConfig.Skin, newColor);
     }
 
     public void ChangePlayerName(string newName)
@@ -41,7 +48,7 @@ public class Player : MonoBehaviour, ISaveable
         Dictionary<string, object> state = new Dictionary<string, object>();
 
         state.Add("PlayerName", PlayerName);
-        state.Add("CharacterConfig", CharacterConfig);
+        state.Add("CharacterConfig", CharacterModelConfig);
 
         return state;
     }
@@ -51,7 +58,7 @@ public class Player : MonoBehaviour, ISaveable
         Dictionary<string, object> restoredState = (Dictionary<string, object>)state;
 
         PlayerName = (string)restoredState["PlayerName"];
-        CharacterConfig = (CharacterModel.Config)restoredState["CharacterConfig"];
+        CharacterModelConfig = (CharacterModel.Config)restoredState["CharacterConfig"];
     }
 
     public void NewPlayer(string name)
