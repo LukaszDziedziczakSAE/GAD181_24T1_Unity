@@ -44,7 +44,7 @@ public class JoustingMatch : MinigameMatch
         if (character.transform.position.z >= EndDistance)
         {
             character.SetNewState(new CS_Jousting_Idle(character));
-            Debug.Log("Player Reached End");
+            //Debug.Log("Player Reached End");
         }
     }
 }
