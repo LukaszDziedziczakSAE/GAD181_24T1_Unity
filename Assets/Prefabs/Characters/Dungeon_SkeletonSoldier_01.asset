@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Dungeon_SkeletonSoldier_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Tony
+  <CharacterDescription>k__BackingField: "He has no sense of humor. What do you expect
+    though, he can't hear or talk, he\u2019s a skeleton!"
   <Variant>k__BackingField: 16
   <PartName>k__BackingField: Chr_Dungeon_SkeletonSoldier_01
   <DefaultColor>k__BackingField: 0

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Pirates_Firstmate_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Jimmers
+  <CharacterDescription>k__BackingField: "Trusted first mate of the captain. The
+    crew address him with problems by saying \u201CShiver me timbers, Jimmers!\u201D"
   <Variant>k__BackingField: 35
   <PartName>k__BackingField: Chr_Pirates_Firstmate_01
   <DefaultColor>k__BackingField: 0

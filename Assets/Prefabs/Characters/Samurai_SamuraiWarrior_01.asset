@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Samurai_SamuraiWarrior_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Ronin
+  <CharacterDescription>k__BackingField: Cast out by his emperor, this samurai wanders
+    the land honing his skills, what better way to test them than a carnival!
   <Variant>k__BackingField: 40
   <PartName>k__BackingField: Chr_Samurai_SamuraiWarrior_01
   <DefaultColor>k__BackingField: 0

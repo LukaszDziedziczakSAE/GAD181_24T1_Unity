@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Pirates_Gentleman_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Jock
+  <CharacterDescription>k__BackingField: The handsome Captain Jock Otherbird. Often
+    regarded as the greatest pirate the world has ever seen
   <Variant>k__BackingField: 36
   <PartName>k__BackingField: Chr_Pirates_Gentleman_01
   <DefaultColor>k__BackingField: 0

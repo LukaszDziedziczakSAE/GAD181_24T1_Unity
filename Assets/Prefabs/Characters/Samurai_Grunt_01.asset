@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Samurai_Grunt_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Yujiro
+  <CharacterDescription>k__BackingField: Head of the royal foreign guard. Tasked
+    with guarding the princess
   <Variant>k__BackingField: 39
   <PartName>k__BackingField: Chr_Samurai_Grunt_01
   <DefaultColor>k__BackingField: 0

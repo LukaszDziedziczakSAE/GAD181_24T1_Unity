@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Dungeon_KnightFemale_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Xina
+  <CharacterDescription>k__BackingField: The strongest female in the entire kingdom!
+    She is said to have single handedly driven the Ogres extinct in these lands
   <Variant>k__BackingField: 11
   <PartName>k__BackingField: Chr_Dungeon_KnightFemale_01
   <DefaultColor>k__BackingField: 0

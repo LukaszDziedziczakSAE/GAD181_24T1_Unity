@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Fantasy_FemalePeasant_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Karen
+  <CharacterDescription>k__BackingField: Is always out washing clothes, she always
+    complains about everything
   <Variant>k__BackingField: 20
   <PartName>k__BackingField: Chr_Fantasy_FemalePeasant_01
   <DefaultColor>k__BackingField: 0

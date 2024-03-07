@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Adventure_ShopKeeper_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Shopkeeper Ted
+  <CharacterDescription>k__BackingField: "Spends his days tending the shop, hasn\u2019t
+    won anything before, maybe today will be his lucky day!"
   <Variant>k__BackingField: 2
   <PartName>k__BackingField: Chr_Adventure_ShopKeeper_01
   <DefaultColor>k__BackingField: 0

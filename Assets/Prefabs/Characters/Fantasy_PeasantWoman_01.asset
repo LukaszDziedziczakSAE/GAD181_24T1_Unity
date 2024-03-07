@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Fantasy_PeasantWoman_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Fiona
+  <CharacterDescription>k__BackingField: Some say she used to be an ogre, but changed
+    into a human after Xina slayed her husband Shek
   <Variant>k__BackingField: 24
   <PartName>k__BackingField: Chr_Fantasy_PeasantWoman_01
   <DefaultColor>k__BackingField: 0

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Fantasy_MalePeasant_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Borris
+  <CharacterDescription>k__BackingField: Married to Karen. He is often found at the
+    tavern drinking on his own. I wonder why?
   <Variant>k__BackingField: 23
   <PartName>k__BackingField: Chr_Fantasy_MalePeasant_01
   <DefaultColor>k__BackingField: 0

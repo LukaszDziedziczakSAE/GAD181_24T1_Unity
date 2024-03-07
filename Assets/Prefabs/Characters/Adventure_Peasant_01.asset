@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Adventure_Peasant_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: Peasant
+  <CharacterName>k__BackingField: Joe
+  <CharacterDescription>k__BackingField: "Who is he? He\u2019s had a hard life living
+    on the streets, maybe his luck will turn around at the carnival"
   <Variant>k__BackingField: 1
   <PartName>k__BackingField: Chr_Adventure_Peasant_01
   <DefaultColor>k__BackingField: 0

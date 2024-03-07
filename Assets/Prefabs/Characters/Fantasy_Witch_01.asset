@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Fantasy_Witch_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Tabitha
+  <CharacterDescription>k__BackingField: She lives outside the kingdom in the forest.
+    She may be the cause of the children going missing lately
   <Variant>k__BackingField: 28
   <PartName>k__BackingField: Chr_Fantasy_Witch_01
   <DefaultColor>k__BackingField: 0

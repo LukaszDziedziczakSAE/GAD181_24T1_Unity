@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Samurai_VillageMan_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: El Nombre
+  <CharacterDescription>k__BackingField: "Can be found sitting around drinking a
+    strange substance he brought to town. Often heard yelling \u201C AYE PENDEJO\u201D,
+    whatever that means"
   <Variant>k__BackingField: 42
   <PartName>k__BackingField: Chr_Samurai_VillageMan_01
   <DefaultColor>k__BackingField: 0

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb427410776c58b4bb900ced062d80e8, type: 3}
   m_Name: Adventure_Warrior_01
   m_EditorClassIdentifier: 
-  <CharacterName>k__BackingField: 
+  <CharacterName>k__BackingField: Eldritch
+  <CharacterDescription>k__BackingField: Born into a rich family, rich by life, ritch
+    by name, Eldritch that is.
   <Variant>k__BackingField: 4
   <PartName>k__BackingField: Chr_Adventure_Warrior_01
   <DefaultColor>k__BackingField: 0
