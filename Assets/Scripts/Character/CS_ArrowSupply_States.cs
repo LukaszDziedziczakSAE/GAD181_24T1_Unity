@@ -14,11 +14,10 @@ public class CS_ArrowSupply_States : CharacterState
     public override void StateStart()
     {
         Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
-
-        Debug.Log("Test state working");
+        character.Animator.CrossFade("ScavangerHunt_Locomotion", 0.1f);
     }
 
-    public override void FixedTick()
+    public override void Tick()
     {
         if (character.NavMeshAgent.velocity.magnitude > 0)
         {
@@ -31,10 +30,8 @@ public class CS_ArrowSupply_States : CharacterState
         }
     }
 
-
-    public override void Tick()
+    public override void FixedTick()
     {
-
     }
 
     public override void StateEnd()
@@ -44,18 +41,14 @@ public class CS_ArrowSupply_States : CharacterState
 
     private void InputReader_OnTouchPressed()
     {
-        Debug.Log("Touch Pressed");
-
+        //Debug.Log("Touch Pressed");
         RaycastHit raycastHit = Game.InputReader.RaycastFromTouchPoint;
-
         if (!raycastHit.Equals(new RaycastHit()))
         {
             match.ShowTouchIndicator(raycastHit.point);
-
             Game.PlayerCharacter.NavMeshAgent.SetDestination(raycastHit.point);
-
             Game.PlayerCharacter.NavMeshAgent.isStopped = false;
         }
-        else Debug.LogWarning("No Hit");
+        //else Debug.LogWarning("No Hit");
     }
 }
