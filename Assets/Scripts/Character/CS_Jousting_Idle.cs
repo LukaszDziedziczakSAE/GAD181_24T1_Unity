@@ -14,7 +14,7 @@ public class CS_Jousting_Idle : CharacterState
     public override void StateStart()
     {
         ui.EndIndicator.UpdateEndIndicator(true);
-        Debug.Log("Player in idle state");
+        //Debug.Log("Player in idle state");
     }
 
     public override void Tick()
