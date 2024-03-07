@@ -78,9 +78,9 @@ public class UI_PlayerProfile : MonoBehaviour
         nameButtonText.text = Game.Player.PlayerName;
         levelIndicatorText.text = Game.Player.Level.Level.ToString() + " (" + Game.Player.Level.Experiance.ToString() + "/" + Game.Player.Level.CurrentRequriment.ToString() + ")" ;
         goldIndicatorText.text = Game.Player.Currency.AmountHeld.ToString();
-        if (Game.PlayerCharacter.Model.CharacterConfig.CharacterName == null || Game.PlayerCharacter.Model.CharacterConfig.CharacterName == "")
-            varientButtonText.text = Game.Player.CharacterConfig.Variant.ToString();
-        else varientButtonText.text = Game.PlayerCharacter.Model.CharacterConfig.CharacterName;
+        if (Game.PlayerCharacter.Model.CharacterConfig.CharacterName != null && Game.PlayerCharacter.Model.CharacterConfig.CharacterName != "")
+            varientButtonText.text = Game.PlayerCharacter.Model.CharacterConfig.CharacterName;  
+        else varientButtonText.text = Game.Player.CharacterConfig.Variant.ToString();
         UpdateSkinButtons();
         UpdateColorButtons();
 
