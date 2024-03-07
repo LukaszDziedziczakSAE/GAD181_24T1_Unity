@@ -38,6 +38,8 @@ public class CS_Jousting_Riding : CharacterState
         {
             ui.JoustingIndicator.UpdateDistanceIndicator(Distance());
             ui.JoustingIndicator.UpdateStrikingDistanceIndicator(IsWithinJoustingDistance());
+            ui.EndIndicator.UpdateEndIndicator(ReachedEnd());
+            match.PlayerReachedEnd(character);
         }
 
         else if (character.PlayerIndex == 1 ) 
@@ -87,9 +89,27 @@ public class CS_Jousting_Riding : CharacterState
         return distance;
     }
 
-    private bool IsWithinJoustingDistance()
+    public bool IsWithinJoustingDistance()
     {
         float distance = Distance();
         return distance >= match.MinimumJoustingDistance && distance <= match.MaximumJoustingDistance;
+    }
+
+    private float PlayerPosition()
+    {
+        float position = 0;
+        
+        if (character.PlayerIndex == 0)
+        {
+            position = character.transform.position.z;
+        }
+
+        return position;
+    }
+
+    public bool ReachedEnd()
+    {
+        float position = PlayerPosition();
+        return position >= match.EndDistance;
     }
 }
