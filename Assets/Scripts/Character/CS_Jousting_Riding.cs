@@ -20,11 +20,13 @@ public class CS_Jousting_Riding : CharacterState
         if (character.PlayerIndex == 0)
         {
             ui.JoustingIndicator.gameObject.SetActive(true);
+            character.Animator.CrossFade("Rider_Gallop", 0.1f);
         }
         
         else if (character.PlayerIndex == 1)
         {
             ui.EnemyJoustingIndicator.gameObject.SetActive(true);
+            character.Animator.CrossFade("Rider_Gallop", 0.1f);
         }
         
         //Debug.Log("You've entered riding state");
