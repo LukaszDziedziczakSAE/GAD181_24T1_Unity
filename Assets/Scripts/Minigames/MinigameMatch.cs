@@ -89,7 +89,7 @@ public abstract class MinigameMatch : MonoBehaviour
 
     protected abstract MatchResult DetermineResult();
 
-    protected Character[] Compeditors
+    public Character[] Compeditors
     {
         get
         {

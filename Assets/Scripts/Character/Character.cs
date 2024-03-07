@@ -1,3 +1,4 @@
+using IKVM.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,4 +40,6 @@ public class Character : MonoBehaviour
         State = newState;
         State.StateStart();
     }
+
+    public static System.Type ScavangerLocomotionType => (new CS_ScavangerLocomotion(Game.PlayerCharacter)).GetType();
 }

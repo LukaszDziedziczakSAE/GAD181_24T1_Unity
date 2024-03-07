@@ -9,17 +9,20 @@ public class UI_ScavangerHunt : UI_Main
     [SerializeField] TMP_Text touchPoint;
     [SerializeField] TMP_Text pickedUpAmount;
     [SerializeField] TMP_Text timeLeft;
-    
+    bool levelLoaded;
 
     private void OnDisable()
     {
+        if (Game.Instance == null || Game.InputReader == null || !levelLoaded) return;
         Game.InputReader.OnTouchPressed -= OnTouchPress;
         Game.InputReader.OnTouchReleased -= OnTouchRelease;
     }
 
     private void Update()
     {
-        touchPoint.text = Game.InputReader.TouchPosition.ToString();
+        if (!levelLoaded) return;
+
+        if (touchPoint != null && touchPoint.gameObject.activeSelf) touchPoint.text = Game.InputReader.TouchPosition.ToString();
         //pickedUpAmount.text = match.itemsPickedUp.ToString();
         //timeLeft.text = match.MatchTimeRemaining.ToString("F0");
     }
@@ -41,6 +44,6 @@ public class UI_ScavangerHunt : UI_Main
         Game.InputReader.OnTouchReleased += OnTouchRelease;
         touchPoint.gameObject.SetActive(false);
         //if (matchStart != null) matchStart.gameObject.SetActive(false);
-
+        levelLoaded = true;
     }
 }

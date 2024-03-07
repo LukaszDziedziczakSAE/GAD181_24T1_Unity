@@ -44,3 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cace7988cc5f20e45b08e9c394d49ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sphereCastRange: 10
+  pickUpLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  <TargetPickUp>k__BackingField: {fileID: 0}
