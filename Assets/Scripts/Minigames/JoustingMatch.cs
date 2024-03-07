@@ -48,4 +48,9 @@ public class JoustingMatch : MinigameMatch
             //Debug.Log("Player Reached End");
         }
     }
+
+    public void PlayerAttack(Character character)
+    {
+        character.SetNewState(new CS_Jousting_Attack(character));
+    }
 }

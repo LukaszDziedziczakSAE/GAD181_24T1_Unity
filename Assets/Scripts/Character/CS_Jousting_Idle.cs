@@ -31,9 +31,4 @@ public class CS_Jousting_Idle : CharacterState
     {
 
     }
-
-    public bool ReachedEnd()
-    {
-        return character.PlayerIndex == 0 && character.transform.position.z == 16f;
-    }
 }

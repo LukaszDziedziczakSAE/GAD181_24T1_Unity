@@ -22,13 +22,13 @@ public class CS_Jousting_Riding : CharacterState
             ui.JoustingIndicator.gameObject.SetActive(true);
             character.Animator.CrossFade("Rider_Gallop", 0.1f);
         }
-        
+
         else if (character.PlayerIndex == 1)
         {
             ui.EnemyJoustingIndicator.gameObject.SetActive(true);
             character.Animator.CrossFade("Rider_Gallop", 0.1f);
         }
-        
+
         //Debug.Log("You've entered riding state");
     }
 
@@ -36,7 +36,7 @@ public class CS_Jousting_Riding : CharacterState
     {
         character.transform.position += character.transform.forward * match.HorseSpeed * Time.deltaTime;
 
-        if (character.PlayerIndex == 0 )
+        if (character.PlayerIndex == 0)
         {
             ui.JoustingIndicator.UpdateDistanceIndicator(Distance());
             ui.JoustingIndicator.UpdateStrikingDistanceIndicator(IsWithinJoustingDistance());
@@ -44,10 +44,15 @@ public class CS_Jousting_Riding : CharacterState
             match.PlayerReachedEnd(character);
         }
 
-        else if (character.PlayerIndex == 1 ) 
+        else if (character.PlayerIndex == 1)
         {
             ui.EnemyJoustingIndicator.UpdateDistanceIndicator(Distance());
             ui.EnemyJoustingIndicator.UpdateStrikingDistanceIndicator(IsWithinJoustingDistance());
+        }
+
+        if (Game.InputReader.TouchPressed && IsWithinJoustingDistance())
+        {
+            match.PlayerAttack(character);
         }
     }
 
@@ -87,7 +92,7 @@ public class CS_Jousting_Riding : CharacterState
         {
             distance = 0;
         }
-        
+
         return distance;
     }
 
@@ -100,7 +105,7 @@ public class CS_Jousting_Riding : CharacterState
     private float PlayerPosition()
     {
         float position = 0;
-        
+
         if (character.PlayerIndex == 0)
         {
             position = character.transform.position.z;
