@@ -23,7 +23,7 @@ public class CS_Jousting_Attack : CharacterState
     {
         if (character.PlayerIndex == 0 && !animationStarted)
         {
-            character.Animator.CrossFade("Attack_Left_Forward_RH", 0.1f);
+            character.Animator.CrossFade("Attack_Right_Forward_RH", 0.1f);
             animationStarted = true; 
             animationDuration = character.Animator.GetCurrentAnimatorStateInfo(0).length; 
         }
