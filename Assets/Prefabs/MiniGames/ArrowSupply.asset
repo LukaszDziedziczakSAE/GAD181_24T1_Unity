@@ -14,6 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BuildIndex>k__BackingField: 4
   <Name>k__BackingField: Arrow Supply
-  <Description>k__BackingField: 
+  <Description>k__BackingField: Collect arrows from the supply crates and deliver
+    them to the archers defending the wall. Make sure you deliver the correct arrow
+    type for each enemy type.
   <SelectionCardPicture>k__BackingField: {fileID: 0}
   <StartTitleCardPicture>k__BackingField: {fileID: 0}
+  <Xp1stPlace>k__BackingField: 200
+  <Xp2ndPlace>k__BackingField: 150
+  <Xp3rdPlace>k__BackingField: 100
+  <Xp4thPlace>k__BackingField: 50
+  <XpAdditionalPerPoint>k__BackingField: 1
+  <Gold1stPlace>k__BackingField: 500
+  <Gold2ndPlace>k__BackingField: 300
+  <Gold3rdPlace>k__BackingField: 200
+  <Gold4thPlace>k__BackingField: 100
+  <GoldAdditionalPerPoint>k__BackingField: 1
