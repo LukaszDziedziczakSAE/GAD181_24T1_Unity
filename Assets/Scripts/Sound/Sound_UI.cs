@@ -14,7 +14,7 @@ public class Sound_UI : MonoBehaviour
         if (audioSource == null) return;
 
         if (audioSource.isPlaying) audioSource.Stop();
-        audioSource.clip = buttonPress;
+        audioSource.clip = clip;
         audioSource.Play();
     }
 
