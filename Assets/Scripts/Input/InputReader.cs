@@ -11,6 +11,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     [SerializeField] LayerMask raycastLayers;
     [field: SerializeField, Header("DEBUG")] public Vector2 TouchPosition { get; private set; }
     [field: SerializeField] public bool TouchPressed { get; private set; }
+    [field: SerializeField] public Vector2 DirectionInput { get; private set; }
 
     public event Action OnTouchPressed;
     public event Action OnTouchReleased;
@@ -69,6 +70,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public void OnMousePosition(InputAction.CallbackContext context)
     {
         TouchPosition = context.ReadValue<Vector2>();
+    }
+
+    public void OnDirectionalInput(InputAction.CallbackContext context)
+    {
+        DirectionInput = context.ReadValue<Vector2>();
     }
 
     /*public void OnTouchPress(InputAction.CallbackContext context)

@@ -19,7 +19,7 @@ public class CS_Jousting_Idle : CharacterState
 
     public override void Tick()
     {
-
+        
     }
 
     public override void FixedTick()

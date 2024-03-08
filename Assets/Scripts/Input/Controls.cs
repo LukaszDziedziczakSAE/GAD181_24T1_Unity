@@ -53,6 +53,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""DirectionalInput"",
+                    ""type"": ""Value"",
+                    ""id"": ""ed946f09-ba11-482d-a6d5-0f5ea4e4d1d3"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -110,6 +119,61 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""ArrowKeys"",
+                    ""id"": ""4e46825b-d982-466e-b45d-61561288a154"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DirectionalInput"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""e124f883-eb65-4feb-8a6f-c0125a49cb9b"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DirectionalInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""c0b6720e-2f3e-4908-bac6-782207c69c59"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DirectionalInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""33676971-6aac-4ade-a3e2-ea61c4bab7ae"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DirectionalInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""d8da7396-3570-4e0d-8782-a5d09ad03d22"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DirectionalInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -132,6 +196,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Touch = m_Player.FindAction("Touch", throwIfNotFound: true);
         m_Player_MousePress = m_Player.FindAction("MousePress", throwIfNotFound: true);
         m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
+        m_Player_DirectionalInput = m_Player.FindAction("DirectionalInput", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -196,6 +261,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Touch;
     private readonly InputAction m_Player_MousePress;
     private readonly InputAction m_Player_MousePosition;
+    private readonly InputAction m_Player_DirectionalInput;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -203,6 +269,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Touch => m_Wrapper.m_Player_Touch;
         public InputAction @MousePress => m_Wrapper.m_Player_MousePress;
         public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
+        public InputAction @DirectionalInput => m_Wrapper.m_Player_DirectionalInput;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -221,6 +288,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @MousePosition.started += instance.OnMousePosition;
             @MousePosition.performed += instance.OnMousePosition;
             @MousePosition.canceled += instance.OnMousePosition;
+            @DirectionalInput.started += instance.OnDirectionalInput;
+            @DirectionalInput.performed += instance.OnDirectionalInput;
+            @DirectionalInput.canceled += instance.OnDirectionalInput;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -234,6 +304,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @MousePosition.started -= instance.OnMousePosition;
             @MousePosition.performed -= instance.OnMousePosition;
             @MousePosition.canceled -= instance.OnMousePosition;
+            @DirectionalInput.started -= instance.OnDirectionalInput;
+            @DirectionalInput.performed -= instance.OnDirectionalInput;
+            @DirectionalInput.canceled -= instance.OnDirectionalInput;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -274,5 +347,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnTouch(InputAction.CallbackContext context);
         void OnMousePress(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
+        void OnDirectionalInput(InputAction.CallbackContext context);
     }
 }
