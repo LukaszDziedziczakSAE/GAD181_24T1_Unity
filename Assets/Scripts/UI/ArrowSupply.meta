@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/UI/ArrowSupply.meta
 guid: 9790bfebfab2f2b40a522b903395f1d1
+========
+guid: d67bb934ef94c2e4897f951daaf1c349
+>>>>>>>> Project2/Lukasz:Assets/Sounds.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

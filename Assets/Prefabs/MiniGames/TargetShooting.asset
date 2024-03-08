@@ -17,3 +17,13 @@ MonoBehaviour:
   <Description>k__BackingField: 
   <SelectionCardPicture>k__BackingField: {fileID: 0}
   <StartTitleCardPicture>k__BackingField: {fileID: 0}
+  <Xp1stPlace>k__BackingField: 0
+  <Xp2ndPlace>k__BackingField: 0
+  <Xp3rdPlace>k__BackingField: 0
+  <Xp4thPlace>k__BackingField: 0
+  <XpAdditionalPerPoint>k__BackingField: 0
+  <Gold1stPlace>k__BackingField: 0
+  <Gold2ndPlace>k__BackingField: 0
+  <Gold3rdPlace>k__BackingField: 0
+  <Gold4thPlace>k__BackingField: 0
+  <GoldAdditionalPerPoint>k__BackingField: 0
