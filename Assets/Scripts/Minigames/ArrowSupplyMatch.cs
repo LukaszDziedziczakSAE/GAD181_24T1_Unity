@@ -16,14 +16,18 @@ public class ArrowSupplyMatch : MinigameMatch
     }
 
     protected async override void PrematchStart()
-    {
-
+    { 
+        base.PrematchStart();
     }
 
     protected override void PrematchTick()
     {
         base.PrematchTick();
 
+        /*if (pickUpSpawner == null || pickUpSpawner.SpawnComplete)
+        {
+            Mode = EState.inProgress;
+        }*/
     }
 
     protected override void MatchStart()
@@ -32,6 +36,8 @@ public class ArrowSupplyMatch : MinigameMatch
         {
             character.SetNewState(new CS_ArrowSupply_States(character));
         }
+
+        Game.UI.MatchStatus.gameObject.SetActive(true);
     }
 
     protected override void MatchTick()
@@ -47,8 +53,7 @@ public class ArrowSupplyMatch : MinigameMatch
     protected override void PostMatchStart()
     {
         base.PostMatchStart();
-
-        Mode = EState.none;
+        //Mode = EState.none;
     }
 
     public void ShowTouchIndicator(Vector3 position)
