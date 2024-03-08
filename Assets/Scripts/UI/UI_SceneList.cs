@@ -27,7 +27,7 @@ public class UI_SceneList : MonoBehaviour
     {
         ClearList();
 
-        foreach (Minigames.Game game in Game.Minigames.RandomGames)
+        foreach (MinigameConfig game in Game.Minigames.RandomGames)
         {
             UI_MinigameCard card = Instantiate(minigameCardPrefab, content);
             minigameCards.Add(card);
@@ -51,9 +51,9 @@ public class UI_SceneList : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void PlayMiniGame(Minigames.Game game)
+    public void PlayMiniGame(MinigameConfig config)
     {
         mainMenu.MatchStart.gameObject.SetActive(true);
-        mainMenu.MatchStart.Initilize(game);
+        mainMenu.MatchStart.Initilize(config);
     }
 }

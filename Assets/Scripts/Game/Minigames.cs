@@ -7,9 +7,11 @@ using UnityEngine.SceneManagement;
 
 public class Minigames : MonoBehaviour
 {
-    [field: SerializeField] public Game[] Games {  get; private set; }
+    //[field: SerializeField] public Game[] Games {  get; private set; }
+    [field: SerializeField] public MinigameConfig[] Configs { get; private set; }
 
-    [System.Serializable]
+
+    /*[System.Serializable]
     public class Game
     {
         public int buildIndex;
@@ -22,14 +24,14 @@ public class Minigames : MonoBehaviour
         {
             SceneManager.LoadScene(buildIndex);
         }
-    }
+    }*/
 
-    public Game[] RandomGames
+    public MinigameConfig[] RandomGames
     {
         get
         {
-            List<Game> temp = Games.ToList();
-            List<Game> list = new List<Game>();
+            List<MinigameConfig> temp = Configs.ToList();
+            List<MinigameConfig> list = new List<MinigameConfig>();
             while (temp.Count > 0)
             {
                 int random = UnityEngine.Random.Range(0, temp.Count);
