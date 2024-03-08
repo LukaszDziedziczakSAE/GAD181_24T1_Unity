@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dadfb5c660e4039429b23e23cbf97a14, type: 3}
+  m_Name: ScavengerHunt
+  m_EditorClassIdentifier: 
+  <BuildIndex>k__BackingField: 2
+  <Name>k__BackingField: Scavenger Hunt
+  <Description>k__BackingField: Four competitors search in a forest for collectables.
+    The person whom collected the most when the time runs out wins.
+  <SelectionCardPicture>k__BackingField: {fileID: 2800000, guid: b6f982216c7fd5f4080150dc93282b1b,
+    type: 3}
+  <StartTitleCardPicture>k__BackingField: {fileID: 2800000, guid: b6f982216c7fd5f4080150dc93282b1b,
+    type: 3}

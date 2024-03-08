@@ -861,6 +861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f853e04b6306a0e418eb7dd81594ddf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 0}
   <MainMenuCamera>k__BackingField: {fileID: 1372476836}
   <CharacterCamera>k__BackingField: {fileID: 1868474597}
   <CameraBlendTime>k__BackingField: 0.2
@@ -1420,8 +1421,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961739749}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.049420174, y: -0.55091125, z: 0.03870697, w: 0.8321997}
-  m_LocalPosition: {x: -0.7427, y: 0.2546, z: -0.272}
+  m_LocalRotation: {x: 0.014961922, y: -0.5229704, z: 0.015034246, w: 0.8520869}
+  m_LocalPosition: {x: -0.3564644, y: 0.39436, z: -0.360734}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

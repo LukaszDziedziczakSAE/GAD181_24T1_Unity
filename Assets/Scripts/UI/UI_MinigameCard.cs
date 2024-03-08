@@ -10,7 +10,7 @@ public class UI_MinigameCard : MonoBehaviour
     [SerializeField] RawImage gameCardImage;
     [SerializeField] Button button;
 
-    Minigames.Game miniGame;
+    MinigameConfig config;
     UI_SceneList sceneList;
 
     private void OnEnable()
@@ -24,18 +24,18 @@ public class UI_MinigameCard : MonoBehaviour
         button.onClick.RemoveListener(OnButtonPress);
     }
 
-    public void Initilize(Minigames.Game game, UI_SceneList ui)
+    public void Initilize(MinigameConfig newConfig, UI_SceneList ui)
     {
         sceneList = ui;
-        miniGame = game;
-        gameTitle.text = miniGame.Name;
-        if (miniGame.selectionCardPicture != null) gameCardImage.texture = miniGame.selectionCardPicture;
+        config = newConfig;
+        gameTitle.text = config.Name;
+        if (config.SelectionCardPicture != null) gameCardImage.texture = config.SelectionCardPicture;
     }
 
     private void OnButtonPress()
     {
         Game.Sound.PlayButtonPressConfirmSound();
         //miniGame.Play();
-        sceneList.PlayMiniGame(miniGame);
+        sceneList.PlayMiniGame(config);
     }
 }
