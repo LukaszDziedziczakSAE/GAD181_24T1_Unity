@@ -11,7 +11,9 @@ public class JoustingMatch : MinigameMatch
     [field: SerializeField] public float EndDistance { get; private set; }
     [field: SerializeField] public GameObject Horse { get; private set; }
 
-    private CS_Jousting_Riding riding;
+    private Jousting_Weapon weapon;
+
+
 
     protected override MatchResult DetermineResult()
     {
@@ -20,6 +22,8 @@ public class JoustingMatch : MinigameMatch
 
     protected override void MatchStart()
     {
+       weapon = FindObjectOfType<Jousting_Weapon>();
+        
         foreach (Character character in Compeditors)
         {
             character.SetNewState(new CS_Jousting_Riding(character));
@@ -51,6 +55,9 @@ public class JoustingMatch : MinigameMatch
 
     public void PlayerAttack(Character character)
     {
-        character.SetNewState(new CS_Jousting_Attack(character));
+        if (character.PlayerIndex == 0)
+        {
+            character.SetNewState(new CS_Jousting_Attack(character, weapon));
+        }       
     }
 }
