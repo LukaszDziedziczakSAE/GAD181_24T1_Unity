@@ -127,6 +127,7 @@ public class UI_CharacterCard : MonoBehaviour
             case EMode.Purchasable:
                 Game.Player.Currency.UnlockCharacter(config);
                 SetCurrentMode();
+                Game.SaveSystem.SaveGameFile();
                 break;
         }
         
@@ -182,9 +183,9 @@ public class UI_CharacterCard : MonoBehaviour
 
         else if (Game.Player.Level.Level >= config.UnlockLevel)
         {
-
             if (Game.Player.Currency.CanAffordCharacter(config))
                 Mode = EMode.Purchasable;
+
             else Mode = EMode.CannotAfford;
         }
 

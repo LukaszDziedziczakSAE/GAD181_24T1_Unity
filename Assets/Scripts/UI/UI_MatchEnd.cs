@@ -46,6 +46,8 @@ public class UI_MatchEnd : MonoBehaviour
         UpdateScoreboard();
         UpdateXPGain();
         UpdateGoldGain();
+        Game.Player.MatchComplete();
+        Game.SaveSystem.SaveGameFile();
     }
 
     private void UpdateGoldGain()

@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, ISaveable
     [field: SerializeField] public  CharacterModel.Config CharacterModelConfig { get; private set; }
     [field: SerializeField] public PlayerLevel Level { get; private set; }
     [field: SerializeField] public PlayerCurrency Currency { get; private set; }
+    [field: SerializeField] public int MatchesPlayed { get; private set; }
 
     private void Awake()
     {
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour, ISaveable
 
         state.Add("PlayerName", PlayerName);
         state.Add("CharacterConfig", CharacterModelConfig);
+        state.Add("MatchesPlayed", MatchesPlayed);
 
         return state;
     }
@@ -59,6 +61,7 @@ public class Player : MonoBehaviour, ISaveable
 
         PlayerName = (string)restoredState["PlayerName"];
         CharacterModelConfig = (CharacterModel.Config)restoredState["CharacterConfig"];
+        MatchesPlayed = (int)restoredState["MatchesPlayed"];
     }
 
     public void NewPlayer(string name)
@@ -73,5 +76,10 @@ public class Player : MonoBehaviour, ISaveable
     {
         NewPlayer("");
 
+    }
+
+    public void MatchComplete()
+    {
+        MatchesPlayed++;
     }
 }
