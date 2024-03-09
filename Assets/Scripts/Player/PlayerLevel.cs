@@ -24,6 +24,8 @@ public class PlayerLevel : MonoBehaviour, ISaveable
 
         Level = (int)restoredState["Level"];
         Experiance = (int)restoredState["Experiance"];
+
+        if (Level == 0) Level = 1;
     }
 
     public void AddExperiance(int amount)

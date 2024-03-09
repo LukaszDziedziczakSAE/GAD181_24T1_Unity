@@ -26,4 +26,26 @@ public class MinigameConfig : ScriptableObject
     {
         SceneManager.LoadScene(BuildIndex);
     }
+
+    public int GoldAward(int score, int placement)
+    {
+        switch(placement)
+        {
+            case 1: return Gold1stPlace + (score * GoldAdditionalPerPoint);
+            case 2: return Gold2ndPlace + (score * GoldAdditionalPerPoint);
+            case 3: return Gold3rdPlace + (score * GoldAdditionalPerPoint);
+            default: return Gold4thPlace + (score * GoldAdditionalPerPoint);
+        }
+    }
+
+    public int XPAward(int score, int placement)
+    {
+        switch (placement)
+        {
+            case 1: return Xp1stPlace + (score * XpAdditionalPerPoint);
+            case 2: return Xp2ndPlace + (score * XpAdditionalPerPoint);
+            case 3: return Xp3rdPlace + (score * XpAdditionalPerPoint);
+            default: return Xp4thPlace + (score * XpAdditionalPerPoint);
+        }
+    }
 }

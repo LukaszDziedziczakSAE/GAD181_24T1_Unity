@@ -24,9 +24,8 @@ public class ScavangerHunt_PickUp : MonoBehaviour
     {
         if (characterInProx == null) return;
 
-
         match.AwardPlayerPoints(characterInProx.PlayerIndex, pointsAward);
-        Game.UI.UpdateMatchStatus();
+        
         Destroy(this.gameObject);
     }
 

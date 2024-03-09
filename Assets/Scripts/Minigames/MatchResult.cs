@@ -5,6 +5,9 @@ using UnityEngine;
 public class MatchResult
 {
     public Dictionary<int, int> Scores { get; private set; }
+    [field: SerializeField] public Result[] Results { get; private set; }
+
+    public int AmountOfPlayers => Scores.Count;
 
     public MatchResult()
     {
@@ -27,5 +30,59 @@ public class MatchResult
         if (playerNumber < 0 || playerNumber >= 4) return;
 
         Scores[playerNumber] += points;
+    }
+
+    public void CreateResults()
+    { 
+        List<int> winOrder = new List<int>();
+
+        while (winOrder.Count != AmountOfPlayers)
+        {
+            int highestScorePlayerNo = -1;
+            int highestScore = 0;
+
+            for (int player = 0; player < AmountOfPlayers; player++)
+            {
+                if (winOrder.Contains(player)) continue;
+
+                int score = Scores[player];
+                if (score > highestScore)
+                {
+                    highestScore = score;
+                    highestScorePlayerNo = player;
+                }
+            }
+
+            winOrder.Add(highestScorePlayerNo);
+        }
+
+        List<Result> results = new List<Result>();
+        for (int placement = 1; placement <= AmountOfPlayers; placement++)
+        {
+            int playerNumber = winOrder[placement - 1];
+            Result result = new Result(playerNumber, placement, Scores[playerNumber]);
+            results.Add(result);
+        }
+
+        Results = results.ToArray();
+    }
+
+    [System.Serializable]
+    public class Result
+    {
+        public int PlayerNumber;
+        public int Placement;
+        public int Score;
+
+        public Result(int playerNumber, int placement, int score)
+        {
+            PlayerNumber = playerNumber;
+            Placement = placement;
+            Score = score;
+        }
+
+        public int GoldAward => Game.Match.Config.GoldAward(Score, Placement);
+
+        public int XPAward => Game.Match.Config.XPAward(Score, Placement);
     }
 }

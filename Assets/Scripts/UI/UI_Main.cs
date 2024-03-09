@@ -14,6 +14,9 @@ public abstract class  UI_Main : MonoBehaviour
 
     public void UpdateMatchStatus()
     {
-        MatchStatus.UpdateStatus();
+        if (MatchStatus != null)
+        {
+            MatchStatus.UpdateStatus();
+        }
     }
 }

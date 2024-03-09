@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,16 +18,18 @@ public class UI_MatchEnd : MonoBehaviour
     [SerializeField] TMP_Text playerCurrencyErned;
     [SerializeField] TMP_Text playerExperience;
     [SerializeField] TMP_Text playerExperienceErned;
+    [SerializeField] Image playerPreviousXPIndicator;
+    [SerializeField] Image playerCurrentXPIndicator;
 
     List<UI_MatchEnd_CharacterListItem> characterListItems = new List<UI_MatchEnd_CharacterListItem>();
+    MatchResult matchResult;
+    MatchResult.Result playerResult;
 
     private void OnEnable()
     {
         backgroundButton.onClick.AddListener(OnBackgroundButtonPress);
         playAgainButton.onClick.AddListener(OnPlayAgainButtonPress);
         mainMenuButton.onClick.AddListener(OnMainMenuButtonPress);
-
-        Initilise();
     }
 
     private void OnDisable()
@@ -36,19 +39,49 @@ public class UI_MatchEnd : MonoBehaviour
         mainMenuButton.onClick.RemoveListener(OnMainMenuButtonPress);
     }
 
-    private void Initilise()
+    public void Initilise(MatchResult newResult)
     {
-        // scoreboard
-        foreach (KeyValuePair<int, int> score in Game.Match.Result.Scores)
+        matchResult = newResult;
+        playerResult = FindLocalPlayerResults();
+        UpdateScoreboard();
+        UpdateXPGain();
+        UpdateGoldGain();
+    }
+
+    private void UpdateGoldGain()
+    {
+        int playerPreviousCurrency = Game.Player.Currency.AmountHeld;
+
+        Game.Player.Currency.AddCurrency(playerResult.GoldAward);
+
+        playerCurrency.text = Game.Player.Currency.AmountHeld.ToString();
+        playerCurrencyErned.text = "+" + playerResult.GoldAward.ToString();
+    }
+
+    private void UpdateXPGain()
+    {
+        int previousXP = Game.Player.Level.Experiance;
+
+        Game.Player.Level.AddExperiance(playerResult.XPAward);
+
+        playerExperience.text = Game.Player.Level.Experiance.ToString();
+        playerExperienceErned.text = "+" + playerResult.XPAward.ToString();
+
+        float previousXPNormalized = (float)previousXP / Game.Player.Level.CurrentRequriment;
+        float currentXPNormalized = (float)Game.Player.Level.Experiance / Game.Player.Level.CurrentRequriment;
+
+        playerPreviousXPIndicator.rectTransform.localScale = new Vector3(previousXPNormalized, 1, 1);
+        playerCurrentXPIndicator.rectTransform.localScale = new Vector3(currentXPNormalized, 1,1);
+    }
+
+    private void UpdateScoreboard()
+    {
+        foreach (MatchResult.Result result in matchResult.Results)
         {
             UI_MatchEnd_CharacterListItem characterListItem = Instantiate(matchEndListPrefab, matchEndList);
-            characterListItem.Initilise(score.Key, score.Value);
+            characterListItem.Initilise(result.PlayerNumber, result.Score);
             characterListItems.Add(characterListItem);
         }
-
-        // xp gain
-
-        // gold gain
     }
 
     private void OnBackgroundButtonPress()
@@ -66,5 +99,14 @@ public class UI_MatchEnd : MonoBehaviour
     private void OnMainMenuButtonPress()
     {
         Game.LoadMainMenu();
+    }
+
+    private MatchResult.Result FindLocalPlayerResults()
+    {
+        foreach (MatchResult.Result result in matchResult.Results)
+        {
+            if (result.PlayerNumber == 0) return result;
+        }
+        return null;
     }
 }

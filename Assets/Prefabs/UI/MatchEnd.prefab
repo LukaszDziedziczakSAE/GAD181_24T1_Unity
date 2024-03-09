@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5214917320868209708}
   - component: {fileID: 6335396382256507962}
   m_Layer: 5
-  m_Name: CurrentBar
+  m_Name: Previous
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 5080760230322745736}
   - component: {fileID: 6625778290697529441}
   m_Layer: 5
-  m_Name: GoldTotal
+  m_Name: GoldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,6 +485,7 @@ RectTransform:
   - {fileID: 5022280500325249214}
   - {fileID: 1978619246796674728}
   - {fileID: 3587061136375439009}
+  - {fileID: 455157284659195189}
   m_Father: {fileID: 3501884034533243332}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -694,7 +695,6 @@ RectTransform:
   - {fileID: 7407105028694544943}
   - {fileID: 4652491348116381494}
   - {fileID: 2848799994316173970}
-  - {fileID: 455157284659195189}
   - {fileID: 277838873457233023}
   - {fileID: 1333398202675049106}
   - {fileID: 8443572370212143127}
@@ -724,10 +724,12 @@ MonoBehaviour:
   matchEndListPrefab: {fileID: 6489075760917119458, guid: 212c54f65805e6c43be7961301735626,
     type: 3}
   matchEndList: {fileID: 4652491348116381494}
-  playerCurrency: {fileID: 6625778290697529441}
+  playerCurrency: {fileID: 8529543032518122595}
   playerCurrencyErned: {fileID: 4144752684899316958}
   playerExperience: {fileID: 2759515640261588964}
   playerExperienceErned: {fileID: 5764481852292495029}
+  playerPreviousXPIndicator: {fileID: 6335396382256507962}
+  playerCurrentXPIndicator: {fileID: 6926028041634467671}
 --- !u!1 &2662976647816184471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,18 +1101,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3834593407276466073}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8593707115127721588}
   - {fileID: 3981603148987625919}
-  m_Father: {fileID: 3501884034533243332}
+  m_Father: {fileID: 2848799994316173970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -281, y: -130}
+  m_AnchoredPosition: {x: -6, y: 0}
   m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &72716034237602071
@@ -1238,7 +1240,7 @@ GameObject:
   - component: {fileID: 3915106770939353556}
   - component: {fileID: 8529543032518122595}
   m_Layer: 5
-  m_Name: GoldTotalTitle
+  m_Name: GoldTotal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1373,7 +1375,7 @@ GameObject:
   - component: {fileID: 6757445033053712543}
   - component: {fileID: 6926028041634467671}
   m_Layer: 5
-  m_Name: AdditionalBar
+  m_Name: New
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

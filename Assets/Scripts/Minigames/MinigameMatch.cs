@@ -7,7 +7,7 @@ public abstract class MinigameMatch : MonoBehaviour
 {
     protected EState mode = EState.none;
     protected float matchTime;
-    [SerializeField] protected MinigameConfig config;
+    [field: SerializeField] public MinigameConfig Config {  get; protected set; }
     public MatchResult Result { get; private set; }
 
     public EState Mode
@@ -72,6 +72,7 @@ public abstract class MinigameMatch : MonoBehaviour
         }
         Game.UI.MatchStatus.gameObject.SetActive(false);
         Game.UI.MatchEnd.gameObject.SetActive(true);
+        Game.UI.MatchEnd.Initilise(DetermineResult());
     }
 
     protected virtual void PrematchEnd() { }
@@ -88,7 +89,11 @@ public abstract class MinigameMatch : MonoBehaviour
     }
     protected virtual void PostMatchTick() { }
 
-    protected abstract MatchResult DetermineResult();
+    protected virtual MatchResult DetermineResult()
+    {
+        Result.CreateResults();
+        return Result;
+    }
 
     public Character[] Compeditors
     {
@@ -137,5 +142,6 @@ public abstract class MinigameMatch : MonoBehaviour
     public void AwardPlayerPoints(int playerNumber, int points)
     {
         Result.AwardPointsToPlayer(playerNumber, points);
+        Game.UI.UpdateMatchStatus();
     }
 }

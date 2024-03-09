@@ -11,11 +11,6 @@ public class ScavangerHuntMatch : MinigameMatch
 
     public float MatchTimeRemaining => matchLength - MatchTime;
 
-    protected override MatchResult DetermineResult()
-    {
-        return new MatchResult();
-    }
-
     protected async override void PrematchStart()
     {
         if (pickUpSpawner != null) await pickUpSpawner.SpawnPickUpsTask();
