@@ -14,8 +14,8 @@ public class UI_ScavangerHunt : UI_Main
     private void OnDisable()
     {
         if (Game.Instance == null || Game.InputReader == null || !levelLoaded) return;
-        Game.InputReader.OnTouchPressed -= OnTouchPress;
-        Game.InputReader.OnTouchReleased -= OnTouchRelease;
+        //Game.InputReader.OnTouchPressed -= OnTouchPress;
+        //Game.InputReader.OnTouchReleased -= OnTouchRelease;
     }
 
     private void Update()
@@ -40,8 +40,8 @@ public class UI_ScavangerHunt : UI_Main
 
     public override void LevelLoaded()
     {
-        Game.InputReader.OnTouchPressed += OnTouchPress;
-        Game.InputReader.OnTouchReleased += OnTouchRelease;
+       // Game.InputReader.OnTouchPressed += OnTouchPress;
+        //Game.InputReader.OnTouchReleased += OnTouchRelease;
         touchPoint.gameObject.SetActive(false);
         //if (matchStart != null) matchStart.gameObject.SetActive(false);
         levelLoaded = true;

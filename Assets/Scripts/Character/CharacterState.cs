@@ -16,6 +16,7 @@ public abstract class CharacterState
     public abstract void Tick();
     public abstract void FixedTick();
 
+    public bool IsPlayerCharacter => character.PlayerIndex == 0;
 }
 
 

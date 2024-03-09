@@ -38,6 +38,8 @@ public class CS_ScavangerLocomotion : CharacterState
 
     private void InputReader_OnTouchPressed()
     {
+        if (!IsPlayerCharacter) return;
+
         //Debug.Log("Touch Pressed");
         RaycastHit raycastHit = Game.InputReader.RaycastFromTouchPoint;
         if (!raycastHit.Equals(new RaycastHit()))
