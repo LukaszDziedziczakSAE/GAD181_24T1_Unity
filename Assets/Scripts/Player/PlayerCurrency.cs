@@ -41,4 +41,9 @@ public class PlayerCurrency : MonoBehaviour, ISaveable
     {
         return AmountHeld >= config.UnlockPrice;
     }
+
+    public bool CharacterIsUnlocked(CharacterModel.EVariant variant)
+    {
+        return PurchasedCharacters.Contains(variant);
+    }
 }
