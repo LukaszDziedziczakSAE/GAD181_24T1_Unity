@@ -47,4 +47,10 @@ public class PlayerLevel : MonoBehaviour, ISaveable
             return ExperianceRequriments[Level];
         }
     }
+
+    public void ResetPlayer()
+    {
+        Level = 1;
+        Experiance = 0;
+    }
 }

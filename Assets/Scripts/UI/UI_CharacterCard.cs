@@ -17,6 +17,7 @@ public class UI_CharacterCard : MonoBehaviour
     [SerializeField] RawImage characterImage;
     [SerializeField] Button button;
 
+    UI_CharacterList characterList;
     CharacterConfig config;
     EMode mode;
 
@@ -45,11 +46,12 @@ public class UI_CharacterCard : MonoBehaviour
         button.onClick.RemoveListener(OnButtonPress);
     }
 
-    public void Initilise(CharacterConfig characterConfig)
+    public void Initilise(CharacterConfig characterConfig, UI_CharacterList ui)
     {
+        characterList = ui;
         name = characterConfig.Variant.ToString()+"(Card)";
         config = characterConfig;
-        SetCurrentMode();
+        Reinitilize();
     }
 
     private void UpdateIcon()
@@ -126,7 +128,8 @@ public class UI_CharacterCard : MonoBehaviour
 
             case EMode.Purchasable:
                 Game.Player.Currency.UnlockCharacter(config);
-                SetCurrentMode();
+                //Reinitilize();
+                characterList.ReinitilizeCards();
                 Game.SaveSystem.SaveGameFile();
                 break;
         }
@@ -175,7 +178,7 @@ public class UI_CharacterCard : MonoBehaviour
         }
     }
 
-    private void SetCurrentMode()
+    public void Reinitilize()
     {
         if (config.UnlockLevel == 0 ||
             Game.Player.Currency.CharacterIsUnlocked(config.Variant))

@@ -95,7 +95,19 @@ public class CharacterModel : MonoBehaviour
         [field: SerializeField, Range(0,2)] public int Skin { get; private set; }
         [field: SerializeField] public EColor Color { get; private set; }
 
-        
+        public Config()
+        {
+            Variant = EVariant.Adventure_Peasant_01;
+            Skin = 0;
+            Color = EColor.Default;
+        }
+
+        public Config(EVariant variant)
+        {
+            Variant = variant;
+            Skin = 0;
+            Color = EColor.Default;
+        }
 
         public Config(EVariant variant, int skinIndex, EColor color)
         {

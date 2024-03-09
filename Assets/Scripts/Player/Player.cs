@@ -82,4 +82,15 @@ public class Player : MonoBehaviour, ISaveable
     {
         MatchesPlayed++;
     }
+
+    public void ResetPlayer()
+    {
+        PlayerName = "";
+        CharacterModelConfig = new CharacterModel.Config();
+        MatchesPlayed = 0;
+        Level.ResetPlayer();
+        Currency.ResetPlayer();
+        Game.SaveSystem.SaveGameFile();
+
+    }
 }

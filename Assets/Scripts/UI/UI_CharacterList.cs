@@ -38,7 +38,7 @@ public class UI_CharacterList : MonoBehaviour
             foreach (CharacterConfig config in Game.ConfigsUnlockedAt(i))
             {
                 UI_CharacterCard card = Instantiate(characterCardPrefab, content);
-                card.Initilise(config);
+                card.Initilise(config, this);
                 characterCards.Add(card);
             }
         }
@@ -51,5 +51,13 @@ public class UI_CharacterList : MonoBehaviour
 
         mainMenu.CharacterList.gameObject.SetActive(false);
         mainMenu.PlayerProfile.gameObject.SetActive(true);
+    }
+
+    public void ReinitilizeCards()
+    {
+        foreach (UI_CharacterCard card in characterCards)
+        {
+            card.Reinitilize();
+        }
     }
 }

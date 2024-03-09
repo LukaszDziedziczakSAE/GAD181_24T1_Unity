@@ -46,4 +46,10 @@ public class PlayerCurrency : MonoBehaviour, ISaveable
     {
         return PurchasedCharacters.Contains(variant);
     }
+
+    public void ResetPlayer()
+    {
+        AmountHeld = 0;
+        PurchasedCharacters.Clear();
+    }
 }

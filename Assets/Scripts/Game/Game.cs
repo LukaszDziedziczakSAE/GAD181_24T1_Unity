@@ -65,38 +65,13 @@ public class Game : MonoBehaviour
     private void Start()
     {
         if (SaveSystem.SaveFileExists) SaveSystem.LoadGameFile();
-        else SaveSystem.SaveGameFile();
+        else Player.ResetPlayer();
     }
 
     public static void LoadMainMenu()
     {
         SceneManager.LoadScene(1);
     }
-
-    /*private void OnLevelWasLoaded(int level)
-    {
-        if (level == 0)
-        {
-            Debug.Log("Bootstrap Loaded");
-            return;
-        }
-
-        cameraManager.OnSceneLoad();
-        player = FindAnyObjectByType<Player>();
-
-        UI = FindAnyObjectByType<UI_Main>();
-        if (UI != null) UI.LevelLoaded();
-
-        if (player == null) return;
-        playerCharacter = FindPlayersCharacter();
-        UpdatePlayersCharacterModel();
-
-        if (level == 1) Debug.Log("Main Menu loaded");
-        else Debug.Log("Level " + level + " loaded");
-
-        Match = FindObjectOfType<MinigameMatch>();
-        if (Match != null) Match.Mode = MinigameMatch.EState.preMatch;
-    }*/
 
     public static void UpdatePlayersCharacterModel()
     {
@@ -168,5 +143,11 @@ public class Game : MonoBehaviour
     public static void LoadPortraitMaker()
     {
         SceneManager.LoadScene("PortraitMaker");
+    }
+
+    public static void ResetPlayer()
+    {
+        Player.ResetPlayer();
+        LoadMainMenu();
     }
 }
