@@ -14,6 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BuildIndex>k__BackingField: 5
   <Name>k__BackingField: Jousting
-  <Description>k__BackingField: 
-  <SelectionCardPicture>k__BackingField: {fileID: 0}
-  <StartTitleCardPicture>k__BackingField: {fileID: 0}
+  <Description>k__BackingField: Try to knock your opponent off their horse in this
+    jousting match
+  <SelectionCardPicture>k__BackingField: {fileID: 2800000, guid: 000e2b6e48c5c364e8321cfaf0686bb3,
+    type: 3}
+  <StartTitleCardPicture>k__BackingField: {fileID: 2800000, guid: 000e2b6e48c5c364e8321cfaf0686bb3,
+    type: 3}
+  <Xp1stPlace>k__BackingField: 0
+  <Xp2ndPlace>k__BackingField: 0
+  <Xp3rdPlace>k__BackingField: 0
+  <Xp4thPlace>k__BackingField: 0
+  <XpAdditionalPerPoint>k__BackingField: 0
+  <Gold1stPlace>k__BackingField: 0
+  <Gold2ndPlace>k__BackingField: 0
+  <Gold3rdPlace>k__BackingField: 0
+  <Gold4thPlace>k__BackingField: 0
+  <GoldAdditionalPerPoint>k__BackingField: 0

@@ -12409,9 +12409,13 @@ PrefabInstance:
       value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 42d3f014794107e428b85657a8bbb121, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 42d3f014794107e428b85657a8bbb121, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2398316ccf9154042bf9194415c78d33, type: 2}
+      objectReference: {fileID: 2100000, guid: 2d0fbd9a195a0d44482e915b927272bd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12419,11 +12423,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 42d3f014794107e428b85657a8bbb121,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2006218344}
+      addedObject: {fileID: 2006218345}
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 42d3f014794107e428b85657a8bbb121,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2006218345}
+      addedObject: {fileID: 2006218346}
   m_SourcePrefab: {fileID: 100100000, guid: 42d3f014794107e428b85657a8bbb121, type: 3}
 --- !u!4 &2006218341 stripped
 Transform:
@@ -12431,7 +12435,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2006218340}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &2006218344
+--- !u!114 &2006218345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633314679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1902cdf11ce4b824c8dbb446ea92fc67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCharacter: {fileID: 1304572567}
+  hasCollided: 0
+--- !u!64 &2006218346
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12453,20 +12471,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300020, guid: 1a98e57f2518efe4aaad3aa27e2900fc, type: 3}
---- !u!114 &2006218345
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 633314679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1902cdf11ce4b824c8dbb446ea92fc67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyCharacter: {fileID: 1304572567}
-  hasCollided: 0
 --- !u!1001 &2013753089
 PrefabInstance:
   m_ObjectHideFlags: 0
