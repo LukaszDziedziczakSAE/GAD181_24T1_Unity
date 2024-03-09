@@ -150,4 +150,9 @@ public class Game : MonoBehaviour
         Player.ResetPlayer();
         LoadMainMenu();
     }
+
+    public static void Save()
+    {
+        SaveSystem.SaveGameFile();
+    }
 }
