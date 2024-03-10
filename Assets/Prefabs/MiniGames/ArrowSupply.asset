@@ -17,8 +17,10 @@ MonoBehaviour:
   <Description>k__BackingField: Collect arrows from the supply crates and deliver
     them to the archers defending the wall. Make sure you deliver the correct arrow
     type for each enemy type.
-  <SelectionCardPicture>k__BackingField: {fileID: 0}
-  <StartTitleCardPicture>k__BackingField: {fileID: 0}
+  <SelectionCardPicture>k__BackingField: {fileID: 2800000, guid: 39ff62787a0591b44a66422292f83a6f,
+    type: 3}
+  <StartTitleCardPicture>k__BackingField: {fileID: 2800000, guid: 39ff62787a0591b44a66422292f83a6f,
+    type: 3}
   <Xp1stPlace>k__BackingField: 200
   <Xp2ndPlace>k__BackingField: 150
   <Xp3rdPlace>k__BackingField: 100
