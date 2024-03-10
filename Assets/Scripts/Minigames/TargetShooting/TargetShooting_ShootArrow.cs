@@ -25,7 +25,7 @@ public class TargetShooting_ShootArrow : ArrowShootingMatch
         { 
             GameObject clone = Instantiate(arrowPrefab, arrowFirePoint.position, Quaternion.identity);
 
-            clone.GetComponent<Rigidbody>().velocity = arrowFirePoint.forward * releasePower*100;
+            clone.GetComponent<Rigidbody>().velocity = arrowFirePoint.forward * releasePower*50;
         }
     }
 
