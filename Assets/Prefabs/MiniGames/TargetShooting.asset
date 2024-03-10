@@ -15,15 +15,17 @@ MonoBehaviour:
   <BuildIndex>k__BackingField: 3
   <Name>k__BackingField: Target Shooting
   <Description>k__BackingField: 
-  <SelectionCardPicture>k__BackingField: {fileID: 0}
-  <StartTitleCardPicture>k__BackingField: {fileID: 0}
-  <Xp1stPlace>k__BackingField: 0
-  <Xp2ndPlace>k__BackingField: 0
-  <Xp3rdPlace>k__BackingField: 0
-  <Xp4thPlace>k__BackingField: 0
-  <XpAdditionalPerPoint>k__BackingField: 0
-  <Gold1stPlace>k__BackingField: 0
-  <Gold2ndPlace>k__BackingField: 0
-  <Gold3rdPlace>k__BackingField: 0
-  <Gold4thPlace>k__BackingField: 0
-  <GoldAdditionalPerPoint>k__BackingField: 0
+  <SelectionCardPicture>k__BackingField: {fileID: 2800000, guid: 411750f003035d448818e344430ab914,
+    type: 3}
+  <StartTitleCardPicture>k__BackingField: {fileID: 2800000, guid: 411750f003035d448818e344430ab914,
+    type: 3}
+  <Xp1stPlace>k__BackingField: 3000
+  <Xp2ndPlace>k__BackingField: 2250
+  <Xp3rdPlace>k__BackingField: 1700
+  <Xp4thPlace>k__BackingField: 1000
+  <XpAdditionalPerPoint>k__BackingField: 50
+  <Gold1stPlace>k__BackingField: 2500
+  <Gold2ndPlace>k__BackingField: 2000
+  <Gold3rdPlace>k__BackingField: 1500
+  <Gold4thPlace>k__BackingField: 1000
+  <GoldAdditionalPerPoint>k__BackingField: 50
