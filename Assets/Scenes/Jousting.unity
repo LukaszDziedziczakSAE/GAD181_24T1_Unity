@@ -7601,8 +7601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c90b3d35163ab64e95d89bcdad635f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 0}
-  <HorseSpeed>k__BackingField: 1
+  <Config>k__BackingField: {fileID: 0}
+  <HorseSpeed>k__BackingField: 2
   <MinimumJoustingDistance>k__BackingField: -10
   <MaximumJoustingDistance>k__BackingField: 10
   <EndDistance>k__BackingField: 16
