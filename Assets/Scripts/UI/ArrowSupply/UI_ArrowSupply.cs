@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class UI_ArrowSupply : UI_Main
 {
+    // private GameObject matchStatusUI;
     public override void LevelLoaded()
     {
-        throw new System.NotImplementedException();
+        // throw new System.NotImplementedException();
+        // matchStatusUI.SetActive(true);
     }
 
     // Start is called before the first frame update
