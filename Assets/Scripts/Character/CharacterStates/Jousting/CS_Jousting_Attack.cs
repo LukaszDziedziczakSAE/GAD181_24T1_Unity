@@ -19,7 +19,7 @@ public class CS_Jousting_Attack : CharacterState
 
     public override void StateStart()
     {
-        character.Animator.CrossFade("Attack_Right_Forward_RH", 0.1f);
+        character.Animator.CrossFade("Jousting_Rider_Attack", 0.1f);
         weapon.SetOwner(character);
         weapon.ColiderEnabled(true);
     }

@@ -17,10 +17,12 @@ public class CS_Jousting_Impact : CharacterState
     public override void StateStart()
     {
         other = match.OtherCharacter(character);
-        if (character.PlayerIndex == 1)
+        if (character.PlayerIndex == 1 && character.HorseAnimator != null)
         {
-            character.Animator.CrossFade("Rider_Death", 0.1f);
+            character.Animator.CrossFade("Jousting_Rider_Death", 0.1f);
+            character.HorseAnimator.CrossFade("Jousting_Horse_Death", 0.1f);
         }
+
         match.AwardPlayerPoints(other.PlayerIndex, pointsToAward);
         Debug.Log("You've entered impact state");
     }
