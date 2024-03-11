@@ -5,50 +5,33 @@ using UnityEngine;
 public class CS_Jousting_Attack : CharacterState
 {
     private JoustingMatch match;
-    private Character other;
     private UI_Jousting ui;
-    private CS_Jousting_Riding riding;
     private Jousting_Weapon weapon;
 
-    private bool animationStarted = false;
     private float animationDuration;
     private bool impactState = false; 
 
-    public CS_Jousting_Attack(Character character, Jousting_Weapon weapon) : base(character)
+    public CS_Jousting_Attack(Character character) : base(character)
     {
         match = (JoustingMatch)Game.Match;
-        other = match.OtherCharacter(character.PlayerIndex);
-        this.weapon = weapon;
+        weapon = character.GetComponentInChildren<Jousting_Weapon>();
     }
 
     public override void StateStart()
     {
-        if (character.PlayerIndex == 0 && !animationStarted)
-        {
-            character.Animator.CrossFade("Attack_Right_Forward_RH", 0.1f);
-            animationStarted = true;
-            animationDuration = character.Animator.GetCurrentAnimatorStateInfo(0).length;
-        }
+        character.Animator.CrossFade("Attack_Right_Forward_RH", 0.1f);
+        weapon.SetOwner(character);
+        weapon.ColiderEnabled(true);
     }
 
     public override void Tick()
     {
-        if (animationStarted)
-        {
-            animationDuration -= Time.deltaTime;
-
-            if (animationDuration <= 0)
-            {
-                if (weapon.hasCollided && !impactState)
-                {
-                    character.SetNewState(new CS_Jousting_Impact(character));
-                    impactState = true; 
-                }
-
-                character.SetNewState(new CS_Jousting_Riding(character));
-            }
-        }
         character.transform.position += character.transform.forward * match.HorseSpeed * Time.deltaTime;
+
+        if (character.Animator.GetCurrentAnimatorStateInfo(0).IsTag("JoustingAttack") && character.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        {
+            character.SetNewState(new CS_Jousting_Riding(character));
+        }
     }
 
     public override void FixedTick()
@@ -57,6 +40,6 @@ public class CS_Jousting_Attack : CharacterState
 
     public override void StateEnd()
     {
-        animationStarted = false;
+        weapon.ColiderEnabled(false);
     }
 }

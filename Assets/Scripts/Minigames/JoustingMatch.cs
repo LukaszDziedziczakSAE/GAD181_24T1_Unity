@@ -30,15 +30,17 @@ public class JoustingMatch : MinigameMatch
         }
     }
 
-    public Character OtherCharacter(int playerIndex)
+    public Character OtherCharacter(Character character)
     {
-        if (playerIndex == 0)
-        {
-            return Game.CharacterByIndex(1);
-        }
-        else if (playerIndex == 1)
+        if (character == null) Debug.LogError("missing character referance");
+
+        if (character.PlayerIndex == 0)
         {
             return Game.CharacterByIndex(0);
+        }
+        else if (character.PlayerIndex == 1)
+        {
+            return Game.CharacterByIndex(1);
         }
 
         return null;
@@ -51,13 +53,5 @@ public class JoustingMatch : MinigameMatch
             character.SetNewState(new CS_Jousting_Idle(character));
             //Debug.Log("Player Reached End");
         }
-    }
-
-    public void PlayerAttack(Character character)
-    {
-        if (character.PlayerIndex == 0)
-        {
-            character.SetNewState(new CS_Jousting_Attack(character, weapon));
-        }       
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,19 +6,28 @@ using UnityEngine;
 public class CS_Jousting_Riding : CharacterState
 {
     private JoustingMatch match;
-    private Character other;
     private UI_Jousting ui;
-
+    private Character other;
     public CS_Jousting_Riding(Character character) : base(character)
     {
         match = (JoustingMatch)Game.Match;
-        other = match.OtherCharacter(character.PlayerIndex);
         ui = (UI_Jousting)Game.UI;
+        other = match.OtherCharacter(character);
     }
 
     public override void StateStart()
     {
-        if (character.PlayerIndex == 0)
+        ui.JoustingIndicator.gameObject.SetActive(true);
+        character.Animator.CrossFade("Rider_Gallop", 0.1f);
+
+        if (character.HorseAnimator != null)
+        {
+            character.HorseAnimator.CrossFade("LocomotionBlend", 0.1f);
+            character.HorseAnimator.SetFloat("speed", 1);
+        }
+
+        
+        /*if (character.PlayerIndex == 0)
         {
             ui.JoustingIndicator.gameObject.SetActive(true);
             character.Animator.CrossFade("Rider_Gallop", 0.1f);
@@ -27,9 +37,11 @@ public class CS_Jousting_Riding : CharacterState
         {
             ui.EnemyJoustingIndicator.gameObject.SetActive(true);
             character.Animator.CrossFade("Rider_Gallop", 0.1f);
-        }
+        }*/
 
         //Debug.Log("You've entered riding state");
+
+        if (IsPlayerCharacter) Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
     }
 
     public override void Tick()
@@ -50,10 +62,12 @@ public class CS_Jousting_Riding : CharacterState
             ui.EnemyJoustingIndicator.UpdateStrikingDistanceIndicator(IsWithinJoustingDistance());
         }
 
-        if (Game.InputReader.TouchPressed && IsWithinJoustingDistance())
+        /*if (Game.InputReader.TouchPressed && IsWithinJoustingDistance())
         {
             match.PlayerAttack(character);
-        }
+        }*/
+
+
     }
 
     public override void FixedTick()
@@ -72,6 +86,8 @@ public class CS_Jousting_Riding : CharacterState
         {
             ui.EnemyJoustingIndicator.gameObject.SetActive(false);
         }
+
+        if (IsPlayerCharacter) Game.InputReader.OnTouchPressed -= InputReader_OnTouchPressed;
     }
 
     private float Distance()
@@ -118,5 +134,11 @@ public class CS_Jousting_Riding : CharacterState
     {
         float position = PlayerPosition();
         return position >= match.EndDistance;
+    }
+
+
+    private void InputReader_OnTouchPressed()
+    {
+        character.SetNewState(new CS_Jousting_Attack(character));
     }
 }
