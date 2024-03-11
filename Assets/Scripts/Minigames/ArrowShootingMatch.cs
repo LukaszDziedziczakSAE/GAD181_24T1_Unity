@@ -7,6 +7,7 @@ public class ArrowShootingMatch : MinigameMatch
 
     [field: SerializeField] public float MinimumDrawDistanceToFire { get; private set; }
     [field: SerializeField] public float MaximumDrawDistanceToFire { get; private set; }
+    [field: SerializeField] public TargetShooting_TargetController TargetController { get; private set; }
     protected override MatchResult DetermineResult()
     {
         return new MatchResult();
@@ -18,6 +19,9 @@ public class ArrowShootingMatch : MinigameMatch
         {
             character.SetNewState(new CS_Archering_Standing(character));
         }
+
+        TargetController.LowerAllTargets();
+        TargetController.RaiseRandomTarget();
     }
 
 }
