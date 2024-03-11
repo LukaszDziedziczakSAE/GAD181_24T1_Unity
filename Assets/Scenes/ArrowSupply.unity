@@ -1405,7 +1405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0918d500c9e2f74cbf210a7d3b9ca62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 11400000, guid: 42d0d1fb8ea71e64281e79049737105a, type: 2}
+  <Config>k__BackingField: {fileID: 0}
   matchLength: 60
   selectionIndicatorPrefab: {fileID: 6947832909539836958, guid: b0bac047792c7fc42a0fdd6382acd1a0,
     type: 3}

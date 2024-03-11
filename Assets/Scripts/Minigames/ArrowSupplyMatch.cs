@@ -24,10 +24,6 @@ public class ArrowSupplyMatch : MinigameMatch
     {
         base.PrematchTick();
 
-        /*if (pickUpSpawner == null || pickUpSpawner.SpawnComplete)
-        {
-            Mode = EState.inProgress;
-        }*/
     }
 
     protected override void MatchStart()
