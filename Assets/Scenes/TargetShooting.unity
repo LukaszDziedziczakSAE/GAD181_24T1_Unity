@@ -2107,7 +2107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fff22b405864d94aa0f7102c3995133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  config: {fileID: 0}
+  <Config>k__BackingField: {fileID: 0}
   <MinimumDrawDistanceToFire>k__BackingField: 20
   <MaximumDrawDistanceToFire>k__BackingField: 400
 --- !u!1001 &717565138
@@ -3322,9 +3322,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1427313747769011719, guid: 96e415dcd80e7764fb89fe7ea155c74b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1151892441}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5148530311918736658, guid: 96e415dcd80e7764fb89fe7ea155c74b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1116940824}
   m_SourcePrefab: {fileID: 100100000, guid: 96e415dcd80e7764fb89fe7ea155c74b, type: 3}
+--- !u!1 &1116940823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5148530311918736658, guid: 96e415dcd80e7764fb89fe7ea155c74b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1116940822}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1116940824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116940823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a221eded4ab4e84ebd5792d78b792ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 8628986355313709899, guid: f67455fbe78966144a6745fdef37b001,
+    type: 3}
+  firePoint: {fileID: 1151892441}
+--- !u!4 &1116940825 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1427313747769011719, guid: 96e415dcd80e7764fb89fe7ea155c74b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1116940822}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1151892436
 GameObject:
   m_ObjectHideFlags: 0
@@ -3337,7 +3372,6 @@ GameObject:
   - component: {fileID: 1151892440}
   - component: {fileID: 1151892439}
   - component: {fileID: 1151892438}
-  - component: {fileID: 1151892437}
   m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
@@ -3345,24 +3379,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1151892437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1151892436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06fa263810d409246a727dc075b95a22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  config: {fileID: 0}
-  <MinimumDrawDistanceToFire>k__BackingField: 0
-  <MaximumDrawDistanceToFire>k__BackingField: 100
-  arrowPrefab: {fileID: 1326218988840458, guid: 2db46e9382a0e8f498a75b93cbf613d5,
-    type: 3}
-  arrowFirePoint: {fileID: 1151892441}
 --- !u!65 &1151892438
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3442,12 +3458,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151892436}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5095758, y: 0.269, z: -0.924}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.08957577, y: 0.269, z: 0.26600003}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1116940825}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1160234425
 GameObject:
@@ -7175,5 +7191,4 @@ SceneRoots:
   - {fileID: 2119771583}
   - {fileID: 1292229227}
   - {fileID: 1821170757}
-  - {fileID: 1151892441}
   - {fileID: 1400268153}

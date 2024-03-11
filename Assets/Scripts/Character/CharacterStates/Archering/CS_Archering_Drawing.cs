@@ -19,7 +19,7 @@ public class CS_Archering_Drawing : CharacterState
     
     public override void StateStart()
     {
-        Game.InputReader.OnTouchReleased += InputReader_OnTouchReleased;
+        if (IsPlayerCharacter) Game.InputReader.OnTouchReleased += InputReader_OnTouchReleased;
         ui.ArrowShootingIndicator.gameObject.SetActive(true);
         startingYPostition = Game.InputReader.TouchPosition.y;        
         character.Animator.CrossFade("TargetShooting_DrawBlend", 0.1f);
@@ -51,7 +51,7 @@ public class CS_Archering_Drawing : CharacterState
 
     public override void StateEnd()
     {
-        Game.InputReader.OnTouchReleased -= InputReader_OnTouchReleased;
+        if (IsPlayerCharacter) Game.InputReader.OnTouchReleased -= InputReader_OnTouchReleased;
         ui.ArrowShootingIndicator.gameObject.SetActive(false);
         
     }
