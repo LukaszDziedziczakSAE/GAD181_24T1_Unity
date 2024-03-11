@@ -107,7 +107,7 @@ public abstract class MinigameMatch : MonoBehaviour
             Character[] inLevel = FindObjectsOfType<Character>();
             foreach (Character character in inLevel)
             {
-                if (character.PlayerIndex >= 0) result.Add(character);
+                if (character.PlayerIndex >= 0 && character.PlayerIndex < 100) result.Add(character);
             }
 
             return result.ToArray();

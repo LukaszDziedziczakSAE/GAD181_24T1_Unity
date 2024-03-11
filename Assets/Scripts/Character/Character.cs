@@ -20,6 +20,7 @@ public class Character : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerIndex >= 100) return;
         if (PlayerIndex != 0) Model.SetNewConfig(StartingConfig);
         //else Model.HideAllModels();
     }
@@ -36,11 +37,16 @@ public class Character : MonoBehaviour
 
     public void SetNewState(CharacterState newState)
     {
-        Debug.Log(name + ": Setting new state " + newState.GetType().ToString());
+        if (PlayerIndex == 0 || PlayerIndex == 101) Debug.Log(name + ": Setting new state " + newState.GetType().ToString());
         if (State != null) State.StateEnd();
         State = newState;
         State.StateStart();
     }
 
     public static System.Type ScavangerLocomotionType => (new CS_ScavangerLocomotion(Game.PlayerCharacter)).GetType();
+
+    public void SetToEnemyInArrowSupply()
+    {
+        PlayerIndex = 102;
+    }
 }

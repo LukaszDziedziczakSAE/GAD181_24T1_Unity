@@ -350,6 +350,7 @@ MonoBehaviour:
   <RightHand>k__BackingField: {fileID: 5439207758885815481}
   <LeftHand>k__BackingField: {fileID: 5439068935292717451}
   <NavMeshAgent>k__BackingField: {fileID: 252950230933403302}
+  <HorseAnimator>k__BackingField: {fileID: 0}
 --- !u!136 &9047708930033450011
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -398,7 +399,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!195 &252950230933403302
 NavMeshAgent:
@@ -6547,6 +6548,7 @@ GameObject:
   - component: {fileID: 5432516499628952397}
   - component: {fileID: 5348626877554781363}
   - component: {fileID: 446359429324784074}
+  - component: {fileID: 8054120343189394478}
   m_Layer: 3
   m_Name: Model
   m_TagString: Untagged
@@ -6849,6 +6851,18 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 900e76f7e15e38d48b828b60dfc5ebbb, type: 3}
   - {fileID: 2800000, guid: c6330c16eb206204091025c905b5ea61, type: 3}
   - {fileID: 2800000, guid: 4aa83ad8306310e4eae64bdea150ebbd, type: 3}
+--- !u!114 &8054120343189394478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5435611001541647709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10d84aa8e6ed1f4d9ab83db9bcfa69f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5435613502699336089
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,17 +10,17 @@ public class EnemyDespawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-        if (other.CompareTag("Enemy"))
-        {
-            foreach (Character character in match.Compeditors)
-            {
-                match.AwardPlayerPoints(character.PlayerIndex, -pointsDeducted);
-            }
+        Character enemy = other.GetComponent<Character>();
+        if (enemy == null || enemy.PlayerIndex != 102) return;
 
-            Game.UI.UpdateMatchStatus();
-            
-            Destroy(other.gameObject);
+
+        foreach (Character character in match.Compeditors)
+        {
+            match.AwardPlayerPoints(character.PlayerIndex, -pointsDeducted);
         }
+
+        Game.UI.UpdateMatchStatus();
+
+        Destroy(other.gameObject);
     }
 }

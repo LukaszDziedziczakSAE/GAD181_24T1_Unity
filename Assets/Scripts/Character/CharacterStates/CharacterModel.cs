@@ -163,6 +163,7 @@ public class CharacterModel : MonoBehaviour
 
     public void SetNewConfig(Config newConfig)
     {
+        //Debug.Log("Setting new config " + newConfig.Variant.ToString());
         CurrentConfig = newConfig;
         UpdateModel();
     }

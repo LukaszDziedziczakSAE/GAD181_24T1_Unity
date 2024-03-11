@@ -5,7 +5,7 @@ using UnityEngine;
 public class ArrowSupplyMatch : MinigameMatch
 {
     [SerializeField] float matchLength = 60;
-
+    [field: SerializeField] public float EnemySpeed { get; private set; } = 1;
     [SerializeField] GameObject selectionIndicatorPrefab;
 
     public float MatchTimeRemaining => matchLength - MatchTime;
@@ -15,7 +15,7 @@ public class ArrowSupplyMatch : MinigameMatch
         return new MatchResult();
     }
 
-    protected async override void PrematchStart()
+    protected override void PrematchStart()
     { 
         base.PrematchStart();
     }
@@ -30,7 +30,12 @@ public class ArrowSupplyMatch : MinigameMatch
     {
         foreach (Character character in Compeditors)
         {
-            character.SetNewState(new CS_ArrowSupply_States(character));
+            character.SetNewState(new CS_ArrowSupply_Locomotion(character));
+        }
+
+        foreach (Character archer in Archers)
+        {
+            archer.SetNewState(new CS_ArrowSupply_ArcherWaiting(archer));
         }
 
         Game.UI.MatchStatus.gameObject.SetActive(true);
@@ -55,5 +60,37 @@ public class ArrowSupplyMatch : MinigameMatch
     public void ShowTouchIndicator(Vector3 position)
     {
         GameObject selectionIndicator = Instantiate(selectionIndicatorPrefab, position, Quaternion.identity);
+    }
+
+    public Character[] Archers
+    {
+        get
+        {
+            List<Character> archers = new List<Character>();
+
+            Character[] inLevel = FindObjectsOfType<Character>();
+            foreach (Character character in inLevel)
+            {
+                if (character.PlayerIndex == 101) archers.Add(character);
+            }
+
+            return archers.ToArray();
+        }
+    }
+
+    public Character[] AS_Enemies
+    {
+        get
+        {
+            List<Character> archers = new List<Character>();
+
+            Character[] inLevel = FindObjectsOfType<Character>();
+            foreach (Character character in inLevel)
+            {
+                if (character.PlayerIndex == 102) archers.Add(character);
+            }
+
+            return archers.ToArray();
+        }
     }
 }
