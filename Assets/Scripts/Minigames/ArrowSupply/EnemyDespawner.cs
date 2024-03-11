@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemyDespawner : MonoBehaviour
 {
-    [SerializeField] int pointsDeducted = 1; // Change to positive value for deduction
+    [SerializeField] int pointsDeducted = 1; 
 
     ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
 
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the collider belongs to an enemy
+        
         if (other.CompareTag("Enemy"))
         {
             foreach (Character character in match.Compeditors)
@@ -19,7 +19,7 @@ public class EnemyDespawner : MonoBehaviour
             }
 
             Game.UI.UpdateMatchStatus();
-            // Destroy the enemy
+            
             Destroy(other.gameObject);
         }
     }
