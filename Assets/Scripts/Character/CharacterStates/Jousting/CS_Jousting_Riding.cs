@@ -18,7 +18,7 @@ public class CS_Jousting_Riding : CharacterState
     public override void StateStart()
     {
         ui.JoustingIndicator.gameObject.SetActive(true);
-        character.Animator.CrossFade("Rider_Gallop", 0.1f);
+        character.Animator.CrossFade("Jousting_Rider_Gallop", 0.1f);
 
         if (character.HorseAnimator != null)
         {

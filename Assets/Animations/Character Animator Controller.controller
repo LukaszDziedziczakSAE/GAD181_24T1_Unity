@@ -53,7 +53,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rider_Idle
+  m_Name: Jousting_Rider_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -79,7 +79,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rider_Death
+  m_Name: Jousting_Rider_Death
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -131,7 +131,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Rider_Gallop
+  m_Name: Jousting_Rider_Gallop
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -189,8 +189,8 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack_Right_Forward_RH
-  m_Speed: 0.75
+  m_Name: Jousting_Rider_Attack
+  m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -202,7 +202,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ebc6d3b2d8004704fa4c21dc4a0ea681, type: 3}
+  m_Motion: {fileID: 7400084, guid: 963c602205c554940aa8cac531de90a5, type: 3}
   m_Tag: JoustingAttack
   m_SpeedParameter: 
   m_MirrorParameter: 

@@ -14,7 +14,8 @@ public class CS_Jousting_Idle : CharacterState
     public override void StateStart()
     {
         ui.EndIndicator.UpdateEndIndicator(true);
-        character.Animator.CrossFade("Rider_Idle", 0.1f);
+        character.Animator.CrossFade("Jousting_Rider_Idle", 0.1f);
+        character.HorseAnimator.CrossFade("Jousting_Horse_Idle", 0.1f);
         //Debug.Log("Player in idle state");
     }
 
