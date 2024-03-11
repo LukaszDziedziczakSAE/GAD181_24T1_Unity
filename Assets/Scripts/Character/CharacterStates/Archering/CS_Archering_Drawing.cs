@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class CS_Archering_Drawing : CharacterState
     private UI_TargetShooting ui;
     private TargetShooting_ShootArrow arrow;
     float startingYPostition;
+    
     public CS_Archering_Drawing(Character character) : base(character)
     {
         ui = (UI_TargetShooting)Game.UI;
@@ -32,7 +34,8 @@ public class CS_Archering_Drawing : CharacterState
             return;
         }
         float currentYPosition= Game.InputReader.TouchPosition.y;
-        float distance = startingYPostition - currentYPosition;
+        float distance = startingYPostition - currentYPosition;       
+
         if (distance < 0) 
         {
             distance = 0;        
@@ -75,4 +78,6 @@ public class CS_Archering_Drawing : CharacterState
 
 
     }
+
+    
 }

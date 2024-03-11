@@ -5,7 +5,7 @@ using UnityEngine;
 public class TargetShooting_Arrow : MonoBehaviour
 {
     [SerializeField] float speed = 10;
-    [SerializeField] float timeToLive = 15f;
+    [SerializeField] float timeToLive = 5f;
     [SerializeField] LayerMask hittableLayers;
     [SerializeField] float drop = 1f;
 
