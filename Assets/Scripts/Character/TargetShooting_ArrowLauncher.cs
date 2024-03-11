@@ -9,6 +9,7 @@ public class TargetShooting_ArrowLauncher : MonoBehaviour
 
     public void FireArrow()
     {
-        TargetShooting_Arrow arrow = Instantiate(arrowPrefab, firePoint);
+        Debug.Log("Firing arrow");
+        TargetShooting_Arrow arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
     }
 }

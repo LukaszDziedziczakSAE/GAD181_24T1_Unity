@@ -10,16 +10,23 @@ public class TargetShooting_Arrow : MonoBehaviour
 
     float birthTime;
     float timeAlive => Time.time - birthTime;
+    bool hitSomething;
 
     private void Start()
     {
+        Debug.Log("Arrow Spawned");
         birthTime = Time.time;
     }
 
     private void Update()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
+        if (!hitSomething) transform.position += transform.forward * speed * Time.deltaTime;
 
         if (timeAlive >= timeToLive) Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        hitSomething = true;
     }
 }
