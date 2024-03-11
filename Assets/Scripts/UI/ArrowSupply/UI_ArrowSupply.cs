@@ -8,7 +8,7 @@ public class UI_ArrowSupply : UI_Main
     public override void LevelLoaded()
     {
         // throw new System.NotImplementedException();
-        // matchStatusUI.SetActive(true);
+        
     }
 
     // Start is called before the first frame update
