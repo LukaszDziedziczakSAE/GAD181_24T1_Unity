@@ -56,13 +56,25 @@ public class CS_Jousting_Riding : CharacterState
             ui.EndIndicator.UpdateEndIndicator(ReachedEnd());
             match.PlayerReachedEnd(character);
           
-            if (horizontalInput < 0) 
+            if (horizontalInput == 0)
             {
-                character.transform.Rotate(Vector3.up, -match.TurnSpeed * Time.deltaTime); 
+                //character.transform.position += movementDirection.normalized * match.HorseSpeed * Time.deltaTime;
+                character.Animator.CrossFade("Jousting_Rider_Gallop", 0.1f);
+                character.HorseAnimator.CrossFade("LocomotionBlend", 0.1f);
+                character.HorseAnimator.SetFloat("speed", 1);
+            }
+
+            else if (horizontalInput < 0) 
+            {
+                character.transform.Rotate(Vector3.up, -match.TurnSpeed * Time.deltaTime);
+                character.Animator.CrossFade("Jousting_Rider_Left", 0.1f);
+                //character.HorseAnimator.CrossFade("Jousting_Horse_Left", 0.1f);
             }
             else if (horizontalInput > 0) 
             {
-                character.transform.Rotate(Vector3.up, match.TurnSpeed * Time.deltaTime); 
+                character.transform.Rotate(Vector3.up, match.TurnSpeed * Time.deltaTime);
+                character.Animator.CrossFade("Jousting_Rider_Right", 0.1f);
+                //character.Animator.CrossFade("Jousting_Horse_Right", 0.1f);
             }
         }
         else if (character.PlayerIndex == 1)
