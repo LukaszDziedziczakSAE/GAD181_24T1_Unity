@@ -6,6 +6,7 @@ public class CharacterSounds : MonoBehaviour
 {
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip[] aSounds;
+    [SerializeField] AudioClip[] grunts;
 
     private void PlayAudioClip(AudioClip clip)
     {
@@ -21,5 +22,12 @@ public class CharacterSounds : MonoBehaviour
         if (aSounds.Length == 0) return;
 
         PlayAudioClip(aSounds[Random.Range(0, aSounds.Length)]);
+    }
+
+    public void PlayGruntSound()
+    {
+        if (grunts.Length == 0) return;
+
+        PlayAudioClip(grunts[Random.Range(0, grunts.Length)]);
     }
 }
