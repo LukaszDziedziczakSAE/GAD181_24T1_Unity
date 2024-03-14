@@ -6,6 +6,12 @@ public class TargetShooting_ArrowLauncher : MonoBehaviour
 {
     [SerializeField] TargetShooting_Arrow arrowPrefab;
     [SerializeField] Transform firePoint;
+    [SerializeField] Character owner;
+
+    private void Awake()
+    {
+        if (owner == null) owner = GetComponent<Character>();
+    }
 
     public void FireArrow(float intakePower)
     {
@@ -13,7 +19,7 @@ public class TargetShooting_ArrowLauncher : MonoBehaviour
         TargetShooting_Arrow arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
         //arrow.transform.forward *= intakePower;
 
-        arrow.SetPower(intakePower);
+        arrow.Initilise(intakePower, owner);
 
     }
 }

@@ -3618,6 +3618,7 @@ MonoBehaviour:
   arrowPrefab: {fileID: 8628986355313709899, guid: f67455fbe78966144a6745fdef37b001,
     type: 3}
   firePoint: {fileID: 1151892441}
+  owner: {fileID: 1116940834}
 --- !u!114 &1116940830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3631,6 +3632,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+--- !u!114 &1116940834 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5869033966178870261, guid: 96e415dcd80e7764fb89fe7ea155c74b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1116940822}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116940823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e8b95ba66f2de488b292f04899a7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1151892436
 GameObject:
   m_ObjectHideFlags: 0

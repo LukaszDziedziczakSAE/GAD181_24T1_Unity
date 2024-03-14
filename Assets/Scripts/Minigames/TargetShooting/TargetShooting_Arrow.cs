@@ -8,20 +8,23 @@ public class TargetShooting_Arrow : MonoBehaviour
     [SerializeField] float timeToLive = 5f;
     [SerializeField] LayerMask hittableLayers;
     [SerializeField] float drop = 1f;
+    [SerializeField] int pointPerTargetHit = 1;
 
     float power = 1f;
     float birthTime;
     float timeAlive => Time.time - birthTime;
     bool hitSomething;
-    ArrowShootingMatch match;
+    //ArrowShootingMatch match;
 
     float speed => baseSpeed * power;
+    Character owner;
+    ArrowShootingMatch match => (ArrowShootingMatch)Game.Match;
 
     private void Start()
     {
         Debug.Log("Arrow Spawned");
         birthTime = Time.time;
-        match = (ArrowShootingMatch)Game.Match;
+        //match = (ArrowShootingMatch)Game.Match;
     }
 
     private void Update()
@@ -49,12 +52,15 @@ public class TargetShooting_Arrow : MonoBehaviour
             match.TargetController.RaiseRandomTarget();
             transform.parent = target.transform;
             target.StartRotatingDown();
+
+            match.AwardPlayerPoints(owner.PlayerIndex, pointPerTargetHit);
         }
 
     }
 
-    public void SetPower(float newPowerValue)
+    public void Initilise(float newPowerValue, Character character)
     {
+        owner = character;
         power = newPowerValue;
     }
 }
