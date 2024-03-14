@@ -13,6 +13,7 @@ public class CS_Archering_Standing : CharacterState
         
         Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
         character.Animator.CrossFade("TargetShooting_BowIdle", 0.1f);
+        character.transform.eulerAngles = new UnityEngine.Vector3(character.transform.eulerAngles.x, 0, character.transform.eulerAngles.z);
     }
     
     public override void Tick()

@@ -40,6 +40,7 @@ public class TargetShooting_CharacterRotation : MonoBehaviour
 
         float angle = Mathf.Atan2(heading.y, heading.x) * Mathf.Rad2Deg + 90;
         player.rotation = Quaternion.Euler(0, 0, angle);
+        //player.eulerAngles = new Vector3(0, 0, angle);
     }
 }
 

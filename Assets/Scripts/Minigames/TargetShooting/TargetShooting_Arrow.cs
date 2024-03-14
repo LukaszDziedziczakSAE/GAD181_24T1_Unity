@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class TargetShooting_Arrow : MonoBehaviour
 {
-    [SerializeField] float speed = 10;
+    [SerializeField] float baseSpeed = 10;
     [SerializeField] float timeToLive = 5f;
     [SerializeField] LayerMask hittableLayers;
     [SerializeField] float drop = 1f;
 
+    float power = 1f;
     float birthTime;
     float timeAlive => Time.time - birthTime;
     bool hitSomething;
     ArrowShootingMatch match;
+
+    float speed => baseSpeed * power;
 
     private void Start()
     {
@@ -45,8 +48,13 @@ public class TargetShooting_Arrow : MonoBehaviour
         {
             match.TargetController.RaiseRandomTarget();
             transform.parent = target.transform;
-            target.SetDownRoation();
+            target.StartRotatingDown();
         }
 
+    }
+
+    public void SetPower(float newPowerValue)
+    {
+        power = newPowerValue;
     }
 }

@@ -15,15 +15,19 @@ public class CS_Archering_Releasing : CharacterState
 
     public override void StateStart()
     {
-        character.SetNewState(new CS_Archering_Standing(character));
-        //character.Animator.CrossFade("TargetShooting_BowIdle", 0.1f);
+        //character.SetNewState(new CS_Archering_Standing(character));
+        character.Animator.CrossFade("TargetShooting_ArrowShoot", 0.1f);
 
         arrowLauncher.FireArrow(drawPower);
     }
 
     public override void Tick()
     {
-        character.SetNewState(new CS_Archering_Standing(character));
+        if (character.Animator.GetCurrentAnimatorStateInfo(0).IsTag("ArrowShoot") && character.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        {
+            character.SetNewState(new CS_Archering_Standing(character));
+        }
+        
     }
     public override void FixedTick()
     {
