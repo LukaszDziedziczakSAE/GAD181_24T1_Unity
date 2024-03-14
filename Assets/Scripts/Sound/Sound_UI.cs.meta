@@ -3,7 +3,12 @@ guid: df0b38eea943d3b47b8b94b33e704f40
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - audioSource: {instanceID: 0}
+  - buttonPress: {fileID: 8300000, guid: 55c4b85b12ee32541b76c44e424c4fcd, type: 3}
+  - buttonPressConfirm: {fileID: 8300000, guid: 6e152bae3e6a9334f91463bb501f1bc5,
+      type: 3}
+  - buttonPressCancel: {fileID: 8300000, guid: 34b9f93e5b21d1541954e88d11a1b870, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
