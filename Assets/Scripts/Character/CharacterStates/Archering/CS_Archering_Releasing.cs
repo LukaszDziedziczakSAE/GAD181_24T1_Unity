@@ -18,7 +18,7 @@ public class CS_Archering_Releasing : CharacterState
         character.SetNewState(new CS_Archering_Standing(character));
         //character.Animator.CrossFade("TargetShooting_BowIdle", 0.1f);
 
-        arrowLauncher.FireArrow();
+        arrowLauncher.FireArrow(drawPower);
     }
 
     public override void Tick()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetShooting_ShootArrow : ArrowShootingMatch
+public class TargetShooting_ShootArrow : ArrowShootingMatch//not in use
 {
 
     [SerializeField] protected GameObject arrowPrefab;

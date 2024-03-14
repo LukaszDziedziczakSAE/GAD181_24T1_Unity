@@ -147,12 +147,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775a73c4cf5b3cb49ba66ad7311aa844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
-  timeToLive: 15
+  speed: 5
+  timeToLive: 3
   hittableLayers:
     serializedVersion: 2
     m_Bits: 64
   drop: 5
+  birthTime: 0
+  hitSomething: 0
 --- !u!65 &5557168966456808451
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -33,18 +33,18 @@ public class CS_Archering_Drawing : CharacterState
         {
             return;
         }
-        float currentYPosition= Game.InputReader.TouchPosition.y;
-        float distance = startingYPostition - currentYPosition;       
+        float currentYPosition = Game.InputReader.TouchPosition.y;
+        float distance = startingYPostition - currentYPosition;
 
-        if (distance < 0) 
+        if (distance < 0)
         {
-            distance = 0;        
+            distance = 0;
         }
         ui.ArrowShootingIndicator.UpdateDrawDistance(distance);
         float distanceNormalized = distance / match.MaximumDrawDistanceToFire;
         distanceNormalized = Mathf.Clamp(distanceNormalized, 0, 1);
         //arrow.ShootArrow(distanceNomalized)
-        
+
         character.Animator.SetFloat("DrawStrength", distanceNormalized);
     }
     public override void FixedTick()
@@ -79,5 +79,18 @@ public class CS_Archering_Drawing : CharacterState
 
     }
 
+    void CalculateLaunchPower()
+    {
+        float currentYPosition = Game.InputReader.TouchPosition.y;
+        float distance = startingYPostition - currentYPosition;
+
+        if (distance < 0)
+        {
+            distance = 0;
+        }
+        ui.ArrowShootingIndicator.UpdateDrawDistance(distance);
+        float distanceNormalized = distance / match.MaximumDrawDistanceToFire;
+        distanceNormalized = Mathf.Clamp(distanceNormalized, 0, 1);
+    }
     
 }

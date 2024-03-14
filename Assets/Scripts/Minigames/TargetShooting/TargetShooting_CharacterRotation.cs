@@ -7,7 +7,7 @@ public class TargetShooting_CharacterRotation : MonoBehaviour
     float startingYPostition;
     float startingXPostition;
     [SerializeField] Transform player;
-    Quaternion resetPlayerRotation;
+    //Quaternion resetPlayerRotation ;
 
     void VerticalAiming()
     {
@@ -25,12 +25,15 @@ public class TargetShooting_CharacterRotation : MonoBehaviour
 
         player.rotation = Quaternion.Euler(0, aimDirectionXAxis, 0);
 
-        
+
+
     }
 
 
     private void CharacterRotation()
     {
+        
+        Vector3 resetPlayerRotation ;
         Vector3 playerScreenPosition = Camera.main.WorldToScreenPoint(player.position);
         Vector3 aimDirection = Input.mousePosition;
         Vector3 heading = playerScreenPosition - aimDirection;
