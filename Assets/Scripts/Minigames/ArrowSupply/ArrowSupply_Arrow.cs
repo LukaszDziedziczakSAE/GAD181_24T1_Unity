@@ -11,6 +11,8 @@ public class ArrowSupply_Arrow : MonoBehaviour
     [SerializeField] ParticleSystem iceParticles;
     [SerializeField] ParticleSystem fireParticles;
     [SerializeField] Vector3 heightOffSet;
+    [SerializeField] int damageAmount = 1; // Define damageAmount
+
 
     [field: SerializeField] public EType Type {  get; private set; }
     Character owner;
@@ -59,10 +61,19 @@ public class ArrowSupply_Arrow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!launched) return;
+        
+            if (!launched) return;
 
-        hitSomething = true;
+            hitSomething = true;
 
+            Debug.Log("hit");
+
+            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(damageAmount, Type); // Pass damageAmount when calling TakeDamage
+            }
+        
         /*TargetShooting_Target target = other.GetComponent<TargetShooting_Target>();
         if (target != null)
         {
@@ -71,9 +82,10 @@ public class ArrowSupply_Arrow : MonoBehaviour
             target.SetDownRoation();
         }*/
 
+    
     }
 
-    public void Launch(Character owner, Character target)
+        public void Launch(Character owner, Character target)
     {
         launched = true;
         this.owner = owner;

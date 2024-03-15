@@ -17,6 +17,7 @@ public class Character : MonoBehaviour
     [field: SerializeField] public NavMeshAgent NavMeshAgent { get; private set; }
     /*[field: SerializeField]*/ public CharacterState State { get; private set; }
     [field: SerializeField] public Animator HorseAnimator { get; private set; }
+    [field: SerializeField] public CharacterSounds Sounds { get; private set; }
 
     private void Start()
     {

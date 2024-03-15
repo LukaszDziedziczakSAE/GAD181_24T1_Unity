@@ -9,7 +9,7 @@ public class JoustingMatch : MinigameMatch
     [field: SerializeField] public float MinimumJoustingDistance { get; private set; }
     [field: SerializeField] public float MaximumJoustingDistance { get; private set; }
     [field: SerializeField] public float EndDistance { get; private set; }
-    [field: SerializeField] public GameObject Horse { get; private set; }
+    [field: SerializeField] public float TurnSpeed { get; private set; }
 
     private Jousting_Weapon weapon;
 

@@ -9,6 +9,6 @@ public class ArrowSupplyEnemy : MonoBehaviour
     private void Update()
     {
         
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);// Move the enemy forward
+        transform.Translate(Vector3.forward * speed * Time.deltaTime); // Move the enemy forward
     }
 }
