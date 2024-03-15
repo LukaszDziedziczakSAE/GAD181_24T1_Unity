@@ -11,7 +11,7 @@ public class ArrowSupply_Arrow : MonoBehaviour
     [SerializeField] ParticleSystem iceParticles;
     [SerializeField] ParticleSystem fireParticles;
     [SerializeField] Vector3 heightOffSet;
-    [SerializeField] int damageAmount = 1; // Define damageAmount
+    [SerializeField] int damageAmount = 1; 
 
 
     [field: SerializeField] public EType Type {  get; private set; }
@@ -73,6 +73,10 @@ public class ArrowSupply_Arrow : MonoBehaviour
             {
                 enemyHealth.TakeDamage(damageAmount, Type); // Pass damageAmount when calling TakeDamage
             }
+            else
+            {
+            Debug.Log("No enemy health");
+            }
         
         /*TargetShooting_Target target = other.GetComponent<TargetShooting_Target>();
         if (target != null)
@@ -85,11 +89,21 @@ public class ArrowSupply_Arrow : MonoBehaviour
     
     }
 
-        public void Launch(Character owner, Character target)
+    public void Launch(Character owner, Character target)
     {
         launched = true;
         this.owner = owner;
         this.target = target;
+        StartCoroutine(EnableColliderAfterDelay());
+    }
+
+    IEnumerator EnableColliderAfterDelay()
+    {
+        // Wait for some time before enabling the BoxCollider
+        yield return new WaitForSeconds(1.0f); // Change the delay time as needed
+
+        // Enable the BoxCollider
+        gameObject.GetComponent<BoxCollider>().enabled = true;
     }
 
     public void SetType(EType newType)
