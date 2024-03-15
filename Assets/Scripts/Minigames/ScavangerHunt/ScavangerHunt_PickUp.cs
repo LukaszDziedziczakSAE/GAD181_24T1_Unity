@@ -9,6 +9,8 @@ public class ScavangerHunt_PickUp : MonoBehaviour
     ScavangerHunt_PickUpSpawner spawner;
     Character characterInProx;
 
+    public int Award => pointsAward;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<Character>(out Character character))
@@ -23,9 +25,6 @@ public class ScavangerHunt_PickUp : MonoBehaviour
     public void CompletePickUp()
     {
         if (characterInProx == null) return;
-
-        match.AwardPlayerPoints(characterInProx.PlayerIndex, pointsAward);
-        
         Destroy(this.gameObject);
     }
 

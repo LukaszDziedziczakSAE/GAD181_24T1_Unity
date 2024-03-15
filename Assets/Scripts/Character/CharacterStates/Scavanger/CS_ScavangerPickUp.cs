@@ -5,6 +5,7 @@ using UnityEngine;
 public class CS_ScavangerPickUp : CharacterState
 {
     ScavangerHunt_PickUp pickUpObject;
+    bool awardComplete;
 
     public CS_ScavangerPickUp(Character character, ScavangerHunt_PickUp pickUp) : base(character)
     {
@@ -50,6 +51,9 @@ public class CS_ScavangerPickUp : CharacterState
 
     public void GrabComplete()
     {
+        if (awardComplete) return;
+        awardComplete = true;
+        Game.Match.AwardPlayerPoints(character.PlayerIndex, pickUpObject.Award);
         pickUpObject.CompletePickUp();
     }
 }
