@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CS_Archering_Standing : CharacterState
 {
+    float resetRotationTime = 0.1f;
     public CS_Archering_Standing(Character character) : base(character)
     {
     }
@@ -13,7 +14,7 @@ public class CS_Archering_Standing : CharacterState
         
         Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
         character.Animator.CrossFade("TargetShooting_BowIdle", 0.1f);
-        character.transform.eulerAngles = new UnityEngine.Vector3(character.transform.eulerAngles.x, 0, character.transform.eulerAngles.z);
+        character.transform.eulerAngles = new UnityEngine.Vector3(character.transform.eulerAngles.x, 0, character.transform.eulerAngles.z);//* Mathf.Lerp(character.transform.eulerAngles, , resetRotationTime);
     }
     
     public override void Tick()
