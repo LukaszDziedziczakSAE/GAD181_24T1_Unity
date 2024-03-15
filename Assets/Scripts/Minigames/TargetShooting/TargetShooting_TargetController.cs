@@ -20,7 +20,7 @@ public class TargetShooting_TargetController : MonoBehaviour
 
     public void RaiseRandomTarget()
     {
-        randomdDownTarget.SetUpRotation();
+        randomdDownTarget.StartRotatingUp();
     }
 
     private TargetShooting_Target randomdDownTarget
