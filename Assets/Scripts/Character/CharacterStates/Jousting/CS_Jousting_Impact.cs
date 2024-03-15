@@ -16,6 +16,9 @@ public class CS_Jousting_Impact : CharacterState
 
     public override void StateStart()
     {
+        character.Sounds.PlayGruntSound();
+
+
         other = match.OtherCharacter(character);
         if (character.PlayerIndex == 1 && character.HorseAnimator != null)
         {

@@ -8,9 +8,6 @@ public class CS_Jousting_Attack : CharacterState
     private UI_Jousting ui;
     private Jousting_Weapon weapon;
 
-    private float animationDuration;
-    private bool impactState = false; 
-
     public CS_Jousting_Attack(Character character) : base(character)
     {
         match = (JoustingMatch)Game.Match;

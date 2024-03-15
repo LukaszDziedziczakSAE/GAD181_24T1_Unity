@@ -1151,7 +1151,25 @@ MonoBehaviour:
   Runtime_Tabs2: 0
   t: {fileID: 4885270602845880}
   InGroundChanger: 0
-  states_C: []
+  states_C:
+  - active: 1
+    state: {fileID: 11400000, guid: 376f4ba2e1c978545b3ac17f142a79e9, type: 2}
+    priority: 6
+  - active: 1
+    state: {fileID: 11400000, guid: 93c930c231b65874e96d973f73d06c6c, type: 2}
+    priority: 5
+  - active: 1
+    state: {fileID: 11400000, guid: 338919b35ae3bd94081d8e0392890a45, type: 2}
+    priority: 5
+  - active: 1
+    state: {fileID: 11400000, guid: 03950c42a6999484db7adc01ce0fe499, type: 2}
+    priority: 3
+  - active: 1
+    state: {fileID: 11400000, guid: 7cf2e942eab3d6a4c9ef808189459782, type: 2}
+    priority: 2
+  - active: 1
+    state: {fileID: 11400000, guid: 2b0ccf01decc62149b2f69066b37c513, type: 2}
+    priority: 1
   states:
   - {fileID: 11400000, guid: 376f4ba2e1c978545b3ac17f142a79e9, type: 2}
   - {fileID: 11400000, guid: 93c930c231b65874e96d973f73d06c6c, type: 2}
