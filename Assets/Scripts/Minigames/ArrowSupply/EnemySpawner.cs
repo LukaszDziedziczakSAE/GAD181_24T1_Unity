@@ -39,9 +39,7 @@ public class EnemySpawner : MonoBehaviour
         character.SetNewState(new CS_ArrowSupply_EnemyLocomotion(character));
 
         // Add EnemyHealth script to the spawned enemy
-        EnemyHealth enemyHealth = character.gameObject.AddComponent<EnemyHealth>();
-
-        enemyHealth.SetConfig(config);
+        EnemyHealth enemyHealth = character.gameObject.AddComponent<EnemyHealth>();            
 
     }
 

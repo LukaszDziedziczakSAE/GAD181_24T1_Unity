@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class CS_ArrowSupply_EnemyLocomotion : CharacterState
 {
-    ArrowSupplyMatch match;
+    EnemyHealth enemyHealth;
+
+    private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
 
     public CS_ArrowSupply_EnemyLocomotion(Character character) : base(character)
     {
-        match = (ArrowSupplyMatch)Game.Match;
+        enemyHealth = character.GetComponent<EnemyHealth>();
     }
 
     public override void StateStart()
@@ -20,11 +22,27 @@ public class CS_ArrowSupply_EnemyLocomotion : CharacterState
 
     public override void Tick()
     {
-        character.transform.Translate(Vector3.forward * match.EnemySpeed * Time.deltaTime);// Move the enemy forward
+        if (character == null)
+        {
+            Debug.LogError("Character object is null in CS_ArrowSupply_EnemyLocomotion.Tick()");
+            return;
+        }
 
-        //if (character.Health <= 0)
-        {           
-           // character.SetNewState(new CS_ArrowSupply_EnemyDying(character));
+        if (enemyHealth == null)
+        {
+            enemyHealth = character.GetComponent<EnemyHealth>();
+            if (enemyHealth == null)
+            {
+                Debug.LogError("EnemyHealth component not found on the character object in CS_ArrowSupply_EnemyLocomotion.Tick()");
+                return;
+            }
+        }
+
+        character.transform.Translate(Vector3.forward * match.EnemySpeed * Time.deltaTime);
+
+        if (enemyHealth.currentHealth <= 0)
+        {
+            character.SetNewState(new CS_ArrowSupply_EnemyDying(character));
         }
     }
 

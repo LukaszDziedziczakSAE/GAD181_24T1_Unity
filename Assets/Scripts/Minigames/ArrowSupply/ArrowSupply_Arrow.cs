@@ -66,6 +66,8 @@ public class ArrowSupply_Arrow : MonoBehaviour
 
             hitSomething = true;
 
+            Debug.Log("hit");
+
             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
