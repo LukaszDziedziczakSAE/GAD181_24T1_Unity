@@ -9,9 +9,13 @@ public class JoustingMatch : MinigameMatch
     [field: SerializeField] public float MinimumJoustingDistance { get; private set; }
     [field: SerializeField] public float MaximumJoustingDistance { get; private set; }
     [field: SerializeField] public float EndDistance { get; private set; }
+    [field: SerializeField] public float PlayerStartPosition { get; private set; }
+    [field: SerializeField] public float EnemyStartPosition { get; private set; }
     [field: SerializeField] public float TurnSpeed { get; private set; }
 
     private Jousting_Weapon weapon;
+
+    private int completedRounds = 0;
 
 
 
@@ -27,6 +31,16 @@ public class JoustingMatch : MinigameMatch
         foreach (Character character in Compeditors)
         {
             character.SetNewState(new CS_Jousting_Riding(character));
+        }
+    }
+
+    protected override void MatchTick()
+    {
+        base.MatchTick();
+
+        if (completedRounds >= 3)
+        {
+            Mode = EState.postMatch;
         }
     }
 
@@ -51,7 +65,31 @@ public class JoustingMatch : MinigameMatch
         if (character.transform.position.z >= EndDistance)
         {
             character.SetNewState(new CS_Jousting_Idle(character));
+            RestartRound();
+            completedRounds++;
             //Debug.Log("Player Reached End");
+        }
+    }
+
+    private void RestartRound()
+    {
+        foreach (Character character in Compeditors)
+        {
+            character.SetNewState(new CS_Jousting_Riding(character));
+            Vector3 newPosition = character.transform.position;
+            if (character.PlayerIndex == 0)
+            {
+                newPosition.z = PlayerStartPosition;
+            }    
+            else if (character.PlayerIndex == 1)
+            {
+                newPosition.z = EnemyStartPosition;
+            }
+            
+            character.transform.position = newPosition;
+
+            Debug.Log(completedRounds);
+            //implement restart when player enters impact state
         }
     }
 }
