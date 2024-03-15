@@ -44,6 +44,7 @@ public class PlayerLevel : MonoBehaviour, ISaveable
     {
         get
         {
+            if (Level >= ExperianceRequriments.Length) Debug.LogError("Level too high");
             return ExperianceRequriments[Level];
         }
     }
