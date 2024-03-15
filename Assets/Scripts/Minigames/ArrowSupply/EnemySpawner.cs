@@ -39,8 +39,22 @@ public class EnemySpawner : MonoBehaviour
         character.SetNewState(new CS_ArrowSupply_EnemyLocomotion(character));
 
         // Add EnemyHealth script to the spawned enemy
-        EnemyHealth enemyHealth = character.gameObject.AddComponent<EnemyHealth>();            
+        EnemyHealth enemyHealth = character.gameObject.AddComponent<EnemyHealth>();
 
+        switch (config.Variant)
+        {
+            case CharacterModel.EVariant.Dungeon_RockGolem_01:
+                character.gameObject.AddComponent<RockGolemEnemyType>();
+                break;
+            case CharacterModel.EVariant.Dungeon_Skeleton_01:
+                character.gameObject.AddComponent<SkeletonEnemyType>();
+                break;
+            case CharacterModel.EVariant.Dungeon_GoblinMale_01:
+                character.gameObject.AddComponent<GoblinEnemyType>();
+                break;
+            default:
+                break;
+        }
     }
 
     float randomSpawnDelay => Random.Range(minSpawnDelay, maxSpawnDelay);

@@ -15,28 +15,34 @@ public class CS_ArrowSupply_EnemyDying : CharacterState
     public override void StateStart()
     {
         //character.Animator.CrossFade("ScavangerHunt_Pickup", 0.1f);
+        AddScore();
+        destroyEnemy();
 
     }
 
     public override void Tick()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void FixedTick()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     public override void StateEnd()
     {
-        Object.Destroy(character.gameObject);
+        
     }
 
     public void AddScore()
     {
-        match.AwardPlayerPoints(character.PlayerIndex, -pointsAdded);
+        match.AwardPlayerPoints(character.PlayerIndex, pointsAdded);
     }
     
+    public void destroyEnemy()
+    {
+        Object.Destroy(character.gameObject);
+    }
 
 }
