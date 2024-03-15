@@ -21,13 +21,13 @@ MonoBehaviour:
     type: 3}
   <StartTitleCardPicture>k__BackingField: {fileID: 2800000, guid: 39ff62787a0591b44a66422292f83a6f,
     type: 3}
-  <Xp1stPlace>k__BackingField: 200
-  <Xp2ndPlace>k__BackingField: 150
-  <Xp3rdPlace>k__BackingField: 100
-  <Xp4thPlace>k__BackingField: 50
-  <XpAdditionalPerPoint>k__BackingField: 1
-  <Gold1stPlace>k__BackingField: 500
-  <Gold2ndPlace>k__BackingField: 300
-  <Gold3rdPlace>k__BackingField: 200
-  <Gold4thPlace>k__BackingField: 100
-  <GoldAdditionalPerPoint>k__BackingField: 1
+  <Xp1stPlace>k__BackingField: 3000
+  <Xp2ndPlace>k__BackingField: 2250
+  <Xp3rdPlace>k__BackingField: 1700
+  <Xp4thPlace>k__BackingField: 1000
+  <XpAdditionalPerPoint>k__BackingField: 50
+  <Gold1stPlace>k__BackingField: 2500
+  <Gold2ndPlace>k__BackingField: 2000
+  <Gold3rdPlace>k__BackingField: 1500
+  <Gold4thPlace>k__BackingField: 1000
+  <GoldAdditionalPerPoint>k__BackingField: 50

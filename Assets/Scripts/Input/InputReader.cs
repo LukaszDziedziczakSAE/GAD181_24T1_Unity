@@ -119,4 +119,9 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
             
         }
     }
+    public void ClearEvents()
+    {
+        OnTouchPressed=null; 
+        OnTouchReleased=null;
+    }
 }
