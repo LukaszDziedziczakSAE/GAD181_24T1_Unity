@@ -21,6 +21,11 @@ public class CS_ArrowSupply_EnemyLocomotion : CharacterState
     public override void Tick()
     {
         character.transform.Translate(Vector3.forward * match.EnemySpeed * Time.deltaTime);// Move the enemy forward
+
+        //if (character.Health <= 0)
+        {           
+           // character.SetNewState(new CS_ArrowSupply_EnemyDying(character));
+        }
     }
 
     public override void FixedTick()
