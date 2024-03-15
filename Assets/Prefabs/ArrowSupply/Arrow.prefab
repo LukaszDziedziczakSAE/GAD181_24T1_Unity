@@ -103,11 +103,12 @@ MonoBehaviour:
   timeToLive: 15
   hittableLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1083212287
   drop: 1
   iceParticles: {fileID: 2011165083669407333}
   fireParticles: {fileID: 7822062101429106561}
   heightOffSet: {x: 0, y: 0.26, z: 0}
+  damageAmount: 1
   <Type>k__BackingField: 0
 --- !u!65 &3673304744834761118
 BoxCollider:
