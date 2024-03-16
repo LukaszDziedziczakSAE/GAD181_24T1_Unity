@@ -6,6 +6,7 @@ public class CS_ScavangerPickUp : CharacterState
 {
     ScavangerHunt_PickUp pickUpObject;
     bool awardComplete;
+    ScavangerHuntMatch match => (ScavangerHuntMatch)Game.Match;
 
     public CS_ScavangerPickUp(Character character, ScavangerHunt_PickUp pickUp) : base(character)
     {
@@ -53,7 +54,8 @@ public class CS_ScavangerPickUp : CharacterState
     {
         if (awardComplete) return;
         awardComplete = true;
-        Game.Match.AwardPlayerPoints(character.PlayerIndex, pickUpObject.Award);
+        match.AwardPlayerPoints(character.PlayerIndex, pickUpObject.Award);
         pickUpObject.CompletePickUp();
+        if (match.CharacterWon(character)) match.Mode = MinigameMatch.EState.postMatch;
     }
 }
