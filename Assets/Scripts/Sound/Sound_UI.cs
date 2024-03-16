@@ -8,6 +8,7 @@ public class Sound_UI : MonoBehaviour
     [SerializeField] AudioClip buttonPress;
     [SerializeField] AudioClip buttonPressConfirm;
     [SerializeField] AudioClip buttonPressCancel;
+    [SerializeField] AudioClip awardPointSound;
 
     private void PlayAudioClip(AudioClip clip)
     {
@@ -31,5 +32,10 @@ public class Sound_UI : MonoBehaviour
     public void PlayButtonPressCancelSound()
     {
         if (buttonPress != null) PlayAudioClip(buttonPressCancel);
+    }
+
+    public void PlayAwardPointSound()
+    {
+        if (awardPointSound != null) PlayAudioClip(awardPointSound);
     }
 }

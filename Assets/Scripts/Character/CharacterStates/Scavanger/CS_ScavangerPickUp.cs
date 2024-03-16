@@ -15,7 +15,6 @@ public class CS_ScavangerPickUp : CharacterState
 
     public override void StateStart()
     {
-        Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
         character.Animator.CrossFade("ScavangerHunt_Pickup", 0.1f);
         character.NavMeshAgent.isStopped = true;
         character.transform.LookAt(pickUpObject.transform.position);
@@ -39,15 +38,11 @@ public class CS_ScavangerPickUp : CharacterState
         character.NavMeshAgent.destination = character.transform.position;
     }
 
-    private void InputReader_OnTouchPressed()
-    {
-
-    }
-
     public void Grab()
     {
         pickUpObject.transform.parent = character.RightHand.transform;
         pickUpObject.transform.localPosition = Vector3.zero;
+        pickUpObject.PlayPickUpSound();
     }
 
     public void GrabComplete()

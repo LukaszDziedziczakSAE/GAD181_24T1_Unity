@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ScavangerHunt_PickUp : MonoBehaviour
 {
-    [SerializeField] int pointsAward = 10;
+    [SerializeField] int pointsAward = 1;
+    [SerializeField] AudioSource audioSource;
     ScavangerHuntMatch match => (ScavangerHuntMatch)Game.Match;
     ScavangerHunt_PickUpSpawner spawner;
     Character characterInProx;
@@ -36,5 +37,11 @@ public class ScavangerHunt_PickUp : MonoBehaviour
     private void OnDestroy()
     {
         spawner?.RemovePickUp(this);
+    }
+
+    public void PlayPickUpSound()
+    {
+        if (audioSource == null || audioSource.clip == null) return;
+        audioSource.Play();
     }
 }

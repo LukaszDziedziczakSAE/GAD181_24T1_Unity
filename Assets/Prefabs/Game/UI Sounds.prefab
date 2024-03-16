@@ -49,6 +49,7 @@ MonoBehaviour:
   buttonPress: {fileID: 8300000, guid: 55c4b85b12ee32541b76c44e424c4fcd, type: 3}
   buttonPressConfirm: {fileID: 8300000, guid: 6e152bae3e6a9334f91463bb501f1bc5, type: 3}
   buttonPressCancel: {fileID: 8300000, guid: 34b9f93e5b21d1541954e88d11a1b870, type: 3}
+  awardPointSound: {fileID: 8300000, guid: 9dafa9bb15b8ec446bed2ccc0795987f, type: 3}
 --- !u!82 &2584561346029064410
 AudioSource:
   m_ObjectHideFlags: 0

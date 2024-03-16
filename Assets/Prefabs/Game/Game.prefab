@@ -55,6 +55,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerCharacter: {fileID: 0}
   sound: {fileID: 2036831096888145539}
+  Music: {fileID: 7580606361622216516}
   minigames: {fileID: 6296692167148012357}
 --- !u!114 &5454981912204759713
 MonoBehaviour:

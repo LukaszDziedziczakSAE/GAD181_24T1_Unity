@@ -18,6 +18,7 @@ public class UI_MatchEnd : MonoBehaviour
     [SerializeField] TMP_Text playerCurrencyErned;
     [SerializeField] TMP_Text playerExperience;
     [SerializeField] TMP_Text playerExperienceErned;
+    [SerializeField] TMP_Text playerLevel;
     [SerializeField] Image playerPreviousXPIndicator;
     [SerializeField] Image playerCurrentXPIndicator;
 
@@ -48,6 +49,21 @@ public class UI_MatchEnd : MonoBehaviour
         UpdateGoldGain();
         Game.Player.MatchComplete();
         Game.SaveSystem.SaveGameFile();
+
+        bool playerWon = playerResult.Placement == 1;
+        if (playerWon)
+        {
+            Game.Music.PlayVictoryTrack();
+        }
+        else
+        {
+            Game.Music.PlayDefeatTrack();
+        }
+    }
+
+    private void Update()
+    {
+        if (!Game.Music.IsPlaying) Game.Music.PlayPostMatchTrack();
     }
 
     private void UpdateGoldGain()
@@ -68,6 +84,7 @@ public class UI_MatchEnd : MonoBehaviour
 
         playerExperience.text = Game.Player.Level.Experiance.ToString();
         playerExperienceErned.text = "+" + playerResult.XPAward.ToString();
+        playerLevel.text = Game.Player.Level.Level.ToString();
 
         float previousXPNormalized = (float)previousXP / Game.Player.Level.CurrentRequriment;
         float currentXPNormalized = (float)Game.Player.Level.Experiance / Game.Player.Level.CurrentRequriment;
