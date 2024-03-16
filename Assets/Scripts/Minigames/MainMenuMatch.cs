@@ -33,6 +33,6 @@ public class MainMenuMatch : MinigameMatch
         QuantumConsole.Instance.Deactivate();
         Game.CameraManager.SwitchTo(MainMenuCamera);
         //ui.OpenMainMenu();
-        ui.MainMenuStatus.gameObject.SetActive(true);
+        ui.ShowMainMenuStatus();
     }
 }

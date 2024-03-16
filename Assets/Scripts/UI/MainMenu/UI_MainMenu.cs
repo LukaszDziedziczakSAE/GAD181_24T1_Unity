@@ -19,7 +19,7 @@ public class UI_MainMenu : UI_Main
         //OpenMainMenu();
     }
 
-    public void OpenMainMenu()
+    public void ShowMainMenuStatus()
     {
         CloseAll();
         if ((Game.Player.PlayerName == null || Game.Player.PlayerName == ""))
@@ -27,8 +27,8 @@ public class UI_MainMenu : UI_Main
             EnterNameDialog.gameObject.SetActive(true);
             EnterNameDialog.NewPlayer = true;
         }
-        else MainMenuButtons.gameObject.SetActive(true);
-        Game.UpdatePlayersCharacterModel();
+        else MainMenuStatus.gameObject.SetActive(true);
+        //Game.UpdatePlayersCharacterModel();
     }
 
     public void CloseAll()
