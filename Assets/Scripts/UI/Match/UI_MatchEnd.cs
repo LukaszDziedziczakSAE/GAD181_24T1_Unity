@@ -50,20 +50,26 @@ public class UI_MatchEnd : MonoBehaviour
         Game.Player.MatchComplete();
         Game.SaveSystem.SaveGameFile();
 
-        bool playerWon = playerResult.Placement == 1;
-        if (playerWon)
+        
+        if (Game.Instance != null && Game.Music != null && playerResult != null)
         {
-            Game.Music.PlayVictoryTrack();
+            bool playerWon = playerResult.Placement == 1;
+            if (playerWon)
+            {
+                Game.Music.PlayVictoryTrack();
+            }
+            else
+            {
+                Game.Music.PlayDefeatTrack();
+            }
         }
-        else
-        {
-            Game.Music.PlayDefeatTrack();
-        }
+        
     }
 
     private void Update()
     {
-        if (!Game.Music.IsPlaying) Game.Music.PlayPostMatchTrack();
+        if (Game.Instance != null && Game.Music != null && 
+            !Game.Music.IsPlaying) Game.Music.PlayPostMatchTrack();
     }
 
     private void UpdateGoldGain()

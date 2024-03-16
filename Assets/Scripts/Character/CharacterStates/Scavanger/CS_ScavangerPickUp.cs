@@ -42,7 +42,7 @@ public class CS_ScavangerPickUp : CharacterState
     {
         pickUpObject.transform.parent = character.RightHand.transform;
         pickUpObject.transform.localPosition = Vector3.zero;
-        pickUpObject.PlayPickUpSound();
+        if (character.PlayerIndex == 0) pickUpObject.PlayPickUpSound();
     }
 
     public void GrabComplete()

@@ -147,6 +147,6 @@ public abstract class MinigameMatch : MonoBehaviour
     {
         Result.AwardPointsToPlayer(playerNumber, points);
         Game.UI.UpdateMatchStatus();
-        Game.Sound.PlayAwardPointSound();
+        if (playerNumber == 0) Game.Sound.PlayAwardPointSound();
     }
 }
