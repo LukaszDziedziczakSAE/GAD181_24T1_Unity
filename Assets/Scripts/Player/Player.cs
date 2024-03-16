@@ -75,7 +75,10 @@ public class Player : MonoBehaviour, ISaveable
     public void ClearPlayer()
     {
         NewPlayer("");
-
+        //CharacterModelConfig = new CharacterModel.Config();
+        MatchesPlayed = 0;
+        Level.ResetPlayer();
+        Currency.ResetPlayer();
     }
 
     public void MatchComplete()
@@ -85,12 +88,7 @@ public class Player : MonoBehaviour, ISaveable
 
     public void ResetPlayer()
     {
-        PlayerName = "";
-        CharacterModelConfig = new CharacterModel.Config();
-        MatchesPlayed = 0;
-        Level.ResetPlayer();
-        Currency.ResetPlayer();
+        ClearPlayer();
         Game.SaveSystem.SaveGameFile();
-
     }
 }

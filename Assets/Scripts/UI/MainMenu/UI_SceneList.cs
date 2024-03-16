@@ -47,7 +47,7 @@ public class UI_SceneList : MonoBehaviour
     public void OnBackButtonPress()
     {
         Game.Sound.PlayButtonPressCancelSound();
-        mainMenu.MainMenuButtons.gameObject.SetActive(true);
+        mainMenu.MainMenuStatus.gameObject.SetActive(true);
         gameObject.SetActive(false);
     }
 

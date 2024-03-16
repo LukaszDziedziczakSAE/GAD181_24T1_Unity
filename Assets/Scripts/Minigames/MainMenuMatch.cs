@@ -32,6 +32,7 @@ public class MainMenuMatch : MinigameMatch
         //PlayersCharacters.SpawnCharacters();
         QuantumConsole.Instance.Deactivate();
         Game.CameraManager.SwitchTo(MainMenuCamera);
-        ui.OpenMainMenu();
+        //ui.OpenMainMenu();
+        ui.MainMenuStatus.gameObject.SetActive(true);
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UI_MainMenu : UI_Main
 {
+    [field: SerializeField] public UI_MainMenuStatus MainMenuStatus { get; private set; }
     [field:SerializeField] public UI_SceneList SceneList {  get; private set; }
     [field: SerializeField] public UI_MainMenuButtons MainMenuButtons { get; private set; }
     [field: SerializeField] public UI_PlayerProfile PlayerProfile { get; private set; }
@@ -13,7 +14,7 @@ public class UI_MainMenu : UI_Main
 
     private void OnEnable()
     {
-        CloseAll();
+        //CloseAll();
         if (Game.Instance == null || Game.Player == null) return;
         //OpenMainMenu();
     }
@@ -32,6 +33,7 @@ public class UI_MainMenu : UI_Main
 
     public void CloseAll()
     {
+        MainMenuStatus.gameObject.SetActive(false);
         SceneList.gameObject.SetActive(false);
         MainMenuButtons.gameObject.SetActive(false);
         PlayerProfile.gameObject.SetActive(false);
