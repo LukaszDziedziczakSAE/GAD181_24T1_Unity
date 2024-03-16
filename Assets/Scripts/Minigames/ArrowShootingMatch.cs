@@ -8,10 +8,11 @@ public class ArrowShootingMatch : MinigameMatch
     [field: SerializeField] public float MinimumDrawDistanceToFire { get; private set; }
     [field: SerializeField] public float MaximumDrawDistanceToFire { get; private set; }
     [field: SerializeField] public TargetShooting_TargetController TargetController { get; private set; }
-    protected override MatchResult DetermineResult()
-    {
-        return new MatchResult();
-    }
+
+    [SerializeField] float matchLength = 45f;
+
+    public float MatchTimeRemaining => matchLength - MatchTime;
+   
 
     protected override void MatchStart()
     {
@@ -22,6 +23,23 @@ public class ArrowShootingMatch : MinigameMatch
 
         TargetController.LowerAllTargets();
         TargetController.RaiseRandomTarget();
+    }
+
+
+    protected override void MatchTick()
+    {
+        base.MatchTick();
+
+        if (MatchTimeRemaining <= 0)
+        {
+            Mode = EState.postMatch;
+        }
+    }
+
+    protected override void PostMatchStart()
+    {
+        base.PostMatchStart();
+        //Mode = EState.none;
     }
 
 }
