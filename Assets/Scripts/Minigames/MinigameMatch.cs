@@ -8,7 +8,7 @@ public abstract class MinigameMatch : MonoBehaviour
     protected EState mode = EState.none;
     protected float matchTime;
     [field: SerializeField] public MinigameConfig Config {  get; protected set; }
-    public MatchResult Result { get; private set; }
+    public MatchResult Result { get; protected set; }
 
     public EState Mode
     {

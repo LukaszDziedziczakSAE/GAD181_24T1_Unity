@@ -13,8 +13,9 @@ public class ScavangerHuntMatch : MinigameMatch
 
     protected async override void PrematchStart()
     {
+        Result = new MatchResult(Compeditors.Length);
         if (pickUpSpawner != null) await pickUpSpawner.SpawnPickUpsTask();
-        base.PrematchStart();
+        //base.PrematchStart();
     }
 
     protected override void PrematchTick()
@@ -25,6 +26,15 @@ public class ScavangerHuntMatch : MinigameMatch
         {
             Mode = EState.inProgress;
         }*/
+
+        if (pickUpSpawner != null && pickUpSpawner.SpawnComplete)
+        {
+            Mode = EState.inProgress;
+        }
+        else if (pickUpSpawner == null)
+        {
+            Mode = EState.inProgress;
+        }
     }
 
     protected override void MatchStart()
