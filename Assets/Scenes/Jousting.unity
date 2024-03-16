@@ -7758,6 +7758,8 @@ MonoBehaviour:
   <MinimumJoustingDistance>k__BackingField: -10
   <MaximumJoustingDistance>k__BackingField: 10
   <EndDistance>k__BackingField: 16
+  <PlayerStartPosition>k__BackingField: 4
+  <EnemyStartPosition>k__BackingField: 16
   <TurnSpeed>k__BackingField: 1
 --- !u!4 &1152979255
 Transform:
