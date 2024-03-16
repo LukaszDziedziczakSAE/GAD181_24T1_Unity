@@ -10,6 +10,8 @@ public class MainMenuMatch : MinigameMatch
     [field: SerializeField] public CinemachineVirtualCamera MainMenuCamera {  get; private set; }
     [field: SerializeField] public CinemachineVirtualCamera CharacterCamera { get; private set; }
     [field: SerializeField] public float CameraBlendTime { get; private set; } = 0.2f;
+    [field: SerializeField] public MainMenuCharacters PlayersCharacters { get; private set; }
+    [field: SerializeField] public float CharacterSpeed { get; private set; } = 0.8f;
 
     protected override MatchResult DetermineResult()
     {
@@ -27,8 +29,10 @@ public class MainMenuMatch : MinigameMatch
         ui = (UI_MainMenu)Game.UI;
 
         Game.UpdatePlayersCharacterModel();
+        //PlayersCharacters.SpawnCharacters();
         QuantumConsole.Instance.Deactivate();
         Game.CameraManager.SwitchTo(MainMenuCamera);
-        ui.OpenMainMenu();
+        //ui.OpenMainMenu();
+        ui.ShowMainMenuStatus();
     }
 }

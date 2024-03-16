@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df0b38eea943d3b47b8b94b33e704f40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  buttonPress: {fileID: 0}
-  buttonPressConfirm: {fileID: 0}
-  buttonPressCancel: {fileID: 0}
+  audioSource: {fileID: 2584561346029064410}
+  buttonPress: {fileID: 8300000, guid: 55c4b85b12ee32541b76c44e424c4fcd, type: 3}
+  buttonPressConfirm: {fileID: 8300000, guid: 6e152bae3e6a9334f91463bb501f1bc5, type: 3}
+  buttonPressCancel: {fileID: 8300000, guid: 34b9f93e5b21d1541954e88d11a1b870, type: 3}
+  awardPointSound: {fileID: 8300000, guid: 9dafa9bb15b8ec446bed2ccc0795987f, type: 3}
 --- !u!82 &2584561346029064410
 AudioSource:
   m_ObjectHideFlags: 0

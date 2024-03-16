@@ -11,34 +11,14 @@ public class ScavangerHunt_PickUpSpawner : MonoBehaviour
     [SerializeField] float minY;
     [SerializeField] float maxY;
     [SerializeField] ScavangerHunt_PickUp PickUpPrefab;
-    List<ScavangerHunt_PickUp> PickUps = new List<ScavangerHunt_PickUp>();
+    [field: SerializeField] public List<ScavangerHunt_PickUp> PickUps { get; private set; } 
+        = new List<ScavangerHunt_PickUp>();
     [SerializeField] int numberToSpawn;
     [SerializeField] float proximity;
     [SerializeField] LayerMask spherCastLayers;
+    [SerializeField] LayerMask groundLayers;
 
     public bool SpawnComplete => PickUps.Count >= numberToSpawn;
-
-    /*private async void OnEnable()
-    {
-        await SpawnPickUpsTask();
-    }*/
-
-    private void Update()
-    {
-        /*if (PickUps.Count < numberToSpawn)
-        {
-            SpawnPickup();
-        }*/
-    }
-
-
-    public void SpawnPickUps()
-    {
-        for (int pickUpIndex = 0;  pickUpIndex < numberToSpawn; pickUpIndex++)
-        {
-            SpawnPickup();
-        }
-    }
 
     private void SpawnPickup()
     {
@@ -61,9 +41,14 @@ public class ScavangerHunt_PickUpSpawner : MonoBehaviour
             
             float x = Random.Range(minX, maxX);
             float y = Random.Range(minY, maxY);
-            float height = 0;
+            float height = 500;
             Vector3 position = new Vector3(x, height, y);
-            return position;
+            if (Physics.Raycast(position, new Vector3(0, -1, 0), out RaycastHit hit, 1000, groundLayers))
+            {
+                return hit.point;
+            }
+
+            return new Vector3();
         }
     }
 
@@ -83,7 +68,9 @@ public class ScavangerHunt_PickUpSpawner : MonoBehaviour
 
     public async Task SpawnPickUpsTask()
     {
-        for (int pickUpIndex = 0; pickUpIndex < numberToSpawn; pickUpIndex++)
+        if (SpawnComplete) return;
+
+        for (int pickUpIndex = PickUps.Count; pickUpIndex < numberToSpawn; pickUpIndex++)
         {
             while (PickUps.Count <= pickUpIndex)
             {

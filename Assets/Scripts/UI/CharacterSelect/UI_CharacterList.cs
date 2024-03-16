@@ -50,7 +50,7 @@ public class UI_CharacterList : MonoBehaviour
         UI_MainMenu mainMenu = (UI_MainMenu)Game.UI;
 
         mainMenu.CharacterList.gameObject.SetActive(false);
-        mainMenu.PlayerProfile.gameObject.SetActive(true);
+        mainMenu.MainMenuStatus.gameObject.SetActive(true);
     }
 
     public void ReinitilizeCards()

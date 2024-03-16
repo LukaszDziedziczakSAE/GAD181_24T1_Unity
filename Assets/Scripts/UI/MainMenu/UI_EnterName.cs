@@ -26,12 +26,12 @@ public class UI_EnterName : MonoBehaviour
     private void OnEnterButtonPress()
     {
         Game.Sound.PlayButtonPressConfirmSound();
-        if (!NewPlayer) ((UI_MainMenu)Game.UI).PlayerProfile.gameObject.SetActive(true);
+        if (!NewPlayer) ((UI_MainMenu)Game.UI).ShowMainMenuStatus();
         else
         {
-            ((UI_MainMenu)Game.UI).MainMenuButtons.gameObject.SetActive(true);
             Game.Player.NewPlayer(inputField.text);
-            Game.UpdatePlayersCharacterModel();
+            //Game.UpdatePlayersCharacterModel();
+            ((UI_MainMenu)Game.UI).ShowMainMenuStatus();
         }
         Game.SaveSystem.SaveGameFile();
         gameObject.SetActive(false);

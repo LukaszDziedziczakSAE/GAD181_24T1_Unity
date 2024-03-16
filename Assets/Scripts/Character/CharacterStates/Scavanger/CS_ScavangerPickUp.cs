@@ -5,6 +5,8 @@ using UnityEngine;
 public class CS_ScavangerPickUp : CharacterState
 {
     ScavangerHunt_PickUp pickUpObject;
+    bool awardComplete;
+    ScavangerHuntMatch match => (ScavangerHuntMatch)Game.Match;
 
     public CS_ScavangerPickUp(Character character, ScavangerHunt_PickUp pickUp) : base(character)
     {
@@ -13,7 +15,6 @@ public class CS_ScavangerPickUp : CharacterState
 
     public override void StateStart()
     {
-        Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
         character.Animator.CrossFade("ScavangerHunt_Pickup", 0.1f);
         character.NavMeshAgent.isStopped = true;
         character.transform.LookAt(pickUpObject.transform.position);
@@ -37,19 +38,19 @@ public class CS_ScavangerPickUp : CharacterState
         character.NavMeshAgent.destination = character.transform.position;
     }
 
-    private void InputReader_OnTouchPressed()
-    {
-
-    }
-
     public void Grab()
     {
         pickUpObject.transform.parent = character.RightHand.transform;
         pickUpObject.transform.localPosition = Vector3.zero;
+        if (character.PlayerIndex == 0) pickUpObject.PlayPickUpSound();
     }
 
     public void GrabComplete()
     {
+        if (awardComplete) return;
+        awardComplete = true;
+        match.AwardPlayerPoints(character.PlayerIndex, pickUpObject.Award);
         pickUpObject.CompletePickUp();
+        if (match.CharacterWon(character)) match.Mode = MinigameMatch.EState.postMatch;
     }
 }

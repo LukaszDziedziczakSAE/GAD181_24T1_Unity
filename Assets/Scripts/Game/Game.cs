@@ -13,6 +13,7 @@ public class Game : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] Character playerCharacter;
     [SerializeField] Sound_UI sound;
+    [SerializeField] Music music;
     [SerializeField] Minigames minigames; 
     public static InputReader InputReader => Instance.input;
     public static Player Player => Instance.player;
@@ -23,6 +24,7 @@ public class Game : MonoBehaviour
     public static CameraManager CameraManager => Instance.cameraManager;
     public static Sound_UI Sound => Instance.sound;
     public static Minigames Minigames => Instance.minigames;
+    public static Music Music => Instance.music;
 
     private void Awake()
     {

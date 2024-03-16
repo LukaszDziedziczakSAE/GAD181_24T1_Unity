@@ -55,6 +55,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerCharacter: {fileID: 0}
   sound: {fileID: 2036831096888145539}
+  Music: {fileID: 7580606361622216516}
   minigames: {fileID: 6296692167148012357}
 --- !u!114 &5454981912204759713
 MonoBehaviour:
@@ -167,6 +168,14 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   mainMenuTracks: []
   matchTracks: []
+  victoryTracks:
+  - {fileID: 8300000, guid: 886aa4ce509305b43b039744c558b42c, type: 3}
+  - {fileID: 8300000, guid: 2c3e0221d6aa47849986f9290bd0ed8b, type: 3}
+  defeatTracks:
+  - {fileID: 8300000, guid: 71989cd44100db3448496166834f3c24, type: 3}
+  - {fileID: 8300000, guid: caf1393989c7777428130ad5ba49b4b7, type: 3}
+  prematchTracks: []
+  postmatchTracks: []
 --- !u!82 &8177846411711077575
 AudioSource:
   m_ObjectHideFlags: 0

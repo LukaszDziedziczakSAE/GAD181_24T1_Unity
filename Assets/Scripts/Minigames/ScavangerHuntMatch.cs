@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class ScavangerHuntMatch : MinigameMatch
 {
-    [SerializeField] float matchLength = 120;
+    //[SerializeField] float matchLength = 120;
+    [SerializeField] int winScore = 10;
     [SerializeField] GameObject selectionIndicatorPrefab;
     [SerializeField] ScavangerHunt_PickUpSpawner pickUpSpawner;
-    public int itemsPickedUp = 0;
+    //public int itemsPickedUp = 0;
 
-    public float MatchTimeRemaining => matchLength - MatchTime;
+    //public float MatchTimeRemaining => matchLength - MatchTime;
 
     protected async override void PrematchStart()
     {
+        Result = new MatchResult(Compeditors.Length);
         if (pickUpSpawner != null) await pickUpSpawner.SpawnPickUpsTask();
-        base.PrematchStart();
+        //base.PrematchStart();
     }
 
     protected override void PrematchTick()
@@ -25,6 +27,15 @@ public class ScavangerHuntMatch : MinigameMatch
         {
             Mode = EState.inProgress;
         }*/
+
+        if (pickUpSpawner != null && pickUpSpawner.SpawnComplete)
+        {
+            Mode = EState.inProgress;
+        }
+        else if (pickUpSpawner == null)
+        {
+            Mode = EState.inProgress;
+        }
     }
 
     protected override void MatchStart()
@@ -41,16 +52,15 @@ public class ScavangerHuntMatch : MinigameMatch
     {
         base.MatchTick();
 
-        if (MatchTimeRemaining <= 0)
+        /*if (MatchTimeRemaining <= 0)
         {
             Mode = EState.postMatch;
-        }
+        }*/
     }
 
     protected override void PostMatchStart()
     {
         base.PostMatchStart();
-        //Mode = EState.none;
     }
 
     public void ShowTouchIndicator(Vector3 position)
@@ -58,8 +68,8 @@ public class ScavangerHuntMatch : MinigameMatch
         GameObject selectionIndicator = Instantiate(selectionIndicatorPrefab, position, Quaternion.identity);
     }
 
-    public void PlayerPickedUp()
+    public bool CharacterWon(Character character)
     {
-        itemsPickedUp++;
+        return Result.Scores[character.PlayerIndex] >= winScore;
     }
 }

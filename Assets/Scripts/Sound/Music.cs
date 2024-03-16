@@ -7,6 +7,12 @@ public class Music : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip[] mainMenuTracks;
     [SerializeField] AudioClip[] matchTracks;
+    [SerializeField] AudioClip[] victoryTracks;
+    [SerializeField] AudioClip[] defeatTracks;
+    [SerializeField] AudioClip[] prematchTracks;
+    [SerializeField] AudioClip[] postmatchTracks;
+
+    public bool IsPlaying => audioSource.isPlaying;
 
     private void PlayAudioClip(AudioClip clip)
     {
@@ -29,5 +35,33 @@ public class Music : MonoBehaviour
         if (matchTracks.Length == 0) return;
 
         PlayAudioClip(matchTracks[Random.Range(0, matchTracks.Length)]);
+    }
+
+    public void PlayVictoryTrack()
+    {
+        if (victoryTracks.Length == 0) return;
+
+        PlayAudioClip(victoryTracks[Random.Range(0, victoryTracks.Length)]);
+    }
+
+    public void PlayDefeatTrack()
+    {
+        if (defeatTracks.Length == 0) return;
+
+        PlayAudioClip(defeatTracks[Random.Range(0, defeatTracks.Length)]);
+    }
+
+    public void PlayPrematchTracks()
+    {
+        if (prematchTracks.Length == 0) return;
+
+        PlayAudioClip(prematchTracks[Random.Range(0, prematchTracks.Length)]);
+    }
+
+    public void PlayPostMatchTrack()
+    {
+        if (postmatchTracks.Length == 0) return;
+
+        PlayAudioClip(postmatchTracks[Random.Range(0, postmatchTracks.Length)]);
     }
 }

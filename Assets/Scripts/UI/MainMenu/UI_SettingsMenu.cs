@@ -90,7 +90,7 @@ public class UI_SettingsMenu : MonoBehaviour
         }
         else
         {
-            ((UI_MainMenu)Game.UI).MainMenuButtons.gameObject.SetActive(true);
+            ((UI_MainMenu)Game.UI).MainMenuStatus.gameObject.SetActive(true);
         }
         Game.Save();
         gameObject.SetActive(false);
