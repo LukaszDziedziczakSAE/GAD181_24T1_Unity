@@ -7,6 +7,10 @@ public class Music : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip[] mainMenuTracks;
     [SerializeField] AudioClip[] matchTracks;
+    [SerializeField] AudioClip[] victoryTracks;
+    [SerializeField] AudioClip[] defeatTracks;
+    [SerializeField] AudioClip[] prematchTracks;
+    [SerializeField] AudioClip[] postmatchTracks;
 
     private void PlayAudioClip(AudioClip clip)
     {

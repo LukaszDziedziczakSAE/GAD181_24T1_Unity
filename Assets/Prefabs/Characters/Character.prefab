@@ -42,7 +42,7 @@ AudioSource:
   m_GameObject: {fileID: 4860806240950883057}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 929029031063781696, guid: 3808efbbecf991a4fa34cda9f2ba0d4f,
+  OutputAudioMixerGroup: {fileID: -8868624834059343112, guid: 3808efbbecf991a4fa34cda9f2ba0d4f,
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
@@ -143,7 +143,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1542647375301981858}
-  footstepSounds: []
+  footstepSounds:
+  - {fileID: 8300000, guid: 52a77aea5687d3d4d9336fb4fb8b09c8, type: 3}
+  - {fileID: 8300000, guid: f9dae415bb1b7a54a91befe3e14a5625, type: 3}
 --- !u!1 &5148530311918736658
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,6 +210,7 @@ MonoBehaviour:
   <NavMeshAgent>k__BackingField: {fileID: 252950230933403302}
   <HorseAnimator>k__BackingField: {fileID: 0}
   <Sounds>k__BackingField: {fileID: 3990833891933335872}
+  <Footsteps>k__BackingField: {fileID: 7993163875299521277}
 --- !u!136 &9047708930033450011
 CapsuleCollider:
   m_ObjectHideFlags: 0

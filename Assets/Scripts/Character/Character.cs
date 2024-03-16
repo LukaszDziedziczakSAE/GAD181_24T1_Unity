@@ -18,6 +18,7 @@ public class Character : MonoBehaviour
     /*[field: SerializeField]*/ public CharacterState State { get; private set; }
     [field: SerializeField] public Animator HorseAnimator { get; private set; }
     [field: SerializeField] public CharacterSounds Sounds { get; private set; }
+    [field: SerializeField] public Footsteps Footsteps { get; private set; }
 
     private void Start()
     {

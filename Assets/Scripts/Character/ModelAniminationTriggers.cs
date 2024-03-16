@@ -32,4 +32,12 @@ public class ModelAniminationTriggers : MonoBehaviour
         ((CS_ScavangerPickUp)character.State).GrabComplete();
         //((ScavangerHuntMatch)Game.Match).PlayerPickedUp();
     }
+
+    void Footstep()
+    {
+        if (character != null && character.Footsteps != null)
+        {
+            character.Footsteps.PlayFootstepSound();
+        }
+    }
 }
