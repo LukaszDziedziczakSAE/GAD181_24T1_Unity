@@ -11,6 +11,7 @@ public class MainMenuMatch : MinigameMatch
     [field: SerializeField] public CinemachineVirtualCamera CharacterCamera { get; private set; }
     [field: SerializeField] public float CameraBlendTime { get; private set; } = 0.2f;
     [field: SerializeField] public MainMenuCharacters PlayersCharacters { get; private set; }
+    [field: SerializeField] public float CharacterSpeed { get; private set; } = 0.8f;
 
     protected override MatchResult DetermineResult()
     {
