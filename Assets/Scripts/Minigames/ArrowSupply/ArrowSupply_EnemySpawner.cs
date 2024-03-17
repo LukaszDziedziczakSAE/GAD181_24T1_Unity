@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemySpawner : MonoBehaviour
+public class ArrowSupply_EnemySpawner : MonoBehaviour
 {
     [SerializeField] Character characterPrefab;
     [SerializeField] CharacterModel.Config[] configs;
@@ -44,13 +44,13 @@ public class EnemySpawner : MonoBehaviour
         switch (config.Variant)
         {
             case CharacterModel.EVariant.Dungeon_RockGolem_01:
-                character.gameObject.AddComponent<RockGolemEnemyType>();
+                character.gameObject.AddComponent<ArrowSupply_RockGolemEnemyType>();
                 break;
             case CharacterModel.EVariant.Dungeon_Skeleton_01:
-                character.gameObject.AddComponent<SkeletonEnemyType>();
+                character.gameObject.AddComponent<ArrowSupply_SkeletonEnemyType>();
                 break;
             case CharacterModel.EVariant.Dungeon_GoblinMale_01:
-                character.gameObject.AddComponent<GoblinEnemyType>();
+                character.gameObject.AddComponent<ArrowSupply_GoblinEnemyType>();
                 break;
             default:
                 break;

@@ -16,7 +16,7 @@ public class CS_ArrowSupply_EnemyDying : CharacterState
     {
         //character.Animator.CrossFade("ScavangerHunt_Pickup", 0.1f);
         AddScore();
-        destroyEnemy();
+        
 
     }
 
@@ -37,10 +37,14 @@ public class CS_ArrowSupply_EnemyDying : CharacterState
 
     public void AddScore()
     {
-        match.AwardPlayerPoints(character.PlayerIndex, pointsAdded);
+        
+        
+        match.AwardPlayerPoints(0, pointsAdded);
+        Game.UI.UpdateMatchStatus();
+        
+        DestroyEnemy();
     }
-    
-    public void destroyEnemy()
+    public void DestroyEnemy()
     {
         Object.Destroy(character.gameObject);
     }

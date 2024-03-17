@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDespawner : MonoBehaviour
+public class ArrowSupply_EnemyDespawner : MonoBehaviour
 {
     [SerializeField] int pointsDeducted = 1; 
 

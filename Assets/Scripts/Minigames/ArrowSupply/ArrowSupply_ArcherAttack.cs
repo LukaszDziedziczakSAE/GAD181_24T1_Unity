@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ArrowSupplyArcherAttack : MonoBehaviour
+public class ArrowSupply_ArcherAttack : MonoBehaviour
 {
     public GameObject[] arrowPrefabs; // Array of arrow prefabs representing different arrow types
 

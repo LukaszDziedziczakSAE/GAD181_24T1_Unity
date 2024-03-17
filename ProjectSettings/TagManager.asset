@@ -11,6 +11,8 @@ TagManager:
   - Animal
   - Water
   - Enemy
+  - Pickup
+  - Delivery
   layers:
   - Default
   - TransparentFX
