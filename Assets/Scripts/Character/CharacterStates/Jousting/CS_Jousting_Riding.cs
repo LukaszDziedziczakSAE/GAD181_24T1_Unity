@@ -7,8 +7,9 @@ using UnityEngine;
 public class CS_Jousting_Riding : CharacterState
 {
     private JoustingMatch match;
-    private UI_Jousting ui;
     private Character other;
+    private UI_Jousting ui;
+
     public CS_Jousting_Riding(Character character) : base(character)
     {
         match = (JoustingMatch)Game.Match;
@@ -26,31 +27,29 @@ public class CS_Jousting_Riding : CharacterState
             character.HorseAnimator.CrossFade("LocomotionBlend", 0.1f);
             character.HorseAnimator.SetFloat("speed", 1);
         }
-        /*if (character.PlayerIndex == 0)
-        {
-            ui.JoustingIndicator.gameObject.SetActive(true);
-            character.Animator.CrossFade("Rider_Gallop", 0.1f);
-        }
 
-        else if (character.PlayerIndex == 1)
-        {
-            ui.EnemyJoustingIndicator.gameObject.SetActive(true);
-            character.Animator.CrossFade("Rider_Gallop", 0.1f);
-        }*/
-
-        //Debug.Log("You've entered riding state");
-
-        if (IsPlayerCharacter) Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
+        match.horseSpeed = 2f;
     }
 
     public override void Tick()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        Vector3 movementDirection = new Vector3(horizontalInput, 0f, 1f); 
+        Vector3 movementDirection = new Vector3(horizontalInput, 0f, 1f);
+
+        if (IsPlayerCharacter)
+        {
+            CheckForAttackInput();
+        }
+
+        if (other.State.GetType() == typeof(CS_Jousting_Impact))
+        {
+            character.SetNewState(new CS_Jousting_Idle(character));
+            return;
+        }
 
         if (character.PlayerIndex == 0)
         {
-            character.transform.position += movementDirection.normalized * match.HorseSpeed * Time.deltaTime;
+            character.transform.position += movementDirection.normalized * match.horseSpeed * Time.deltaTime;
             ui.JoustingIndicator.UpdateDistanceIndicator(Distance());
             ui.JoustingIndicator.UpdateStrikingDistanceIndicator(IsWithinJoustingDistance());
             ui.EndIndicator.UpdateEndIndicator(ReachedEnd());
@@ -79,14 +78,11 @@ public class CS_Jousting_Riding : CharacterState
         }
         else if (character.PlayerIndex == 1)
         {
-            character.transform.position -= movementDirection.normalized * match.HorseSpeed * Time.deltaTime;
+            character.transform.position -= movementDirection.normalized * match.horseSpeed * Time.deltaTime;
             ui.EnemyJoustingIndicator.UpdateDistanceIndicator(Distance());
             ui.EnemyJoustingIndicator.UpdateStrikingDistanceIndicator(IsWithinJoustingDistance());
         }
     }
-
-
-
 
     public override void FixedTick()
     {
@@ -154,9 +150,16 @@ public class CS_Jousting_Riding : CharacterState
         return position >= match.EndDistance;
     }
 
-
     private void InputReader_OnTouchPressed()
     {
         character.SetNewState(new CS_Jousting_Attack(character));
+    }
+
+    private void CheckForAttackInput()
+    {
+        if (Input.GetMouseButtonDown(0)) // Change this according to your input method
+        {
+            character.SetNewState(new CS_Jousting_Attack(character));
+        }
     }
 }

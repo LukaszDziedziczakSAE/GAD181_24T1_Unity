@@ -23,7 +23,7 @@ public class CS_Jousting_Attack : CharacterState
 
     public override void Tick()
     {
-        character.transform.position += character.transform.forward * match.HorseSpeed * Time.deltaTime;
+        character.transform.position += character.transform.forward * match.horseSpeed * Time.deltaTime;
 
         if (character.Animator.GetCurrentAnimatorStateInfo(0).IsTag("JoustingAttack") && character.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
