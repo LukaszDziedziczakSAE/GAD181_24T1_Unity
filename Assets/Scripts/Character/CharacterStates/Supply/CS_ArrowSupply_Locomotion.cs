@@ -8,8 +8,8 @@ public class CS_ArrowSupply_Locomotion : CharacterState
     private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
 
     [SerializeField] private string targetTag = "Pickup";
-    [SerializeField] private float maxDistance = 5f;
-    [SerializeField] private float idleDuration = 1f;
+    [SerializeField] private float maxDistance = .5f;
+    [SerializeField] private float idleDuration = 1.5f;
 
     private Vector3 lastPosition;
     private float idleTimer;
@@ -21,6 +21,8 @@ public class CS_ArrowSupply_Locomotion : CharacterState
     public override void StateStart()
     {
         lastPosition = character.transform.position;
+
+        Debug.Log(character.PlayerIndex + " has entered the locomotion state");
 
         if (!IsPlayerCharacter)
         {

@@ -67,6 +67,7 @@ public class ArrowSupply_Crate : MonoBehaviour
         arrow.transform.localEulerAngles = localHandRotation;
         arrow.transform.localScale = Vector3.one;
         //print("arrow pos=" + arrow.transform.localPosition + " rot=" + arrow.transform.localEulerAngles);
+        Debug.Log(character.PlayerIndex + " has picked up " + arrow);
 
         return arrow;
     }

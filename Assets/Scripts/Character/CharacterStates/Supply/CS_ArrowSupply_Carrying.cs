@@ -10,8 +10,8 @@ public class CS_ArrowSupply_Carrying : CharacterState
     public ArrowSupply_Arrow Arrow => arrow;
 
     [SerializeField] private string targetTag = "Delivery";
-    [SerializeField] private float maxDistance = 5f;
-    [SerializeField] private float idleDuration = 1f;
+    [SerializeField] private float maxDistance = .5f;
+    [SerializeField] private float idleDuration = 1.5f;
 
     private Vector3 lastPosition;
     private float idleTimer;
@@ -24,6 +24,8 @@ public class CS_ArrowSupply_Carrying : CharacterState
     public override void StateStart()
     {
         lastPosition = character.transform.position;
+
+        Debug.Log(character.PlayerIndex + " has entered the carrying state");
 
         if (!IsPlayerCharacter)
         {

@@ -17,6 +17,7 @@ public class CS_ArrowSupply_Delivery : CharacterState
     {
         character.Animator.SetFloat("speed", 0);
         archerSupply.GiveArrow(arrow);
+        Debug.Log(character.PlayerIndex + " has entered the delivery state");
     }
 
     public override void Tick()

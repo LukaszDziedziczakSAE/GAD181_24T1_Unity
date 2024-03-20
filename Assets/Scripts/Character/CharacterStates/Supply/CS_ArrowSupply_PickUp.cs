@@ -15,6 +15,7 @@ public class CS_ArrowSupply_PickUp : CharacterState
     public override void StateStart()
     {
         character.Animator.CrossFade("ScavangerHunt_Pickup", 0.1f);
+        Debug.Log(character.PlayerIndex + " has entered the pickup state");
     }
 
     public override void Tick()
