@@ -12,18 +12,10 @@ public class JoustingMatch : MinigameMatch
     [field: SerializeField] public float PlayerStartPosition { get; private set; }
     [field: SerializeField] public float EnemyStartPosition { get; private set; }
     [field: SerializeField] public float TurnSpeed { get; private set; }
-    [field: SerializeField] public float PauseTimerDuration { get; private set; }
 
     private Jousting_Weapon weapon;
-    private Coroutine startTimerCoroutine;
 
     private int completedRounds = 0;
-
-    public float horseSpeed = 2f;
-
-    private bool isPaused = false;
-
-
 
     protected override MatchResult DetermineResult()
     {
@@ -33,30 +25,11 @@ public class JoustingMatch : MinigameMatch
     protected override void MatchStart()
     {
         weapon = FindObjectOfType<Jousting_Weapon>();
-        StartRoundTimer(); // Start the round timer
-    }
 
-    private void StartRoundTimer()
-    {
-        StartCoroutine(RoundTimer());
-    }
-
-    private IEnumerator RoundTimer()
-    {
-        // Set both players to idle state and pause the game
-        foreach (Character character in Compeditors)
-        {
-            character.SetNewState(new CS_Jousting_Idle(character));
-        }
-        isPaused = true;
-        yield return new WaitForSeconds(PauseTimerDuration);
-
-        // Resume the game and set both players to riding state
         foreach (Character character in Compeditors)
         {
             character.SetNewState(new CS_Jousting_Riding(character));
         }
-        isPaused = false;
     }
 
     protected override void MatchTick()
@@ -69,28 +42,9 @@ public class JoustingMatch : MinigameMatch
         }
     }
 
-    private IEnumerator StartTimerCoroutine()
-    {
-        // Set both players to idle state and pause the game
-        foreach (Character character in Compeditors)
-        {
-            character.SetNewState(new CS_Jousting_Idle(character));
-        }
-        isPaused = true;
-        yield return new WaitForSeconds(PauseTimerDuration);
-
-        // Resume the game and set both players to riding state
-        foreach (Character character in Compeditors)
-        {
-            character.SetNewState(new CS_Jousting_Riding(character));
-        }
-        isPaused = false;
-    }
-
-
     public Character OtherCharacter(Character character)
     {
-        if (character == null) Debug.LogError("Missing character reference");
+        if (character == null) Debug.LogError("missing character referance");
 
         if (character.PlayerIndex == 0)
         {
@@ -111,19 +65,12 @@ public class JoustingMatch : MinigameMatch
             character.SetNewState(new CS_Jousting_Idle(character));
             RestartRound();
             completedRounds++;
-            Debug.Log("Player Reached End");
+            //Debug.Log("Player Reached End");
         }
     }
 
     private void RestartRound()
     {
-        if (startTimerCoroutine != null)
-        {
-            StopCoroutine(startTimerCoroutine);
-        }
-
-        startTimerCoroutine = StartCoroutine(StartTimerCoroutine());
-
         foreach (Character character in Compeditors)
         {
             character.SetNewState(new CS_Jousting_Riding(character));
@@ -131,12 +78,12 @@ public class JoustingMatch : MinigameMatch
             if (character.PlayerIndex == 0)
             {
                 newPosition.z = PlayerStartPosition;
-            }    
+            }
             else if (character.PlayerIndex == 1)
             {
                 newPosition.z = EnemyStartPosition;
             }
-            
+
             character.transform.position = newPosition;
 
             Debug.Log(completedRounds);

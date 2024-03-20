@@ -6,6 +6,7 @@ public class CS_Jousting_Impact : CharacterState
 {
     private JoustingMatch match;
     private Character other;
+    private CS_Jousting_Riding riding;
     private int pointsToAward = 1;
 
     public CS_Jousting_Impact(Character character) : base(character)
@@ -17,19 +18,20 @@ public class CS_Jousting_Impact : CharacterState
     {
         character.Sounds.PlayGruntSound();
 
-        character.Animator.CrossFade("Jousting_Rider_Death", 0.1f);
 
         other = match.OtherCharacter(character);
-        match.AwardPlayerPoints(other.PlayerIndex, pointsToAward);
+        if (character.PlayerIndex == 1 && character.HorseAnimator != null)
+        {
+            character.Animator.CrossFade("Jousting_Rider_Death", 0.1f);
+            character.HorseAnimator.CrossFade("Jousting_Horse_Death", 0.1f);
+        }
+
+        match.AwardPlayerPoints(character.PlayerIndex, pointsToAward);
         Debug.Log("You've entered impact state");
     }
 
     public override void Tick()
     {
-        if (character.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-        {
-            character.SetNewState(new CS_Jousting_Idle(character));
-        }
     }
 
     public override void FixedTick()
