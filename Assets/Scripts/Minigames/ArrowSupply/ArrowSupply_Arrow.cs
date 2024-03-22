@@ -67,6 +67,8 @@ public class ArrowSupply_Arrow : MonoBehaviour
             hitSomething = true;
 
             Debug.Log("hit");
+            
+            timeToLive = .5f;
 
             EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
@@ -98,19 +100,20 @@ public class ArrowSupply_Arrow : MonoBehaviour
     }
 
     IEnumerator EnableColliderAfterDelay()
-    {
-        // Wait for some time before enabling the BoxCollider
-        yield return new WaitForSeconds(1.0f); // Change the delay time as needed
+    {        
+        yield return new WaitForSeconds(1.0f);
 
-        // Enable the BoxCollider
         gameObject.GetComponent<BoxCollider>().enabled = true;
     }
 
     public void SetType(EType newType)
     {
         Type = newType;
+
         if (Type == EType.fire) fireParticles.gameObject.SetActive(true);
+
         if (Type == EType.ice) iceParticles.gameObject.SetActive(true);
+
         Debug.Log("Set arrow type to " + Type.ToString());
     }
 }

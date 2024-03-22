@@ -10,10 +10,13 @@ public class CS_ArrowSupply_Carrying : CharacterState
     public ArrowSupply_Arrow Arrow => arrow;
 
     [SerializeField] private string targetTag = "Delivery";
+
     [SerializeField] private float maxDistance = .5f;
+
     [SerializeField] private float idleDuration = 1.5f;
 
     private Vector3 lastPosition;
+
     private float idleTimer;
 
     public CS_ArrowSupply_Carrying(Character character, ArrowSupply_Arrow arrow) : base(character)
@@ -48,8 +51,7 @@ public class CS_ArrowSupply_Carrying : CharacterState
         {
             character.Animator.SetFloat("speed", 0);
         }
-
-        // Check if the character is idle
+                
         if (!IsPlayerCharacter && character.transform.position == lastPosition)
         {
             idleTimer += Time.deltaTime;
@@ -78,7 +80,15 @@ public class CS_ArrowSupply_Carrying : CharacterState
 
     private void InputReader_OnTouchPressed()
     {
-        // Handle touch input for player character
+        {
+            RaycastHit raycastHit = Game.InputReader.RaycastFromTouchPoint;
+            if (!raycastHit.Equals(new RaycastHit()))
+            {
+                match.ShowTouchIndicator(raycastHit.point);
+                Game.PlayerCharacter.NavMeshAgent.SetDestination(raycastHit.point);
+                Game.PlayerCharacter.NavMeshAgent.isStopped = false;
+            }
+        }
     }
 
     private void SetDestinationToDeliveryPoint()

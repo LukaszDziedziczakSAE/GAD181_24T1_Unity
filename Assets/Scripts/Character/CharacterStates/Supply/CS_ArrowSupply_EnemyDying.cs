@@ -6,7 +6,8 @@ public class CS_ArrowSupply_EnemyDying : CharacterState
 {
     private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
 
-    [SerializeField] int pointsAdded = 10;
+    [SerializeField] int pointsAdded = 10;   
+
 
     public CS_ArrowSupply_EnemyDying(Character character) : base(character)
     {
@@ -36,9 +37,7 @@ public class CS_ArrowSupply_EnemyDying : CharacterState
     }
 
     public void AddScore()
-    {
-        
-        
+    {                
         match.AwardPlayerPoints(0, pointsAdded);
         Game.UI.UpdateMatchStatus();
         
