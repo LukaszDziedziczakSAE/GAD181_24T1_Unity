@@ -25,6 +25,7 @@ public class CS_Archering_Releasing : CharacterState
     {
         if (character.Animator.GetCurrentAnimatorStateInfo(0).IsTag("ArrowShoot") && character.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
+            //SaveRotation(character.transform.rotation);
             character.SetNewState(new CS_Archering_Standing(character));
         }
         
@@ -37,6 +38,12 @@ public class CS_Archering_Releasing : CharacterState
     public override void StateEnd()
     {
         
+    }
+
+    public void SaveRotation(Quaternion facing)
+    {
+
+        facing = character.transform.rotation;
     }
 
     /*void ShootArrow(float releasePower)

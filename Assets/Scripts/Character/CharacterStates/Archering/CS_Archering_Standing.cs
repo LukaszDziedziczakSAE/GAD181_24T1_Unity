@@ -6,18 +6,21 @@ public class CS_Archering_Standing : CharacterState
 {
     float resetRotationTime = 0.2f;
     
+
+
     public CS_Archering_Standing(Character character) : base(character)
     {
     }
 
     public override void StateStart()
     {
-        Vector3 targetResetRotation = Vector3.zero;
+        
+        //Vector3 targetResetRotation = Vector3.zero;
         //float resetForwardRotation = 
         Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
         character.Animator.CrossFade("TargetShooting_BowIdle", 0.1f);
         //character.transform.eulerAngles = new UnityEngine.Vector3(character.transform.eulerAngles.x, 0, character.transform.eulerAngles.z)* Mathf.(character.transform.eulerAngles, , resetRotationTime);
-        character.transform.rotation = Quaternion.Slerp(character.transform.rotation, Quaternion.Euler(targetResetRotation), resetRotationTime * Time.deltaTime);
+        //character.transform.rotation = Quaternion.Slerp(character.transform.rotation, Quaternion.Euler(targetResetRotation), resetRotationTime * Time.deltaTime);
             
     }
     

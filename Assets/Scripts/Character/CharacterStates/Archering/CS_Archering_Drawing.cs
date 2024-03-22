@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class CS_Archering_Drawing : CharacterState
 {
@@ -14,6 +15,8 @@ public class CS_Archering_Drawing : CharacterState
     private float startingXPos;
     private float turnRatio = 5;
 
+    
+
     public CS_Archering_Drawing(Character character) : base(character)
     {
         ui = (UI_TargetShooting)Game.UI;
@@ -24,6 +27,7 @@ public class CS_Archering_Drawing : CharacterState
     
     public override void StateStart()
     {
+        
         if (IsPlayerCharacter) Game.InputReader.OnTouchReleased += InputReader_OnTouchReleased;
         ui.ArrowShootingIndicator.gameObject.SetActive(true);
         startingYPostition = Game.InputReader.TouchPosition.y;        
@@ -65,6 +69,7 @@ public class CS_Archering_Drawing : CharacterState
 
     public override void StateEnd()
     {
+
         if (IsPlayerCharacter) Game.InputReader.OnTouchReleased -= InputReader_OnTouchReleased;
         ui.ArrowShootingIndicator.gameObject.SetActive(false);
         
@@ -106,5 +111,6 @@ public class CS_Archering_Drawing : CharacterState
         float distanceNormalized = distance / match.MaximumDrawDistanceToFire;
         distanceNormalized = Mathf.Clamp(distanceNormalized, 0, 1);
     }
+    
     
 }
