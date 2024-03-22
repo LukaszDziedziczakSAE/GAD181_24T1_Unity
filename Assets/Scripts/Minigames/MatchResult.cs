@@ -39,7 +39,7 @@ public class MatchResult
         while (winOrder.Count != AmountOfPlayers)
         {
             int highestScorePlayerNo = -1;
-            int highestScore = 0;
+            int highestScore = int.MinValue;
 
             for (int player = 0; player < AmountOfPlayers; player++)
             {

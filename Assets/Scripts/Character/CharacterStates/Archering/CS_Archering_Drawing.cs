@@ -35,6 +35,10 @@ public class CS_Archering_Drawing : CharacterState
 
         startingXPos = Game.InputReader.TouchPosition.x;
         characterStartingRotation = character.transform.eulerAngles.y;
+        if (characterStartingRotation > 180)
+        {
+            characterStartingRotation -= 360;
+        }
     }
 
     public override void Tick()
@@ -47,7 +51,7 @@ public class CS_Archering_Drawing : CharacterState
         float rotation = distanceX / turnRatio;
         rotation += characterStartingRotation;        
         if (rotation > maxAngle && rotation < 180) rotation = maxAngle;
-        else if (rotation < -maxAngle || rotation > 180) rotation = -maxAngle;
+        else if (rotation < -maxAngle/* || rotation > 180*/) rotation = -maxAngle;
         character.transform.eulerAngles = new UnityEngine.Vector3(character.transform.eulerAngles.x, rotation, character.transform.eulerAngles.z);
 
         float currentYPosition = Game.InputReader.TouchPosition.y;
@@ -58,6 +62,7 @@ public class CS_Archering_Drawing : CharacterState
             distance = 0;
         }
         ui.ArrowShootingIndicator.UpdateDrawDistance(distance);
+        ui.ArrowShootingIndicator.UpdateBackgroundColour(distance >= match.MinimumDrawDistanceToFire);
         float distanceNormalized = distance / match.MaximumDrawDistanceToFire;
         distanceNormalized = Mathf.Clamp(distanceNormalized, 0, 1);
         //arrow.ShootArrow(distanceNomalized)

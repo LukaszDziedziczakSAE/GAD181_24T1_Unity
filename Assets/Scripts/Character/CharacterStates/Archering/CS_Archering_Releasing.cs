@@ -6,11 +6,12 @@ public class CS_Archering_Releasing : CharacterState
 {
     float drawPower;
     TargetShooting_ArrowLauncher arrowLauncher;
-
+    TargetShooting_AI ai;
     public CS_Archering_Releasing(Character character, float drawPower) : base(character)
     {
         this.drawPower = drawPower;
-        arrowLauncher = character.GetComponent<TargetShooting_ArrowLauncher>();
+        arrowLauncher = character.GetComponentInChildren<TargetShooting_ArrowLauncher>();
+        ai = character.GetComponentInChildren<TargetShooting_AI>();
     }
 
     public override void StateStart()
@@ -37,7 +38,7 @@ public class CS_Archering_Releasing : CharacterState
 
     public override void StateEnd()
     {
-        
+        if (ai != null) ai.ResetTimer();
     }
 
     public void SaveRotation(Quaternion facing)

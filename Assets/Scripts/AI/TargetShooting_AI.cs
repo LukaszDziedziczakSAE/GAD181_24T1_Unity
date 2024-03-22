@@ -11,15 +11,39 @@ public class TargetShooting_AI : AI
     //set a power range for AIs to eith hit os fall short of target
     //set a timer for AI fire rate
 
+    [SerializeField] float baseFireRate;
+    [SerializeField] float fireRateDeviation;
+    [SerializeField, Range(0,1)] float hitProbability;
 
+    float timer;
+    bool isFiring;
 
+    private void Start()
+    {
+        ResetTimer();
+    }
+
+    
 
     private void Update()
     {
+        if (isFiring) return; 
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            if(timer <= 0)
+            {
+                TryShootArrow();
+            }
+        }
         
     }
 
-
+    public void ResetTimer()
+    {
+        timer = fireRate;
+        isFiring = false;
+    }
 
     void AimAtTargets()//rotate AIs to face target direction
     {
@@ -44,5 +68,37 @@ public class TargetShooting_AI : AI
             }
         }
         return targetHits;
+    }
+
+    private void TryShootArrow()
+    {
+        if (canFire)
+        {
+            Debug.Log("ai shot");
+        }
+        else
+        {
+            Debug.Log("ai miss");
+        }
+        character.SetNewState(new CS_Archering_Releasing(character, 1));
+       
+        isFiring = true;
+    }
+
+    private float fireRate
+    {
+        get
+        {
+            return Random.Range(baseFireRate - fireRateDeviation, baseFireRate + fireRateDeviation);
+        }
+    }
+
+    private bool canFire
+    {
+        get
+        {
+            float random = Random.Range(0f,1f);
+            return random < hitProbability;
+        }
     }
 }
