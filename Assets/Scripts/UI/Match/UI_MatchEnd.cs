@@ -44,6 +44,7 @@ public class UI_MatchEnd : MonoBehaviour
     {
         matchResult = newResult;
         playerResult = FindLocalPlayerResults();
+        if (playerResult == null) return;
         UpdateScoreboard();
         UpdateXPGain();
         UpdateGoldGain();
@@ -131,7 +132,9 @@ public class UI_MatchEnd : MonoBehaviour
         foreach (MatchResult.Result result in matchResult.Results)
         {
             if (result.PlayerNumber == 0) return result;
+
         }
+        Debug.LogWarning("no local player result found");
         return null;
     }
 }

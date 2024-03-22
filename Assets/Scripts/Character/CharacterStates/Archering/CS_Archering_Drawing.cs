@@ -15,7 +15,7 @@ public class CS_Archering_Drawing : CharacterState
     private float startingXPos;
     private float turnRatio = 5;
 
-    
+    float characterStartingRotation;
 
     public CS_Archering_Drawing(Character character) : base(character)
     {
@@ -34,6 +34,7 @@ public class CS_Archering_Drawing : CharacterState
         character.Animator.CrossFade("TargetShooting_DrawBlend", 0.1f);
 
         startingXPos = Game.InputReader.TouchPosition.x;
+        characterStartingRotation = character.transform.eulerAngles.y;
     }
 
     public override void Tick()
@@ -44,8 +45,9 @@ public class CS_Archering_Drawing : CharacterState
         }
         float distanceX = startingXPos - Game.InputReader.TouchPosition.x;
         float rotation = distanceX / turnRatio;
-        if (rotation > maxAngle) rotation = maxAngle;
-        else if (rotation < -maxAngle) rotation = -maxAngle;
+        rotation += characterStartingRotation;        
+        if (rotation > maxAngle && rotation < 180) rotation = maxAngle;
+        else if (rotation < -maxAngle || rotation > 180) rotation = -maxAngle;
         character.transform.eulerAngles = new UnityEngine.Vector3(character.transform.eulerAngles.x, rotation, character.transform.eulerAngles.z);
 
         float currentYPosition = Game.InputReader.TouchPosition.y;
