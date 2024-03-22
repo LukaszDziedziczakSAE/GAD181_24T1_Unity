@@ -14,8 +14,9 @@ public class ArrowSupply_Arrow : MonoBehaviour
     [SerializeField] int damageAmount = 1;
     [SerializeField] int pointsAdded = 10;
 
+
     [field: SerializeField] public EType Type { get; private set; }
-    Character owner;
+    [SerializeField]  Character owner;
     Character target;
 
     public enum EType
