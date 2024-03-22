@@ -11,10 +11,10 @@ public class ArrowSupply_Arrow : MonoBehaviour
     [SerializeField] ParticleSystem iceParticles;
     [SerializeField] ParticleSystem fireParticles;
     [SerializeField] Vector3 heightOffSet;
-    [SerializeField] int damageAmount = 1; 
+    [SerializeField] int damageAmount = 1;
+    [SerializeField] int pointsAdded = 10;
 
-
-    [field: SerializeField] public EType Type {  get; private set; }
+    [field: SerializeField] public EType Type { get; private set; }
     Character owner;
     Character target;
 
@@ -61,25 +61,27 @@ public class ArrowSupply_Arrow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
-            if (!launched) return;
 
-            hitSomething = true;
+        if (!launched) return;
 
-            Debug.Log("hit");
-            
-            timeToLive = .5f;
+        hitSomething = true;
 
-            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
-            if (enemyHealth != null)
-            {
-                enemyHealth.TakeDamage(damageAmount, Type); // Pass damageAmount when calling TakeDamage
-            }
-            else
-            {
+        Debug.Log("hit");
+
+        timeToLive = .5f;
+
+        UpdateScore();
+
+        EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+        if (enemyHealth != null)
+        {
+            enemyHealth.TakeDamage(damageAmount, Type); // Pass damageAmount when calling TakeDamage
+        }
+        else
+        {
             Debug.Log("No enemy health");
-            }
-        
+        }
+
         /*TargetShooting_Target target = other.GetComponent<TargetShooting_Target>();
         if (target != null)
         {
@@ -88,7 +90,7 @@ public class ArrowSupply_Arrow : MonoBehaviour
             target.SetDownRoation();
         }*/
 
-    
+
     }
 
     public void Launch(Character owner, Character target)
@@ -100,7 +102,7 @@ public class ArrowSupply_Arrow : MonoBehaviour
     }
 
     IEnumerator EnableColliderAfterDelay()
-    {        
+    {
         yield return new WaitForSeconds(1.0f);
 
         gameObject.GetComponent<BoxCollider>().enabled = true;
@@ -116,4 +118,11 @@ public class ArrowSupply_Arrow : MonoBehaviour
 
         Debug.Log("Set arrow type to " + Type.ToString());
     }
+
+    public void UpdateScore()
+    {
+        match.AwardPlayerPoints(owner.PlayerIndex, pointsAdded);
+        Game.UI.UpdateMatchStatus();
+    }
 }
+

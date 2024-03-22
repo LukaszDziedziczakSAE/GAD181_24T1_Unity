@@ -8,8 +8,10 @@ public class CS_ArrowSupply_Locomotion : CharacterState
     private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
 
     [SerializeField] private string targetTag = "Pickup";
-    [SerializeField] private float maxDistance = .5f;
-    [SerializeField] private float idleDuration = 1.5f;
+
+    [SerializeField] private float maxDistance = 1f;
+
+    [SerializeField] private float idleDuration = 1f;
 
     private Vector3 lastPosition;
     private float idleTimer;
@@ -24,13 +26,14 @@ public class CS_ArrowSupply_Locomotion : CharacterState
 
         Debug.Log(character.PlayerIndex + " has entered the locomotion state");
 
-        if (!IsPlayerCharacter)
+        if (!IsPlayerCharacter && character.PlayerIndex <= 4)
         {
             SetDestinationAroundRandomObject();
         }
         else
         {
             Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
+
             character.Animator.CrossFade("ScavangerHunt_Locomotion", 0.1f);
         }
     }
@@ -47,9 +50,10 @@ public class CS_ArrowSupply_Locomotion : CharacterState
         }
 
         // Check if the character is idle
-        if (!IsPlayerCharacter && character.transform.position == lastPosition)
+        if (!IsPlayerCharacter && character.transform.position == lastPosition && character.PlayerIndex <= 4)
         {
             idleTimer += Time.deltaTime;
+
             if (idleTimer >= idleDuration)
             {
                 SetDestinationAroundRandomObject();
@@ -79,7 +83,9 @@ public class CS_ArrowSupply_Locomotion : CharacterState
         if (!raycastHit.Equals(new RaycastHit()))
         {
             match.ShowTouchIndicator(raycastHit.point);
+
             Game.PlayerCharacter.NavMeshAgent.SetDestination(raycastHit.point);
+
             Game.PlayerCharacter.NavMeshAgent.isStopped = false;
         }
     }
@@ -96,11 +102,15 @@ public class CS_ArrowSupply_Locomotion : CharacterState
         GameObject randomTarget = targets[Random.Range(0, targets.Length)];
 
         Vector3 randomDirection = Random.insideUnitSphere * randomTarget.GetComponent<SphereCollider>().radius;
+
         randomDirection += randomTarget.transform.position;
+
         NavMeshHit navHit;
+
         NavMesh.SamplePosition(randomDirection, out navHit, maxDistance, NavMesh.AllAreas);
 
         character.NavMeshAgent.SetDestination(navHit.position);
+
         character.NavMeshAgent.isStopped = false;
     }
 }

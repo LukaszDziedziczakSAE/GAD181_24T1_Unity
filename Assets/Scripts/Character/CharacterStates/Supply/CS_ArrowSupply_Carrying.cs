@@ -30,15 +30,17 @@ public class CS_ArrowSupply_Carrying : CharacterState
 
         Debug.Log(character.PlayerIndex + " has entered the carrying state");
 
-        if (!IsPlayerCharacter)
+        if (!IsPlayerCharacter && character.PlayerIndex <= 4)
         {
             SetDestinationToDeliveryPoint();
+
         }
         else
         {
             Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
             character.Animator.CrossFade("ScavangerHunt_Locomotion", 0.1f);
         }
+
     }
 
     public override void Tick()
@@ -52,7 +54,7 @@ public class CS_ArrowSupply_Carrying : CharacterState
             character.Animator.SetFloat("speed", 0);
         }
                 
-        if (!IsPlayerCharacter && character.transform.position == lastPosition)
+        if (!IsPlayerCharacter && character.transform.position == lastPosition && character.PlayerIndex <= 4)
         {
             idleTimer += Time.deltaTime;
             if (idleTimer >= idleDuration)

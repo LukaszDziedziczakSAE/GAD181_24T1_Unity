@@ -8,6 +8,12 @@ public class CS_ArrowSupply_PickUp : CharacterState
 
     ArrowSupply_Arrow arrow;
 
+    [SerializeField] private float idleDuration = 1.5f;
+
+    private float idleTimer;
+
+    private Vector3 lastPosition;
+
     public CS_ArrowSupply_PickUp(Character character, ArrowSupply_Crate crate) : base(character)
     {
         this.crate = crate;
@@ -15,16 +21,24 @@ public class CS_ArrowSupply_PickUp : CharacterState
 
     public override void StateStart()
     {
+        lastPosition = character.transform.position;
         character.Animator.CrossFade("ScavangerHunt_Pickup", 0.1f);
-
+        character.NavMeshAgent.isStopped = true;
         Debug.Log(character.PlayerIndex + " has entered the pickup state");
     }
 
     public override void Tick()
     {
-        if (arrow == null)
+        if (!IsPlayerCharacter && character.transform.position == lastPosition && arrow == null)
         {
-            //Debug.Log("No arrow");            
+            idleTimer += Time.deltaTime;
+
+            if (idleTimer >= idleDuration)
+            {
+                character.SetNewState(new CS_ArrowSupply_Locomotion(character));
+
+                idleTimer = 0f;
+            }
             return;
         }
         if (character.Animator.GetCurrentAnimatorStateInfo(0).IsTag("Pickup") && character.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
