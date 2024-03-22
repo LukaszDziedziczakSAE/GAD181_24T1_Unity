@@ -15,7 +15,7 @@ public class TargetShooting_Arrow : MonoBehaviour
     float timeAlive => Time.time - birthTime;
     bool hitSomething;
     //ArrowShootingMatch match;
-
+    bool errored;
     float speed => baseSpeed * power;
     Character owner;
     ArrowShootingMatch match => (ArrowShootingMatch)Game.Match;
@@ -40,8 +40,9 @@ public class TargetShooting_Arrow : MonoBehaviour
             rotation += drop * Time.deltaTime;
             transform.eulerAngles = new Vector3(rotation, transform.eulerAngles.y, transform.eulerAngles.z);
         }
-        if (owner.PlayerIndex == 0 && transform.position.y<0 && !hitSomething)
+        if (!errored && transform.position.y < 0 && !hitSomething)
         {
+            errored = true;
             Debug.LogError(name + " below ground " + transform.position);
         }
         
@@ -68,6 +69,6 @@ public class TargetShooting_Arrow : MonoBehaviour
         transform.parent = null;
         owner = character;
         power = newPowerValue;
-        Debug.Log(owner.name + " fired arrow with " + power.ToString());
+        Debug.Log(owner.name + " fired arrow with " + (power*100).ToString("F0") + "% power");
     }
 }

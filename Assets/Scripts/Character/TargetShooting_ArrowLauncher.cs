@@ -8,6 +8,10 @@ public class TargetShooting_ArrowLauncher : MonoBehaviour
     
     [SerializeField] Character owner;
 
+    float lastIntakePower;
+    bool sheduleFiring;
+    int errorIteration;
+
     private void Awake()
     {
         if (owner == null) owner = GetComponent<Character>();
@@ -17,18 +21,40 @@ public class TargetShooting_ArrowLauncher : MonoBehaviour
         
     }
 
+    private void Update()
+    {
+        if (sheduleFiring)
+        {
+            if (transform.position.y < 0)
+            {
+                Debug.LogWarning(owner.name + ": Fire Point below zero (" + ++errorIteration + ")");
+            }
+            else
+            {
+                Debug.LogWarning(owner.name + ": Fire Point error resolved after " + ++errorIteration + " frames");
+                Fire();
+                sheduleFiring = false;
+                errorIteration = 0;
+            }
+        }
+    }
+
     public void FireArrow(float intakePower)
     {
-        Debug.Log(owner.name + " Firing arrow");
-        TargetShooting_Arrow arrow = Instantiate(arrowPrefab,transform.position, transform.rotation);
-        Debug.Log("spawn position " + arrow.transform.position);
-        //arrow.transform.forward *= intakePower;
-
-        arrow.Initilise(intakePower, owner);
-        if (arrow.transform.position.y < 0)
+        lastIntakePower = intakePower;
+        if (transform.position.y < 0)
         {
-            arrow.transform.position=transform.position;
+            Debug.LogWarning(owner.name + ": Fire Point below zero");
+            sheduleFiring = true;
         }
+        else Fire();
+    }
 
+    private void Fire()
+    {
+        TargetShooting_Arrow arrow = Instantiate(arrowPrefab, transform.position, transform.rotation);
+        if (arrow.transform.position.y < 0) Debug.LogWarning(owner.name + ": fired arrow from spawn position " + arrow.transform.position);
+        arrow.Initilise(lastIntakePower, owner);
+        
     }
 }

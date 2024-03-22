@@ -39,7 +39,6 @@ public class ArrowShootingMatch : MinigameMatch
     protected override void PostMatchStart()
     {
         base.PostMatchStart();
-        //Mode = EState.none;
     }
 
 }

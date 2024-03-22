@@ -6,7 +6,7 @@ public class AI : MonoBehaviour
 {
     protected Character character;
 
-    private void Awake()
+    protected void Awake()
     {
         character = GetComponentInParent<Character>();
     }

@@ -23,10 +23,12 @@ public class TargetShooting_AI : AI
         ResetTimer();
     }
 
-    
+
 
     private void Update()
     {
+        if (Game.Match == null) return;
+        if (Game.Match.Mode != MinigameMatch.EState.inProgress) return;
         if (isFiring) return; 
         if (timer > 0)
         {
