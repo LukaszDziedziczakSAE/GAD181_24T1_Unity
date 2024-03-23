@@ -9,15 +9,7 @@ public class CS_ArrowSupply_Carrying : CharacterState
     private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
     public ArrowSupply_Arrow Arrow => arrow;
 
-    [SerializeField] private string targetTag = "Delivery";
-
-    [SerializeField] private float maxDistance = .5f;
-
-    [SerializeField] private float idleDuration = 1.5f;
-
-    private Vector3 lastPosition;
-
-    private float idleTimer;
+    public ArrowSupply_AIStateHolder stateHolder;
 
     public CS_ArrowSupply_Carrying(Character character, ArrowSupply_Arrow arrow) : base(character)
     {
@@ -26,21 +18,22 @@ public class CS_ArrowSupply_Carrying : CharacterState
 
     public override void StateStart()
     {
-        lastPosition = character.transform.position;
-
-        Debug.Log(character.PlayerIndex + " has entered the carrying state");
+        if (stateHolder == null)
+        {
+            stateHolder = GameObject.FindObjectOfType<ArrowSupply_AIStateHolder>();
+        }
 
         if (!IsPlayerCharacter && character.PlayerIndex <= 4)
         {
-            SetDestinationToDeliveryPoint();
-
+            stateHolder.SetState(ArrowSupply_AIStateHolder.AIState.Carrying);
         }
         else
         {
             Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
-            character.Animator.CrossFade("ScavangerHunt_Locomotion", 0.1f);
-        }
 
+           
+        }  
+            character.Animator.CrossFade("ScavangerHunt_Locomotion", 0.1f); 
     }
 
     public override void Tick()
@@ -53,22 +46,6 @@ public class CS_ArrowSupply_Carrying : CharacterState
         {
             character.Animator.SetFloat("speed", 0);
         }
-                
-        if (!IsPlayerCharacter && character.transform.position == lastPosition && character.PlayerIndex <= 4)
-        {
-            idleTimer += Time.deltaTime;
-            if (idleTimer >= idleDuration)
-            {
-                SetDestinationToDeliveryPoint();
-                idleTimer = 0f;
-            }
-        }
-        else
-        {
-            idleTimer = 0f;
-        }
-
-        lastPosition = character.transform.position;
     }
 
     public override void FixedTick()
@@ -84,32 +61,16 @@ public class CS_ArrowSupply_Carrying : CharacterState
     {
         {
             RaycastHit raycastHit = Game.InputReader.RaycastFromTouchPoint;
+
             if (!raycastHit.Equals(new RaycastHit()))
             {
                 match.ShowTouchIndicator(raycastHit.point);
+
                 Game.PlayerCharacter.NavMeshAgent.SetDestination(raycastHit.point);
+
                 Game.PlayerCharacter.NavMeshAgent.isStopped = false;
             }
         }
     }
 
-    private void SetDestinationToDeliveryPoint()
-    {
-        GameObject[] deliveryPoints = GameObject.FindGameObjectsWithTag(targetTag);
-        if (deliveryPoints.Length == 0)
-        {
-            Debug.LogError("No objects with tag '" + targetTag + "' found.");
-            return;
-        }
-
-        GameObject randomDeliveryPoint = deliveryPoints[Random.Range(0, deliveryPoints.Length)];
-
-        Vector3 randomDirection = Random.insideUnitSphere * maxDistance;
-        randomDirection += randomDeliveryPoint.transform.position;
-        NavMeshHit navHit;
-        NavMesh.SamplePosition(randomDirection, out navHit, maxDistance, NavMesh.AllAreas);
-
-        character.NavMeshAgent.SetDestination(navHit.position);
-        character.NavMeshAgent.isStopped = false;
-    }
 }

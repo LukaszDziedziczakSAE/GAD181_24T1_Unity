@@ -8,13 +8,9 @@ public class CS_ArrowSupply_PickUp : CharacterState
 
     ArrowSupply_Arrow arrow;
 
-    [SerializeField] private float idleDuration = 1.5f;
-
-    private float idleTimer;
-
-    private Vector3 lastPosition;
-
     private bool isAnimationPlaying = false; // Flag to indicate if the animation is playing
+
+    private ArrowSupply_AIStateHolder stateHolder;
 
     public CS_ArrowSupply_PickUp(Character character, ArrowSupply_Crate crate) : base(character)
     {
@@ -23,31 +19,27 @@ public class CS_ArrowSupply_PickUp : CharacterState
 
     public override void StateStart()
     {
-        lastPosition = character.transform.position;
+        if (stateHolder == null)
+        {
+            stateHolder = GameObject.FindObjectOfType<ArrowSupply_AIStateHolder>();
+        }
 
-        character.Animator.CrossFade("ScavangerHunt_Pickup", 0.2f);
-
-        character.NavMeshAgent.isStopped = true;
-
+        if (!IsPlayerCharacter && character.PlayerIndex <= 4)
+        {
+            stateHolder.SetState(ArrowSupply_AIStateHolder.AIState.Idle);
+        }
+                
+        character.Animator.CrossFade("ScavangerHunt_Pickup", 0.1f);
+                
         isAnimationPlaying = true; // Set animation flag to true
 
         Debug.Log(character.PlayerIndex + " has entered the pickup state");
+        
     }
 
     public override void Tick()
     {
-        if (!IsPlayerCharacter && character.transform.position == lastPosition && arrow == null)
-        {
-            idleTimer += Time.deltaTime;
-
-            if (idleTimer >= idleDuration)
-            {
-                character.SetNewState(new CS_ArrowSupply_Locomotion(character));
-
-                idleTimer = 0f;
-            }
-            return;
-        }
+       
 
         // Check if animation is playing
         if (isAnimationPlaying)
@@ -74,6 +66,7 @@ public class CS_ArrowSupply_PickUp : CharacterState
 
     public override void StateEnd()
     {
+        isAnimationPlaying = false;
     }
 
     public void Grab()
