@@ -51,12 +51,6 @@ public class ArrowSupply_Arrow : MonoBehaviour
 
             if (timeAlive >= timeToLive) Destroy(gameObject);
 
-            /*if (!hitSomething && transform.eulerAngles.x < 90)
-            {
-                float rotation = transform.eulerAngles.x;
-                rotation += drop * Time.deltaTime;
-                transform.eulerAngles = new Vector3(rotation, transform.eulerAngles.y, transform.eulerAngles.z);
-            }*/
         }
     }
 
@@ -82,16 +76,6 @@ public class ArrowSupply_Arrow : MonoBehaviour
         {
             Debug.Log("No enemy health");
         }
-
-        /*TargetShooting_Target target = other.GetComponent<TargetShooting_Target>();
-        if (target != null)
-        {
-            //match.TargetController.RaiseRandomTarget();
-            transform.parent = target.transform;
-            target.SetDownRoation();
-        }*/
-
-
     }
 
     public void Launch(Character owner, Character target)
@@ -122,8 +106,27 @@ public class ArrowSupply_Arrow : MonoBehaviour
 
     public void UpdateScore()
     {
-        match.AwardPlayerPoints(owner.PlayerIndex, pointsAdded);
-        Game.UI.UpdateMatchStatus();
+        if (owner.PlayerIndex == 0)
+        {
+            match.AwardPlayerPoints(0, pointsAdded);
+        }
+        else if (owner.PlayerIndex == 1)
+        {
+            match.AwardPlayerPoints(1, pointsAdded);
+        }
+        else if (owner.PlayerIndex == 2)
+        {
+            match.AwardPlayerPoints(2, pointsAdded);
+        }
+        else if (owner.PlayerIndex == 3)
+        {
+            match.AwardPlayerPoints(2, pointsAdded);
+        }
+        else
+        {
+            return;
+        }
+
     }
 }
 

@@ -11,10 +11,7 @@ public class ArrowSupplyMatch : MinigameMatch
 
     public float MatchTimeRemaining => matchLength - MatchTime;
 
-    protected override MatchResult DetermineResult()
-    {
-        return new MatchResult();
-    }
+
 
     protected override void PrematchStart()
     {
