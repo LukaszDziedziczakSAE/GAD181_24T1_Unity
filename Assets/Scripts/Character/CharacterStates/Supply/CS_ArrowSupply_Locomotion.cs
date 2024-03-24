@@ -6,12 +6,13 @@ using UnityEngine.AI;
 public class CS_ArrowSupply_Locomotion : CharacterState
 {
     private ArrowSupply_AIStateHolder stateHolder;
+
     private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match; 
+
 
     public CS_ArrowSupply_Locomotion(Character character) : base(character)
     {
     }
-
 
     public override void StateStart()
     {

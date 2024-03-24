@@ -23,17 +23,23 @@ public class CS_ArrowSupply_Carrying : CharacterState
             stateHolder = GameObject.FindObjectOfType<ArrowSupply_AIStateHolder>();
         }
 
-        if (!IsPlayerCharacter && character.PlayerIndex <= 4)
+        if (stateHolder != null)
         {
-            stateHolder.SetState(ArrowSupply_AIStateHolder.AIState.Carrying);
+            if (!IsPlayerCharacter && character.PlayerIndex <= 4)
+            {
+                stateHolder.SetState(ArrowSupply_AIStateHolder.AIState.Carrying);
+            }
+            else
+            {
+                Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
+            }
         }
         else
         {
-            Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
+            Debug.LogError("ArrowSupply_AIStateHolder not found in the scene!");
+        }
 
-           
-        }  
-            character.Animator.CrossFade("ScavangerHunt_Locomotion", 0.1f); 
+        character.Animator.CrossFade("ScavangerHunt_Locomotion", 0.1f);
     }
 
     public override void Tick()
@@ -54,7 +60,10 @@ public class CS_ArrowSupply_Carrying : CharacterState
 
     public override void StateEnd()
     {
+        
+
         if (IsPlayerCharacter) Game.InputReader.OnTouchPressed -= InputReader_OnTouchPressed;
+
     }
 
     private void InputReader_OnTouchPressed()

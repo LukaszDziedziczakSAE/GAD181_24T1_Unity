@@ -2253,7 +2253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6606d4cd9fd7524b8c000e4f39ce913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 
 --- !u!114 &611742185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2845,12 +2844,12 @@ PrefabInstance:
     - target: {fileID: 6673029633729746460, guid: 4cf43d4e4d3b08340969f8329decc9af,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -36
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6673029633729746460, guid: 4cf43d4e4d3b08340969f8329decc9af,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6673029633729746460, guid: 4cf43d4e4d3b08340969f8329decc9af,
         type: 3}
@@ -4643,7 +4642,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6606d4cd9fd7524b8c000e4f39ce913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 
 --- !u!114 &1167743719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9050,7 +9048,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6606d4cd9fd7524b8c000e4f39ce913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 
 --- !u!1001 &2141739605
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ public class ArrowSupply_ArcherSupply : MonoBehaviour
 {
     [field: SerializeField] public List<ArrowSupply_Arrow.EType> Arrows = new List<ArrowSupply_Arrow.EType>();
 
+    ArrowSupply_AINavigationController aiController;
+
     public bool HasArrows => Arrows.Count > 0;
 
     private void OnTriggerEnter(Collider other)
@@ -20,14 +22,17 @@ public class ArrowSupply_ArcherSupply : MonoBehaviour
 
     public void GiveArrow(ArrowSupply_Arrow arrow)
     {
+        //aiController.DeliverArrow();
         Debug.Log("dropping off " + arrow.Type.ToString());
         Arrows.Add(arrow.Type);
         Destroy(arrow.gameObject);
         Debug.Log("total arrows = " + Arrows.Count);
+        
     }
 
     public ArrowSupply_Arrow.EType TakeArrow()
     {
+        
         ArrowSupply_Arrow.EType arrowType = ArrowSupply_Arrow.EType.none;
         if (Arrows.Count > 0)
         {

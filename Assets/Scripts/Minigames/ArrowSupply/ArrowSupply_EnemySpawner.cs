@@ -7,14 +7,17 @@ public class ArrowSupply_EnemySpawner : MonoBehaviour
 {
     [SerializeField] Character characterPrefab;
     [SerializeField] CharacterModel.Config[] configs;
-    [SerializeField] float minSpawnDelay = 1f; // Minimum time between spawns
-    [SerializeField] float maxSpawnDelay = 3f; // Maximum time between spawns
+    private bool isFirstSpawn = true;
+    private float initialSpawnDelay = 1f; // Delay for the first spawn
+    [SerializeField] float minSpawnDelay = 5f; // New minimum time between spawns after the first spawn
+    [SerializeField] float maxSpawnDelay = 10f; // New maximum time between spawns after the first spawn
 
     float timer;
 
     private void Start()
     {
-        timer = randomSpawnDelay;
+        // Start with a delay for the initial spawn
+        timer = initialSpawnDelay;
     }
 
     private void Update()
@@ -23,7 +26,12 @@ public class ArrowSupply_EnemySpawner : MonoBehaviour
         if (timer <= 0)
         {
             SpawnEnemy();
-            timer = randomSpawnDelay;
+            if (isFirstSpawn)
+            {
+                // After the first spawn, disable the flag and use the slower spawn rate
+                isFirstSpawn = false;
+            }
+            timer = Random.Range(minSpawnDelay, maxSpawnDelay);
         }
     }
 

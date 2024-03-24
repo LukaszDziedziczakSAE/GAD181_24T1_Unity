@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class CS_ArrowSupply_PickUp : CharacterState
 {
@@ -12,6 +13,8 @@ public class CS_ArrowSupply_PickUp : CharacterState
 
     private ArrowSupply_AIStateHolder stateHolder;
 
+    ArrowSupply_AINavigationController aiController;
+
     public CS_ArrowSupply_PickUp(Character character, ArrowSupply_Crate crate) : base(character)
     {
         this.crate = crate;
@@ -22,11 +25,6 @@ public class CS_ArrowSupply_PickUp : CharacterState
         if (stateHolder == null)
         {
             stateHolder = GameObject.FindObjectOfType<ArrowSupply_AIStateHolder>();
-        }
-
-        if (!IsPlayerCharacter && character.PlayerIndex <= 4)
-        {
-            stateHolder.SetState(ArrowSupply_AIStateHolder.AIState.Idle);
         }
                 
         character.Animator.CrossFade("ScavangerHunt_Pickup", 0.1f);
@@ -72,6 +70,7 @@ public class CS_ArrowSupply_PickUp : CharacterState
     public void Grab()
     {
         arrow = crate.SpawnInCharactersHand(character);
+        
     }
 
     // Function to disable movement

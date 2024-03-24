@@ -32,6 +32,13 @@ public class ArrowSupply_Arrow : MonoBehaviour
     bool hitSomething;
     ArrowSupplyMatch match;
 
+    private static Character lastOwner;
+        
+    public static Character LastOwner
+    {
+        get { return lastOwner; }
+    }
+
     private void Start()
     {
         match = (ArrowSupplyMatch)Game.Match;
@@ -77,9 +84,14 @@ public class ArrowSupply_Arrow : MonoBehaviour
             Debug.Log("No enemy health");
         }
     }
+    public static void SetLastOwner(Character newOwner)
+    {
+        lastOwner = newOwner;
+    }
 
     public void Launch(Character owner, Character target)
     {
+       
         launched = true;
         this.owner = owner;
         this.target = target;
