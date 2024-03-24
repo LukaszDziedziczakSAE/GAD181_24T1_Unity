@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CS_ArcheringState : CharacterState
 {
+    //have static variable for rotation here
+
     public CS_ArcheringState(Character character) : base(character)
     {
     }

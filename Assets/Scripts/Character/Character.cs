@@ -30,6 +30,8 @@ public class Character : MonoBehaviour
     private void Update()
     {
         if (State != null) State.Tick();
+
+        if (transform.position.y < 0) Debug.LogError(name + " height below 0");
     }
 
     private void FixedUpdate()
@@ -39,7 +41,7 @@ public class Character : MonoBehaviour
 
     public void SetNewState(CharacterState newState)
     {
-        if (PlayerIndex == 0 || PlayerIndex == 101) Debug.Log(name + ": Setting new state " + newState.GetType().ToString());
+        /*if (PlayerIndex == 0 || PlayerIndex == 101) */Debug.Log(name + ": Setting new state " + newState.GetType().ToString());
         if (State != null) State.StateEnd();
         State = newState;
         State.StateStart();

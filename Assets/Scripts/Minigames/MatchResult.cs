@@ -39,7 +39,7 @@ public class MatchResult
         while (winOrder.Count != AmountOfPlayers)
         {
             int highestScorePlayerNo = -1;
-            int highestScore = 0;
+            int highestScore = int.MinValue;
 
             for (int player = 0; player < AmountOfPlayers; player++)
             {
@@ -60,6 +60,7 @@ public class MatchResult
         for (int placement = 1; placement <= AmountOfPlayers; placement++)
         {
             int playerNumber = winOrder[placement - 1];
+            if (playerNumber < 0 || playerNumber >= 100) continue;
             Result result = new Result(playerNumber, placement, Scores[playerNumber]);
             results.Add(result);
         }

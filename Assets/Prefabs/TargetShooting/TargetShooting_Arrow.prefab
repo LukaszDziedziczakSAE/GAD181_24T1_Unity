@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3414852539762606164}
   - component: {fileID: 6915459583212436635}
   - component: {fileID: 6616806007551415183}
-  - component: {fileID: 3569521907724257677}
   - component: {fileID: 578068126866429634}
   - component: {fileID: 8628986355313709899}
   - component: {fileID: 5557168966456808451}
@@ -87,27 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!95 &3569521907724257677
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4158727623119086609}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: f243403125522884fb33db29ecd00fd8, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!54 &578068126866429634
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,7 +112,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &8628986355313709899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,14 +125,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775a73c4cf5b3cb49ba66ad7311aa844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  baseSpeed: 10
   timeToLive: 3
   hittableLayers:
     serializedVersion: 2
     m_Bits: 64
   drop: 5
-  birthTime: 0
-  hitSomething: 0
+  pointPerTargetHit: 1
 --- !u!65 &5557168966456808451
 BoxCollider:
   m_ObjectHideFlags: 0
