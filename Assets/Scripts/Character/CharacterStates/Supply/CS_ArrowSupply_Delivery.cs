@@ -6,6 +6,7 @@ public class CS_ArrowSupply_Delivery : CharacterState
 {
     ArrowSupply_Arrow arrow;
     ArrowSupply_ArcherSupply archerSupply;
+    private ArrowSupply_AIStateHolder stateHolder;
 
     public CS_ArrowSupply_Delivery(Character character, ArrowSupply_ArcherSupply archerSupply, ArrowSupply_Arrow arrow) : base(character)
     {
@@ -15,12 +16,27 @@ public class CS_ArrowSupply_Delivery : CharacterState
 
     public override void StateStart()
     {
+        Game.PlayerCharacter.NavMeshAgent.isStopped = true;
+        
+        if (stateHolder == null)
+        {
+            stateHolder = GameObject.FindObjectOfType<ArrowSupply_AIStateHolder>();
+        }
+
         character.Animator.SetFloat("speed", 0);
+
         archerSupply.GiveArrow(arrow);
+
+        Debug.Log(character.PlayerIndex + " has entered the delivery state");
     }
 
     public override void Tick()
-    {
+    {        
+        if (!IsPlayerCharacter && character.PlayerIndex <= 4)
+        {
+            stateHolder.SetState(ArrowSupply_AIStateHolder.AIState.Locomotion);
+        }
+
         character.SetNewState(new CS_ArrowSupply_Locomotion(character));
     }
 
@@ -30,5 +46,6 @@ public class CS_ArrowSupply_Delivery : CharacterState
 
     public override void StateEnd()
     {
+       
     }
 }

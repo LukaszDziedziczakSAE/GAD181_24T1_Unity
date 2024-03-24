@@ -5,6 +5,7 @@ using UnityEngine;
 public class CS_ArrowSupply_ArcherFiring : CharacterState
 {
     ArrowSupply_Arrow.EType arrowType;
+
     ArrowSupply_ArrowFirePoint firePoint;
     private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
 
@@ -16,6 +17,7 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
     public override void StateStart()
     {
         firePoint = character.GetComponentInChildren<ArrowSupply_ArrowFirePoint>();
+
         firePoint.FireArrow(arrowType, null, closetEnemy);
     }
 
@@ -39,6 +41,7 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
         get
         {
             Character closetEnemy = null;
+
             float closestDistance = Mathf.Infinity;
 
             foreach (Character enemy in match.AS_Enemies)
@@ -48,11 +51,10 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
                 if (distance < closestDistance)
                 {
                     closetEnemy = enemy;
+
                     closestDistance = distance;
                 }
             }
-
-
             return closetEnemy;
         }
     }

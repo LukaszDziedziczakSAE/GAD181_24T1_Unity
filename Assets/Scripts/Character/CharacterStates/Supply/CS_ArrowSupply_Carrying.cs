@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CS_ArrowSupply_Carrying : CharacterState
 {
     ArrowSupply_Arrow arrow;
     private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
     public ArrowSupply_Arrow Arrow => arrow;
+
+    public ArrowSupply_AIStateHolder stateHolder;
 
     public CS_ArrowSupply_Carrying(Character character, ArrowSupply_Arrow arrow) : base(character)
     {
@@ -15,7 +18,27 @@ public class CS_ArrowSupply_Carrying : CharacterState
 
     public override void StateStart()
     {
-        if (IsPlayerCharacter) Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
+        if (stateHolder == null)
+        {
+            stateHolder = GameObject.FindObjectOfType<ArrowSupply_AIStateHolder>();
+        }
+
+        if (stateHolder != null)
+        {
+            if (!IsPlayerCharacter && character.PlayerIndex <= 4)
+            {
+                stateHolder.SetState(ArrowSupply_AIStateHolder.AIState.Carrying);
+            }
+            else
+            {
+                Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
+            }
+        }
+        else
+        {
+            Debug.LogError("ArrowSupply_AIStateHolder not found in the scene!");
+        }
+
         character.Animator.CrossFade("ScavangerHunt_Locomotion", 0.1f);
     }
 
@@ -25,31 +48,38 @@ public class CS_ArrowSupply_Carrying : CharacterState
         {
             character.Animator.SetFloat("speed", 1);
         }
-
         else
         {
             character.Animator.SetFloat("speed", 0);
         }
     }
+
     public override void FixedTick()
     {
     }
 
     public override void StateEnd()
     {
+        
+
         if (IsPlayerCharacter) Game.InputReader.OnTouchPressed -= InputReader_OnTouchPressed;
+
     }
 
     private void InputReader_OnTouchPressed()
     {
-        //Debug.Log("Touch Pressed");
-        RaycastHit raycastHit = Game.InputReader.RaycastFromTouchPoint;
-        if (!raycastHit.Equals(new RaycastHit()))
         {
-            match.ShowTouchIndicator(raycastHit.point);
-            Game.PlayerCharacter.NavMeshAgent.SetDestination(raycastHit.point);
-            Game.PlayerCharacter.NavMeshAgent.isStopped = false;
+            RaycastHit raycastHit = Game.InputReader.RaycastFromTouchPoint;
+
+            if (!raycastHit.Equals(new RaycastHit()))
+            {
+                match.ShowTouchIndicator(raycastHit.point);
+
+                Game.PlayerCharacter.NavMeshAgent.SetDestination(raycastHit.point);
+
+                Game.PlayerCharacter.NavMeshAgent.isStopped = false;
+            }
         }
-        //else Debug.LogWarning("No Hit");
     }
+
 }

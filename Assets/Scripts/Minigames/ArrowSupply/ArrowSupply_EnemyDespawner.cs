@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyDespawner : MonoBehaviour
+public class ArrowSupply_EnemyDespawner : MonoBehaviour
 {
     [SerializeField] int pointsDeducted = 1; 
 
@@ -14,9 +14,9 @@ public class EnemyDespawner : MonoBehaviour
         if (enemy == null || enemy.PlayerIndex != 102) return;
 
 
-        foreach (Character character in match.Compeditors)
+        //foreach (Character character in match.Compeditors)
         {
-            match.AwardPlayerPoints(character.PlayerIndex, -pointsDeducted);
+            //match.AwardPlayerPoints(character.PlayerIndex, -pointsDeducted);
         }
 
         Game.UI.UpdateMatchStatus();

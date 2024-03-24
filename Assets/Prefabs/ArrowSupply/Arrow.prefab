@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3673304744834761118}
   m_Layer: 0
   m_Name: Arrow
-  m_TagString: Untagged
+  m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,7 +109,9 @@ MonoBehaviour:
   fireParticles: {fileID: 7822062101429106561}
   heightOffSet: {x: 0, y: 0.26, z: 0}
   damageAmount: 1
+  pointsAdded: 10
   <Type>k__BackingField: 0
+  owner: {fileID: 0}
 --- !u!65 &3673304744834761118
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemySpawner : MonoBehaviour
+public class ArrowSupply_EnemySpawner : MonoBehaviour
 {
     [SerializeField] Character characterPrefab;
     [SerializeField] CharacterModel.Config[] configs;
-    [SerializeField] float minSpawnDelay = 1f; // Minimum time between spawns
-    [SerializeField] float maxSpawnDelay = 3f; // Maximum time between spawns
+    private bool isFirstSpawn = true;
+    private float initialSpawnDelay = 1f; // Delay for the first spawn
+    [SerializeField] float minSpawnDelay = 5f; // New minimum time between spawns after the first spawn
+    [SerializeField] float maxSpawnDelay = 10f; // New maximum time between spawns after the first spawn
 
     float timer;
 
     private void Start()
     {
-        timer = randomSpawnDelay;
+        // Start with a delay for the initial spawn
+        timer = initialSpawnDelay;
     }
 
     private void Update()
@@ -23,7 +26,12 @@ public class EnemySpawner : MonoBehaviour
         if (timer <= 0)
         {
             SpawnEnemy();
-            timer = randomSpawnDelay;
+            if (isFirstSpawn)
+            {
+                // After the first spawn, disable the flag and use the slower spawn rate
+                isFirstSpawn = false;
+            }
+            timer = Random.Range(minSpawnDelay, maxSpawnDelay);
         }
     }
 
@@ -44,13 +52,13 @@ public class EnemySpawner : MonoBehaviour
         switch (config.Variant)
         {
             case CharacterModel.EVariant.Dungeon_RockGolem_01:
-                character.gameObject.AddComponent<RockGolemEnemyType>();
+                character.gameObject.AddComponent<ArrowSupply_RockGolemEnemyType>();
                 break;
             case CharacterModel.EVariant.Dungeon_Skeleton_01:
-                character.gameObject.AddComponent<SkeletonEnemyType>();
+                character.gameObject.AddComponent<ArrowSupply_SkeletonEnemyType>();
                 break;
             case CharacterModel.EVariant.Dungeon_GoblinMale_01:
-                character.gameObject.AddComponent<GoblinEnemyType>();
+                character.gameObject.AddComponent<ArrowSupply_GoblinEnemyType>();
                 break;
             default:
                 break;

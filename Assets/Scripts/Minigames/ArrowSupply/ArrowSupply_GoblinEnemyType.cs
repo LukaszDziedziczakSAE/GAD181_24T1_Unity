@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoblinEnemyType : MonoBehaviour, EnemyType
+public class ArrowSupply_GoblinEnemyType : MonoBehaviour, EnemyType
 { 
     public int NormalDamageMultiplier => 4;
     public int FireDamageMultiplier => 2;

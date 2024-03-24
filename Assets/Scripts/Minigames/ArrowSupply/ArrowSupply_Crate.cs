@@ -1,38 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ArrowSupply_Crate : MonoBehaviour
 {
-    /*public GameObject arrowPrefab; // Reference to the arrow prefab
-
-    private bool isArrowCollected = false; // Flag to track if an arrow has been collected from this crate
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!isArrowCollected && other.CompareTag("Player"))
-        {
-            CollectArrow(other.gameObject);
-        }
-    }
-
-    private void CollectArrow(GameObject player)
-    {
-        
-        GameObject arrow = Instantiate(arrowPrefab, player.transform.position, Quaternion.identity);// Instantiate arrow at player's position and rotation
-
-        arrow.transform.parent = transform;
-
-        isArrowCollected = true; // Mark the arrow as collected
-
-    }*/
-
     [SerializeField] ArrowSupply_Arrow arrowPrefab;
     [SerializeField] ArrowSupply_Arrow.EType arrowType;
     [SerializeField] Transform previewSpot;
     [SerializeField] float previewRotationSpeed = 30;
     [SerializeField] Vector3 localHandPosition;
     [SerializeField] Vector3 localHandRotation;
+
+    ArrowSupply_AINavigationController aiController;
 
     ArrowSupply_Arrow previewArrow;
     public ArrowSupply_Arrow.EType ArrowType => arrowType;
@@ -46,16 +23,28 @@ public class ArrowSupply_Crate : MonoBehaviour
 
     private void Update()
     {
-        if (previewArrow != null) previewArrow.transform.Rotate(Vector3.up * previewRotationSpeed * Time.deltaTime);
+        if (previewArrow != null)
+            previewArrow.transform.Rotate(Vector3.up * previewRotationSpeed * Time.deltaTime);
+    }
+
+    public void SetAIController(ArrowSupply_AINavigationController controller)
+    {
+        aiController = controller;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(name + " has " + other.name + " in trigger");
         Character character = other.GetComponent<Character>();
         if (character != null && character.PlayerIndex >= 0 && character.PlayerIndex < 100)
         {
+            // Set the character's state to pick up the arrow
             character.SetNewState(new CS_ArrowSupply_PickUp(character, this));
+
+            // Notify the AI controller if the character is not a player character
+            if (character.PlayerIndex != 0 && character.PlayerIndex <= 3 && aiController != null)
+            {
+                aiController.PickUpArrow();
+            }
         }
     }
 
@@ -63,10 +52,15 @@ public class ArrowSupply_Crate : MonoBehaviour
     {
         ArrowSupply_Arrow arrow = Instantiate(arrowPrefab, character.RightHand);
         arrow.SetType(arrowType);
+
+        // Update LastOwner here to ensure it reflects the character picking up the arrow
+        ArrowSupply_Arrow.SetLastOwner(character); // Assuming you implemented a method to set LastOwner
+
         arrow.transform.localPosition = localHandPosition;
         arrow.transform.localEulerAngles = localHandRotation;
         arrow.transform.localScale = Vector3.one;
-        //print("arrow pos=" + arrow.transform.localPosition + " rot=" + arrow.transform.localEulerAngles);
+
+        Debug.Log(character.PlayerIndex + " has picked up " + arrow);
 
         return arrow;
     }

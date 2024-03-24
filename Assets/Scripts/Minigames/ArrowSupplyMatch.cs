@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class ArrowSupplyMatch : MinigameMatch
 {
@@ -10,13 +11,10 @@ public class ArrowSupplyMatch : MinigameMatch
 
     public float MatchTimeRemaining => matchLength - MatchTime;
 
-    protected override MatchResult DetermineResult()
-    {
-        return new MatchResult();
-    }
+
 
     protected override void PrematchStart()
-    { 
+    {
         base.PrematchStart();
     }
 
