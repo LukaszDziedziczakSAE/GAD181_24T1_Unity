@@ -38,5 +38,6 @@ public class CS_Jousting_Attack : CharacterState
     public override void StateEnd()
     {
         weapon.ColiderEnabled(false);
+        character.SetNewState(new CS_Jousting_Riding(character));
     }
 }
