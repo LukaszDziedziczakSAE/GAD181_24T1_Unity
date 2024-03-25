@@ -35,7 +35,7 @@ public class ArrowSupply_Crate : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Character character = other.GetComponent<Character>();
-        if (character != null && character.PlayerIndex >= 0 && character.PlayerIndex < 100)
+        if (character != null && character.PlayerIndex >= 0 && character.PlayerIndex < 100 && character.State.GetType() == new CS_ArrowSupply_Locomotion(character).GetType())
         {
             // Set the character's state to pick up the arrow
             character.SetNewState(new CS_ArrowSupply_PickUp(character, this));

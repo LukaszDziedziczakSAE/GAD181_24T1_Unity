@@ -19,7 +19,7 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
     {
         firePoint = character.GetComponentInChildren<ArrowSupply_ArrowFirePoint>();
 
-        firePoint.FireArrow(arrowRecord, closetEnemy);
+        firePoint.FireArrow(arrowRecord, closestEnemy);
     }
 
     public override void Tick()
@@ -37,11 +37,12 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
 
     }
 
-    private Character closetEnemy
+
+    private Character closestEnemy
     {
         get
         {
-            Character closetEnemy = null;
+            Character closestEnemy = null;
 
             float closestDistance = Mathf.Infinity;
 
@@ -51,12 +52,12 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
 
                 if (distance < closestDistance)
                 {
-                    closetEnemy = enemy;
+                    closestEnemy = enemy;
 
                     closestDistance = distance;
                 }
             }
-            return closetEnemy;
+            return closestEnemy;
         }
     }
 }
