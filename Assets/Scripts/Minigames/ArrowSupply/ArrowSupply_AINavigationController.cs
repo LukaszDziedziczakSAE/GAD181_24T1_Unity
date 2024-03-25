@@ -1,7 +1,9 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ArrowSupply_AINavigationController : MonoBehaviour
+public class ArrowSupply_AINavigationController : AI
 {
     public NavMeshAgent agent;
 
@@ -11,9 +13,13 @@ public class ArrowSupply_AINavigationController : MonoBehaviour
 
     private GameObject currentTarget; // To keep track of the current target location
 
-    private bool isMoving = false;
+    //private bool isMoving = false;
 
     public bool carryingArrow = false; // Indicates whether the AI is currently carrying an arrow
+
+    private Type Carrying = new CS_ArrowSupply_Carrying(null, null).GetType();
+
+    private bool isMoving => character.NavMeshAgent.velocity.magnitude > 0;
 
     void Start()
     {
@@ -32,25 +38,28 @@ public class ArrowSupply_AINavigationController : MonoBehaviour
 
     void SetNewDestination()
     {
+        if (character == null) Debug.LogError("missing character referance");
+
         if (!isMoving)
         {
+            Debug.Log(name + ": State = " + character.State);
             GameObject[] locations = pickupLocations; // Default to pickup locations
 
-            if (carryingArrow)
+            if (character.State.GetType() == Carrying)
             {
                 locations = deliveryLocations; // Change to delivery locations if carrying arrow
             }
 
             if (locations.Length > 0)
             {
-                int index = Random.Range(0, locations.Length);
+                int index = UnityEngine.Random.Range(0, locations.Length);
                 currentTarget = locations[index];
 
                 agent.SetDestination(currentTarget.transform.position);
 
                 agent.isStopped = false; // Allow the agent to move towards the new destination
 
-                isMoving = true; // Set moving flag
+                //isMoving = true; // Set moving flag
 
                 // Debugging
                 Debug.Log($"New destination set to: {currentTarget.name} at {currentTarget.transform.position}");
