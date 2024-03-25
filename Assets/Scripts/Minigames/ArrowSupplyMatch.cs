@@ -7,13 +7,18 @@ public class ArrowSupplyMatch : MinigameMatch
 {
     [SerializeField] float matchLength = 60;
     [field: SerializeField] public float EnemySpeed { get; private set; } = 1;
+
     [SerializeField] GameObject selectionIndicatorPrefab;
+
     [field: SerializeField] public Transform[] PickupLocations;
+
     [field: SerializeField] public Transform[] DeliveryLocations;
     public float MatchTimeRemaining => matchLength - MatchTime;
 
-    [SerializeField] int highDamgePointAward;
-    [SerializeField] int normalDamgePointAward;
+    [SerializeField] int highDamagePointAward;
+
+    [SerializeField] int normalDamagePointAward;
+
     [SerializeField] int lowDamagePointAward;
 
     [field: SerializeField] public EnemyDamage[] EnemyDamages { get; private set; } = new EnemyDamage[0];
@@ -26,7 +31,6 @@ public class ArrowSupplyMatch : MinigameMatch
     protected override void PrematchTick()
     {
         base.PrematchTick();
-
     }
 
     protected override void MatchStart()
@@ -72,6 +76,7 @@ public class ArrowSupplyMatch : MinigameMatch
             List<Character> archers = new List<Character>();
 
             Character[] inLevel = FindObjectsOfType<Character>();
+
             foreach (Character character in inLevel)
             {
                 if (character.PlayerIndex == 101) archers.Add(character);
@@ -88,6 +93,7 @@ public class ArrowSupplyMatch : MinigameMatch
             List<Character> archers = new List<Character>();
 
             Character[] inLevel = FindObjectsOfType<Character>();
+
             foreach (Character character in inLevel)
             {
                 if (character.PlayerIndex == 102) archers.Add(character);
@@ -101,8 +107,11 @@ public class ArrowSupplyMatch : MinigameMatch
     public class EnemyDamage
     {
         public CharacterModel.Config CharacterType;
+
         public int NormalDamageMultiplier;
+
         public int FireDamageMultiplier;
+
         public int IceDamageMultiplier;
 
         public int DamgeByArrowType(ArrowSupply_Arrow.EType arrowType)
@@ -139,9 +148,9 @@ public class ArrowSupplyMatch : MinigameMatch
     {
         switch(damage)
         {
-            case 4: return highDamgePointAward;
+            case 4: return highDamagePointAward;
 
-            case 2: return normalDamgePointAward;
+            case 2: return normalDamagePointAward;
 
             case 1: return lowDamagePointAward;
 

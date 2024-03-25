@@ -6,7 +6,7 @@ public class ArrowSupply_ArrowFirePoint : MonoBehaviour
 {
     [SerializeField] ArrowSupply_Arrow arrowPrefab;
 
-    public void FireArrow(/*ArrowSupply_Arrow.EType arrowType*/ ArrowSupply_ArcherSupply.ArrowRecord arrowRecord, /*Character owner,*/ Character target)
+    public void FireArrow( ArrowSupply_ArcherSupply.ArrowRecord arrowRecord, Character target)
     {
         //Debug.Log("Firing arrow");
 
@@ -14,8 +14,6 @@ public class ArrowSupply_ArrowFirePoint : MonoBehaviour
 
         arrow.SetType(arrowRecord.Type);
 
-        // Check if an owner is provided, otherwise use the last known owner
-        //Character effectiveOwner = owner ?? ArrowSupply_Arrow.LastOwner;
 
         arrow.Launch(arrowRecord.Owner, target);
     }

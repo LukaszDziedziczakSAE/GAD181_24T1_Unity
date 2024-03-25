@@ -8,9 +8,7 @@ public class ArrowSupply_AI : AI
 {
     private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
 
-    private Transform currentTarget; // To keep track of the current target location
-
-    //private bool isMoving = false;
+    private Transform currentTarget; // To keep track of the current target location     
 
     public bool carryingArrow = false; // Indicates whether the AI is currently carrying an arrow
 
@@ -18,16 +16,12 @@ public class ArrowSupply_AI : AI
 
     void Start()
     {
-        //SetNewDestination(); // Set initial destination
+        
     }
 
     void Update()
     {
-        /*// Always trigger movement logic regardless of state
-        if (!isMoving)
-        {
-            SetNewDestination();
-        }*/
+ 
     }
 
     public void SetNewDestination()
@@ -38,21 +32,24 @@ public class ArrowSupply_AI : AI
         {
             Debug.LogWarning(character.name + " asking for new destination with State = " + character.State);
 
-            Transform[] locations; /*= pickupLocations; // Default to pickup locations*/
+            Transform[] locations;  
 
             if (character.State.GetType() == new CS_ArrowSupply_Carrying(character, null).GetType())
             {
                 locations = match.DeliveryLocations;
+
                 Debug.Log("location is " + locations);
             }
             else if (character.State.GetType() == new CS_ArrowSupply_Locomotion(character).GetType())
             {
                 locations = match.PickupLocations;
+
                 Debug.Log("location is " + locations);
             }
             else
             {
                 Debug.LogWarning(character.name + ": is in " + character.State.ToString());
+
                 locations = new Transform[0];
             }
 
@@ -64,9 +61,7 @@ public class ArrowSupply_AI : AI
 
                 character.NavMeshAgent.SetDestination(currentTarget.position);
 
-                character.NavMeshAgent.isStopped = false; // Allow the agent to move towards the new destination
-
-                //isMoving = true; // Set moving flag
+                character.NavMeshAgent.isStopped = false; // Allow the agent to move towards the new destination                              
 
                 // Debugging
                 Debug.Log($"New destination set to: {currentTarget.name} at {currentTarget.position}");
@@ -81,23 +76,5 @@ public class ArrowSupply_AI : AI
                 Debug.LogWarning("No locations available.");
             }
         }
-    }
-
-    // Replace OnTriggerEnter with the method for detecting arrow pickup
-    public void PickUpArrow()
-    {
-        // Pick up the arrow
-        carryingArrow = true;
-        Debug.Log("AI has picked up the arrow.");
-        SetNewDestination(); // Set a new destination after delivering the arrow
-    }
-
-    // Call this method when the arrow is delivered
-    public void DeliverArrow()
-    {
-        // Deliver the arrow
-        carryingArrow = false;
-        Debug.Log("AI has delivered the arrow.");
-        SetNewDestination(); // Set a new destination after delivering the arrow
-    }
+    }   
 }

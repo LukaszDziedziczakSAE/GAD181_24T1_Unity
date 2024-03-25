@@ -906,8 +906,8 @@ MonoBehaviour:
   - {fileID: 1694765739}
   - {fileID: 1915013440}
   - {fileID: 1352111409}
-  highDamgePointAward: 10
-  normalDamgePointAward: 5
+  highDamagePointAward: 10
+  normalDamagePointAward: 5
   lowDamagePointAward: 2
   <EnemyDamages>k__BackingField:
   - CharacterType:

@@ -5,19 +5,29 @@ using UnityEngine;
 public class ArrowSupply_Arrow : MonoBehaviour
 {
     [SerializeField] float speed = 10;
+
     [SerializeField] float timeToLive = 15f;
+
     [SerializeField] LayerMask hittableLayers;
+
     [SerializeField] float drop = 1f;
+
     [SerializeField] ParticleSystem iceParticles;
+
     [SerializeField] ParticleSystem fireParticles;
+
     [SerializeField] Vector3 heightOffSet;
+
     [SerializeField] int damageAmount = 1;
+
     [SerializeField] int pointsAdded = 10;
+
     [SerializeField] float timeToLiveAfterHit = 0.5f;
 
-
     [field: SerializeField] public EType Type { get; private set; }
+
     [SerializeField]  Character owner;
+
     Character target;
 
     public enum EType
@@ -29,16 +39,12 @@ public class ArrowSupply_Arrow : MonoBehaviour
     }
 
     float timeAlive = 0;
-    bool launched;
-    bool hitSomething;
-    ArrowSupplyMatch match;
 
-    /*private static Character lastOwner;
-        
-    public static Character LastOwner
-    {
-        get { return lastOwner; }
-    }*/
+    bool launched;
+
+    bool hitSomething;
+
+    ArrowSupplyMatch match;
 
     private void Start()
     {
@@ -64,26 +70,25 @@ public class ArrowSupply_Arrow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (!launched || hitSomething) return;
-
-        
 
         Debug.Log(owner.name + "'s arrow hit " + other.name);
 
-        
-
-        
 
         EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+
         if (enemyHealth != null)
         {
             Character character = other.GetComponent<Character>();
+
             int damageAmount = match.DamageByType(character.Model.CurrentConfig.Variant, Type);
+
             enemyHealth.TakeDamage(damageAmount); // Pass damageAmount when calling TakeDamage
+
             hitSomething = true;
-            //UpdateScore();
+            
             match.AwardPlayerPoints(owner.PlayerIndex, match.PointsByDamage(damageAmount));
+
             timeToLive = timeToLiveAfterHit;
         }
         else
@@ -91,16 +96,16 @@ public class ArrowSupply_Arrow : MonoBehaviour
             Debug.Log(name + " hit something with No enemy health");
         }
     }
-    /*public static void SetLastOwner(Character newOwner)
-    {
-        lastOwner = newOwner;
-    }*/
+
 
     public void Launch(Character owner, Character target)
     {
         launched = true;
+
         this.owner = owner;
+
         this.target = target;
+
         StartCoroutine(EnableColliderAfterDelay());
     }
 

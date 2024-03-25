@@ -6,12 +6,9 @@ using UnityEngine.AI;
 
 public class CS_ArrowSupply_Locomotion : CharacterState
 {
-    private ArrowSupply_AIStateHolder stateHolder;
-
     private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
 
     private ArrowSupply_AI ai;
-
 
     public CS_ArrowSupply_Locomotion(Character character) : base(character)
     {
@@ -20,22 +17,6 @@ public class CS_ArrowSupply_Locomotion : CharacterState
 
     public override void StateStart()
     {
-        if (stateHolder == null)
-        {
-            stateHolder = GameObject.FindObjectOfType<ArrowSupply_AIStateHolder>();
-        }
-
-        /*if (!IsPlayerCharacter && character.PlayerIndex <= 4)
-        {
-            stateHolder.SetState(ArrowSupply_AIStateHolder.AIState.Locomotion);
-        }
-        else
-        {
-            Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
-
-
-        }*/
-
         if (IsPlayerCharacter) Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
 
         character.Animator.CrossFade("ScavangerHunt_Locomotion", 0.1f);
@@ -65,14 +46,13 @@ public class CS_ArrowSupply_Locomotion : CharacterState
 
     public override void StateEnd()
     {
-        if (IsPlayerCharacter) Game.InputReader.OnTouchPressed -= InputReader_OnTouchPressed;
-
-        
+        if (IsPlayerCharacter) Game.InputReader.OnTouchPressed -= InputReader_OnTouchPressed;              
     }
 
     private void InputReader_OnTouchPressed()
     {
         RaycastHit raycastHit = Game.InputReader.RaycastFromTouchPoint;
+
         if (!raycastHit.Equals(new RaycastHit()))
         {
             match.ShowTouchIndicator(raycastHit.point);
@@ -81,7 +61,5 @@ public class CS_ArrowSupply_Locomotion : CharacterState
 
             Game.PlayerCharacter.NavMeshAgent.isStopped = false;
         }
-    }
-
-   
+    }   
 }
