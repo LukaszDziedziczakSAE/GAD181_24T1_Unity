@@ -16,11 +16,7 @@ public class JoustingMatch : MinigameMatch
     private Jousting_Weapon weapon;
 
     private int completedRounds = 0;
-
-    protected override MatchResult DetermineResult()
-    {
-        return new MatchResult();
-    }
+    
 
     protected override void MatchStart()
     {
@@ -62,7 +58,7 @@ public class JoustingMatch : MinigameMatch
     {
         if (character.transform.position.z >= EndDistance)
         {
-            character.SetNewState(new CS_Jousting_Idle(character));
+            character.SetNewState(new CS_Jousting_Riding(character));
             RestartRound();
             completedRounds++;
             //Debug.Log("Player Reached End");
