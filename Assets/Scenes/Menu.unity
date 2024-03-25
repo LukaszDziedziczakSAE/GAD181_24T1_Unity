@@ -689,6 +689,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Knights_Tent_01 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4414536746555674, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.3
@@ -732,7 +736,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 225117520}
   m_SourcePrefab: {fileID: 100100000, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
 --- !u!1001 &97727491
 PrefabInstance:
@@ -1037,6 +1045,10 @@ PrefabInstance:
     - target: {fileID: 1230036707128688, guid: 7cc6dadddfe282841b072df337651f67, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Western_Town_Arch_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1230036707128688, guid: 7cc6dadddfe282841b072df337651f67, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4460553072263392, guid: 7cc6dadddfe282841b072df337651f67, type: 3}
       propertyPath: m_LocalScale.x
@@ -1481,6 +1493,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1404069103}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &225117516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d,
+    type: 3}
+  m_PrefabInstance: {fileID: 71313937}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &225117520
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225117516}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.846, y: 0.418, z: 0.514}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.418, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &236125357
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2224,6 +2258,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 403635297}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &406151389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1636739731}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &406151393
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406151389}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.846, y: 0.418, z: 0.514}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.418, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &417744964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2477,11 +2533,33 @@ MonoBehaviour:
   m_IgnoreNavMeshObstacle: 1
   m_OverrideTileSize: 0
   m_TileSize: 256
-  m_OverrideVoxelSize: 1
-  m_VoxelSize: 0.022
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: cd435ed87af2db7458db28043d9b7439, type: 2}
   m_BuildHeightMesh: 0
+--- !u!1 &488531823 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1250691625}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &488531827
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488531823}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.846, y: 0.418, z: 0.514}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.418, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &512398042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3631,6 +3709,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 840461169}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &899464831 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2004766857}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &899464835
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899464831}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.846, y: 0.418, z: 0.514}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.418, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &944480001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5070,6 +5170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Knights_Tent_01 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4414536746555674, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.65
@@ -5113,7 +5217,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 488531827}
   m_SourcePrefab: {fileID: 100100000, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
 --- !u!1001 &1254493137
 PrefabInstance:
@@ -5316,6 +5424,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1275823940}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1294026738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1335468393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1294026742
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294026738}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.846, y: 0.418, z: 0.514}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.418, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1297868087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5529,6 +5659,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Knights_Tent_01 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4414536746555674, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.84
@@ -5572,7 +5706,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1294026742}
   m_SourcePrefab: {fileID: 100100000, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
 --- !u!1 &1372476835
 GameObject:
@@ -6321,6 +6459,10 @@ PrefabInstance:
     - target: {fileID: 1230036707128688, guid: 7cc6dadddfe282841b072df337651f67, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Western_Town_Arch_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1230036707128688, guid: 7cc6dadddfe282841b072df337651f67, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4460553072263392, guid: 7cc6dadddfe282841b072df337651f67, type: 3}
       propertyPath: m_LocalScale.x
@@ -7081,6 +7223,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Knights_Tent_01 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4414536746555674, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.28
@@ -7124,7 +7270,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 406151393}
   m_SourcePrefab: {fileID: 100100000, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
 --- !u!1001 &1667793359
 PrefabInstance:
@@ -7595,6 +7745,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1758067736}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1764107175 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2009685106}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1764107179
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764107175}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.846, y: 0.418, z: 0.514}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.418, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1773508004
 GameObject:
   m_ObjectHideFlags: 0
@@ -8371,6 +8543,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Knights_Tent_01 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4414536746555674, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.7000222
@@ -8414,7 +8590,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 899464835}
   m_SourcePrefab: {fileID: 100100000, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
 --- !u!1001 &2009685106
 PrefabInstance:
@@ -8427,6 +8607,10 @@ PrefabInstance:
     - target: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
       propertyPath: m_Name
       value: SM_Bld_Knights_Tent_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 4414536746555674, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8471,7 +8655,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1764107179}
   m_SourcePrefab: {fileID: 100100000, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
 --- !u!1001 &2022534624
 PrefabInstance:
@@ -8808,6 +8996,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2066167849}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2088877170 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2114590325}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &2088877174
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088877170}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.846, y: 0.418, z: 0.514}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.418, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &2090576093
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8887,6 +9097,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Bld_Knights_Tent_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4414536746555674, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.71
@@ -8930,7 +9144,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1613028843268840, guid: 2aac0e644188bc046b87de1f7e9b892d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2088877174}
   m_SourcePrefab: {fileID: 100100000, guid: 2aac0e644188bc046b87de1f7e9b892d, type: 3}
 --- !u!1001 &2122403352
 PrefabInstance:
@@ -9199,6 +9417,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainMenuCharacters
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466033948657800259, guid: e5c38b302ed750645a847d8fcdad4c72,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
