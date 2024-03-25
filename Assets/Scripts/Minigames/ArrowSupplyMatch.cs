@@ -8,10 +8,15 @@ public class ArrowSupplyMatch : MinigameMatch
     [SerializeField] float matchLength = 60;
     [field: SerializeField] public float EnemySpeed { get; private set; } = 1;
     [SerializeField] GameObject selectionIndicatorPrefab;
-
+    [field: SerializeField] public Transform[] PickupLocations;
+    [field: SerializeField] public Transform[] DeliveryLocations;
     public float MatchTimeRemaining => matchLength - MatchTime;
 
+    [SerializeField] int highDamgePointAward;
+    [SerializeField] int normalDamgePointAward;
+    [SerializeField] int lowDamagePointAward;
 
+    [field: SerializeField] public EnemyDamage[] EnemyDamages { get; private set; } = new EnemyDamage[0];
 
     protected override void PrematchStart()
     {
@@ -89,6 +94,58 @@ public class ArrowSupplyMatch : MinigameMatch
             }
 
             return archers.ToArray();
+        }
+    }
+
+    [System.Serializable]
+    public class EnemyDamage
+    {
+        public CharacterModel.Config CharacterType;
+        public int NormalDamageMultiplier;
+        public int FireDamageMultiplier;
+        public int IceDamageMultiplier;
+
+        public int DamgeByArrowType(ArrowSupply_Arrow.EType arrowType)
+        {
+            switch(arrowType)
+            {
+                case ArrowSupply_Arrow.EType.normal:
+                    return NormalDamageMultiplier;
+
+                case ArrowSupply_Arrow.EType.fire: 
+                    return FireDamageMultiplier;
+
+                case ArrowSupply_Arrow.EType.ice: 
+                    return IceDamageMultiplier;
+
+                default: return 0;
+            }
+        }
+    }
+
+    public int DamageByType(CharacterModel.EVariant variant, ArrowSupply_Arrow.EType arrowType)
+    {
+        foreach (EnemyDamage enemyDamage in EnemyDamages)
+        {
+            if (enemyDamage.CharacterType.Variant == variant)
+            {
+                return enemyDamage.DamgeByArrowType(arrowType);
+            }
+        }
+        return -1;
+    }
+
+    public int PointsByDamage(int damage)
+    {
+        switch(damage)
+        {
+            case 4: return highDamgePointAward;
+
+            case 2: return normalDamgePointAward;
+
+            case 1: return lowDamagePointAward;
+
+            default: return 0;
         }
     }
 }

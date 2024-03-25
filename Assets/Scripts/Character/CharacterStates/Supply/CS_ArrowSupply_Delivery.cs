@@ -8,10 +8,13 @@ public class CS_ArrowSupply_Delivery : CharacterState
     ArrowSupply_ArcherSupply archerSupply;
     private ArrowSupply_AIStateHolder stateHolder;
 
+    private ArrowSupply_AI ai;
+
     public CS_ArrowSupply_Delivery(Character character, ArrowSupply_ArcherSupply archerSupply, ArrowSupply_Arrow arrow) : base(character)
     {
         this.archerSupply = archerSupply;
         this.arrow = arrow;
+        ai = character.GetComponentInChildren<ArrowSupply_AI>();
     }
 
     public override void StateStart()
@@ -25,17 +28,17 @@ public class CS_ArrowSupply_Delivery : CharacterState
 
         character.Animator.SetFloat("speed", 0);
 
-        archerSupply.GiveArrow(arrow);
+        archerSupply.GiveArrow(arrow, character);
 
-        Debug.Log(character.PlayerIndex + " has entered the delivery state");
+        Debug.Log(character.name + " has entered the delivery state");
     }
 
     public override void Tick()
     {        
-        if (!IsPlayerCharacter && character.PlayerIndex <= 4)
+        /*if (!IsPlayerCharacter && character.PlayerIndex <= 4)
         {
             stateHolder.SetState(ArrowSupply_AIStateHolder.AIState.Locomotion);
-        }
+        }*/
 
         character.SetNewState(new CS_ArrowSupply_Locomotion(character));
     }

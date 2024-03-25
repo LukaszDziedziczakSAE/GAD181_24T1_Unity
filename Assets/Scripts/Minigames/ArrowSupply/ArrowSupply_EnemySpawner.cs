@@ -12,6 +12,8 @@ public class ArrowSupply_EnemySpawner : MonoBehaviour
     [SerializeField] float minSpawnDelay = 5f; // New minimum time between spawns after the first spawn
     [SerializeField] float maxSpawnDelay = 10f; // New maximum time between spawns after the first spawn
 
+    
+
     float timer;
 
     private void Start()
@@ -49,7 +51,7 @@ public class ArrowSupply_EnemySpawner : MonoBehaviour
         // Add EnemyHealth script to the spawned enemy
         EnemyHealth enemyHealth = character.gameObject.AddComponent<EnemyHealth>();
 
-        switch (config.Variant)
+/*        switch (config.Variant)
         {
             case CharacterModel.EVariant.Dungeon_RockGolem_01:
                 character.gameObject.AddComponent<ArrowSupply_RockGolemEnemyType>();
@@ -62,7 +64,7 @@ public class ArrowSupply_EnemySpawner : MonoBehaviour
                 break;
             default:
                 break;
-        }
+        }*/
     }
 
     float randomSpawnDelay => Random.Range(minSpawnDelay, maxSpawnDelay);

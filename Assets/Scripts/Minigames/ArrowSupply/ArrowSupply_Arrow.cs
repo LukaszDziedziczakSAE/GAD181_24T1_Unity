@@ -13,6 +13,7 @@ public class ArrowSupply_Arrow : MonoBehaviour
     [SerializeField] Vector3 heightOffSet;
     [SerializeField] int damageAmount = 1;
     [SerializeField] int pointsAdded = 10;
+    [SerializeField] float timeToLiveAfterHit = 0.5f;
 
 
     [field: SerializeField] public EType Type { get; private set; }
@@ -32,12 +33,12 @@ public class ArrowSupply_Arrow : MonoBehaviour
     bool hitSomething;
     ArrowSupplyMatch match;
 
-    private static Character lastOwner;
+    /*private static Character lastOwner;
         
     public static Character LastOwner
     {
         get { return lastOwner; }
-    }
+    }*/
 
     private void Start()
     {
@@ -64,34 +65,39 @@ public class ArrowSupply_Arrow : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (!launched) return;
+        if (!launched || hitSomething) return;
 
-        hitSomething = true;
+        
 
-        Debug.Log("hit");
+        Debug.Log(owner.name + "'s arrow hit " + other.name);
 
-        timeToLive = .5f;
+        
 
-        UpdateScore();
+        
 
         EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
         if (enemyHealth != null)
         {
-            enemyHealth.TakeDamage(damageAmount, Type); // Pass damageAmount when calling TakeDamage
+            Character character = other.GetComponent<Character>();
+            int damageAmount = match.DamageByType(character.Model.CurrentConfig.Variant, Type);
+            enemyHealth.TakeDamage(damageAmount); // Pass damageAmount when calling TakeDamage
+            hitSomething = true;
+            //UpdateScore();
+            match.AwardPlayerPoints(owner.PlayerIndex, match.PointsByDamage(damageAmount));
+            timeToLive = timeToLiveAfterHit;
         }
         else
         {
-            Debug.Log("No enemy health");
+            Debug.Log(name + " hit something with No enemy health");
         }
     }
-    public static void SetLastOwner(Character newOwner)
+    /*public static void SetLastOwner(Character newOwner)
     {
         lastOwner = newOwner;
-    }
+    }*/
 
     public void Launch(Character owner, Character target)
     {
-       
         launched = true;
         this.owner = owner;
         this.target = target;
@@ -132,7 +138,7 @@ public class ArrowSupply_Arrow : MonoBehaviour
         }
         else if (owner.PlayerIndex == 3)
         {
-            match.AwardPlayerPoints(2, pointsAdded);
+            match.AwardPlayerPoints(3, pointsAdded);
         }
         else
         {

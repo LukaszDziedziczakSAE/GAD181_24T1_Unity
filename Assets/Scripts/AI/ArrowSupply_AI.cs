@@ -1,70 +1,77 @@
+using MalbersAnimations.Controller;
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ArrowSupply_AINavigationController : AI
+public class ArrowSupply_AI : AI
 {
-    public NavMeshAgent agent;
+    private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
 
-    public GameObject[] pickupLocations;
-
-    public GameObject[] deliveryLocations;
-
-    private GameObject currentTarget; // To keep track of the current target location
+    private Transform currentTarget; // To keep track of the current target location
 
     //private bool isMoving = false;
 
     public bool carryingArrow = false; // Indicates whether the AI is currently carrying an arrow
 
-    private Type Carrying = new CS_ArrowSupply_Carrying(null, null).GetType();
-
     private bool isMoving => character.NavMeshAgent.velocity.magnitude > 0;
 
     void Start()
     {
-        agent = GetComponentInParent<NavMeshAgent>();
-        SetNewDestination(); // Set initial destination
+        //SetNewDestination(); // Set initial destination
     }
 
     void Update()
     {
-        // Always trigger movement logic regardless of state
+        /*// Always trigger movement logic regardless of state
         if (!isMoving)
         {
             SetNewDestination();
-        }
+        }*/
     }
 
-    void SetNewDestination()
+    public void SetNewDestination()
     {
         if (character == null) Debug.LogError("missing character referance");
 
-        if (!isMoving)
+        if (/*!isMoving*/ true)
         {
-            Debug.Log(name + ": State = " + character.State);
-            GameObject[] locations = pickupLocations; // Default to pickup locations
+            Debug.LogWarning(character.name + " asking for new destination with State = " + character.State);
 
-            if (character.State.GetType() == Carrying)
+            Transform[] locations; /*= pickupLocations; // Default to pickup locations*/
+
+            if (character.State.GetType() == new CS_ArrowSupply_Carrying(character, null).GetType())
             {
-                locations = deliveryLocations; // Change to delivery locations if carrying arrow
+                locations = match.DeliveryLocations;
+                Debug.Log("location is " + locations);
+            }
+            else if (character.State.GetType() == new CS_ArrowSupply_Locomotion(character).GetType())
+            {
+                locations = match.PickupLocations;
+                Debug.Log("location is " + locations);
+            }
+            else
+            {
+                Debug.LogWarning(character.name + ": is in " + character.State.ToString());
+                locations = new Transform[0];
             }
 
             if (locations.Length > 0)
             {
                 int index = UnityEngine.Random.Range(0, locations.Length);
+
                 currentTarget = locations[index];
 
-                agent.SetDestination(currentTarget.transform.position);
+                character.NavMeshAgent.SetDestination(currentTarget.position);
 
-                agent.isStopped = false; // Allow the agent to move towards the new destination
+                character.NavMeshAgent.isStopped = false; // Allow the agent to move towards the new destination
 
                 //isMoving = true; // Set moving flag
 
                 // Debugging
-                Debug.Log($"New destination set to: {currentTarget.name} at {currentTarget.transform.position}");
+                Debug.Log($"New destination set to: {currentTarget.name} at {currentTarget.position}");
 
-                if (agent.pathStatus != NavMeshPathStatus.PathComplete)
+                if (character.NavMeshAgent.pathStatus != NavMeshPathStatus.PathComplete)
                 {
                     Debug.LogWarning("NavMeshAgent cannot find a complete path to the destination.");
                 }

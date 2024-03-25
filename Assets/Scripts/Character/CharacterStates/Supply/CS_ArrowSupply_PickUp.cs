@@ -13,11 +13,14 @@ public class CS_ArrowSupply_PickUp : CharacterState
 
     private ArrowSupply_AIStateHolder stateHolder;
 
-    ArrowSupply_AINavigationController aiController;
+    ArrowSupply_AI aiController;
+
+    private ArrowSupply_AI ai;
 
     public CS_ArrowSupply_PickUp(Character character, ArrowSupply_Crate crate) : base(character)
     {
         this.crate = crate;
+        ai = character.GetComponentInChildren<ArrowSupply_AI>();
     }
 
     public override void StateStart()

@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class CS_ArrowSupply_ArcherFiring : CharacterState
 {
-    ArrowSupply_Arrow.EType arrowType;
+    //ArrowSupply_Arrow.EType arrowType;
+    ArrowSupply_ArcherSupply.ArrowRecord arrowRecord;
 
     ArrowSupply_ArrowFirePoint firePoint;
     private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
 
-    public CS_ArrowSupply_ArcherFiring(Character character, ArrowSupply_Arrow.EType arrowType) : base(character)
+    public CS_ArrowSupply_ArcherFiring(Character character, /*ArrowSupply_Arrow.EType arrowType*/ ArrowSupply_ArcherSupply.ArrowRecord arrowRecord) : base(character)
     {
-        this.arrowType = arrowType;
+        this.arrowRecord = arrowRecord;
     }
 
     public override void StateStart()
     {
         firePoint = character.GetComponentInChildren<ArrowSupply_ArrowFirePoint>();
 
-        firePoint.FireArrow(arrowType, null, closetEnemy);
+        firePoint.FireArrow(arrowRecord, closetEnemy);
     }
 
     public override void Tick()

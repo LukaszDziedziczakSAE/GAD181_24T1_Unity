@@ -11,9 +11,12 @@ public class CS_ArrowSupply_Carrying : CharacterState
 
     public ArrowSupply_AIStateHolder stateHolder;
 
+    private ArrowSupply_AI ai;
+
     public CS_ArrowSupply_Carrying(Character character, ArrowSupply_Arrow arrow) : base(character)
     {
         this.arrow = arrow;
+        ai = character.GetComponentInChildren<ArrowSupply_AI>();
     }
 
     public override void StateStart()
@@ -40,6 +43,11 @@ public class CS_ArrowSupply_Carrying : CharacterState
         }
 
         character.Animator.CrossFade("ScavangerHunt_Locomotion", 0.1f);
+
+        if (ai != null)
+        {
+            ai.SetNewDestination();
+        }
     }
 
     public override void Tick()

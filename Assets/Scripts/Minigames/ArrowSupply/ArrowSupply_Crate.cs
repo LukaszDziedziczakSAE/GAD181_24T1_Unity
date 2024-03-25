@@ -9,7 +9,7 @@ public class ArrowSupply_Crate : MonoBehaviour
     [SerializeField] Vector3 localHandPosition;
     [SerializeField] Vector3 localHandRotation;
 
-    ArrowSupply_AINavigationController aiController;
+    ArrowSupply_AI aiController;
 
     ArrowSupply_Arrow previewArrow;
     public ArrowSupply_Arrow.EType ArrowType => arrowType;
@@ -27,7 +27,7 @@ public class ArrowSupply_Crate : MonoBehaviour
             previewArrow.transform.Rotate(Vector3.up * previewRotationSpeed * Time.deltaTime);
     }
 
-    public void SetAIController(ArrowSupply_AINavigationController controller)
+    public void SetAIController(ArrowSupply_AI controller)
     {
         aiController = controller;
     }
@@ -54,7 +54,7 @@ public class ArrowSupply_Crate : MonoBehaviour
         arrow.SetType(arrowType);
 
         // Update LastOwner here to ensure it reflects the character picking up the arrow
-        ArrowSupply_Arrow.SetLastOwner(character); // Assuming you implemented a method to set LastOwner
+        //ArrowSupply_Arrow.SetLastOwner(character); // Assuming you implemented a method to set LastOwner
 
         arrow.transform.localPosition = localHandPosition;
         arrow.transform.localEulerAngles = localHandRotation;

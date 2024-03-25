@@ -16,7 +16,7 @@ public class ArrowSupply_AIStateHolder : MonoBehaviour
     {
         currentState = newState;
                 
-        Debug.Log($"AI State changed to: {currentState}");
+        // Debug.Log($"AI State changed to: {currentState}");
     }
 
     
