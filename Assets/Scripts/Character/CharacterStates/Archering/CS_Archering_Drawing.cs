@@ -50,8 +50,8 @@ public class CS_Archering_Drawing : CharacterState
         float distanceX = startingXPos - Game.InputReader.TouchPosition.x;
         float rotation = distanceX / turnRatio;
         rotation += characterStartingRotation;        
-        if (rotation > maxAngle && rotation < 180) rotation = maxAngle;
-        else if (rotation < -maxAngle/* || rotation > 180*/) rotation = -maxAngle;
+        if (rotation > maxAngle) rotation = maxAngle;
+        if (rotation < -maxAngle) rotation = -maxAngle;
         character.transform.eulerAngles = new UnityEngine.Vector3(character.transform.eulerAngles.x, rotation, character.transform.eulerAngles.z);
 
         float currentYPosition = Game.InputReader.TouchPosition.y;

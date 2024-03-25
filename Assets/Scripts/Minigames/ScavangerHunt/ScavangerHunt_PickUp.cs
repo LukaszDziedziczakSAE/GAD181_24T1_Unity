@@ -14,6 +14,7 @@ public class ScavangerHunt_PickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (characterInProx != null) return;
         if (other.TryGetComponent<Character>(out Character character))
         {
             if (character.State.GetType() != new CS_ScavangerLocomotion(character).GetType()) return;
