@@ -24,7 +24,7 @@ public class JoustingMatch : MinigameMatch
 
         foreach (Character character in Compeditors)
         {
-            character.SetNewState(new CS_Jousting_Riding(character));
+            character.SetNewState(new CS_Jousting_Idle(character));
         }
     }
 
@@ -69,7 +69,7 @@ public class JoustingMatch : MinigameMatch
     {
         foreach (Character character in Compeditors)
         {
-            character.SetNewState(new CS_Jousting_Riding(character));
+            character.SetNewState(new CS_Jousting_Idle(character));
             Vector3 newPosition = character.transform.position;
             if (character.PlayerIndex == 0)
             {
