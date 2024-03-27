@@ -5,8 +5,11 @@ using UnityEngine;
 public class CS_ArrowSupply_ArcherWaiting : CharacterState
 {
     float fireRate = 1;
+
     float stateStartTime;
+
     float timePassed => stateStartTime - Time.time;
+
     ArrowSupply_ArcherSupply archerSupply;
 
     public CS_ArrowSupply_ArcherWaiting(Character character) : base(character)
@@ -18,13 +21,15 @@ public class CS_ArrowSupply_ArcherWaiting : CharacterState
     public override void StateStart()
     {
         archerSupply = character.GetComponentInChildren<ArrowSupply_ArcherSupply>();
+
         stateStartTime = Time.time;
+
         if (archerSupply == null) Debug.LogError("Missing Archer Supply Referance");
     }
 
     public override void Tick()
     {
-        if (/*timePassed >= fireRate && */archerSupply.HasArrows)
+        if (archerSupply.HasArrows)
         {
             character.SetNewState(new CS_ArrowSupply_ArcherFiring(character, archerSupply.TakeArrow()));
         }

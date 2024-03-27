@@ -11,34 +11,27 @@ public class CS_ArrowSupply_PickUp : CharacterState
 
     private bool isAnimationPlaying = false; // Flag to indicate if the animation is playing
 
-    private ArrowSupply_AIStateHolder stateHolder;
+    ArrowSupply_AI aiController;
 
-    ArrowSupply_AINavigationController aiController;
+    private ArrowSupply_AI ai;
 
     public CS_ArrowSupply_PickUp(Character character, ArrowSupply_Crate crate) : base(character)
     {
         this.crate = crate;
+        ai = character.GetComponentInChildren<ArrowSupply_AI>();
     }
 
     public override void StateStart()
     {
-        if (stateHolder == null)
-        {
-            stateHolder = GameObject.FindObjectOfType<ArrowSupply_AIStateHolder>();
-        }
-                
         character.Animator.CrossFade("ScavangerHunt_Pickup", 0.1f);
                 
         isAnimationPlaying = true; // Set animation flag to true
 
-        Debug.Log(character.PlayerIndex + " has entered the pickup state");
-        
+        Debug.Log(character.PlayerIndex + " has entered the pickup state");        
     }
 
     public override void Tick()
-    {
-       
-
+    { 
         // Check if animation is playing
         if (isAnimationPlaying)
         {
@@ -47,7 +40,9 @@ public class CS_ArrowSupply_PickUp : CharacterState
             {
                 // Set flag to false and allow movement
                 isAnimationPlaying = false;
+
                 EnableMovement();
+
                 character.SetNewState(new CS_ArrowSupply_Carrying(character, arrow));
             }
             else
@@ -69,21 +64,18 @@ public class CS_ArrowSupply_PickUp : CharacterState
 
     public void Grab()
     {
-        arrow = crate.SpawnInCharactersHand(character);
-        
+        arrow = crate.SpawnInCharactersHand(character);        
     }
 
     // Function to disable movement
     private void DisableMovement()
     {
-        // Example: Disable movement by setting the NavMeshAgent's destination to its current position
         character.NavMeshAgent.destination = character.transform.position;
     }
 
     // Function to enable movement
     private void EnableMovement()
     {
-        // Example: Enable movement by resetting NavMeshAgent's destination
         character.NavMeshAgent.ResetPath();
     }
 }

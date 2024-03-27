@@ -13,6 +13,7 @@ public class CS_ArrowSupply_EnemyDying : CharacterState
     public override void StateStart()
     {
         //character.Animator.CrossFade("ScavangerHunt_Pickup", 0.1f);
+
         DestroyEnemy();
 
 

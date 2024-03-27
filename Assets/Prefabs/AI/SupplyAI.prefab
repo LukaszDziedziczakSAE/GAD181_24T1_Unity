@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5214794007995850610}
-  - component: {fileID: 4398062125599032576}
-  - component: {fileID: 3878044629665057484}
+  - component: {fileID: 8903118802826264000}
+  - component: {fileID: 4618444795094084835}
   m_Layer: 3
   m_Name: SupplyAI
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4398062125599032576
+--- !u!114 &8903118802826264000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,21 +42,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5215831988457746140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8014d2acd4d39948a69592ecf451931, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ab25690bb2153c45965bb24e7d1ecea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  pickupLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  deliveryLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   carryingArrow: 0
---- !u!114 &3878044629665057484
+--- !u!114 &4618444795094084835
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
