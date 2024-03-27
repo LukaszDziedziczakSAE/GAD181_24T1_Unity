@@ -21,6 +21,10 @@ public class CS_Jousting_Idle : CharacterState
 
     public override void Tick()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            character.SetNewState(new CS_Jousting_Riding(character));
+        }
 
     }
 
