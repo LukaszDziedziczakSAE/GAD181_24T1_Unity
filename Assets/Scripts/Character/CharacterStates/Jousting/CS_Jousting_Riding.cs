@@ -44,8 +44,8 @@ public class CS_Jousting_Riding : CharacterState
 
     public override void Tick()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        Vector3 movementDirection = new Vector3(horizontalInput, 0f, 1f);
+        //float horizontalInput = Input.GetAxis("Horizontal");
+        Vector3 movementDirection = new Vector3(0f, 0f, match.HorseSpeed); //redo
 
         if (character.PlayerIndex == 0)
         {
@@ -54,27 +54,6 @@ public class CS_Jousting_Riding : CharacterState
             ui.JoustingIndicator.UpdateStrikingDistanceIndicator(IsWithinJoustingDistance());
             ui.EndIndicator.UpdateEndIndicator(ReachedEnd());
             match.PlayerReachedEnd(character);
-
-            if (horizontalInput == 0)
-            {
-                //character.transform.position += movementDirection.normalized * match.HorseSpeed * Time.deltaTime;
-                character.Animator.CrossFade("Jousting_Rider_Gallop", 0.1f);
-                character.HorseAnimator.CrossFade("LocomotionBlend", 0.1f);
-                character.HorseAnimator.SetFloat("speed", 1);
-            }
-
-            else if (horizontalInput < 0)
-            {
-                character.transform.Rotate(Vector3.up, -match.TurnSpeed * Time.deltaTime);
-                character.Animator.CrossFade("Jousting_Rider_Left", 0.1f);
-                //character.HorseAnimator.CrossFade("Jousting_Horse_Left", 0.1f);
-            }
-            else if (horizontalInput > 0)
-            {
-                character.transform.Rotate(Vector3.up, match.TurnSpeed * Time.deltaTime);
-                character.Animator.CrossFade("Jousting_Rider_Right", 0.1f);
-                //character.Animator.CrossFade("Jousting_Horse_Right", 0.1f);
-            }
         }
         else if (character.PlayerIndex == 1)
         {

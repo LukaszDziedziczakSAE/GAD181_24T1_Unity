@@ -10,7 +10,9 @@ public class JoustingMatch : MinigameMatch
     [field: SerializeField] public float MaximumJoustingDistance { get; private set; }
     [field: SerializeField] public float EndDistance { get; private set; }
     [field: SerializeField] public float PlayerStartPosition { get; private set; }
+    [field: SerializeField] public float PlayerStartRotation { get; private set; }
     [field: SerializeField] public float EnemyStartPosition { get; private set; }
+    [field: SerializeField] public float EnemyStartRotation { get; private set; }
     [field: SerializeField] public float TurnSpeed { get; private set; }
 
     private Jousting_Weapon weapon;
@@ -70,20 +72,34 @@ public class JoustingMatch : MinigameMatch
         foreach (Character character in Compeditors)
         {
             character.SetNewState(new CS_Jousting_Idle(character));
+
             Vector3 newPosition = character.transform.position;
+            Transform horsePosition = character.transform.Find("JoustingHorse");
             if (character.PlayerIndex == 0)
             {
                 newPosition.z = PlayerStartPosition;
+
+                Transform horse = character.transform.Find("JoustingHorse");
+                if (horse != null)
+                {
+                    horse.rotation = Quaternion.identity;
+                    horse.localPosition = new Vector3(0f, -0.324f, -0.157f);
+                }
             }
             else if (character.PlayerIndex == 1)
             {
                 newPosition.z = EnemyStartPosition;
+
+                Transform horse = character.transform.Find("JoustingHorse"); 
+                if (horse != null)
+                {
+                    horse.rotation = Quaternion.Euler(0f, EnemyStartRotation, 0f);
+                    horse.localPosition = new Vector3(0f, -0.324f, -0.157f);
+                }
             }
-
             character.transform.position = newPosition;
-
-            Debug.Log(completedRounds);
-            //implement restart when player enters impact state
         }
     }
+
+
 }

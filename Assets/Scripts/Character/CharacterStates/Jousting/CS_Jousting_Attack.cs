@@ -27,8 +27,7 @@ public class CS_Jousting_Attack : CharacterState
 
         if (character.Animator.GetCurrentAnimatorStateInfo(0).IsTag("JoustingAttack") && character.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
-            StateEnd();
-            //character.SetNewState(new CS_Jousting_Riding(character));
+            character.SetNewState(new CS_Jousting_Riding(character));
         }
     }
 
@@ -39,6 +38,5 @@ public class CS_Jousting_Attack : CharacterState
     public override void StateEnd()
     {
         weapon.ColiderEnabled(false);
-        character.SetNewState(new CS_Jousting_Riding(character));
     }
 }
