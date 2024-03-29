@@ -130,8 +130,9 @@ MonoBehaviour:
   hittableLayers:
     serializedVersion: 2
     m_Bits: 64
-  drop: 5
+  drop: 2
   pointPerTargetHit: 1
+  dropEnabled: 0
 --- !u!65 &5557168966456808451
 BoxCollider:
   m_ObjectHideFlags: 0
