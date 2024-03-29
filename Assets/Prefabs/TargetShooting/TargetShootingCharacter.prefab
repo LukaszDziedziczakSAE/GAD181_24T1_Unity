@@ -25,13 +25,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413203242145761978}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.17364825, y: 0, z: 0, w: 0.9848078}
   m_LocalPosition: {x: 0.034, y: 0.237, z: 0.265}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2442383454265766613}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -20, y: 0, z: 0}
 --- !u!114 &7114783775996635288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46,7 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrowPrefab: {fileID: 8628986355313709899, guid: f67455fbe78966144a6745fdef37b001,
     type: 3}
-  firePoint: {fileID: 5030006717128732161}
   owner: {fileID: 7158823240348729127}
 --- !u!1001 &2406628436508535232
 PrefabInstance:

@@ -40,12 +40,18 @@ public class TargetShooting_Arrow : MonoBehaviour
             rotation += drop * Time.deltaTime;
             transform.eulerAngles = new Vector3(rotation, transform.eulerAngles.y, transform.eulerAngles.z);
         }
+        else if (dropEnabled && !hitSomething && transform.eulerAngles.x > 180)
+        {
+            float rotation = transform.eulerAngles.x;
+            rotation += drop * Time.deltaTime;
+            transform.eulerAngles = new Vector3(rotation, transform.eulerAngles.y, transform.eulerAngles.z);
+        }
         if (!errored && transform.position.y < 0 && !hitSomething)
         {
             errored = true;
             Debug.LogError(name + " below ground " + transform.position);
         }
-        
+
     }
 
     private void OnTriggerEnter(Collider other)

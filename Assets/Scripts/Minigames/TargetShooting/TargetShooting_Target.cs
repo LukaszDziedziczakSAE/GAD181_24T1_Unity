@@ -8,6 +8,7 @@ public class TargetShooting_Target : MonoBehaviour
     [SerializeField] float downRotation;
     [SerializeField] float rotationTime = 0.5f;
     float rotStartTime;
+    Collider target;
     float rotProgress => (Time.time - rotStartTime) / rotationTime;
 
     [field: SerializeField, Header("DEBUG")] public EState State {  get; private set; } 
@@ -65,12 +66,16 @@ public class TargetShooting_Target : MonoBehaviour
     {
         Debug.Log(name + " setting Up");
         transform.eulerAngles = new Vector3(upRotation, transform.eulerAngles.y, transform.eulerAngles.z);
+        target = GetComponent<Collider>();
+        target.enabled = true;
     }
 
     public void SetDownRoation()
     {
         Debug.Log(name + " setting Down");
         transform.eulerAngles = new Vector3(downRotation, transform.eulerAngles.y, transform.eulerAngles.z);
+        target = GetComponent<Collider>();
+        target.enabled = false;
     }
 
     public void StartRotatingDown()
