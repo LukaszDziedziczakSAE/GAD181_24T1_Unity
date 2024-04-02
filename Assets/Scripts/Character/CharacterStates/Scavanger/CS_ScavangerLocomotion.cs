@@ -10,7 +10,7 @@ public class CS_ScavangerLocomotion : CharacterState
 
     public override void StateStart()
     {
-        Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
+        if (IsPlayerCharacter) Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
         character.Animator.CrossFade("ScavangerHunt_Locomotion", 0.1f);
     }
 
@@ -33,14 +33,13 @@ public class CS_ScavangerLocomotion : CharacterState
 
     public override void StateEnd()
     {
-        Game.InputReader.OnTouchPressed -= InputReader_OnTouchPressed;
+        if (IsPlayerCharacter) Game.InputReader.OnTouchPressed -= InputReader_OnTouchPressed;
     }
 
     private void InputReader_OnTouchPressed()
     {
-        if (!IsPlayerCharacter) return;
+        
 
-        //Debug.Log("Touch Pressed");
         RaycastHit raycastHit = Game.InputReader.RaycastFromTouchPoint;
         if (!raycastHit.Equals(new RaycastHit()))
         {
@@ -48,6 +47,5 @@ public class CS_ScavangerLocomotion : CharacterState
             Game.PlayerCharacter.NavMeshAgent.SetDestination(raycastHit.point);
             Game.PlayerCharacter.NavMeshAgent.isStopped = false;
         }
-        //else Debug.LogWarning("No Hit");
     }
 }

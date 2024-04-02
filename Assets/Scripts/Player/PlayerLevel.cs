@@ -32,10 +32,18 @@ public class PlayerLevel : MonoBehaviour, ISaveable
     {
         Experiance += amount;
 
-        while (Experiance >= CurrentRequriment)
+        if (Experiance >= CurrentRequriment)
         {
-            Experiance -= CurrentRequriment;
-            Level++;
+            if (Level < Game.HighestLevel)
+            {
+                Experiance -= CurrentRequriment;
+                Level++;
+            }
+            else
+            {
+                Experiance = CurrentRequriment;
+            }
+            
         }
 
     }
