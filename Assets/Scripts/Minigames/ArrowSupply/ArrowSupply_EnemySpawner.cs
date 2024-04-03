@@ -1,25 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ArrowSupply_EnemySpawner : MonoBehaviour
 {
     [SerializeField] Character characterPrefab;
-
     [SerializeField] CharacterModel.Config[] configs;
-
     private bool isFirstSpawn = true;
-
     private float initialSpawnDelay = 1f; // Delay for the first spawn
-
     [SerializeField] float minSpawnDelay = 5f; // New minimum time between spawns after the first spawn
-
     [SerializeField] float maxSpawnDelay = 10f; // New maximum time between spawns after the first spawn
+    private float timer;
 
-    
-
-    float timer;
+    // Reference to the ArrowSupplyMatch script
+    private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
 
     private void Start()
     {
@@ -32,13 +24,17 @@ public class ArrowSupply_EnemySpawner : MonoBehaviour
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            SpawnEnemy();
-            if (isFirstSpawn)
+            // Check if the match is not in the postMatch state before spawning enemies
+            if (match.Mode != ArrowSupplyMatch.EState.postMatch)
             {
-                // After the first spawn, disable the flag and use the slower spawn rate
-                isFirstSpawn = false;
+                SpawnEnemy();
+                if (isFirstSpawn)
+                {
+                    // After the first spawn, disable the flag and use the slower spawn rate
+                    isFirstSpawn = false;
+                }
+                timer = Random.Range(minSpawnDelay, maxSpawnDelay);
             }
-            timer = Random.Range(minSpawnDelay, maxSpawnDelay);
         }
     }
 
@@ -50,7 +46,7 @@ public class ArrowSupply_EnemySpawner : MonoBehaviour
 
         CharacterModel.Config config = configs[Random.Range(0, configs.Length)];
 
-        //Debug.Log("New config = " + config.Variant.ToString());
+        // Debug.Log("New config = " + config.Variant.ToString());
 
         character.SetToEnemyInArrowSupply();
 
@@ -60,7 +56,6 @@ public class ArrowSupply_EnemySpawner : MonoBehaviour
 
         // Add EnemyHealth script to the spawned enemy
         EnemyHealth enemyHealth = character.gameObject.AddComponent<EnemyHealth>();
-
     }
 
     float randomSpawnDelay => Random.Range(minSpawnDelay, maxSpawnDelay);
