@@ -59,4 +59,15 @@ public class CameraManager : MonoBehaviour
         currentCamera = null;
         cinemachineBrain = FindAnyObjectByType<CinemachineBrain>();
     }
+
+    public void SetStartingCamera(CinemachineVirtualCamera camera)
+    {
+        currentCamera = camera;
+        currentCamera.Priority = camPriortyCurrentActive;
+    }
+
+    public bool IsCurrentCamera(CinemachineVirtualCamera camera)
+    {
+        return currentCamera == camera;
+    }
 }

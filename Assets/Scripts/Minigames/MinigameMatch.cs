@@ -59,9 +59,19 @@ public abstract class MinigameMatch : MonoBehaviour
 
     protected virtual void PrematchStart()
     {
-        //if (Game.UI.MatchStart != null) Game.UI.MatchStart.gameObject.SetActive(true);
         Result = new MatchResult(Compeditors.Length);
-        Mode = EState.inProgress;
+
+        if (Game.UI.Prematch != null)
+        {
+            Game.UI.Prematch.gameObject.SetActive(true);
+            matchTime = -3.5f;
+            //print("Prematch time set = " + matchTime);
+        }
+        else
+        {
+            Debug.LogWarning("Prematch UI missing from scene");
+            Mode = EState.inProgress;
+        }
     }
     protected abstract void MatchStart();
     protected virtual void PostMatchStart()
@@ -83,6 +93,7 @@ public abstract class MinigameMatch : MonoBehaviour
 
     protected virtual void PrematchEnd()
     {
+        if (Game.UI.Prematch != null) Game.UI.Prematch.gameObject.SetActive(false);
         if (Game.UI.MatchStatus != null) Game.UI.MatchStatus.gameObject.SetActive(true);
     }
 
@@ -92,7 +103,13 @@ public abstract class MinigameMatch : MonoBehaviour
         Game.LoadMainMenu();
     }
 
-    protected virtual void PrematchTick() { }
+    protected virtual void PrematchTick()
+    {
+        matchTime += Time.deltaTime;
+        if (matchTime >= 0f) Mode = EState.inProgress;
+        //print("Prematch time = " + matchTime);
+    }
+
     protected virtual void MatchTick()
     {
         matchTime += Time.deltaTime;
@@ -147,6 +164,8 @@ public abstract class MinigameMatch : MonoBehaviour
             case EState.postMatch:
                 PostMatchStart(); break;
         }
+
+        Debug.Log("Match in " + mode + " mode");
     }
 
     public void AwardPlayerPoints(int playerNumber, int points)
