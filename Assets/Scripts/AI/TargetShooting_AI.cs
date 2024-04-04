@@ -14,9 +14,29 @@ public class TargetShooting_AI : AI
     [SerializeField] float baseFireRate;
     [SerializeField] float fireRateDeviation;
     [SerializeField, Range(0,1)] float hitProbability;
+    [SerializeField] float targetDistanceOffset = 0.1f;
+    [SerializeField] Vector2 missPowerOffsetRange;
+    [SerializeField] Vector2 missRotationOffsetRange;
 
     float timer;
     bool isFiring;
+    TargetShooting_Target currentTarget;
+
+
+
+    private void OnEnable()
+    {
+        TargetShooting_Target.OnTargetPoppedUp += TargetShooting_Target_OnTargetPoppedUp;
+    }
+    private void OnDisable()
+    {
+        TargetShooting_Target.OnTargetPoppedUp -= TargetShooting_Target_OnTargetPoppedUp;
+    }
+
+    private void TargetShooting_Target_OnTargetPoppedUp(TargetShooting_Target target)
+    {
+        currentTarget = target;
+    }
 
     private void Start()
     {
@@ -40,6 +60,8 @@ public class TargetShooting_AI : AI
         }
         
     }
+
+
 
     public void ResetTimer()
     {
@@ -74,15 +96,29 @@ public class TargetShooting_AI : AI
 
     private void TryShootArrow()
     {
+        if (currentTarget == null) return;        
+        float distance = Vector3.Distance(character.transform.position, currentTarget.transform.position)+ targetDistanceOffset;
+        float power = distance / 5;
+
+        character.transform.LookAt(currentTarget.transform);
+
         if (canFire)
         {
-            Debug.Log("ai shot");
+            Debug.Log("ai hit");
         }
         else
         {
-            Debug.Log("ai miss");
+            float powerOffset = coinFlip ? missPowerOffset : -missPowerOffset;
+            power += powerOffset;
+            float currentRotation = character.transform.eulerAngles.y;
+            float rotationOffset = coinFlip ? missRotationOffset : -missRotationOffset;
+            currentRotation += rotationOffset;
+            character.transform.eulerAngles = new Vector3(character.transform.eulerAngles.x,currentRotation, character.transform.eulerAngles.z);
+
+            Debug.Log("ai miss, poweroffset is " + powerOffset + " , rotationOffset is " + rotationOffset);
+            
         }
-        character.SetNewState(new CS_Archering_Releasing(character, 1));
+        character.SetNewState(new CS_Archering_Releasing(character, power));
        
         isFiring = true;
     }
@@ -103,4 +139,30 @@ public class TargetShooting_AI : AI
             return random < hitProbability;
         }
     }
+
+    private bool coinFlip
+    {
+        get
+        {
+            int random = Random.Range(0,2);
+            return random == 1;
+        }
+    }
+
+    private float missPowerOffset
+    {
+        get
+        {
+            return Random.Range(missPowerOffsetRange.x, missPowerOffsetRange.y);
+        }
+    }
+
+    private float missRotationOffset
+    {
+        get
+        {
+            return Random.Range(missRotationOffsetRange.x, missRotationOffsetRange.y);
+        }
+    }
+
 }

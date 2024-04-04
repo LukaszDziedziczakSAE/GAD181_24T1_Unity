@@ -23,8 +23,8 @@ public class UI_ArrowShootingIndicator : MonoBehaviour
             background.color = cannotFire;
         }
     }
-    public void UpdateDrawDistance(float distance)
+    public void UpdateDrawDistance(float powerPercent)
     {
-        drawDistance.text = distance.ToString("F0");
+        drawDistance.text = (powerPercent * 100).ToString("F0");
     }
 }

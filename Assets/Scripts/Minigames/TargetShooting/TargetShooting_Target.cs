@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +11,12 @@ public class TargetShooting_Target : MonoBehaviour
     float rotStartTime;
     Collider target;
     float rotProgress => (Time.time - rotStartTime) / rotationTime;
+    public static event Action<TargetShooting_Target> OnTargetPoppedUp;
+    TargetShooting_TargetController controller;
+    [field: SerializeField, Header("DEBUG")] public EState State {  get; private set; }
 
-    [field: SerializeField, Header("DEBUG")] public EState State {  get; private set; } 
 
+    
     public enum EState
     {
         none,
@@ -21,9 +25,13 @@ public class TargetShooting_Target : MonoBehaviour
         downPosition,
         movingDown
     }
-
+    private void Awake()
+    {
+        controller= GetComponentInParent<TargetShooting_TargetController>();
+    }
     private void Update()
     {
+
         if (State == EState.movingUp)
         {
             float rotation = Mathf.LerpAngle(downRotation, upRotation, rotProgress);
@@ -34,6 +42,7 @@ public class TargetShooting_Target : MonoBehaviour
             {
                 transform.eulerAngles = new Vector3(upRotation, transform.eulerAngles.y, transform.eulerAngles.z);
                 State = EState.upPoisition;
+                OnTargetPoppedUp?.Invoke(this);
             }
         }
 
@@ -80,8 +89,10 @@ public class TargetShooting_Target : MonoBehaviour
 
     public void StartRotatingDown()
     {
+        if (State != EState.upPoisition) return;
         rotStartTime = Time.time;
         State = EState.movingDown;
+        controller.RaiseRandomTarget();
     }
 
     public void StartRotatingUp()

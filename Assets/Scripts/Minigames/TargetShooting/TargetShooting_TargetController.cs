@@ -5,9 +5,26 @@ using UnityEngine;
 public class TargetShooting_TargetController : MonoBehaviour
 {
     [SerializeField] TargetShooting_Target[] targets;
+    private bool isReady;
 
+    private void OnEnable()
+    {
+        TargetShooting_Target.OnTargetPoppedUp += TargetShooting_Target_OnTargetPoppedUp;
+        isReady = true;
+    }
+
+    private void TargetShooting_Target_OnTargetPoppedUp(TargetShooting_Target target)
+    {
+        isReady = true;        
+    }
+
+    private void OnDisable()
+    {
+        TargetShooting_Target.OnTargetPoppedUp -= TargetShooting_Target_OnTargetPoppedUp;
+    }
     private void Start()
     {
+        
     }
 
     public void LowerAllTargets()
@@ -20,7 +37,10 @@ public class TargetShooting_TargetController : MonoBehaviour
 
     public void RaiseRandomTarget()
     {
+        if (!isReady)  return; 
+
         randomDownTarget.StartRotatingUp();
+        isReady = false;
     }
 
     private TargetShooting_Target randomDownTarget

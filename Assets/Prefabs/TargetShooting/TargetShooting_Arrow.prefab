@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 578068126866429634}
   - component: {fileID: 8628986355313709899}
   - component: {fileID: 5557168966456808451}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TargetShooting_Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 10
-  timeToLive: 3
+  timeToLive: 10
   hittableLayers:
     serializedVersion: 2
     m_Bits: 64
@@ -165,7 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2047789618081198107}
   - component: {fileID: 2664637776690320033}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0

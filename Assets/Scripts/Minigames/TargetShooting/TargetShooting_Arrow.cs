@@ -61,12 +61,19 @@ public class TargetShooting_Arrow : MonoBehaviour
         TargetShooting_Target target = other.GetComponent<TargetShooting_Target>();
         if (target != null)
         {
-            match.TargetController.RaiseRandomTarget();
+            
             transform.parent = target.transform;
-            target.StartRotatingDown();
+            if(target.State == TargetShooting_Target.EState.upPoisition)
+            {
+                target.StartRotatingDown();
 
-            match.AwardPlayerPoints(owner.PlayerIndex, pointPerTargetHit);
+                match.AwardPlayerPoints(owner.PlayerIndex, pointPerTargetHit);
+
+            }
         }
+
+        float distance = Vector3.Distance(transform.position, owner.transform.position);
+        //Debug.Log(name + " landed " + distance + " away");
 
     }
 
@@ -77,4 +84,6 @@ public class TargetShooting_Arrow : MonoBehaviour
         power = newPowerValue;
         Debug.Log(owner.name + " fired arrow with " + (power*100).ToString("F0") + "% power");
     }
+
+
 }

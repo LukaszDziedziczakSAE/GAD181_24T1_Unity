@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b6c83592f78f44eaafcebb47eb37ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseFireRate: 2
-  fireRateDeviation: 0.5
-  hitProbability: 0.3
+  baseFireRate: 3
+  fireRateDeviation: 1
+  hitProbability: 0.2
+  targetDistanceOffset: 0.4
+  missPowerOffsetRange: {x: 0.085, y: 0.11}
+  missRotationOffsetRange: {x: 3.5, y: 6}

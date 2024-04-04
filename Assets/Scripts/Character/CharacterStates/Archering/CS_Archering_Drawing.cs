@@ -61,7 +61,7 @@ public class CS_Archering_Drawing : CharacterState
         {
             distance = 0;
         }
-        ui.ArrowShootingIndicator.UpdateDrawDistance(distance);
+        ui.ArrowShootingIndicator.UpdateDrawDistance(distance / match.MaximumDrawDistanceToFire);
         ui.ArrowShootingIndicator.UpdateBackgroundColour(distance >= match.MinimumDrawDistanceToFire);
         float distanceNormalized = distance / match.MaximumDrawDistanceToFire;
         distanceNormalized = Mathf.Clamp(distanceNormalized, 0, 1);
@@ -114,7 +114,7 @@ public class CS_Archering_Drawing : CharacterState
         {
             distance = 0;
         }
-        ui.ArrowShootingIndicator.UpdateDrawDistance(distance);
+        ui.ArrowShootingIndicator.UpdateDrawDistance(distance / match.MaximumDrawDistanceToFire);
         float distanceNormalized = distance / match.MaximumDrawDistanceToFire;
         distanceNormalized = Mathf.Clamp(distanceNormalized, 0, 1);
     }
