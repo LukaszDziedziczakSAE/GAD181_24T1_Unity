@@ -240,7 +240,7 @@ public class UI_PlayerProfile : MonoBehaviour
     private void OnCloseButtonPress()
     {
         Game.Sound.PlayButtonPressConfirmSound();
-        Game.CameraManager.SwitchTo(((MainMenuMatch)Game.Match).MainMenuCamera, ((MainMenuMatch)Game.Match).CameraBlendTime);
+        Game.CameraManager.SwitchTo(((MainMenuMatch)Game.Match).MainMenuCameras[0], ((MainMenuMatch)Game.Match).CameraBlendTime);
         Game.CameraManager.BlendComplete += OnBackToMainMenuBlendComplete;
         gameObject.SetActive(false);
         //Game.SaveSystem.SaveGameFile();

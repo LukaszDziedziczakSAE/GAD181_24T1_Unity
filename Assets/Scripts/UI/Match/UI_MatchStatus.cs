@@ -79,62 +79,6 @@ public class UI_MatchStatus : MonoBehaviour
     {
         print("Initilizing MatchStatus for " + Game.Match.Result.Scores.Count + " players");
 
-        /*if (Game.Match.Result.Scores.ContainsKey(0))
-        {
-            player1Name.gameObject.SetActive(true);
-            player1Score.gameObject.SetActive(true);
-
-            player1Name.text = Game.Player.PlayerName;
-            player1Score.text = 0.ToString();
-        }
-        else
-        {
-            player3Name.gameObject.SetActive(false);
-            player3Score.gameObject.SetActive(false);
-        }
-
-        if (Game.Match.Result.Scores.ContainsKey(1))
-        {
-            player2Name.gameObject.SetActive(true);
-            player2Score.gameObject.SetActive(true);
-
-            player2Name.text = "Player 2";
-            player2Score.text = 0.ToString();
-        }
-        else
-        {
-            player2Name.gameObject.SetActive(false);
-            player2Score.gameObject.SetActive(false);
-        }
-
-        if (Game.Match.Result.Scores.ContainsKey(2))
-        {
-            player3Name.gameObject.SetActive(true);
-            player3Score.gameObject.SetActive(true);
-
-            player3Name.text = "Player 3";
-            player3Score.text = 0.ToString();
-        }
-        else
-        {
-            player3Name.gameObject.SetActive(false);
-            player3Score.gameObject.SetActive(false);
-        }
-
-        if (Game.Match.Result.Scores.ContainsKey(3))
-        {
-            player4Name.gameObject.SetActive(true);
-            player4Score.gameObject.SetActive(true);
-
-            player4Name.text = "Player 4";
-            player4Score.text = 0.ToString();
-        }
-        else
-        {
-            player4Name.gameObject.SetActive(false);
-            player4Score.gameObject.SetActive(false);
-        }*/
-
         if (Game.Match.Result.Scores.ContainsKey(0))
         {
             playerBox1.gameObject.SetActive(true);

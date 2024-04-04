@@ -9,6 +9,7 @@ public class Sound_UI : MonoBehaviour
     [SerializeField] AudioClip buttonPressConfirm;
     [SerializeField] AudioClip buttonPressCancel;
     [SerializeField] AudioClip awardPointSound;
+    [SerializeField] AudioClip prematchCountdown;
 
     private void PlayAudioClip(AudioClip clip)
     {
@@ -37,5 +38,10 @@ public class Sound_UI : MonoBehaviour
     public void PlayAwardPointSound()
     {
         if (awardPointSound != null) PlayAudioClip(awardPointSound);
+    }
+
+    public void PlayPrematchCountdownSound()
+    {
+        if (prematchCountdown != null) PlayAudioClip(prematchCountdown);
     }
 }

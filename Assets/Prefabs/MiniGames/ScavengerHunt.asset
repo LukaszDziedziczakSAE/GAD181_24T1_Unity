@@ -16,9 +16,9 @@ MonoBehaviour:
   <Name>k__BackingField: Scavenger Hunt
   <Description>k__BackingField: Four competitors search in a forest for collectables.
     The person whom collected the most when the time runs out wins.
-  <SelectionCardPicture>k__BackingField: {fileID: 2800000, guid: b6f982216c7fd5f4080150dc93282b1b,
+  <SelectionCardPicture>k__BackingField: {fileID: 2800000, guid: ce416f25ed576fe458698476a3b20741,
     type: 3}
-  <StartTitleCardPicture>k__BackingField: {fileID: 2800000, guid: b6f982216c7fd5f4080150dc93282b1b,
+  <StartTitleCardPicture>k__BackingField: {fileID: 2800000, guid: 50c8dded80aa89c4eaeb73c9e44bf41a,
     type: 3}
   <Xp1stPlace>k__BackingField: 3000
   <Xp2ndPlace>k__BackingField: 2250

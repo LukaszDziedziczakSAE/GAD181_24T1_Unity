@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,33 +9,31 @@ public class ScavangerHuntMatch : MinigameMatch
     [SerializeField] int winScore = 10;
     [SerializeField] GameObject selectionIndicatorPrefab;
     [SerializeField] ScavangerHunt_PickUpSpawner pickUpSpawner;
+    [SerializeField] CinemachineVirtualCamera characterChaseCam;
+    [SerializeField] CinemachineVirtualCamera preMatchCam;
     //public int itemsPickedUp = 0;
 
     //public float MatchTimeRemaining => matchLength - MatchTime;
 
     protected async override void PrematchStart()
     {
-        Result = new MatchResult(Compeditors.Length);
+        base.PrematchStart();
+        //Result = new MatchResult(Compeditors.Length);
         if (pickUpSpawner != null) await pickUpSpawner.SpawnPickUpsTask();
-        //base.PrematchStart();
+
+        Game.CameraManager.SetStartingCamera(preMatchCam);
     }
 
     protected override void PrematchTick()
     {
         base.PrematchTick();
-
-        /*if (pickUpSpawner == null || pickUpSpawner.SpawnComplete)
+        /*if (pickUpSpawner != null && pickUpSpawner.SpawnComplete)
         {
             Mode = EState.inProgress;
         }*/
-
-        if (pickUpSpawner != null && pickUpSpawner.SpawnComplete)
+        if (matchTime > -2.5f && !Game.CameraManager.IsCurrentCamera(characterChaseCam))
         {
-            Mode = EState.inProgress;
-        }
-        else if (pickUpSpawner == null)
-        {
-            Mode = EState.inProgress;
+            Game.CameraManager.SwitchTo(characterChaseCam, 2f);
         }
     }
 
@@ -56,6 +55,8 @@ public class ScavangerHuntMatch : MinigameMatch
         {
             Mode = EState.postMatch;
         }*/
+
+        
     }
 
     protected override void PostMatchStart()
