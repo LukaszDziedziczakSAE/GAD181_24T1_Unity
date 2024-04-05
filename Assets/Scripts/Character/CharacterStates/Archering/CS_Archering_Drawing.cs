@@ -14,7 +14,7 @@ public class CS_Archering_Drawing : CharacterState
     private float maxAngle = 45f;
     private float startingXPos;
     private float turnRatio = 5;
-
+    private float rotationDeadzone = 5f;
     float characterStartingRotation;
 
     public CS_Archering_Drawing(Character character) : base(character)
@@ -49,7 +49,14 @@ public class CS_Archering_Drawing : CharacterState
         }
         float distanceX = startingXPos - Game.InputReader.TouchPosition.x;
         float rotation = distanceX / turnRatio;
-        rotation += characterStartingRotation;        
+        if (rotation < rotationDeadzone && rotation > -rotationDeadzone) 
+        { 
+            rotation = characterStartingRotation; 
+        }
+        else
+        {
+            rotation += characterStartingRotation;
+        }
         if (rotation > maxAngle) rotation = maxAngle;
         if (rotation < -maxAngle) rotation = -maxAngle;
         character.transform.eulerAngles = new UnityEngine.Vector3(character.transform.eulerAngles.x, rotation, character.transform.eulerAngles.z);
