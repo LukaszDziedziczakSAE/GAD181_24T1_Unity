@@ -5,20 +5,12 @@ using UnityEngine;
 
 public class Jousting_Weapon : MonoBehaviour
 {
-    /*[SerializeField] private Character enemyCharacter;
-
-    public bool hasCollided = false;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject == enemyCharacter.gameObject)
-        {
-            hasCollided = true;
-            Debug.Log("Weapon has hit the enemy");
-        }
-    }*/
     [SerializeField] Collider _collider;
     [SerializeField] Character owner;
+
+    JoustingMatch match => (JoustingMatch)Game.Match;
+    private Character character;
+    private int pointsToAward = 1;
 
     public void SetOwner(Character newOwner)
     {
@@ -30,7 +22,6 @@ public class Jousting_Weapon : MonoBehaviour
         _collider.enabled = enabled;
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         Character otherCharacter = other.GetComponent<Character>();
@@ -38,5 +29,7 @@ public class Jousting_Weapon : MonoBehaviour
         Debug.Log("Hit " + otherCharacter.name);
 
         otherCharacter.SetNewState(new CS_Jousting_Impact(otherCharacter));
+       
+        if (character !=null && character.PlayerIndex == 0) match.AwardPlayerPoints(character.PlayerIndex, pointsToAward);
     }
 }

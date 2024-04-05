@@ -210,7 +210,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400020, guid: 963c602205c554940aa8cac531de90a5, type: 3}
+  m_Motion: {fileID: 7400000, guid: ebc6d3b2d8004704fa4c21dc4a0ea681, type: 3}
   m_Tag: JoustingAttack
   m_SpeedParameter: 
   m_MirrorParameter: 

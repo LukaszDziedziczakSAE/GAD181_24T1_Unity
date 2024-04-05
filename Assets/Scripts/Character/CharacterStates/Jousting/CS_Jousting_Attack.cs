@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CS_Jousting_Attack : CharacterState
 {
-    private JoustingMatch match;
+  
+    JoustingMatch match => (JoustingMatch)Game.Match;
     private UI_Jousting ui;
     private Jousting_Weapon weapon;
 
     public CS_Jousting_Attack(Character character) : base(character)
     {
-        match = (JoustingMatch)Game.Match;
         weapon = character.GetComponentInChildren<Jousting_Weapon>();
     }
 
