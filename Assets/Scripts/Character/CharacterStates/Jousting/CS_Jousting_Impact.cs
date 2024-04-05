@@ -7,7 +7,7 @@ public class CS_Jousting_Impact : CharacterState
     private JoustingMatch match;
     private Character other;
     private CS_Jousting_Riding riding;
-    private int pointsToAward = 1;
+    
 
     public CS_Jousting_Impact(Character character) : base(character)
     {
@@ -25,8 +25,9 @@ public class CS_Jousting_Impact : CharacterState
             character.Animator.CrossFade("Jousting_Rider_Death", 0.1f);
             character.HorseAnimator.CrossFade("Jousting_Horse_Death", 0.1f);
         }
+        
+        
 
-        match.AwardPlayerPoints(character.PlayerIndex, pointsToAward);
         Debug.Log("You've entered impact state");
     }
 
