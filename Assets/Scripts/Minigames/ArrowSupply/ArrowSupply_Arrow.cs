@@ -10,7 +10,7 @@ public class ArrowSupply_Arrow : MonoBehaviour
 
     [SerializeField] LayerMask hittableLayers;
 
-    [SerializeField] float drop = 1f;
+    // [SerializeField] float drop = 1f;
 
     [SerializeField] ParticleSystem iceParticles;
 

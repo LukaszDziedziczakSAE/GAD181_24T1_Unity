@@ -61,7 +61,18 @@ public class ArrowSupplyMatch : MinigameMatch
     protected override void PostMatchStart()
     {
         base.PostMatchStart();
-        //Mode = EState.none;
+
+        DestroyAllEnemies();
+    }
+
+    private void DestroyAllEnemies()
+    {
+        Character[] enemies = AS_Enemies;
+
+        foreach (Character enemy in enemies)
+        {
+            Destroy(enemy.gameObject);
+        }
     }
 
     public void ShowTouchIndicator(Vector3 position)

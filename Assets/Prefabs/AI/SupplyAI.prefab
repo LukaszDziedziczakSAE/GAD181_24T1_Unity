@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5214794007995850610}
   - component: {fileID: 8903118802826264000}
-  - component: {fileID: 4618444795094084835}
   m_Layer: 3
   m_Name: SupplyAI
   m_TagString: Untagged
@@ -46,15 +45,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carryingArrow: 0
---- !u!114 &4618444795094084835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5215831988457746140}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6606d4cd9fd7524b8c000e4f39ce913, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

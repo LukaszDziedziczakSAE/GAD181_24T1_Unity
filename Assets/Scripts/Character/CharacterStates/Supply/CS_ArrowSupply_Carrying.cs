@@ -22,7 +22,7 @@ public class CS_ArrowSupply_Carrying : CharacterState
 
     public override void StateStart()
     {
-        Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
+        if (IsPlayerCharacter) Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
 
         character.Animator.CrossFade("ScavangerHunt_Locomotion", 0.1f);
 
@@ -58,17 +58,15 @@ public class CS_ArrowSupply_Carrying : CharacterState
 
     private void InputReader_OnTouchPressed()
     {
+        RaycastHit raycastHit = Game.InputReader.RaycastFromTouchPoint;
+
+        if (!raycastHit.Equals(new RaycastHit()))
         {
-            RaycastHit raycastHit = Game.InputReader.RaycastFromTouchPoint;
+            match.ShowTouchIndicator(raycastHit.point);
 
-            if (!raycastHit.Equals(new RaycastHit()))
-            {
-                match.ShowTouchIndicator(raycastHit.point);
+            Game.PlayerCharacter.NavMeshAgent.SetDestination(raycastHit.point);
 
-                Game.PlayerCharacter.NavMeshAgent.SetDestination(raycastHit.point);
-
-                Game.PlayerCharacter.NavMeshAgent.isStopped = false;
-            }
+            Game.PlayerCharacter.NavMeshAgent.isStopped = false;
         }
     }
 

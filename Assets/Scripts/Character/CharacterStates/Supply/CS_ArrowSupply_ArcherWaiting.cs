@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CS_ArrowSupply_ArcherWaiting : CharacterState
 {
-    float fireRate = 1;
+    // float fireRate = 1;
 
     float stateStartTime;
 
