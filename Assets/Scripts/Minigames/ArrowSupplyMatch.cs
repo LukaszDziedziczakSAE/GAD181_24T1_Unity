@@ -13,6 +13,8 @@ public class ArrowSupplyMatch : MinigameMatch
     [field: SerializeField] public Transform[] PickupLocations;
 
     [field: SerializeField] public Transform[] DeliveryLocations;
+
+    [field: SerializeField] public Transform[] FiringLines;
     public float MatchTimeRemaining => matchLength - MatchTime;
 
     [SerializeField] int highDamagePointAward;

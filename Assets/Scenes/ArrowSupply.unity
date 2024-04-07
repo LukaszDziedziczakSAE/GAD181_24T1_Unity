@@ -906,6 +906,11 @@ MonoBehaviour:
   - {fileID: 1694765739}
   - {fileID: 1915013440}
   - {fileID: 1352111409}
+  FiringLines:
+  - {fileID: 1309424022}
+  - {fileID: 1554158133}
+  - {fileID: 2113658903}
+  - {fileID: 393801962}
   highDamagePointAward: 10
   normalDamagePointAward: 5
   lowDamagePointAward: 2
@@ -1070,8 +1075,9 @@ GameObject:
   - component: {fileID: 393801965}
   - component: {fileID: 393801964}
   - component: {fileID: 393801963}
+  - component: {fileID: 393801966}
   m_Layer: 0
-  m_Name: Firingline trigger (3)
+  m_Name: FiringlineTriggerFour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1163,6 +1169,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393801961}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &393801966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393801961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46baed6e4e313246bc99fbd2234168f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesInLine: []
 --- !u!1 &527641568 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1180104005525022, guid: 86e216da0abd45e47b3db079ed802697,
@@ -2875,8 +2894,9 @@ GameObject:
   - component: {fileID: 1309424025}
   - component: {fileID: 1309424024}
   - component: {fileID: 1309424023}
+  - component: {fileID: 1309424026}
   m_Layer: 0
-  m_Name: Firingline trigger
+  m_Name: 'FiringlineTriggerOne  '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2968,6 +2988,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309424021}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1309424026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309424021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46baed6e4e313246bc99fbd2234168f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesInLine: []
 --- !u!1 &1328844743
 GameObject:
   m_ObjectHideFlags: 0
@@ -3039,7 +3072,7 @@ PrefabInstance:
     - target: {fileID: 4061937907945099288, guid: 9096ac3ac7990b144ad391fbe39cd127,
         type: 3}
       propertyPath: m_Name
-      value: Archer (3)
+      value: ArcherFour
       objectReference: {fileID: 0}
     - target: {fileID: 4061937907945099288, guid: 9096ac3ac7990b144ad391fbe39cd127,
         type: 3}
@@ -3455,8 +3488,9 @@ GameObject:
   - component: {fileID: 1554158136}
   - component: {fileID: 1554158135}
   - component: {fileID: 1554158134}
+  - component: {fileID: 1554158137}
   m_Layer: 0
-  m_Name: Firingline trigger (1)
+  m_Name: FiringlineTriggerTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3548,6 +3582,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554158132}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1554158137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554158132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46baed6e4e313246bc99fbd2234168f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesInLine: []
 --- !u!1001 &1564572710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3816,7 +3863,7 @@ PrefabInstance:
     - target: {fileID: 4061937907945099288, guid: 9096ac3ac7990b144ad391fbe39cd127,
         type: 3}
       propertyPath: m_Name
-      value: Archer
+      value: ArcherOne
       objectReference: {fileID: 0}
     - target: {fileID: 4061937907945099288, guid: 9096ac3ac7990b144ad391fbe39cd127,
         type: 3}
@@ -4119,7 +4166,7 @@ PrefabInstance:
     - target: {fileID: 4061937907945099288, guid: 9096ac3ac7990b144ad391fbe39cd127,
         type: 3}
       propertyPath: m_Name
-      value: Archer (1)
+      value: ArcherTwo
       objectReference: {fileID: 0}
     - target: {fileID: 4061937907945099288, guid: 9096ac3ac7990b144ad391fbe39cd127,
         type: 3}
@@ -4949,7 +4996,7 @@ PrefabInstance:
     - target: {fileID: 4061937907945099288, guid: 9096ac3ac7990b144ad391fbe39cd127,
         type: 3}
       propertyPath: m_Name
-      value: Archer (2)
+      value: ArcherThree
       objectReference: {fileID: 0}
     - target: {fileID: 4061937907945099288, guid: 9096ac3ac7990b144ad391fbe39cd127,
         type: 3}
@@ -5307,8 +5354,9 @@ GameObject:
   - component: {fileID: 2113658906}
   - component: {fileID: 2113658905}
   - component: {fileID: 2113658904}
+  - component: {fileID: 2113658907}
   m_Layer: 0
-  m_Name: Firingline trigger (2)
+  m_Name: FiringlineTriggerThree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5400,6 +5448,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2113658902}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2113658907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113658902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46baed6e4e313246bc99fbd2234168f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesInLine: []
 --- !u!1001 &2141739605
 PrefabInstance:
   m_ObjectHideFlags: 0

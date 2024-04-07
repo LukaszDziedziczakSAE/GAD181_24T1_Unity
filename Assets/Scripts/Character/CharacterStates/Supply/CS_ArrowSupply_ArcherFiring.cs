@@ -63,22 +63,53 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
     {
         get
         {
-            Character closestEnemy = null;
+            int firingLineIndex = DetermineFiringLineIndex(character);
+            if (firingLineIndex == -1) return null; // Early exit if index not found
 
+            ArrowSupply_FiringLine firingLine = match.FiringLines[firingLineIndex].GetComponent<ArrowSupply_FiringLine>();
+            if (firingLine == null) return null; // Check if the FiringLine component is missing
+
+            Character closestEnemy = null;
             float closestDistance = Mathf.Infinity;
 
-            foreach (Character enemy in match.AS_Enemies)
+            foreach (Character enemy in firingLine.enemiesInLine)
             {
-                float distance = Vector3.Distance(character.transform.position, enemy.transform.position);
+                if (enemy == null || enemy.gameObject == null) continue; // Skip destroyed enemies
 
+                float distance = Vector3.Distance(character.transform.position, enemy.transform.position);
                 if (distance < closestDistance)
                 {
                     closestEnemy = enemy;
-
                     closestDistance = distance;
                 }
             }
             return closestEnemy;
         }
+    }
+
+    private int DetermineFiringLineIndex(Character archer)
+    {
+        // Using the archer's name to match with the firing line index
+        switch (archer.gameObject.name)
+        {
+            case "ArcherOne":
+                return 0; // Corresponds to FiringLines[0]
+            case "ArcherTwo":
+                return 1; // Corresponds to FiringLines[1]
+            case "ArcherThree":
+                return 2; // Corresponds to FiringLines[2]
+            case "ArcherFour":
+                return 3; // Corresponds to FiringLines[3]
+            default:
+                Debug.LogError($"Archer name does not match expected pattern: {archer.gameObject.name}");
+                return -1;
+        }
+    }
+
+    private bool IsEnemyInFiringLine(Character enemy, Transform firingLine)
+    {
+        // Placeholder: Implement your logic to check if the enemy is in the correct firing line
+        // For now, we're assuming all enemies are valid targets. You may want to check their position relative to the firing line.
+        return true;
     }
 }
