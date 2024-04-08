@@ -108,8 +108,7 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
 
     private bool IsEnemyInFiringLine(Character enemy, Transform firingLine)
     {
-        // Placeholder: Implement your logic to check if the enemy is in the correct firing line
-        // For now, we're assuming all enemies are valid targets. You may want to check their position relative to the firing line.
+
         return true;
     }
 }

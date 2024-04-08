@@ -15,6 +15,8 @@ public class ArrowSupplyMatch : MinigameMatch
     [field: SerializeField] public Transform[] DeliveryLocations;
 
     [field: SerializeField] public Transform[] FiringLines;
+
+    [field: SerializeField] public Transform[] Popups;
     public float MatchTimeRemaining => matchLength - MatchTime;
 
     [SerializeField] int highDamagePointAward;
@@ -168,6 +170,16 @@ public class ArrowSupplyMatch : MinigameMatch
             case 1: return lowDamagePointAward;
 
             default: return 0;
+        }
+    }
+
+    public void ArrowCall()
+    {
+        int popupChance = Random.Range(0, 10);
+
+        if (popupChance <= 5)
+        {
+
         }
     }
 }
