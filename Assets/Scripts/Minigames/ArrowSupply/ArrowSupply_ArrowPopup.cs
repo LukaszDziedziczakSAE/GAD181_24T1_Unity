@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
 public class ArrowSupply_ArrowPopup : MonoBehaviour
 {
-    public Image iconImage;
+    public RawImage iconImage;
 
     public Texture normalIcon;
 
