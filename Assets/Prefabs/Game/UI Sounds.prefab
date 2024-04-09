@@ -50,7 +50,7 @@ MonoBehaviour:
   buttonPressConfirm: {fileID: 8300000, guid: 6e152bae3e6a9334f91463bb501f1bc5, type: 3}
   buttonPressCancel: {fileID: 8300000, guid: 34b9f93e5b21d1541954e88d11a1b870, type: 3}
   awardPointSound: {fileID: 8300000, guid: 9dafa9bb15b8ec446bed2ccc0795987f, type: 3}
-  prematchCountdown: {fileID: 8300000, guid: 95673e39a0e7b3e48b4b20a92579bc0f, type: 3}
+  prematchCountdown: {fileID: 8300000, guid: 9bb409aa6f3d9a740b8cb441af33963e, type: 3}
 --- !u!82 &2584561346029064410
 AudioSource:
   m_ObjectHideFlags: 0
