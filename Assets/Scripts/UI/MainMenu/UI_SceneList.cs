@@ -11,9 +11,16 @@ public class UI_SceneList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] UI_MinigameCard minigameCardPrefab;
     List<UI_MinigameCard> minigameCards = new List<UI_MinigameCard>();
+    [SerializeField] UIMover mover;
 
     private void OnEnable()
     {
+        if (mover != null)
+        {
+            mover.SetOffScreenPosition();
+            mover.MoveToOnScreen();
+        }
+
         backButton.onClick.AddListener(OnBackButtonPress);
         UpdateList();
     }
@@ -47,13 +54,24 @@ public class UI_SceneList : MonoBehaviour
     public void OnBackButtonPress()
     {
         Game.Sound.PlayButtonPressCancelSound();
-        mainMenu.MainMenuStatus.gameObject.SetActive(true);
-        gameObject.SetActive(false);
+        
+        if (mover != null)
+        {
+            mover.MoveOffScreenComplete += CompleteOffScreen;
+            mover.MoveToOffScreen();
+        }
+        else CompleteOffScreen();
     }
 
     public void PlayMiniGame(MinigameConfig config)
     {
         mainMenu.MatchStart.gameObject.SetActive(true);
         mainMenu.MatchStart.Initilize(config);
+    }
+
+    private void CompleteOffScreen()
+    {
+        mainMenu.MainMenuStatus.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 }

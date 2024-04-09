@@ -21,6 +21,7 @@ public class UI_MatchEnd : MonoBehaviour
     [SerializeField] TMP_Text playerLevel;
     [SerializeField] Image playerPreviousXPIndicator;
     [SerializeField] Image playerCurrentXPIndicator;
+    [SerializeField] UIMover mover;
 
     List<UI_MatchEnd_CharacterListItem> characterListItems = new List<UI_MatchEnd_CharacterListItem>();
     MatchResult matchResult;
@@ -28,6 +29,12 @@ public class UI_MatchEnd : MonoBehaviour
 
     private void OnEnable()
     {
+        if (mover != null)
+        {
+            mover.SetOffScreenPosition();
+            mover.MoveToOnScreen();
+        }
+
         backgroundButton.onClick.AddListener(OnBackgroundButtonPress);
         playAgainButton.onClick.AddListener(OnPlayAgainButtonPress);
         mainMenuButton.onClick.AddListener(OnMainMenuButtonPress);

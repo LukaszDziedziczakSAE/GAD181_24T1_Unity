@@ -20,9 +20,16 @@ public class UI_MatchStatus : MonoBehaviour
     [SerializeField] UI_MatchStatusPlayerBox playerBox2;
     [SerializeField] UI_MatchStatusPlayerBox playerBox3;
     [SerializeField] UI_MatchStatusPlayerBox playerBox4;
+    [SerializeField] UIMover mover;
 
     private void OnEnable()
     {
+        if (mover != null)
+        {
+            mover.SetOffScreenPosition();
+            mover.MoveToOnScreen();
+        }
+
         pauseButton.onClick.AddListener(OnPauseButtonPress);
 
         if (Game.Match.Result == null)
