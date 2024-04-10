@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public class ScavangerHunt_PickUpSpawner : MonoBehaviour
 {
@@ -18,7 +20,9 @@ public class ScavangerHunt_PickUpSpawner : MonoBehaviour
     [SerializeField] LayerMask spherCastLayers;
     [SerializeField] LayerMask groundLayers;
 
-    public bool SpawnComplete => PickUps.Count >= numberToSpawn;
+    public bool SpawnComplete => PickUps.Count >= numberToSpawn /*&& positionsChecked >= numberToSpawn*/;
+
+    int positionsChecked;
 
     private void SpawnPickup()
     {
@@ -90,4 +94,20 @@ public class ScavangerHunt_PickUpSpawner : MonoBehaviour
             }
         }
     }
+
+    public async Task CheckPositionsTask()
+    {
+        ScavangerHunt_PickUp[] pickUps = GetComponentsInChildren<ScavangerHunt_PickUp>();
+
+        foreach (ScavangerHunt_PickUp pickUp in pickUps)
+        {
+            if (Physics.Raycast(pickUp.transform.position - new Vector3(0, -10, 0), new Vector3(0, -1, 0), out RaycastHit hit, 1000, groundLayers))
+            {
+                pickUp.transform.position = hit.point;
+                positionsChecked++;
+                await Task.Yield();
+            }
+        }
+    }
+
 }

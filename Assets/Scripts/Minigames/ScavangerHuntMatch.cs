@@ -17,23 +17,37 @@ public class ScavangerHuntMatch : MinigameMatch
 
     protected async override void PrematchStart()
     {
-        base.PrematchStart();
-        //Result = new MatchResult(Compeditors.Length);
-        if (pickUpSpawner != null) await pickUpSpawner.SpawnPickUpsTask();
+        //base.PrematchStart();
+
+        if (pickUpSpawner != null)
+        {
+            await pickUpSpawner.SpawnPickUpsTask();
+            //await pickUpSpawner.CheckPositionsTask();
+        }
+        else
+        {
+            RegularPreMatchStart();
+        }
 
         Game.CameraManager.SetStartingCamera(preMatchCam);
     }
 
     protected override void PrematchTick()
     {
-        base.PrematchTick();
-        /*if (pickUpSpawner != null && pickUpSpawner.SpawnComplete)
+        if (!Game.UI.Prematch.gameObject.activeSelf)
         {
-            Mode = EState.inProgress;
-        }*/
-        if (matchTime > -2.5f && !Game.CameraManager.IsCurrentCamera(characterChaseCam))
+            if (pickUpSpawner != null && pickUpSpawner.SpawnComplete)
+            {
+                RegularPreMatchStart();
+            }
+        }
+        else
         {
-            Game.CameraManager.SwitchTo(characterChaseCam, 2f);
+            base.PrematchTick();
+            if (matchTime > -2.5f && !Game.CameraManager.IsCurrentCamera(characterChaseCam))
+            {
+                Game.CameraManager.SwitchTo(characterChaseCam, 2f);
+            }
         }
     }
 
@@ -61,6 +75,7 @@ public class ScavangerHuntMatch : MinigameMatch
 
     protected override void PostMatchStart()
     {
+        RemovePickUpFromHands();
         base.PostMatchStart();
     }
 
@@ -72,5 +87,31 @@ public class ScavangerHuntMatch : MinigameMatch
     public bool CharacterWon(Character character)
     {
         return Result.Scores[character.PlayerIndex] >= winScore;
+    }
+
+    private void RemovePickUpFromHands()
+    {
+        foreach (Character character in Compeditors)
+        {
+            ScavangerHunt_PickUp pickUp = character.GetComponentInChildren<ScavangerHunt_PickUp>();
+            if (pickUp != null) Destroy(pickUp.gameObject);
+        }
+    }
+
+    private void RegularPreMatchStart()
+    {
+        Result = new MatchResult(Compeditors.Length);
+
+        if (Game.UI.Prematch != null)
+        {
+            Game.UI.Prematch.gameObject.SetActive(true);
+            matchTime = -3.5f;
+            //print("Prematch time set = " + matchTime);
+        }
+        else
+        {
+            Debug.LogWarning("Prematch UI missing from scene");
+            Mode = EState.inProgress;
+        }
     }
 }

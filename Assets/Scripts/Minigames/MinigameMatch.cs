@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,6 +10,9 @@ public abstract class MinigameMatch : MonoBehaviour
     protected float matchTime;
     [field: SerializeField] public MinigameConfig Config {  get; protected set; }
     public MatchResult Result { get; protected set; }
+    [SerializeField] Podium podiumPrefab;
+    [SerializeField] Vector3 podiumPosition;
+    [SerializeField] Vector3 podiumRotation;
 
     public EState Mode
     {
@@ -73,22 +77,11 @@ public abstract class MinigameMatch : MonoBehaviour
             Mode = EState.inProgress;
         }
     }
-    protected abstract void MatchStart();
-    protected virtual void PostMatchStart()
+    protected virtual void PrematchTick()
     {
-        /*foreach (Character character in Compeditors)
-        {
-            character.SetNewState(new CS_StandingIdle(character));
-        }*/
-        Character[] characters = FindObjectsOfType<Character>();
-        foreach (Character character in characters)
-        {
-            character.SetNewState(new CS_StandingIdle(character));
-        }
-
-        Game.UI.MatchStatus.gameObject.SetActive(false);
-        Game.UI.MatchEnd.gameObject.SetActive(true);
-        Game.UI.MatchEnd.Initilise(DetermineResult());
+        matchTime += Time.deltaTime;
+        if (matchTime >= 0f) Mode = EState.inProgress;
+        //print("Prematch time = " + matchTime);
     }
 
     protected virtual void PrematchEnd()
@@ -97,24 +90,49 @@ public abstract class MinigameMatch : MonoBehaviour
         if (Game.UI.MatchStatus != null) Game.UI.MatchStatus.gameObject.SetActive(true);
     }
 
-    protected virtual void MatchEnd() { }
-    protected virtual void PostMatchEnd()
-    {
-        Game.LoadMainMenu();
-    }
-
-    protected virtual void PrematchTick()
-    {
-        matchTime += Time.deltaTime;
-        if (matchTime >= 0f) Mode = EState.inProgress;
-        //print("Prematch time = " + matchTime);
-    }
+    protected abstract void MatchStart();
 
     protected virtual void MatchTick()
     {
         matchTime += Time.deltaTime;
     }
-    protected virtual void PostMatchTick() { }
+
+    protected virtual void MatchEnd()
+    {
+
+    }
+
+    protected virtual void PostMatchStart()
+    {
+        Character[] characters = FindObjectsOfType<Character>();
+        foreach (Character character in characters)
+        {
+            character.SetNewState(new CS_StandingIdle(character));
+        }
+        DetermineResult();
+
+        Game.UI.MatchStatus.gameObject.SetActive(false);
+
+        if (podiumPrefab != null)
+        {
+            Podium podium = Instantiate(podiumPrefab, podiumPosition, Quaternion.Euler(podiumRotation));
+            podium.Initilize(Result);
+        }
+        else
+        {
+            ShowPostMatchUI();
+        }
+    }
+
+    protected virtual void PostMatchTick()
+    {
+
+    }
+
+    protected virtual void PostMatchEnd()
+    {
+        Game.LoadMainMenu();
+    }
 
     protected virtual MatchResult DetermineResult()
     {
@@ -174,4 +192,11 @@ public abstract class MinigameMatch : MonoBehaviour
         Game.UI.UpdateMatchStatus();
         if (playerNumber == 0) Game.Sound.PlayAwardPointSound();
     }
+
+    public void ShowPostMatchUI()
+    {
+        Game.UI.MatchEnd.gameObject.SetActive(true);
+        Game.UI.MatchEnd.Initilise(Result);
+    }
+
 }

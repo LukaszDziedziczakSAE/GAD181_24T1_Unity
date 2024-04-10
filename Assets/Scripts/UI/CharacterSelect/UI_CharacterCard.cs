@@ -122,9 +122,10 @@ public class UI_CharacterCard : MonoBehaviour
             case EMode.Selectable:
                 Game.Player.SetCharacterVarient(config.Variant);
                 Game.SaveSystem.SaveGameFile();
-                mainMenu.CharacterList.gameObject.SetActive(false);
+                /*mainMenu.CharacterList.gameObject.SetActive(false);
                 //mainMenu.PlayerProfile.gameObject.SetActive(true);
-                mainMenu.MainMenuStatus.gameObject.SetActive(true);
+                mainMenu.MainMenuStatus.gameObject.SetActive(true);*/
+                characterList.OnBackButtonPress();
                 break;
 
             case EMode.Purchasable:

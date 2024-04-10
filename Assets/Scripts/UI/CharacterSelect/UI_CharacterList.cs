@@ -11,9 +11,16 @@ public class UI_CharacterList : MonoBehaviour
     [SerializeField] UI_CharacterCard characterCardPrefab;
     [SerializeField] Button backButton;
     List<UI_CharacterCard> characterCards = new List<UI_CharacterCard>();
-
+    [SerializeField] UIMover mover;
+ 
     private void OnEnable()
     {
+        if (mover != null)
+        {
+            mover.SetOffScreenPosition();
+            mover.MoveToOnScreen();
+        }
+
         Initilise();
         backButton.onClick.AddListener(OnBackButtonPress);
     }
@@ -44,13 +51,17 @@ public class UI_CharacterList : MonoBehaviour
         }
     }
 
-    private void OnBackButtonPress()
+    public void OnBackButtonPress()
     {
         Game.Sound.PlayButtonPressCancelSound();
-        UI_MainMenu mainMenu = (UI_MainMenu)Game.UI;
-
-        mainMenu.CharacterList.gameObject.SetActive(false);
-        mainMenu.MainMenuStatus.gameObject.SetActive(true);
+        
+        if (mover != null)
+        {
+            mover.MoveOffScreenComplete += CompleteOffScreen;
+            mover.MoveToOffScreen();
+        }
+        else CompleteOffScreen();
+        
     }
 
     public void ReinitilizeCards()
@@ -59,5 +70,12 @@ public class UI_CharacterList : MonoBehaviour
         {
             card.Reinitilize();
         }
+    }
+
+    private void CompleteOffScreen()
+    {
+        UI_MainMenu mainMenu = (UI_MainMenu)Game.UI;
+        mainMenu.CharacterList.gameObject.SetActive(false);
+        mainMenu.MainMenuStatus.gameObject.SetActive(true);
     }
 }

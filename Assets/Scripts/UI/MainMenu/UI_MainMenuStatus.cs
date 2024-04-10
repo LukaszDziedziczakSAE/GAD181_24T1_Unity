@@ -14,9 +14,17 @@ public class UI_MainMenuStatus : MonoBehaviour
     [SerializeField] TMP_Text playerXp;
     [SerializeField] TMP_Text playerCurrencyHeld;
     [SerializeField] RawImage characterIcon;
+    [SerializeField] UIMover mover;
+
     UI_MainMenu MainMenu => (UI_MainMenu)Game.UI;
     private void OnEnable()
     {
+        if (mover != null)
+        {
+            mover.SetOffScreenPosition();
+            mover.MoveToOnScreen();
+        }
+
         settingsButton.onClick.AddListener(OnSettingButtonPress);
         newMatchButton.onClick.AddListener(OnNewMatchButtonPress);
         characterButton.onClick.AddListener(OnCharacterButtonPress);
