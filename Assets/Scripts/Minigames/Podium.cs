@@ -61,7 +61,7 @@ public class Podium : MonoBehaviour
         
         if (forth) Destroy(forth.gameObject);
 
-        if (focusOnPlayer)
+        if (focusOnPlayer && Game.CharacterByIndex(0) != null)
         {
             podiumCam.LookAt = Game.CharacterByIndex(0).transform;
         }
