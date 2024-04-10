@@ -2340,6 +2340,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Config>k__BackingField: {fileID: 11400000, guid: 19458a37a8d1cbf4394becb25c40fc31,
     type: 2}
+  podiumPrefab: {fileID: 6253369507715146248, guid: 680442041cabb3d4da580c6340259e87,
+    type: 3}
+  podiumPosition: {x: 6.3089314, y: 0.273, z: -0.69192314}
+  podiumRotation: {x: 0, y: 319.5239, z: 0}
   <MinimumDrawDistanceToFire>k__BackingField: 20
   <MaximumDrawDistanceToFire>k__BackingField: 400
   <TargetController>k__BackingField: {fileID: 817427147766993576}
@@ -8347,6 +8351,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2406594572748922586, guid: dadfb3fc8be6cd243a3b567db7940dac,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bow
+      objectReference: {fileID: 0}
     - target: {fileID: 2442383454265766613, guid: dadfb3fc8be6cd243a3b567db7940dac,
         type: 3}
       propertyPath: m_LocalPosition.x

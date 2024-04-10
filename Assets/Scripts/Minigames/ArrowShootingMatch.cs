@@ -38,7 +38,25 @@ public class ArrowShootingMatch : MinigameMatch
 
     protected override void PostMatchStart()
     {
+        RemoveBowUpFromHands();
         base.PostMatchStart();
     }
 
+    private void RemoveBowUpFromHands()
+    {
+        foreach (Character character in Compeditors)
+        {
+            Transform[] children = character.GetComponentsInChildren<Transform>();
+            foreach (Transform child in children)
+            {
+               
+                if (child.tag == "Bow")
+                {
+                    Destroy(child.gameObject);
+                    
+                    
+                }
+            }            
+        }
+    }
 }
