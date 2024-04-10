@@ -49,7 +49,7 @@ public class TargetShooting_Arrow : MonoBehaviour
         if (!errored && transform.position.y < 0 && !hitSomething)
         {
             errored = true;
-            Debug.LogError(name + " below ground " + transform.position);
+            //Debug.LogError(name + " below ground " + transform.position);
         }
 
     }
