@@ -8,6 +8,7 @@ public class CS_Jousting_Riding : CharacterState
     private JoustingMatch match;
     private UI_Jousting ui;
     private Character other;
+    private Jousting_AI ai;
     public CS_Jousting_Riding(Character character) : base(character)
     {
         match = (JoustingMatch)Game.Match;
@@ -17,6 +18,7 @@ public class CS_Jousting_Riding : CharacterState
 
     public override void StateStart()
     {
+        ai = GameObject.FindAnyObjectByType<Jousting_AI>();
         if (ui.JoustingIndicator != null) ui.JoustingIndicator.gameObject.SetActive(true);
         character.Animator.CrossFade("Jousting_Rider_Gallop", 0.1f);
 
@@ -60,6 +62,11 @@ public class CS_Jousting_Riding : CharacterState
             character.transform.position -= movementDirection.normalized * match.HorseSpeed * Time.deltaTime;
             ui.EnemyJoustingIndicator.UpdateDistanceIndicator(Distance());
             ui.EnemyJoustingIndicator.UpdateStrikingDistanceIndicator(IsWithinJoustingDistance());
+        }
+
+        if (IsWithinJoustingDistance())
+        {
+            ai.Attack();
         }
     }
 
