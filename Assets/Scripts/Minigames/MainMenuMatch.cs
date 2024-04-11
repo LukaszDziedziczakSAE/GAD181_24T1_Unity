@@ -26,7 +26,7 @@ public class MainMenuMatch : MinigameMatch
     {
         Game.CameraManager.SetStartingCamera(MainMenuCameras[0]);
         cameraTimer = cameraSwitchTimer;
-        //base.PrematchStart();
+        Game.Music.PlayMainMenuTrack();
         Mode = EState.inProgress;
     }
 
