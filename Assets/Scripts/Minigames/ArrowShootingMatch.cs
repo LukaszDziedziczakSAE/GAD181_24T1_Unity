@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,10 +11,26 @@ public class ArrowShootingMatch : MinigameMatch
     [field: SerializeField] public TargetShooting_TargetController TargetController { get; private set; }
 
     [SerializeField] float matchLength = 45f;
+    [SerializeField] CinemachineVirtualCamera characterChaseCam;
+    [SerializeField] CinemachineVirtualCamera preMatchCam;
 
     public float MatchTimeRemaining => matchLength - MatchTime;
-   
 
+
+    protected override void PrematchStart()
+    {
+        base.PrematchStart();
+        Game.CameraManager.SetStartingCamera(preMatchCam);
+    }
+
+    protected override void PrematchTick()
+    {
+        base.PrematchTick();
+        if (matchTime > -2.5f && !Game.CameraManager.IsCurrentCamera(characterChaseCam))
+        {
+            Game.CameraManager.SwitchTo(characterChaseCam, 2f);
+        }
+    }
     protected override void MatchStart()
     {
         foreach (Character character in Compeditors)
