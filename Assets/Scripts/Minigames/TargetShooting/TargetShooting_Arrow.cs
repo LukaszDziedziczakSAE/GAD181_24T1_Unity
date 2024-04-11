@@ -19,6 +19,8 @@ public class TargetShooting_Arrow : MonoBehaviour
     float speed => baseSpeed * power;
     Character owner;
     ArrowShootingMatch match => (ArrowShootingMatch)Game.Match;
+    UI_TargetShooting ui => (UI_TargetShooting)Game.UI;
+    public float Power => power;
 
     private void Start()
     {
@@ -32,7 +34,11 @@ public class TargetShooting_Arrow : MonoBehaviour
     {
         if (!hitSomething) transform.position += transform.forward * speed * Time.deltaTime;
 
-        if (timeAlive >= timeToLive) Destroy(gameObject);
+        if (timeAlive >= timeToLive)
+        {
+            Destroy(gameObject);
+            ui.ArrowIndicator.gameObject.SetActive(false);
+        }
 
         if (dropEnabled && !hitSomething && transform.eulerAngles.x < 90)
         {
@@ -74,7 +80,7 @@ public class TargetShooting_Arrow : MonoBehaviour
 
         float distance = Vector3.Distance(transform.position, owner.transform.position);
         //Debug.Log(name + " landed " + distance + " away");
-
+        
     }
 
     public void Initilise(float newPowerValue, Character character)
@@ -83,6 +89,12 @@ public class TargetShooting_Arrow : MonoBehaviour
         owner = character;
         power = newPowerValue;
         Debug.Log(owner.name + " fired arrow with " + (power*100).ToString("F0") + "% power");
+
+        if (owner.PlayerIndex == 0)
+        {
+            ui.ArrowIndicator.gameObject.SetActive(true);
+            ui.ArrowIndicator.UpdateArrowPower(this);
+        }
     }
 
 

@@ -17,6 +17,30 @@ public class CS_Archering_Drawing : CharacterState
     private float rotationDeadzone = 5f;
     float characterStartingRotation;
 
+    float currentYPosition => Game.InputReader.TouchPosition.y;
+    float distanceY
+    {
+        get
+        {
+            float distance;
+            /*if (currentYPosition == 0) distance = startingYPostition - lastYPostion;
+            else*/ distance = startingYPostition - currentYPosition;
+            if (distance < 0) distance = 0;
+            return distance;
+        }
+    }
+    float powerValue
+    {
+        get
+        {
+            float power = distanceY / match.MaximumDrawDistanceToFire;
+            power = Mathf.Clamp(power, 0, 1);
+            return power;
+        }
+    }
+
+    float lastYPostion;
+
     public CS_Archering_Drawing(Character character) : base(character)
     {
         ui = (UI_TargetShooting)Game.UI;
@@ -43,10 +67,8 @@ public class CS_Archering_Drawing : CharacterState
 
     public override void Tick()
     {
-        if(character.PlayerIndex != 0)
-        {
-            return;
-        }
+        if (!IsPlayerCharacter) return;
+
         float distanceX = startingXPos - Game.InputReader.TouchPosition.x;
         if (distanceX > rotationDeadzone || distanceX < -rotationDeadzone)
         {
@@ -55,23 +77,17 @@ public class CS_Archering_Drawing : CharacterState
             if (rotation > maxAngle) rotation = maxAngle;
             if (rotation < -maxAngle) rotation = -maxAngle;
             character.transform.eulerAngles = new UnityEngine.Vector3(character.transform.eulerAngles.x, rotation, character.transform.eulerAngles.z);
-
         }
 
-        float currentYPosition = Game.InputReader.TouchPosition.y;
-        float distance = startingYPostition - currentYPosition;
+        ui.ArrowShootingIndicator.UpdateDrawDistance(startingYPostition, currentYPosition, distanceY, powerValue);
+        ui.ArrowShootingIndicator.UpdateBackgroundColour(distanceY >= match.MinimumDrawDistanceToFire);
 
-        if (distance < 0)
-        {
-            distance = 0;
-        }
-        ui.ArrowShootingIndicator.UpdateDrawDistance(distance / match.MaximumDrawDistanceToFire);
-        ui.ArrowShootingIndicator.UpdateBackgroundColour(distance >= match.MinimumDrawDistanceToFire);
-        float distanceNormalized = distance / match.MaximumDrawDistanceToFire;
-        distanceNormalized = Mathf.Clamp(distanceNormalized, 0, 1);
-        //arrow.ShootArrow(distanceNomalized)
 
-        character.Animator.SetFloat("DrawStrength", distanceNormalized);
+        character.Animator.SetFloat("DrawStrength", powerValue);
+
+        if (currentYPosition != 0) lastYPostion = currentYPosition;
+
+        Debug.Log("startingYPostition=" + startingYPostition + ", currentYPosition=" + currentYPosition + ", currentYPosition=" + currentYPosition + ", distanceY=" + distanceY);
     }
     public override void FixedTick()
     {
@@ -88,40 +104,16 @@ public class CS_Archering_Drawing : CharacterState
 
     private void InputReader_OnTouchReleased()
     {
-        float currentYPosition = Game.InputReader.TouchPosition.y;
-        float distance = startingYPostition - currentYPosition;
-        if (distance < 0)
+        Debug.Log("END: startingYPostition=" + startingYPostition + ", currentYPosition=" + currentYPosition + ", currentYPosition=" + currentYPosition + ", distanceY=" + distanceY);
+
+        if (distanceY >= match.MinimumDrawDistanceToFire)
         {
-            distance = 0;
-        }
-        if (distance >= match.MinimumDrawDistanceToFire)
-        {
-            float powerValue = distance / match.MaximumDrawDistanceToFire;
-            if (powerValue < 0) powerValue = 0;
-            else if (powerValue > 1) powerValue = 1;
+            Debug.Log(character.name + ": releasing arrow with " + (powerValue * 100).ToString("F0") + "% power");
             character.SetNewState(new CS_Archering_Releasing(character, powerValue));
         }
         else
         {
             character.SetNewState(new CS_Archering_Standing(character));
         }
-
-
     }
-
-    void CalculateLaunchPower()
-    {
-        float currentYPosition = Game.InputReader.TouchPosition.y;
-        float distance = startingYPostition - currentYPosition;
-
-        if (distance < 0)
-        {
-            distance = 0;
-        }
-        ui.ArrowShootingIndicator.UpdateDrawDistance(distance / match.MaximumDrawDistanceToFire);
-        float distanceNormalized = distance / match.MaximumDrawDistanceToFire;
-        distanceNormalized = Mathf.Clamp(distanceNormalized, 0, 1);
-    }
-    
-    
 }

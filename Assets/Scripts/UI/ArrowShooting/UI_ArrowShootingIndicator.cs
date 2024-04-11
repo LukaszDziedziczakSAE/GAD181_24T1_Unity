@@ -6,7 +6,10 @@ using UnityEngine.UI;
 
 public class UI_ArrowShootingIndicator : MonoBehaviour
 {
-    [SerializeField] private TMP_Text drawDistance;
+    [SerializeField] private TMP_Text startingY;
+    [SerializeField] private TMP_Text currentY;
+    [SerializeField] private TMP_Text distance;
+    [SerializeField] private TMP_Text power;
     [SerializeField] Color canFire = Color.green;
     [SerializeField] Color cannotFire = Color.red;
     [SerializeField] Image background;
@@ -23,8 +26,11 @@ public class UI_ArrowShootingIndicator : MonoBehaviour
             background.color = cannotFire;
         }
     }
-    public void UpdateDrawDistance(float powerPercent)
+    public void UpdateDrawDistance(float starting, float current, float distance, float powerPercent)
     {
-        drawDistance.text = (powerPercent * 100).ToString("F0");
+        startingY.text = "start " + starting.ToString("F2");
+        currentY.text = "current " + current.ToString("F2");
+        this.distance.text = "distance " + distance.ToString("F0");
+        power.text = "power " + (powerPercent * 100).ToString("F0");
     }
 }
