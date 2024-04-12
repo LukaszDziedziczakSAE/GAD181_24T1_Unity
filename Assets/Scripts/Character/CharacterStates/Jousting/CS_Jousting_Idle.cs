@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class CS_Jousting_Idle : CharacterState
 {
-    private UI_Jousting ui;
+    //private UI_Jousting ui;
 
     public CS_Jousting_Idle(Character character) : base(character)
     {
-        ui = (UI_Jousting)Game.UI;
+        //ui = (UI_Jousting)Game.UI;
     }
 
     public override void StateStart()
     {
-        if (ui.EndIndicator != null) ui.EndIndicator.UpdateEndIndicator(true);
+        //if (ui.EndIndicator != null) ui.EndIndicator.UpdateEndIndicator(true);
         character.Animator.CrossFade("Jousting_Rider_Idle", 0.1f);
         character.HorseAnimator.CrossFade("Jousting_Horse_Idle", 0.1f);
         //Debug.Log("Player in idle state");
