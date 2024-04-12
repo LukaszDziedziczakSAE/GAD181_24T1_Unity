@@ -66,21 +66,6 @@ public class CS_Jousting_Riding : CharacterState
             //ui.EnemyJoustingIndicator.UpdateDistanceIndicator(Distance());
             //ui.EnemyJoustingIndicator.UpdateStrikingDistanceIndicator(IsWithinJoustingDistance());
         }
-
-        if (!isAttacking && Mathf.Approximately(character.transform.position.z, other.transform.position.z)) //using this to check the position of character and enemy
-        {   
-            TriggerAttack();
-        }
-    }
-
-    public void TriggerAttack() //attack called here
-    {
-        isAttacking = true;
-        if (ai != null)
-        {
-            ai.Attack();
-            Debug.Log("Called attack");
-        }
     }
 
     //public void TriggerAttackIfInRange()

@@ -11,11 +11,23 @@ public class Jousting_AI : AI
 
     public void Attack()
     {
-        if (impact != null && weapon != null && !impact.impactState)
-        {
-            character.Animator.CrossFade("Jousting_Rider_Attack", 0.1f);
-            weapon.SetOwner(character);
-            weapon.ColiderEnabled(true);
-        }
+        Debug.Log("Attack method called");
+
+        character.Animator.CrossFade("Jousting_Rider_Attack", 0.1f);
+        weapon.SetOwner(character);
+        //weapon.ColiderEnabled(true);
+        Debug.Log("Attack animation started");
+
+        //if (impact != null && weapon != null && !impact.impactState)
+        //{
+        //    character.Animator.CrossFade("Jousting_Rider_Attack", 0.1f);
+        //    weapon.SetOwner(character);
+        //    weapon.ColiderEnabled(true);
+        //    Debug.Log("Attack animation started");
+        //}
+        //else
+        //{
+        //    Debug.Log("Attack conditions not met");
+        //}
     }
 }

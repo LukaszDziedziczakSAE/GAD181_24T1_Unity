@@ -9,7 +9,6 @@ public class Jousting_Weapon : MonoBehaviour
     [SerializeField] Character owner;
 
     JoustingMatch match => (JoustingMatch)Game.Match;
-    //private Character character;
     private int pointsToAward = 1;
 
     public void SetOwner(Character newOwner)
