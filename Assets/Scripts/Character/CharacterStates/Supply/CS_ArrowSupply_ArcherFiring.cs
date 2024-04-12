@@ -48,12 +48,12 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
                 {
                     if (enemy != lastTargetedEnemy)
                     {
-                        int lastIndex = DetermineFiringLineIndex(lastTargetedEnemy); // Get index for the last targeted enemy
-                        if (lastIndex != -1)
+                        int lastIndex = DetermineFiringLineIndex(lastTargetedEnemy);
+                        if (lastIndex != -1 && match.Popups[lastIndex].GetComponent<ArrowSupply_ArrowPopup>().isActiveAndEnabled)
                         {
-                            match.DeactivatePopup(lastIndex); // Centralized call to close the popup
+                            match.DeactivatePopup(lastIndex);
                         }
-                        lastTargetedEnemy = enemy;  // Update the last targeted enemy
+                        lastTargetedEnemy = enemy;
                     }
 
                     firePoint.FireArrow(arrowRecord, enemy);
@@ -163,19 +163,24 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
         }
     }
 
-    private int DetermineFiringLineIndex(Character archer)
+    public int DetermineFiringLineIndex(Character archer)
     {
-        // Using the archer's name to match with the firing line index
+        if (archer == null || archer.gameObject == null)
+        {
+            //Debug.LogError("Archer or Archer GameObject is null.");
+            return -1;
+        }
+
         switch (archer.gameObject.name)
         {
             case "ArcherOne":
-                return 0; // Corresponds to FiringLines[0]
+                return 0;
             case "ArcherTwo":
-                return 1; // Corresponds to FiringLines[1]
+                return 1;
             case "ArcherThree":
-                return 2; // Corresponds to FiringLines[2]
+                return 2;
             case "ArcherFour":
-                return 3; // Corresponds to FiringLines[3]
+                return 3;
             default:
                 Debug.LogError($"Archer name does not match expected pattern: {archer.gameObject.name}");
                 return -1;

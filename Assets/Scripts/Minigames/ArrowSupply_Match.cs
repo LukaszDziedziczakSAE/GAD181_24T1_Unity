@@ -195,8 +195,8 @@ public class ArrowSupply_Match : MinigameMatch
             if (popup != null)
             {
                 popup.UpdateIcon(enemyType);
-                popup.gameObject.SetActive(true);  // Make sure the popup is active
-                Debug.Log("Popup should now be active.");
+                popup.gameObject.SetActive(true);
+                StartCoroutine(DeactivatePopupAfterDelay(archerIndex));
             }
             else
             {
@@ -206,6 +206,21 @@ public class ArrowSupply_Match : MinigameMatch
         else
         {
             Debug.LogError("Archer index out of range: " + archerIndex);
+        }
+    }
+
+    private IEnumerator DeactivatePopupAfterDelay(int archerIndex)
+    {
+        yield return new WaitForSeconds(5); // Wait for 5 seconds
+
+        // Deactivate the popup
+        if (archerIndex >= 0 && archerIndex < Popups.Length)
+        {
+            var popup = Popups[archerIndex].GetComponent<ArrowSupply_ArrowPopup>();
+            if (popup != null && popup.gameObject.activeSelf)
+            {
+                popup.gameObject.SetActive(false);
+            }
         }
     }
 

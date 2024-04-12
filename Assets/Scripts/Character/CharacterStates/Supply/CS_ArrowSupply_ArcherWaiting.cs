@@ -52,12 +52,15 @@ public class CS_ArrowSupply_ArcherWaiting : CharacterState
         get
         {
             int firingLineIndex = DetermineFiringLineIndex(character);
+
             if (firingLineIndex == -1) return null; // Early exit if index not found
 
             ArrowSupply_FiringLine firingLine = match.FiringLines[firingLineIndex].GetComponent<ArrowSupply_FiringLine>();
+
             if (firingLine == null) return null; // Check if the FiringLine component is missing
 
             Character closestEnemy = null;
+
             float closestDistance = Mathf.Infinity;
 
             foreach (Character enemy in firingLine.enemiesInLine)
@@ -65,9 +68,11 @@ public class CS_ArrowSupply_ArcherWaiting : CharacterState
                 if (enemy == null || enemy.gameObject == null) continue; // Skip destroyed enemies
 
                 float distance = Vector3.Distance(character.transform.position, enemy.transform.position);
+
                 if (distance < closestDistance)
                 {
                     closestEnemy = enemy;
+
                     closestDistance = distance;
                 }
             }
@@ -75,7 +80,7 @@ public class CS_ArrowSupply_ArcherWaiting : CharacterState
         }
     }
 
-    private int DetermineFiringLineIndex(Character archer)
+    public int DetermineFiringLineIndex(Character archer)
     {
         // Using the archer's name to match with the firing line index
         switch (archer.gameObject.name)
