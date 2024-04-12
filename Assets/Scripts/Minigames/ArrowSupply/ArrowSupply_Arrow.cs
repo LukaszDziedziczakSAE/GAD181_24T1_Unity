@@ -44,11 +44,11 @@ public class ArrowSupply_Arrow : MonoBehaviour
 
     bool hitSomething;
 
-    ArrowSupplyMatch match;
+    ArrowSupply_Match match;
 
     private void Start()
     {
-        match = (ArrowSupplyMatch)Game.Match;
+        match = (ArrowSupply_Match)Game.Match;
     }
 
     private void Update()
@@ -72,7 +72,7 @@ public class ArrowSupply_Arrow : MonoBehaviour
     {
         if (!launched || hitSomething) return;
 
-        Debug.Log(owner.name + "'s arrow hit " + other.name);
+        //Debug.Log(owner.name + "'s arrow hit " + other.name);
 
 
         EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
@@ -124,7 +124,7 @@ public class ArrowSupply_Arrow : MonoBehaviour
 
         if (Type == EType.ice) iceParticles.gameObject.SetActive(true);
 
-        Debug.Log("Set arrow type to " + Type.ToString());
+        //Debug.Log("Set arrow type to " + Type.ToString());
     }
 
     public void UpdateScore()

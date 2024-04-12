@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CS_ArrowSupply_ArcherFiring : CharacterState
@@ -7,13 +8,15 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
     ArrowSupply_ArcherSupply.ArrowRecord arrowRecord;
 
     ArrowSupply_ArrowFirePoint firePoint;
-    private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
+    private ArrowSupply_Match match => (ArrowSupply_Match)Game.Match;
         
     private float delayBeforeFiring = 1.0f; // Delay in seconds before firing the arrow
 
     private float timer = 0.0f; // Timer to track the delay
 
     private bool hasFired = false; // To ensure the arrow is fired only once
+
+    private Character lastTargetedEnemy;
 
     public CS_ArrowSupply_ArcherFiring(Character character, ArrowSupply_ArcherSupply.ArrowRecord arrowRecord) : base(character)
     {
@@ -24,27 +27,95 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
     {
         firePoint = character.GetComponentInChildren<ArrowSupply_ArrowFirePoint>();
 
-        timer = 0.0f; // Initialize the timer
+        timer = 0.0f;
 
-        hasFired = false; // Reset the firing status
+        hasFired = false;
+
+        lastTargetedEnemy = null; // Initialize lastTargetedEnemy at state start
     }
+
 
     public override void Tick()
     {
         if (!hasFired)
         {
-            timer += Time.deltaTime; // Update the timer
+            timer += Time.deltaTime;
 
-            // Check if the delay duration has passed
             if (timer >= delayBeforeFiring)
             {
-                // Fire the arrow and mark as fired
-                firePoint.FireArrow(arrowRecord, closestEnemy);
+                Character enemy = closestEnemy;
+                if (enemy != null)
+                {
+                    if (enemy != lastTargetedEnemy)
+                    {
+                        int lastIndex = DetermineFiringLineIndex(lastTargetedEnemy); // Get index for the last targeted enemy
+                        if (lastIndex != -1)
+                        {
+                            match.DeactivatePopup(lastIndex); // Centralized call to close the popup
+                        }
+                        lastTargetedEnemy = enemy;  // Update the last targeted enemy
+                    }
 
-                hasFired = true;
+                    firePoint.FireArrow(arrowRecord, enemy);
 
-                // Optionally, transition to the next state immediately after firing
-                character.SetNewState(new CS_ArrowSupply_ArcherWaiting(character));
+                    hasFired = true;
+
+                    Debug.Log($"Archer {character.name} has fired an arrow at {enemy.name}");
+
+                    // Call centralized method to potentially activate popup
+                    int archerIndex = DetermineFiringLineIndex(character);
+
+                    if (archerIndex != -1)
+                    {
+                        CharacterModel enemyModel = enemy.GetComponentInChildren<CharacterModel>();
+
+                        if (enemyModel != null && enemyModel.CurrentConfig != null)
+                        {
+                            Debug.Log($"Triggering ArrowCall for {enemy.name} with variant {enemyModel.CurrentConfig.Variant}");
+
+                            match.ArrowCall(archerIndex, enemyModel.CurrentConfig.Variant);
+                        }
+                        else
+                        {
+                            Debug.Log("CharacterModel component not found or CurrentConfig is null on " + enemy.name);
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError($"Invalid archer index for {character.name}");
+                    }
+
+                    // Change state if needed after firing
+                    character.SetNewState(new CS_ArrowSupply_ArcherWaiting(character));
+                }
+                else
+                {
+                    Debug.Log("No enemy found to fire at.");
+                }
+            }
+        }
+    }
+
+
+    private void UpdateUIForArcher(Character enemy)
+    {
+        int archerIndex = DetermineFiringLineIndex(character);
+
+        if (archerIndex != -1 && enemy != null)
+        {
+            // Get the CharacterModel component from the enemy
+            CharacterModel enemyModel = enemy.GetComponent<CharacterModel>();
+
+            if (enemyModel != null && enemyModel.CurrentConfig != null) // Ensure CurrentConfig is not null
+            {
+                Transform popupTransform = match.Popups[archerIndex];
+
+                ArrowSupply_ArrowPopup popup = popupTransform.GetComponent<ArrowSupply_ArrowPopup>();
+                if (popup != null)
+                {
+                    // Use CurrentConfig to access Variant
+                    popup.UpdateIcon(enemyModel.CurrentConfig.Variant);
+                }
             }
         }
     }
@@ -64,12 +135,15 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
         get
         {
             int firingLineIndex = DetermineFiringLineIndex(character);
+
             if (firingLineIndex == -1) return null; // Early exit if index not found
 
             ArrowSupply_FiringLine firingLine = match.FiringLines[firingLineIndex].GetComponent<ArrowSupply_FiringLine>();
+
             if (firingLine == null) return null; // Check if the FiringLine component is missing
 
             Character closestEnemy = null;
+
             float closestDistance = Mathf.Infinity;
 
             foreach (Character enemy in firingLine.enemiesInLine)
@@ -77,9 +151,11 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
                 if (enemy == null || enemy.gameObject == null) continue; // Skip destroyed enemies
 
                 float distance = Vector3.Distance(character.transform.position, enemy.transform.position);
+
                 if (distance < closestDistance)
                 {
                     closestEnemy = enemy;
+
                     closestDistance = distance;
                 }
             }

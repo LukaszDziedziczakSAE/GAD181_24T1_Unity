@@ -11,7 +11,7 @@ public class ArrowSupply_EnemySpawner : MonoBehaviour
     private float timer;
 
     // Reference to the ArrowSupplyMatch script
-    private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
+    private ArrowSupply_Match match => (ArrowSupply_Match)Game.Match;
 
     private void Start()
     {
@@ -25,7 +25,7 @@ public class ArrowSupply_EnemySpawner : MonoBehaviour
         if (timer <= 0)
         {
             // Check if the match is not in the postMatch state before spawning enemies
-            if (match.Mode != ArrowSupplyMatch.EState.postMatch)
+            if (match.Mode != ArrowSupply_Match.EState.postMatch)
             {
                 SpawnEnemy();
                 if (isFirstSpawn)

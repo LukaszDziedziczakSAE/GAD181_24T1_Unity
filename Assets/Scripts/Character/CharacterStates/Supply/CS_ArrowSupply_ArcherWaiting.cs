@@ -8,7 +8,7 @@ public class CS_ArrowSupply_ArcherWaiting : CharacterState
 
     float stateStartTime;
 
-    private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
+    private ArrowSupply_Match match => (ArrowSupply_Match)Game.Match;
 
     float timePassed => stateStartTime - Time.time;
 

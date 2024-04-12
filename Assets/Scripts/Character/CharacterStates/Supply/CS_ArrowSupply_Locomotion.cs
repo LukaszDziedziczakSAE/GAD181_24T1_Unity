@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class CS_ArrowSupply_Locomotion : CharacterState
 {
-    private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
+    private ArrowSupply_Match match => (ArrowSupply_Match)Game.Match;
 
     private ArrowSupply_AI ai;
 

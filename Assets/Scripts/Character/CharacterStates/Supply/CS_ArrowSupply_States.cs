@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CS_ArrowSupply_States : CharacterState
 {
-    private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
+    private ArrowSupply_Match match => (ArrowSupply_Match)Game.Match;
 
     public CS_ArrowSupply_States(Character character) : base(character)
     {

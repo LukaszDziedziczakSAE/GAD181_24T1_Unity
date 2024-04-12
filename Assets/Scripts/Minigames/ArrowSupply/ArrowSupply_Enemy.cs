@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowSupplyEnemy : MonoBehaviour
+public class ArrowSupply_Enemy : MonoBehaviour
 {
     private float speed = 1f; // Speed of the enemy movement
 

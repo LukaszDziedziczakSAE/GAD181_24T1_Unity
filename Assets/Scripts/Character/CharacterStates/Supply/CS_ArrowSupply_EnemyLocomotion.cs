@@ -9,7 +9,7 @@ public class CS_ArrowSupply_EnemyLocomotion : CharacterState
 
     Vector3 startingPosition;
 
-    private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
+    private ArrowSupply_Match match => (ArrowSupply_Match)Game.Match;
 
     public CS_ArrowSupply_EnemyLocomotion(Character character) : base(character)
     {
