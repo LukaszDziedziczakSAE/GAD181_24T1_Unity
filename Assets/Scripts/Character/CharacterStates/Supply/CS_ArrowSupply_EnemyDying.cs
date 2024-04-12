@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CS_ArrowSupply_EnemyDying : CharacterState
 {
-    private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
+    private ArrowSupply_Match match => (ArrowSupply_Match)Game.Match;
     
     public CS_ArrowSupply_EnemyDying(Character character) : base(character)
     {

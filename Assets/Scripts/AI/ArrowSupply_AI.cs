@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class ArrowSupply_AI : AI
 {
-    private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
+    private ArrowSupply_Match match => (ArrowSupply_Match)Game.Match;
 
     private Transform currentTarget; // To keep track of the current target location     
 
@@ -30,7 +30,7 @@ public class ArrowSupply_AI : AI
 
         if (/*!isMoving*/ true)
         {
-            Debug.LogWarning(character.name + " asking for new destination with State = " + character.State);
+            //Debug.LogWarning(character.name + " asking for new destination with State = " + character.State);
 
             Transform[] locations;  
 
@@ -38,17 +38,17 @@ public class ArrowSupply_AI : AI
             {
                 locations = match.DeliveryLocations;
 
-                Debug.Log("location is " + locations);
+                //Debug.Log("location is " + locations);
             }
             else if (character.State.GetType() == new CS_ArrowSupply_Locomotion(character).GetType())
             {
                 locations = match.PickupLocations;
 
-                Debug.Log("location is " + locations);
+                //Debug.Log("location is " + locations);
             }
             else
             {
-                Debug.LogWarning(character.name + ": is in " + character.State.ToString());
+                //Debug.LogWarning(character.name + ": is in " + character.State.ToString());
 
                 locations = new Transform[0];
             }
@@ -64,7 +64,7 @@ public class ArrowSupply_AI : AI
                 character.NavMeshAgent.isStopped = false; // Allow the agent to move towards the new destination                              
 
                 // Debugging
-                Debug.Log($"New destination set to: {currentTarget.name} at {currentTarget.position}");
+                //Debug.Log($"New destination set to: {currentTarget.name} at {currentTarget.position}");
 
                 if (character.NavMeshAgent.pathStatus != NavMeshPathStatus.PathComplete)
                 {

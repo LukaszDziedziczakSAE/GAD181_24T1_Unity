@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
-public class ArrowSupplyMatch : MinigameMatch
+public class ArrowSupply_Match : MinigameMatch
 {
     [SerializeField] float matchLength = 60;
     [field: SerializeField] public float EnemySpeed { get; private set; } = 1;
@@ -173,13 +173,61 @@ public class ArrowSupplyMatch : MinigameMatch
         }
     }
 
-    public void ArrowCall()
+    public void ArrowCall(int archerIndex, CharacterModel.EVariant enemyType)
     {
+        Debug.Log($"ArrowCall triggered for archer index {archerIndex} with enemy type {enemyType}");
         int popupChance = Random.Range(0, 10);
-
         if (popupChance <= 5)
         {
-
+            ActivatePopup(archerIndex, enemyType);
+        }
+        else
+        {
+            DeactivatePopup(archerIndex);  // Ensure that the popup is deactivated if not active
         }
     }
+
+    private void ActivatePopup(int archerIndex, CharacterModel.EVariant enemyType)
+    {
+        if (archerIndex >= 0 && archerIndex < Popups.Length)
+        {
+            var popup = Popups[archerIndex].GetComponent<ArrowSupply_ArrowPopup>();
+            if (popup != null)
+            {
+                popup.UpdateIcon(enemyType);
+                popup.gameObject.SetActive(true);  // Make sure the popup is active
+                Debug.Log("Popup should now be active.");
+            }
+            else
+            {
+                Debug.LogError("No ArrowSupply_ArrowPopup component found on the popup object at index: " + archerIndex);
+            }
+        }
+        else
+        {
+            Debug.LogError("Archer index out of range: " + archerIndex);
+        }
+    }
+
+    public void DeactivatePopup(int archerIndex)
+    {
+        if (archerIndex >= 0 && archerIndex < Popups.Length)
+        {
+            var popup = Popups[archerIndex].GetComponent<ArrowSupply_ArrowPopup>();
+            if (popup != null)
+            {
+                popup.gameObject.SetActive(false);  // Hide the popup
+                Debug.Log("Popup for archer index " + archerIndex + " has been deactivated.");
+            }
+            else
+            {
+                Debug.LogError("No ArrowSupply_ArrowPopup component found on the popup object at index: " + archerIndex);
+            }
+        }
+        else
+        {
+            Debug.LogError("Archer index out of range: " + archerIndex);
+        }
+    }
+
 }

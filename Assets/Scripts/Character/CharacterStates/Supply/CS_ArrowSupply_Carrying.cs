@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class CS_ArrowSupply_Carrying : CharacterState
 {
     ArrowSupply_Arrow arrow;
-    private ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
+    private ArrowSupply_Match match => (ArrowSupply_Match)Game.Match;
     public ArrowSupply_Arrow Arrow => arrow;
 
     

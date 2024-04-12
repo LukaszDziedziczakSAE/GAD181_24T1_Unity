@@ -676,12 +676,17 @@ PrefabInstance:
     - target: {fileID: 4359315721781962657, guid: 085750c3c5a28d848b7ec5d07fe0f1ef,
         type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6087750811138106750, guid: 085750c3c5a28d848b7ec5d07fe0f1ef,
         type: 3}
       propertyPath: m_Name
       value: ArrowRequest (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087750811138106750, guid: 085750c3c5a28d848b7ec5d07fe0f1ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6659691603496109828, guid: 085750c3c5a28d848b7ec5d07fe0f1ef,
         type: 3}
@@ -1040,7 +1045,11 @@ MonoBehaviour:
   - {fileID: 1554158133}
   - {fileID: 2113658903}
   - {fileID: 393801962}
-  Popups: []
+  Popups:
+  - {fileID: 1995391474}
+  - {fileID: 180937490}
+  - {fileID: 989850189}
+  - {fileID: 375403885}
   highDamagePointAward: 10
   normalDamagePointAward: 5
   lowDamagePointAward: 2
@@ -1204,12 +1213,17 @@ PrefabInstance:
     - target: {fileID: 4359315721781962657, guid: 085750c3c5a28d848b7ec5d07fe0f1ef,
         type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6087750811138106750, guid: 085750c3c5a28d848b7ec5d07fe0f1ef,
         type: 3}
       propertyPath: m_Name
       value: ArrowRequest (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087750811138106750, guid: 085750c3c5a28d848b7ec5d07fe0f1ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6659691603496109828, guid: 085750c3c5a28d848b7ec5d07fe0f1ef,
         type: 3}
@@ -2312,12 +2326,17 @@ PrefabInstance:
     - target: {fileID: 4359315721781962657, guid: 085750c3c5a28d848b7ec5d07fe0f1ef,
         type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6087750811138106750, guid: 085750c3c5a28d848b7ec5d07fe0f1ef,
         type: 3}
       propertyPath: m_Name
       value: ArrowRequest (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087750811138106750, guid: 085750c3c5a28d848b7ec5d07fe0f1ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6659691603496109828, guid: 085750c3c5a28d848b7ec5d07fe0f1ef,
         type: 3}
@@ -5739,12 +5758,17 @@ PrefabInstance:
     - target: {fileID: 4359315721781962657, guid: 085750c3c5a28d848b7ec5d07fe0f1ef,
         type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6087750811138106750, guid: 085750c3c5a28d848b7ec5d07fe0f1ef,
         type: 3}
       propertyPath: m_Name
       value: ArrowRequest
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087750811138106750, guid: 085750c3c5a28d848b7ec5d07fe0f1ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6659691603496109828, guid: 085750c3c5a28d848b7ec5d07fe0f1ef,
         type: 3}

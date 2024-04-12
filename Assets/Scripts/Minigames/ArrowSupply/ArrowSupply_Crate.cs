@@ -62,7 +62,7 @@ public class ArrowSupply_Crate : MonoBehaviour
 
         arrow.transform.localScale = Vector3.one;
 
-        Debug.Log(character.PlayerIndex + " has picked up " + arrow);
+        //Debug.Log(character.PlayerIndex + " has picked up " + arrow);
 
         return arrow;
     }

@@ -27,7 +27,7 @@ public class CS_ArrowSupply_PickUp : CharacterState
                 
         isAnimationPlaying = true; // Set animation flag to true
 
-        Debug.Log(character.PlayerIndex + " has entered the pickup state");        
+        //Debug.Log(character.PlayerIndex + " has entered the pickup state");        
     }
 
     public override void Tick()

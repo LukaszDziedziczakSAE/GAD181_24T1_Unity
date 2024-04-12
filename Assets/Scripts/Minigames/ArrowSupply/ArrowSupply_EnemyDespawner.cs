@@ -6,7 +6,7 @@ public class ArrowSupply_EnemyDespawner : MonoBehaviour
 {
     [SerializeField] int pointsDeducted = 1; 
 
-    ArrowSupplyMatch match => (ArrowSupplyMatch)Game.Match;
+    ArrowSupply_Match match => (ArrowSupply_Match)Game.Match;
 
     private void OnTriggerEnter(Collider other)
     {
