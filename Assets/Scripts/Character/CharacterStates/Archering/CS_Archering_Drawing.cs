@@ -54,6 +54,7 @@ public class CS_Archering_Drawing : CharacterState
         
         if (IsPlayerCharacter) Game.InputReader.OnTouchReleased += InputReader_OnTouchReleased;
         if (match.DisplayDebugs)ui.ArrowShootingIndicator.gameObject.SetActive(true);
+        ui.PowerSlider.gameObject.SetActive(true);
         startingYPostition = Game.InputReader.TouchPosition.y;        
         character.Animator.CrossFade("TargetShooting_DrawBlend", 0.1f);
 
@@ -79,9 +80,9 @@ public class CS_Archering_Drawing : CharacterState
             character.transform.eulerAngles = new UnityEngine.Vector3(character.transform.eulerAngles.x, rotation, character.transform.eulerAngles.z);
         }
 
-        ui.ArrowShootingIndicator.UpdateDrawDistance(startingYPostition, currentYPosition, distanceY, powerValue);
-        ui.ArrowShootingIndicator.UpdateBackgroundColour(distanceY >= match.MinimumDrawDistanceToFire);
-
+        //ui.ArrowShootingIndicator.UpdateDrawDistance(startingYPostition, currentYPosition, distanceY, powerValue);
+        //ui.ArrowShootingIndicator.UpdateBackgroundColour(distanceY >= match.MinimumDrawDistanceToFire);
+        ui.PowerSlider.UpdateArrowPower(powerValue);
 
         character.Animator.SetFloat("DrawStrength", powerValue);
 
@@ -99,7 +100,8 @@ public class CS_Archering_Drawing : CharacterState
 
         if (IsPlayerCharacter) Game.InputReader.OnTouchReleased -= InputReader_OnTouchReleased;
         ui.ArrowShootingIndicator.gameObject.SetActive(false);
-        
+        ui.PowerSlider.gameObject.SetActive(false);
+
     }
 
     private void InputReader_OnTouchReleased()
