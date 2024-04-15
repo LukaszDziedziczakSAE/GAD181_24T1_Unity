@@ -33,11 +33,18 @@ public class UI_SettingsMenu : MonoBehaviour
     private void OnDisable()
     {
         backToPauseMenu = false;
+        playerResetButton.gameObject.SetActive(true);
         backButton.onClick.RemoveListener(OnBackButtonPress);
         playerResetButton.onClick.RemoveListener(OnPlayerResetButtonPress);
         musicVolumeSlider.onValueChanged.RemoveListener(OnMusicVolumeSliderChange);
         matchVolumeSlider.onValueChanged.RemoveListener(OnMatchVolumeSliderChange);
         uiVolumeSlider.onValueChanged.RemoveListener(OnUiVolumeSliderChange);
+    }
+
+    public void OpenedFromPauseMenu()
+    {
+        backToPauseMenu = true;
+        playerResetButton.gameObject.SetActive(false);
     }
 
     private void UpdateSettingsUI()

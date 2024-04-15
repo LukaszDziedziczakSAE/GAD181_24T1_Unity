@@ -7,14 +7,6 @@ using UnityEngine.UI;
 public class UI_MatchStatus : MonoBehaviour
 {
     [SerializeField] TMP_Text matchTimer;
-   /* [SerializeField] TMP_Text player1Name;
-    [SerializeField] TMP_Text player1Score;
-    [SerializeField] TMP_Text player2Name;
-    [SerializeField] TMP_Text player2Score;
-    [SerializeField] TMP_Text player3Name;
-    [SerializeField] TMP_Text player3Score;
-    [SerializeField] TMP_Text player4Name;
-    [SerializeField] TMP_Text player4Score;*/
     [SerializeField] Button pauseButton;
     [SerializeField] UI_MatchStatusPlayerBox playerBox1;
     [SerializeField] UI_MatchStatusPlayerBox playerBox2;
@@ -56,25 +48,6 @@ public class UI_MatchStatus : MonoBehaviour
     {
         matchTimer.text = Game.Match.MatchTime.ToString("F0");
 
-        /*if (Game.Match == null)
-        {
-            Debug.LogError(name + ": missing Game.Match referance");
-            return;
-        }
-        else Debug.LogWarning(name + ": found Game.Match referance");
-
-        if (Game.Match.Result == null)
-        {
-            Debug.LogError(name + ": missing Game.Match.Result referance");
-            return;
-        }
-        else Debug.LogWarning(name + ": found Game.Match.Result referance");
-
-        if (Game.Match.Result.Scores == null)
-        {
-            Debug.LogError(name + ": missing Game.Match.Result.Scores referance");
-        }
-        else Debug.LogWarning(name + ": found Game.Match.Result.Scores referance");*/
     }
 
     private void OnPauseButtonPress()
