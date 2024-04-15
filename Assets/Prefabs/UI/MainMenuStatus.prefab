@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4937810555874076565}
   - component: {fileID: 6593106320280664246}
   - component: {fileID: 5423835342532879283}
+  - component: {fileID: 5662023649488737771}
   m_Layer: 5
   m_Name: NewMatchButton
   m_TagString: Untagged
@@ -31,13 +32,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6871929621440676472}
+  m_Father: {fileID: 7757037110902622679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -156, y: -35}
-  m_SizeDelta: {x: 152, y: 152}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -331, y: -265}
+  m_SizeDelta: {x: 304, y: 304}
+  m_Pivot: {x: 0, y: 0}
 --- !u!222 &4937810555874076565
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -120,6 +121,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5662023649488737771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2615390591748023930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256ab43adf3204c47b3f804e0408e353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rectTransform: {fileID: 3310187495704729709}
+  offScreenPosition: {x: -331, y: -265}
+  onScreenPosition: {x: 50, y: 50}
+  duration: 0.3
+  <Status>k__BackingField: 0
 --- !u!1 &4118624914606023282
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +687,7 @@ GameObject:
   - component: {fileID: 2610958179003564499}
   - component: {fileID: 6148115588620524702}
   - component: {fileID: 4206835888335701621}
+  - component: {fileID: 8509642399546126528}
   m_Layer: 5
   m_Name: CharacterStatusBox
   m_TagString: Untagged
@@ -690,13 +709,13 @@ RectTransform:
   m_Children:
   - {fileID: 3006438426979467959}
   - {fileID: 5369787800421438977}
-  m_Father: {fileID: 6871929621440676472}
+  m_Father: {fileID: 7757037110902622679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 90, y: -30}
-  m_SizeDelta: {x: 160, y: 160}
-  m_Pivot: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -40, y: 40}
+  m_SizeDelta: {x: 320, y: 320}
+  m_Pivot: {x: 1, y: 0}
 --- !u!222 &6148115588620524702
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -735,6 +754,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8509642399546126528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6096736204652569283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256ab43adf3204c47b3f804e0408e353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rectTransform: {fileID: 2610958179003564499}
+  offScreenPosition: {x: 338, y: -324}
+  onScreenPosition: {x: -40, y: 40}
+  duration: 0.3
+  <Status>k__BackingField: 0
 --- !u!1 &6313762141352608146
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,8 +1139,6 @@ RectTransform:
   - {fileID: 3127128492538878766}
   - {fileID: 3118676002975890190}
   - {fileID: 5191959267119477163}
-  - {fileID: 2610958179003564499}
-  - {fileID: 3310187495704729709}
   m_Father: {fileID: 7757037110902622679}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -1196,6 +1230,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3310187495704729709}
+  - {fileID: 2610958179003564499}
   - {fileID: 6871929621440676472}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1225,6 +1261,8 @@ MonoBehaviour:
   playerCurrencyHeld: {fileID: 731806077879191009}
   characterIcon: {fileID: 1209106194711381176}
   mover: {fileID: 1878455170581257003}
+  button1Mover: {fileID: 5662023649488737771}
+  button2Mover: {fileID: 8509642399546126528}
 --- !u!1 &7518816355140139528
 GameObject:
   m_ObjectHideFlags: 0
