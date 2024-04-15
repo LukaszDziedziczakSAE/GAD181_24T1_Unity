@@ -90,8 +90,8 @@ public class TargetShooting_Arrow : MonoBehaviour
         power = newPowerValue;
         Debug.Log(owner.name + " fired arrow with " + (power*100).ToString("F0") + "% power");
 
-        if (owner.PlayerIndex == 0)
-        {
+        if (owner.PlayerIndex == 0 && match.DisplayDebugs)
+        {            
             ui.ArrowIndicator.gameObject.SetActive(true);
             ui.ArrowIndicator.UpdateArrowPower(this);
         }

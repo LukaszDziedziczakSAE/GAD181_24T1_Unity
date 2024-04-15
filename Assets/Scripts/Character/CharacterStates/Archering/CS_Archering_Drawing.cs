@@ -53,7 +53,7 @@ public class CS_Archering_Drawing : CharacterState
     {
         
         if (IsPlayerCharacter) Game.InputReader.OnTouchReleased += InputReader_OnTouchReleased;
-        ui.ArrowShootingIndicator.gameObject.SetActive(true);
+        if (match.DisplayDebugs)ui.ArrowShootingIndicator.gameObject.SetActive(true);
         startingYPostition = Game.InputReader.TouchPosition.y;        
         character.Animator.CrossFade("TargetShooting_DrawBlend", 0.1f);
 
