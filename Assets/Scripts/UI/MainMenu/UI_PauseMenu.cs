@@ -36,7 +36,7 @@ public class UI_PauseMenu : MonoBehaviour
     private void OnSettingsButtonPress()
     {
         Game.UI.SettingsMenu.gameObject.SetActive(true);
-        Game.UI.SettingsMenu.backToPauseMenu = true;
+        Game.UI.SettingsMenu.OpenedFromPauseMenu();
         gameObject.SetActive(false);
     }
 
