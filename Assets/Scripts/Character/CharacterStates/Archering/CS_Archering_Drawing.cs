@@ -23,8 +23,8 @@ public class CS_Archering_Drawing : CharacterState
         get
         {
             float distance;
-            /*if (currentYPosition == 0) distance = startingYPostition - lastYPostion;
-            else*/ distance = startingYPostition - currentYPosition;
+            if (currentYPosition == 0) distance = startingYPostition - lastYPostion;
+            else distance = startingYPostition - currentYPosition;
             if (distance < 0) distance = 0;
             return distance;
         }
