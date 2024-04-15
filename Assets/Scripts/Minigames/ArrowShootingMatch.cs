@@ -14,8 +14,9 @@ public class ArrowShootingMatch : MinigameMatch
     [SerializeField] CinemachineVirtualCamera characterChaseCam;
     [SerializeField] CinemachineVirtualCamera preMatchCam;
 
+    [SerializeField] bool displayDebugs;
     public float MatchTimeRemaining => matchLength - MatchTime;
-
+    public bool DisplayDebugs => displayDebugs;
 
     protected override void PrematchStart()
     {
