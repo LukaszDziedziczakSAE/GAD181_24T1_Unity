@@ -21,6 +21,7 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
     public CS_ArrowSupply_ArcherFiring(Character character, ArrowSupply_ArcherSupply.ArrowRecord arrowRecord) : base(character)
     {
         this.arrowRecord = arrowRecord;
+        character.Animator.CrossFade("TargetShooting_BowIdle", 0.1f);
     }
 
     public override void StateStart()
