@@ -15,6 +15,7 @@ TagManager:
   - Delivery
   - Arrow
   - Bow
+  - AttackTrigger
   layers:
   - Default
   - TransparentFX

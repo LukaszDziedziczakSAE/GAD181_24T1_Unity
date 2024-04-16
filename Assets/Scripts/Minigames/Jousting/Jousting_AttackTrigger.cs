@@ -4,12 +4,12 @@ public class AttackTrigger : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("entered trigger");
-        
+        //Debug.Log("Entered trigger: " + transform.position);
+
         Jousting_AI ai = other.GetComponent<Jousting_AI>();
         if (ai != null)
         {
-            ai.Attack();
+            ai.Attack(transform.position);
         }
     }
 }
