@@ -24,6 +24,7 @@ public class MinigameConfig : ScriptableObject
 
     public void Play()
     {
+        //Debug.Log("Starting Leve Load (" + BuildIndex + ")");
         SceneManager.LoadScene(BuildIndex);
     }
 

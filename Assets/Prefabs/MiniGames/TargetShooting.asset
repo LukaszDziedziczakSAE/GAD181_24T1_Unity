@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BuildIndex>k__BackingField: 3
   <Name>k__BackingField: Target Shooting
-  <Description>k__BackingField: Aim to hit as many targets as yoo can within the
-    time limit. Pull down to draw your bow and release to fire
+  <Description>k__BackingField: Aim to hit as many targets as you can within the
+    time limit. Pull down to draw your bow and release to fire. Drag left and right
+    to rotate your character
   <SelectionCardPicture>k__BackingField: {fileID: 2800000, guid: fd926227a0abd874c9a3fdd86700db1b,
     type: 3}
   <StartTitleCardPicture>k__BackingField: {fileID: 2800000, guid: ad03a594cd5fba346add627527977012,
