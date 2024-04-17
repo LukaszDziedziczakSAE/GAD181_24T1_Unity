@@ -1027,6 +1027,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Config>k__BackingField: {fileID: 11400000, guid: 42d0d1fb8ea71e64281e79049737105a,
     type: 2}
+  podiumPrefab: {fileID: 0}
+  podiumPosition: {x: 0, y: 0, z: 0}
+  podiumRotation: {x: 0, y: 0, z: 0}
   matchLength: 60
   <EnemySpeed>k__BackingField: 0.1
   selectionIndicatorPrefab: {fileID: 6947832909539836958, guid: b0bac047792c7fc42a0fdd6382acd1a0,

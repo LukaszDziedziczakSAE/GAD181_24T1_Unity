@@ -58,7 +58,7 @@ public class ScavangerHuntMatch : MinigameMatch
             character.SetNewState(new CS_ScavangerLocomotion(character));
         }
 
-        
+        ShowTutorial(0);
     }
 
     protected override void MatchTick()

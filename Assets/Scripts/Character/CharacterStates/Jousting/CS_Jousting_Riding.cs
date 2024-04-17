@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CS_Jousting_Riding : CharacterState
 {
     private JoustingMatch match;
-    //private UI_Jousting ui;
     private Character other;
     public Jousting_AI ai;
 
@@ -15,14 +11,12 @@ public class CS_Jousting_Riding : CharacterState
     public CS_Jousting_Riding(Character character) : base(character)
     {
         match = (JoustingMatch)Game.Match;
-        //ui = (UI_Jousting)Game.UI;
         other = match.OtherCharacter(character);
     }
 
     public override void StateStart()
     {
-        ai = GameObject.FindAnyObjectByType<Jousting_AI>();
-        //if (ui.JoustingIndicator != null) ui.JoustingIndicator.gameObject.SetActive(true);
+        ai = GameObject.FindObjectOfType<Jousting_AI>(); // Use FindObjectOfType to get a single instance
         character.Animator.CrossFade("Jousting_Rider_Gallop", 0.1f);
 
         if (character.HorseAnimator != null)
@@ -30,22 +24,23 @@ public class CS_Jousting_Riding : CharacterState
             character.HorseAnimator.CrossFade("LocomotionBlend", 0.1f);
             character.HorseAnimator.SetFloat("speed", 1);
         }
-        /*if (character.PlayerIndex == 0)
-        {
-            ui.JoustingIndicator.gameObject.SetActive(true);
-            character.Animator.CrossFade("Rider_Gallop", 0.1f);
-        }
 
-        else if (character.PlayerIndex == 1)
-        {
-            ui.EnemyJoustingIndicator.gameObject.SetActive(true);
-            character.Animator.CrossFade("Rider_Gallop", 0.1f);
-        }*/
-
-        //Debug.Log("You've entered riding state");
+        // Activate a random trigger
+        ActivateRandomTrigger();
 
         if (IsPlayerCharacter) Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
     }
+
+    private void ActivateRandomTrigger()
+    {
+        GameObject[] triggers = GameObject.FindGameObjectsWithTag("AttackTrigger");
+        if (triggers.Length > 0)
+        {
+            int randomIndex = Random.Range(0, triggers.Length);
+            triggers[randomIndex].SetActive(true);
+        }
+    }
+
 
     public override void Tick()
     {
@@ -84,16 +79,6 @@ public class CS_Jousting_Riding : CharacterState
 
     public override void StateEnd()
     {
-        //if (character.PlayerIndex == 0)
-        //{
-        //    ui.JoustingIndicator.gameObject.SetActive(false);
-        //}
-
-        //else if (character.PlayerIndex == 1)
-        //{
-        //    ui.EnemyJoustingIndicator.gameObject.SetActive(false);
-        //}
-
         if (IsPlayerCharacter) Game.InputReader.OnTouchPressed -= InputReader_OnTouchPressed;
     }
 
