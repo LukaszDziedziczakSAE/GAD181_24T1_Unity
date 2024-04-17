@@ -9,6 +9,7 @@ public abstract class MinigameMatch : MonoBehaviour
     protected EState mode = EState.none;
     protected float matchTime;
     [field: SerializeField] public MinigameConfig Config {  get; protected set; }
+    [field: SerializeField] public UI_TutorialCard[] TutorialCards { get; protected set; }
     public MatchResult Result { get; protected set; }
     [SerializeField] Podium podiumPrefab;
     [SerializeField] Vector3 podiumPosition;
@@ -199,4 +200,25 @@ public abstract class MinigameMatch : MonoBehaviour
         Game.UI.MatchEnd.Initilise(Result);
     }
 
+    private UI_TutorialCard TutorialCard(int index)
+    {
+        foreach (UI_TutorialCard card in  TutorialCards)
+        {
+            if (card.Index == index) return card;
+        }
+
+        Debug.LogError("Did not find Tutorial Card with index = " + index.ToString());
+        return null;
+    }
+
+    public void ShowTutorial(int tutorialIndex)
+    {
+        if (HasSeenTutorial(tutorialIndex)) return;
+        TutorialCard(tutorialIndex).gameObject.SetActive(true);
+    }
+
+    public bool HasSeenTutorial(int tutorialIndex)
+    {
+        return Game.Player.SeenTutorials.HasSeenTutorial(Config, tutorialIndex);
+    }
 }

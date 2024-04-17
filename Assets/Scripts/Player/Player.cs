@@ -10,6 +10,7 @@ public class Player : MonoBehaviour, ISaveable
     [field: SerializeField] public PlayerLevel Level { get; private set; }
     [field: SerializeField] public PlayerCurrency Currency { get; private set; }
     [field: SerializeField] public int MatchesPlayed { get; private set; }
+    [field: SerializeField] public SeenTutorials SeenTutorials { get; private set; }
 
     private void Awake()
     {
