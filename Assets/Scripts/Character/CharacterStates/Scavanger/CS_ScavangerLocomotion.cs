@@ -1,3 +1,4 @@
+using Mono.CSharp;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,17 @@ public class CS_ScavangerLocomotion : CharacterState
 
     public CS_ScavangerLocomotion(Character character) : base(character) { }
 
+    Vector3 lastPosition;
+    float distanceThreshold = 0.005f;
+    float distanceToLastPostition
+    {
+        get
+        {
+            if (lastPosition == Vector3.zero) return 0;
+            return Vector3.Distance(lastPosition, character.transform.position);
+        }
+    }
+
     public override void StateStart()
     {
         if (IsPlayerCharacter) Game.InputReader.OnTouchPressed += InputReader_OnTouchPressed;
@@ -16,7 +28,7 @@ public class CS_ScavangerLocomotion : CharacterState
 
     public override void Tick()
     {
-        if (character.NavMeshAgent.velocity.magnitude > 0)
+        if (distanceToLastPostition > distanceThreshold)
         {
             character.Animator.SetFloat("speed", 1);
         }
@@ -24,7 +36,11 @@ public class CS_ScavangerLocomotion : CharacterState
         else
         {
             character.Animator.SetFloat("speed", 0);
+            character.Rigidbody.ResetInertiaTensor();
+            character.Rigidbody.velocity = Vector3.zero;
         }
+
+        lastPosition = character.transform.position;
     }
 
     public override void FixedTick()

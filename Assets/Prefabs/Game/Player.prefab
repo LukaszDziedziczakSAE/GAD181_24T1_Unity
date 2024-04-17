@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8018795922024376648}
   - component: {fileID: 7239244319229656088}
   - component: {fileID: 1549966747663323238}
+  - component: {fileID: 8874717328541463097}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -56,6 +57,7 @@ MonoBehaviour:
   <Level>k__BackingField: {fileID: 7239244319229656088}
   <Currency>k__BackingField: {fileID: 8018795922024376648}
   <MatchesPlayed>k__BackingField: 0
+  <SeenTutorials>k__BackingField: {fileID: 8874717328541463097}
 --- !u!114 &4327718262612923786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,3 +113,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 3808efbbecf991a4fa34cda9f2ba0d4f, type: 2}
+--- !u!114 &8874717328541463097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4811235781750494160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22655e295ad201446a34680db6d7626f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
