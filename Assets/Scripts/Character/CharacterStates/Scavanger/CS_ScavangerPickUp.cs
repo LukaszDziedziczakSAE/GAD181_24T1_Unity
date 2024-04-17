@@ -18,6 +18,9 @@ public class CS_ScavangerPickUp : CharacterState
         character.Animator.CrossFade("ScavangerHunt_Pickup", 0.1f);
         character.NavMeshAgent.isStopped = true;
         character.transform.LookAt(pickUpObject.transform.position);
+
+        character.Rigidbody.ResetInertiaTensor();
+        character.Rigidbody.velocity = Vector3.zero;
     }
 
     public override void Tick()
