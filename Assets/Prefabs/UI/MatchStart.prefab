@@ -190,7 +190,9 @@ MonoBehaviour:
   matchTitle: {fileID: 8740687212674647267}
   matchSplashImage: {fileID: 9070772943143998075}
   matchDescription: {fileID: 7193545177784855610}
-  timeToShow: 2
+  timeToShow: 5
+  timeToShowWhenSkipped: 0.1
+  hasBeenViewed: 0
 --- !u!1 &4099337352896560772
 GameObject:
   m_ObjectHideFlags: 0

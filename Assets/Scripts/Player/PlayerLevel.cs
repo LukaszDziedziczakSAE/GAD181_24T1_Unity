@@ -8,13 +8,15 @@ public class PlayerLevel : MonoBehaviour, ISaveable
     [field: SerializeField] public int Experiance { get; private set; }
     [field: SerializeField] public int[] ExperianceRequriments { get; private set; }
 
+    [SerializeField] List<string> screensSeen = new List<string>();
+
     public object CaptureState()
     {
         Dictionary<string, object> state = new Dictionary<string, object>();
 
         state.Add("Level", Level);
         state.Add("Experiance", Experiance);
-
+        state.Add("screensSeen", screensSeen);
         return state;
     }
 
@@ -24,6 +26,7 @@ public class PlayerLevel : MonoBehaviour, ISaveable
 
         Level = (int)restoredState["Level"];
         Experiance = (int)restoredState["Experiance"];
+        if (restoredState.ContainsKey("screensSeen")) screensSeen = (List<string>)restoredState["screensSeen"];
 
         if (Level == 0) Level = 1;
     }
@@ -61,5 +64,14 @@ public class PlayerLevel : MonoBehaviour, ISaveable
     {
         Level = 1;
         Experiance = 0;
+    }
+
+    public void SeenTitleCard(MinigameConfig config)
+    {
+        screensSeen.Add(config.Name);
+    }
+    public bool HasSeenTitleCard(MinigameConfig config)
+    {
+       return screensSeen.Contains(config.Name);
     }
 }
