@@ -93,7 +93,7 @@ public class ArrowShootingMatch : MinigameMatch
         {
             if (Game.Player.Level.Level <= maxEasyLevel) return EDifficulty.Easy;
             else if (Game.Player.Level.Level <= maxMediumLevel) return EDifficulty.Medium;
-            else if (Game.Player.Level.Level <= maxMediumLevel) return EDifficulty.Hard;
+            else if (Game.Player.Level.Level <= maxHardLevel) return EDifficulty.Hard;
             else return EDifficulty.VeryHard;
         }    
     }

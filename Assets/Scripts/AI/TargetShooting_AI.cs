@@ -45,6 +45,10 @@ public class TargetShooting_AI : AI
     private void Start()
     {
         ResetTimer();
+        if (Game.Player.Level.Level > 19)
+        {
+            hitProbability = 0.5f;
+        }
     }
 
 
@@ -63,6 +67,7 @@ public class TargetShooting_AI : AI
             }
         }
         
+
     }
 
 
@@ -85,6 +90,7 @@ public class TargetShooting_AI : AI
         if (canFire)
         {
             Debug.Log("ai hit");
+            
         }
         else
         {
@@ -95,7 +101,7 @@ public class TargetShooting_AI : AI
             currentRotation += rotationOffset;
             character.transform.eulerAngles = new Vector3(character.transform.eulerAngles.x,currentRotation, character.transform.eulerAngles.z);
 
-            Debug.Log("ai miss, poweroffset is " + powerOffset + " , rotationOffset is " + rotationOffset);
+            //Debug.Log("ai miss, poweroffset is " + powerOffset + " , rotationOffset is " + rotationOffset);
             
         }
         character.SetNewState(new CS_Archering_Releasing(character, power));
@@ -103,7 +109,7 @@ public class TargetShooting_AI : AI
         isFiring = true;
     }
     
-    private float fireRate// make into a function to take in easy,medium or hard values and control through a switch?
+    private float fireRate
     {
         get
         {
