@@ -8,6 +8,7 @@ public class TargetShooting_TargetController : MonoBehaviour
     [SerializeField] TargetShooting_Target[] easyTargets;
     [SerializeField] TargetShooting_Target[] mediumTargets;
     [SerializeField] TargetShooting_Target[] hardTargets;
+    [SerializeField] TargetShooting_Target[] veryHardTargets;
     private bool isReady;
 
     ArrowShootingMatch match => (ArrowShootingMatch)Game.Match;
@@ -43,6 +44,10 @@ public class TargetShooting_TargetController : MonoBehaviour
             target.SetDownRoation();
         }
         foreach (TargetShooting_Target target in hardTargets)
+        {
+            target.SetDownRoation();
+        }
+        foreach (TargetShooting_Target target in veryHardTargets)
         {
             target.SetDownRoation();
         }
@@ -87,6 +92,9 @@ public class TargetShooting_TargetController : MonoBehaviour
 
                 case ArrowShootingMatch.EDifficulty.Hard:
                     return hardTargets;
+
+                case ArrowShootingMatch.EDifficulty.VeryHard:
+                    return veryHardTargets;
 
                 default:
                     return new TargetShooting_Target[0];

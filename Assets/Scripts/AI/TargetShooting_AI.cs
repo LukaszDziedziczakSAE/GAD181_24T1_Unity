@@ -14,6 +14,7 @@ public class TargetShooting_AI : AI
     [SerializeField] float easyFireRate;
     [SerializeField] float mediumFireRate;
     [SerializeField] float hardFireRate;
+    [SerializeField] float veryHardFireRate;
     [SerializeField] float fireRateDeviation;
     [SerializeField, Range(0,1)] float hitProbability;
     [SerializeField] float targetDistanceOffset = 0.1f;
@@ -116,6 +117,9 @@ public class TargetShooting_AI : AI
 
                 case ArrowShootingMatch.EDifficulty.Hard:
                     return Random.Range(hardFireRate - fireRateDeviation, hardFireRate + fireRateDeviation);
+
+                case ArrowShootingMatch.EDifficulty.VeryHard:
+                    return Random.Range(veryHardFireRate - fireRateDeviation, veryHardFireRate + fireRateDeviation);
 
                 default:
                     return Mathf.Infinity;
