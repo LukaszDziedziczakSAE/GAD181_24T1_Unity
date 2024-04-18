@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class TargetShooting_TargetController : MonoBehaviour
 {
-    [SerializeField] TargetShooting_Target[] targets;
+    /*[SerializeField] TargetShooting_Target[] targets;*/
+    [SerializeField] TargetShooting_Target[] easyTargets;
+    [SerializeField] TargetShooting_Target[] mediumTargets;
+    [SerializeField] TargetShooting_Target[] hardTargets;
     private bool isReady;
 
+    ArrowShootingMatch match => (ArrowShootingMatch)Game.Match;
+    //create 3 lists with all targets in level in these lists and player level determine which list the use
     private void OnEnable()
     {
         TargetShooting_Target.OnTargetPoppedUp += TargetShooting_Target_OnTargetPoppedUp;
@@ -29,7 +34,15 @@ public class TargetShooting_TargetController : MonoBehaviour
 
     public void LowerAllTargets()
     {
-        foreach (TargetShooting_Target target in targets)
+        foreach (TargetShooting_Target target in easyTargets)
+        {
+            target.SetDownRoation();
+        }
+        foreach (TargetShooting_Target target in mediumTargets)
+        {
+            target.SetDownRoation();
+        }
+        foreach (TargetShooting_Target target in hardTargets)
         {
             target.SetDownRoation();
         }
@@ -56,6 +69,28 @@ public class TargetShooting_TargetController : MonoBehaviour
             }
 
             return target;
+        }
+    }
+
+
+    private TargetShooting_Target[] targets
+    {
+        get
+        {
+            switch (match.Difficulty)
+            {
+                case ArrowShootingMatch.EDifficulty.Easy:
+                    return easyTargets;
+
+                case ArrowShootingMatch.EDifficulty.Medium:
+                    return mediumTargets;
+
+                case ArrowShootingMatch.EDifficulty.Hard:
+                    return hardTargets;
+
+                default:
+                    return new TargetShooting_Target[0];
+            }
         }
     }
 }

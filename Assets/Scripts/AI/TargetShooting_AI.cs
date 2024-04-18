@@ -11,7 +11,9 @@ public class TargetShooting_AI : AI
     //set a power range for AIs to eith hit os fall short of target
     //set a timer for AI fire rate
 
-    [SerializeField] float baseFireRate;
+    [SerializeField] float easyFireRate;
+    [SerializeField] float mediumFireRate;
+    [SerializeField] float hardFireRate;
     [SerializeField] float fireRateDeviation;
     [SerializeField, Range(0,1)] float hitProbability;
     [SerializeField] float targetDistanceOffset = 0.1f;
@@ -21,7 +23,7 @@ public class TargetShooting_AI : AI
     float timer;
     bool isFiring;
     TargetShooting_Target currentTarget;
-
+    ArrowShootingMatch match => (ArrowShootingMatch)Game.Match;
 
 
     private void OnEnable()
@@ -36,6 +38,7 @@ public class TargetShooting_AI : AI
     private void TargetShooting_Target_OnTargetPoppedUp(TargetShooting_Target target)
     {
         currentTarget = target;
+        ResetTimer();
     }
 
     private void Start()
@@ -69,30 +72,6 @@ public class TargetShooting_AI : AI
         isFiring = false;
     }
 
-    void AimAtTargets()//rotate AIs to face target direction
-    {
-        //character.transform.eulerAngles = 
-    }
-
-
-
-    private RaycastHit ActiveTarget(RaycastHit[] hits)
-    {
-        RaycastHit targetHits = new RaycastHit();
-        float activeTargets = Mathf.Infinity;
-
-        foreach (RaycastHit hit in hits)
-        {
-            float aiming = Vector3.Distance(transform.position, hit.point);
-
-            if (aiming < activeTargets)
-            {
-                targetHits = hit;
-                activeTargets = aiming;
-            }
-        }
-        return targetHits;
-    }
 
     private void TryShootArrow()
     {
@@ -122,12 +101,25 @@ public class TargetShooting_AI : AI
        
         isFiring = true;
     }
-
-    private float fireRate
+    
+    private float fireRate// make into a function to take in easy,medium or hard values and control through a switch?
     {
         get
         {
-            return Random.Range(baseFireRate - fireRateDeviation, baseFireRate + fireRateDeviation);
+            switch (match.Difficulty)
+            {
+                case ArrowShootingMatch.EDifficulty.Easy:
+                    return Random.Range(easyFireRate - fireRateDeviation, easyFireRate + fireRateDeviation);
+
+                case ArrowShootingMatch.EDifficulty.Medium:
+                    return Random.Range(mediumFireRate - fireRateDeviation, mediumFireRate + fireRateDeviation);
+
+                case ArrowShootingMatch.EDifficulty.Hard:
+                    return Random.Range(hardFireRate - fireRateDeviation, hardFireRate + fireRateDeviation);
+
+                default:
+                    return Mathf.Infinity;
+            }
         }
     }
 

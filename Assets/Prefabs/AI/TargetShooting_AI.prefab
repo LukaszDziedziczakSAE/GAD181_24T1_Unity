@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b6c83592f78f44eaafcebb47eb37ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseFireRate: 3
+  easyFireRate: 4
+  mediumFireRate: 3
+  hardFireRate: 2
   fireRateDeviation: 1
   hitProbability: 0.2
   targetDistanceOffset: 0.4

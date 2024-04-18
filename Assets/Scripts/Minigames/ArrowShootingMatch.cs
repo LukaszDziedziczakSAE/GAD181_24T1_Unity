@@ -13,11 +13,18 @@ public class ArrowShootingMatch : MinigameMatch
     [SerializeField] float matchLength = 45f;
     [SerializeField] CinemachineVirtualCamera characterChaseCam;
     [SerializeField] CinemachineVirtualCamera preMatchCam;
-
+    [SerializeField] int maxEasyLevel = 7;
+    [SerializeField] int maxMediumLevel = 15; 
     [SerializeField] bool displayDebugs;
     public float MatchTimeRemaining => matchLength - MatchTime;
     public bool DisplayDebugs => displayDebugs;
 
+    public enum EDifficulty 
+    { 
+        Easy,
+        Medium,
+        Hard    
+    }
     protected override void PrematchStart()
     {
         base.PrematchStart();
@@ -77,4 +84,15 @@ public class ArrowShootingMatch : MinigameMatch
             }            
         }
     }
+
+    public EDifficulty Difficulty
+    { 
+        get
+        {
+            if (Game.Player.Level.Level <= maxEasyLevel) return EDifficulty.Easy;
+            else if (Game.Player.Level.Level <= maxMediumLevel) return EDifficulty.Medium;
+            else return EDifficulty.Hard;
+        }    
+    }
+
 }
