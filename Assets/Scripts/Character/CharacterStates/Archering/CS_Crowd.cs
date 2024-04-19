@@ -15,8 +15,8 @@ public class CS_Crowd : CharacterState
     {
         if (Game.Match.MatchTime >= -0.5f)
         {
-            if (character.PlayerIndex == 103) character.Animator.CrossFade("Podium_Cheering", 0.1f);
-            if (character.PlayerIndex == 104) character.Animator.CrossFade("Podium_Clapping", 0.1f);
+            if (character.PlayerIndex == -1) character.Animator.CrossFade("Podium_Cheering", 0.1f);
+            if (character.PlayerIndex == -2) character.Animator.CrossFade("Podium_Clapping", 0.1f);
         }
 
     }

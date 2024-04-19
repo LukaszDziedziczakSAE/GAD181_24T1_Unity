@@ -47,6 +47,14 @@ public class ArrowShootingMatch : MinigameMatch
         {
             character.SetNewState(new CS_Archering_Standing(character));
         }
+        foreach (Character character in ClappingAudience)
+        {
+            character.SetNewState(new CS_Crowd(character));
+        }
+        foreach (Character character in CheeringAudience)
+        {
+            character.SetNewState(new CS_Crowd(character));
+        }
 
         TargetController.LowerAllTargets();
         TargetController.RaiseRandomTarget();
@@ -98,4 +106,38 @@ public class ArrowShootingMatch : MinigameMatch
         }    
     }
 
+
+    public Character[] CheeringAudience
+    {
+        get
+        {
+            List<Character> audience = new List<Character>();
+
+            Character[] inLevel = FindObjectsOfType<Character>();
+
+            foreach (Character character in inLevel)
+            {
+                if (character.PlayerIndex == -1) audience.Add(character);                
+            }
+
+            return audience.ToArray();
+        }
+    }
+
+    public Character[] ClappingAudience
+    {
+        get
+        {
+            List<Character> audience = new List<Character>();
+
+            Character[] inLevel = FindObjectsOfType<Character>();
+
+            foreach (Character character in inLevel)
+            {                
+                if (character.PlayerIndex == -2) audience.Add(character);
+            }
+
+            return audience.ToArray();
+        }
+    }
 }
