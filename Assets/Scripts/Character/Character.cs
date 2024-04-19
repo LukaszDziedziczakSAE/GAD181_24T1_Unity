@@ -31,7 +31,7 @@ public class Character : MonoBehaviour
     {
         if (State != null) State.Tick();
 
-        if (transform.position.y < 0) Debug.LogError(name + " height below 0");
+        //if (transform.position.y < 0) Debug.LogError(name + " height below 0");
     }
 
     private void FixedUpdate()
