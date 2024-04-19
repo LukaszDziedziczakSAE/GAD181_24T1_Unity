@@ -88,7 +88,7 @@ public class CS_Archering_Drawing : CharacterState
 
         if (currentYPosition != 0) lastYPostion = currentYPosition;
 
-        Debug.Log("startingYPostition=" + startingYPostition + ", currentYPosition=" + currentYPosition + ", currentYPosition=" + currentYPosition + ", distanceY=" + distanceY);
+        //Debug.Log("startingYPostition=" + startingYPostition + ", currentYPosition=" + currentYPosition + ", currentYPosition=" + currentYPosition + ", distanceY=" + distanceY);
     }
     public override void FixedTick()
     {
