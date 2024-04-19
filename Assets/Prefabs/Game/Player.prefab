@@ -56,6 +56,7 @@ MonoBehaviour:
     <Color>k__BackingField: 0
   <Level>k__BackingField: {fileID: 7239244319229656088}
   <Currency>k__BackingField: {fileID: 8018795922024376648}
+  <Settings>k__BackingField: {fileID: 1549966747663323238}
   <MatchesPlayed>k__BackingField: 0
   <SeenTutorials>k__BackingField: {fileID: 8874717328541463097}
 --- !u!114 &4327718262612923786
@@ -100,6 +101,7 @@ MonoBehaviour:
   <Level>k__BackingField: 0
   <Experiance>k__BackingField: 0
   <ExperianceRequriments>k__BackingField: 00000000b80b0000800c0000480d0000100e0000d80e0000a00f00006810000030110000f8110000c0120000881300005014000018150000e0150000a8160000701700003818000000190000c8190000901a0000581b0000
+  screensSeen: []
 --- !u!114 &1549966747663323238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 3808efbbecf991a4fa34cda9f2ba0d4f, type: 2}
+  qualityLevel: 0
 --- !u!114 &8874717328541463097
 MonoBehaviour:
   m_ObjectHideFlags: 0

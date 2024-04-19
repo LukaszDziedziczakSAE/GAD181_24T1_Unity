@@ -18,7 +18,9 @@ public class UI_SettingsMenu : MonoBehaviour
     [SerializeField] TMP_Text uiVolumeText;
     [SerializeField] Button playerResetButton;
     [SerializeField] Button backButton;
-
+    [SerializeField] Button lowGraphicsButton;
+    [SerializeField] Button mediumGraphicsButton;
+    [SerializeField] Button highGraphicsButton;
 
     private void OnEnable()
     {
@@ -27,6 +29,9 @@ public class UI_SettingsMenu : MonoBehaviour
         musicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeSliderChange);
         matchVolumeSlider.onValueChanged.AddListener (OnMatchVolumeSliderChange);
         uiVolumeSlider.onValueChanged.AddListener(OnUiVolumeSliderChange);
+        lowGraphicsButton.onClick.AddListener(OnLowGraphicsButtonPress);
+        mediumGraphicsButton.onClick.AddListener(OnMediumGraphicsButtonPress);
+        highGraphicsButton.onClick.AddListener(OnHighGraphicsButtonPress);
         UpdateSettingsUI();
     }
 
@@ -39,6 +44,9 @@ public class UI_SettingsMenu : MonoBehaviour
         musicVolumeSlider.onValueChanged.RemoveListener(OnMusicVolumeSliderChange);
         matchVolumeSlider.onValueChanged.RemoveListener(OnMatchVolumeSliderChange);
         uiVolumeSlider.onValueChanged.RemoveListener(OnUiVolumeSliderChange);
+        lowGraphicsButton.onClick.RemoveListener(OnLowGraphicsButtonPress);
+        mediumGraphicsButton.onClick.RemoveListener(OnMediumGraphicsButtonPress);
+        highGraphicsButton.onClick.RemoveListener(OnHighGraphicsButtonPress);
     }
 
     public void OpenedFromPauseMenu()
@@ -80,6 +88,33 @@ public class UI_SettingsMenu : MonoBehaviour
         {
             uiVolumeSlider.gameObject.SetActive(false);
             uiVolumeText.gameObject.SetActive(false);
+        }
+
+        switch (Game.Player.Settings.GraphicQualityLevel)
+        {
+            case 0:
+                lowGraphicsButton.interactable = false;
+                mediumGraphicsButton.interactable = true;
+                highGraphicsButton.interactable = true;
+                break;
+
+            case 1:
+                lowGraphicsButton.interactable = true;
+                mediumGraphicsButton.interactable = false;
+                highGraphicsButton.interactable = true;
+                break;
+
+            case 2:
+                lowGraphicsButton.interactable = true;
+                mediumGraphicsButton.interactable = true;
+                highGraphicsButton.interactable = false;
+                break;
+
+            default:
+                lowGraphicsButton.interactable = true;
+                mediumGraphicsButton.interactable = true;
+                highGraphicsButton.interactable = true;
+                break;
         }
     }
 
@@ -125,6 +160,24 @@ public class UI_SettingsMenu : MonoBehaviour
     private void OnUiVolumeSliderChange(float newValue)
     {
         audioMixer.SetFloat("UIVolume", newValue);
+        UpdateSettingsUI();
+    }
+
+    private void OnLowGraphicsButtonPress()
+    {
+        Game.Player.Settings.SetQualityLevel(0);
+        UpdateSettingsUI();
+    }
+
+    private void OnMediumGraphicsButtonPress()
+    {
+        Game.Player.Settings.SetQualityLevel(1);
+        UpdateSettingsUI();
+    }
+
+    private void OnHighGraphicsButtonPress()
+    {
+        Game.Player.Settings.SetQualityLevel(2);
         UpdateSettingsUI();
     }
 }

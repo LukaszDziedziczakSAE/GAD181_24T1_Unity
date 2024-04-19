@@ -6,6 +6,9 @@ using UnityEngine.Audio;
 public class PlayerSettings : MonoBehaviour, ISaveable
 {
     [SerializeField] AudioMixer audioMixer;
+    [SerializeField] int qualityLevel;
+
+    public int GraphicQualityLevel => qualityLevel;
 
     public object CaptureState()
     {
@@ -26,6 +29,8 @@ public class PlayerSettings : MonoBehaviour, ISaveable
             state.Add("UIVolume", uiVolume);
         }
 
+        state.Add("qualityLevel", qualityLevel);
+
         return state;
     }
 
@@ -36,5 +41,18 @@ public class PlayerSettings : MonoBehaviour, ISaveable
         audioMixer.SetFloat("MusicVolume", ( (float)restoredState["MusicVolume"] ));
         audioMixer.SetFloat("MatchVolume", ((float)restoredState["MatchVolume"]));
         audioMixer.SetFloat("UIVolume", ((float)restoredState["UIVolume"]));
+        
+        if (restoredState.ContainsKey("qualityLevel"))
+        {
+            qualityLevel = (int)restoredState["qualityLevel"];
+            SetQualityLevel(qualityLevel);
+        }
+        else qualityLevel = QualitySettings.GetQualityLevel();
+    }
+
+    public void SetQualityLevel(int level)
+    {
+        qualityLevel = level;
+        QualitySettings.SetQualityLevel(qualityLevel);
     }
 }

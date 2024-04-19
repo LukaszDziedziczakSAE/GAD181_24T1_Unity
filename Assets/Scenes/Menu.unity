@@ -2754,6 +2754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Config>k__BackingField: {fileID: 0}
+  <TutorialCards>k__BackingField: []
   podiumPrefab: {fileID: 0}
   podiumPosition: {x: 0, y: 0, z: 0}
   podiumRotation: {x: 0, y: 0, z: 0}
@@ -6933,7 +6934,7 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
-    m_Style: 2
+    m_Style: 0
     m_Time: 2
     m_CustomCurve:
       serializedVersion: 2
