@@ -12,6 +12,10 @@ public class TargetShooting_Arrow : MonoBehaviour
     [SerializeField] bool dropEnabled;
     float power = 1f;
     float birthTime;
+
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip[] aSounds;
+    //[SerializeField] AudioClip[] bowFlightSounds;
     float timeAlive => Time.time - birthTime;
     bool hitSomething;
     //ArrowShootingMatch match;
@@ -33,6 +37,11 @@ public class TargetShooting_Arrow : MonoBehaviour
     private void Update()
     {
         if (!hitSomething) transform.position += transform.forward * speed * Time.deltaTime;
+
+        /*if(!hitSomething && owner.PlayerIndex == 0)
+        {
+            PlayArrowFlightSound();
+        }*/
 
         if (timeAlive >= timeToLive)
         {
@@ -74,7 +83,10 @@ public class TargetShooting_Arrow : MonoBehaviour
                 target.StartRotatingDown();
 
                 match.AwardPlayerPoints(owner.PlayerIndex, pointPerTargetHit);
-
+                if (owner.PlayerIndex == 0)
+                {
+                    PlayArrowHitSound();
+                }
             }
         }
 
@@ -97,5 +109,25 @@ public class TargetShooting_Arrow : MonoBehaviour
         }
     }
 
+    private void PlayAudioClip(AudioClip clip)
+    {
+        if (audioSource == null) return;
+
+        if (audioSource.isPlaying) audioSource.Stop();
+        audioSource.clip = clip;
+        audioSource.Play();
+    }
+    public void PlayArrowHitSound()
+    {
+        if (aSounds.Length == 0) return;
+
+        PlayAudioClip(aSounds[Random.Range(0, aSounds.Length)]);
+    }
+    /*public void PlayArrowFlightSound()
+    {
+        if (bowFlightSounds.Length == 0) return;
+
+        PlayAudioClip(bowFlightSounds[Random.Range(0, bowFlightSounds.Length)]);
+    }*/
 
 }

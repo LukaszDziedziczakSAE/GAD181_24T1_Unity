@@ -19,7 +19,7 @@ MonoBehaviour:
     to rotate your character
   <SelectionCardPicture>k__BackingField: {fileID: 2800000, guid: fd926227a0abd874c9a3fdd86700db1b,
     type: 3}
-  <StartTitleCardPicture>k__BackingField: {fileID: 2800000, guid: ad03a594cd5fba346add627527977012,
+  <StartTitleCardPicture>k__BackingField: {fileID: 2800000, guid: 60d175c4635052c41860c2911f83355a,
     type: 3}
   <Xp1stPlace>k__BackingField: 3000
   <Xp2ndPlace>k__BackingField: 2250

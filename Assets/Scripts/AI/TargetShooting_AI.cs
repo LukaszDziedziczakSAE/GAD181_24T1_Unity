@@ -11,7 +11,10 @@ public class TargetShooting_AI : AI
     //set a power range for AIs to eith hit os fall short of target
     //set a timer for AI fire rate
 
-    [SerializeField] float baseFireRate;
+    [SerializeField] float easyFireRate;
+    [SerializeField] float mediumFireRate;
+    [SerializeField] float hardFireRate;
+    [SerializeField] float veryHardFireRate;
     [SerializeField] float fireRateDeviation;
     [SerializeField, Range(0,1)] float hitProbability;
     [SerializeField] float targetDistanceOffset = 0.1f;
@@ -21,7 +24,7 @@ public class TargetShooting_AI : AI
     float timer;
     bool isFiring;
     TargetShooting_Target currentTarget;
-
+    ArrowShootingMatch match => (ArrowShootingMatch)Game.Match;
 
 
     private void OnEnable()
@@ -36,11 +39,16 @@ public class TargetShooting_AI : AI
     private void TargetShooting_Target_OnTargetPoppedUp(TargetShooting_Target target)
     {
         currentTarget = target;
+        ResetTimer();
     }
 
     private void Start()
     {
         ResetTimer();
+        if (Game.Player.Level.Level > 19)
+        {
+            hitProbability = 0.5f;
+        }
     }
 
 
@@ -59,6 +67,7 @@ public class TargetShooting_AI : AI
             }
         }
         
+
     }
 
 
@@ -69,30 +78,6 @@ public class TargetShooting_AI : AI
         isFiring = false;
     }
 
-    void AimAtTargets()//rotate AIs to face target direction
-    {
-        //character.transform.eulerAngles = 
-    }
-
-
-
-    private RaycastHit ActiveTarget(RaycastHit[] hits)
-    {
-        RaycastHit targetHits = new RaycastHit();
-        float activeTargets = Mathf.Infinity;
-
-        foreach (RaycastHit hit in hits)
-        {
-            float aiming = Vector3.Distance(transform.position, hit.point);
-
-            if (aiming < activeTargets)
-            {
-                targetHits = hit;
-                activeTargets = aiming;
-            }
-        }
-        return targetHits;
-    }
 
     private void TryShootArrow()
     {
@@ -105,6 +90,7 @@ public class TargetShooting_AI : AI
         if (canFire)
         {
             Debug.Log("ai hit");
+            
         }
         else
         {
@@ -115,19 +101,35 @@ public class TargetShooting_AI : AI
             currentRotation += rotationOffset;
             character.transform.eulerAngles = new Vector3(character.transform.eulerAngles.x,currentRotation, character.transform.eulerAngles.z);
 
-            Debug.Log("ai miss, poweroffset is " + powerOffset + " , rotationOffset is " + rotationOffset);
+            //Debug.Log("ai miss, poweroffset is " + powerOffset + " , rotationOffset is " + rotationOffset);
             
         }
         character.SetNewState(new CS_Archering_Releasing(character, power));
        
         isFiring = true;
     }
-
+    
     private float fireRate
     {
         get
         {
-            return Random.Range(baseFireRate - fireRateDeviation, baseFireRate + fireRateDeviation);
+            switch (match.Difficulty)
+            {
+                case ArrowShootingMatch.EDifficulty.Easy:
+                    return Random.Range(easyFireRate - fireRateDeviation, easyFireRate + fireRateDeviation);
+
+                case ArrowShootingMatch.EDifficulty.Medium:
+                    return Random.Range(mediumFireRate - fireRateDeviation, mediumFireRate + fireRateDeviation);
+
+                case ArrowShootingMatch.EDifficulty.Hard:
+                    return Random.Range(hardFireRate - fireRateDeviation, hardFireRate + fireRateDeviation);
+
+                case ArrowShootingMatch.EDifficulty.VeryHard:
+                    return Random.Range(veryHardFireRate - fireRateDeviation, veryHardFireRate + fireRateDeviation);
+
+                default:
+                    return Mathf.Infinity;
+            }
         }
     }
 
