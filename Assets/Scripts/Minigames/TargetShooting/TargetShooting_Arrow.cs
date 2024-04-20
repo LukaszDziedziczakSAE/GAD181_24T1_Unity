@@ -90,7 +90,15 @@ public class TargetShooting_Arrow : MonoBehaviour
             }
         }
 
-        float distance = Vector3.Distance(transform.position, owner.transform.position);
+        Character character = other.GetComponent<Character>();
+        if (character != null)
+        {
+            transform.parent = character.transform;
+            character.SetNewState(new CS_Death(character));
+        }
+
+
+            float distance = Vector3.Distance(transform.position, owner.transform.position);
         //Debug.Log(name + " landed " + distance + " away");
         
     }
@@ -123,11 +131,6 @@ public class TargetShooting_Arrow : MonoBehaviour
 
         PlayAudioClip(aSounds[Random.Range(0, aSounds.Length)]);
     }
-    /*public void PlayArrowFlightSound()
-    {
-        if (bowFlightSounds.Length == 0) return;
-
-        PlayAudioClip(bowFlightSounds[Random.Range(0, bowFlightSounds.Length)]);
-    }*/
+    
 
 }
