@@ -87,8 +87,7 @@ public class ArrowShootingMatch : MinigameMatch
                
                 if (child.tag == "Bow")
                 {
-                    Destroy(child.gameObject);
-                    
+                    Destroy(child.gameObject);                   
                     
                 }
             }            
