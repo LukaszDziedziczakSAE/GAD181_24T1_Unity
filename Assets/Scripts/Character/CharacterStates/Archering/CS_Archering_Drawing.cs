@@ -58,6 +58,8 @@ public class CS_Archering_Drawing : CharacterState
         startingYPostition = Game.InputReader.TouchPosition.y;        
         character.Animator.CrossFade("TargetShooting_DrawBlend", 0.1f);
 
+        if (Game.Player.Level.Level < 7)ui.Crosshair.gameObject.SetActive(true);        
+
         startingXPos = Game.InputReader.TouchPosition.x;
         characterStartingRotation = character.transform.eulerAngles.y;
         if (characterStartingRotation > 180)
@@ -101,7 +103,7 @@ public class CS_Archering_Drawing : CharacterState
         if (IsPlayerCharacter) Game.InputReader.OnTouchReleased -= InputReader_OnTouchReleased;
         ui.ArrowShootingIndicator.gameObject.SetActive(false);
         ui.PowerSlider.gameObject.SetActive(false);
-
+        ui.Crosshair.gameObject.SetActive(false);
     }
 
     private void InputReader_OnTouchReleased()
