@@ -7,7 +7,7 @@ public class CS_Death : CharacterState
 {
 
     bool isAlive = true;
-
+    //List<string>deathAnimations = new List<string>(); more efficient to do it like this?
 
     public CS_Death(Character character) : base(character)
     {
@@ -16,6 +16,7 @@ public class CS_Death : CharacterState
     {
         if (!isAlive) return;
         RandomAnimation(random);
+       
     }
 
     public override void Tick()

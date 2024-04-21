@@ -22,6 +22,7 @@ public class TargetShooting_Arrow : MonoBehaviour
     bool errored;
     float speed => baseSpeed * power;
     Character owner;
+    CharacterSounds sound;
     ArrowShootingMatch match => (ArrowShootingMatch)Game.Match;
     UI_TargetShooting ui => (UI_TargetShooting)Game.UI;
     public float Power => power;
@@ -32,6 +33,7 @@ public class TargetShooting_Arrow : MonoBehaviour
         //Debug.Log("Arrow Spawned");
         birthTime = Time.time;
         //match = (ArrowShootingMatch)Game.Match;
+        sound = FindObjectOfType<CharacterSounds>();
     }
 
     private void Update()
@@ -93,9 +95,9 @@ public class TargetShooting_Arrow : MonoBehaviour
         Character character = other.GetComponent<Character>();
         if (character != null)
         {
-            transform.parent = character.transform.GetChild(1);
+            transform.parent = character.transform.GetChild(0);//i'm pretty sure this is childing correctly but the transform doesnt move with the animation maybe?
             character.SetNewState(new CS_Death(character));
-         
+            sound.PlayGruntSound();
         }
 
 
