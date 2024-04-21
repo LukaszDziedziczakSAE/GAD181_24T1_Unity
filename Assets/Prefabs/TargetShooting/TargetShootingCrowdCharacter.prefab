@@ -61,7 +61,12 @@ PrefabInstance:
     - target: {fileID: 5148530311918736658, guid: 96e415dcd80e7764fb89fe7ea155c74b,
         type: 3}
       propertyPath: m_Name
-      value: Character Variant
+      value: TargetShootingCrowdCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 5435611001541647709, guid: 96e415dcd80e7764fb89fe7ea155c74b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Model
       objectReference: {fileID: 0}
     - target: {fileID: 5869033966178870261, guid: 96e415dcd80e7764fb89fe7ea155c74b,
         type: 3}

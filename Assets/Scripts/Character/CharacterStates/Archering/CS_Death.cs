@@ -6,7 +6,7 @@ using UnityEngine;
 public class CS_Death : CharacterState
 {
 
-    bool isAlive;
+    bool isAlive = true;
 
 
     public CS_Death(Character character) : base(character)
@@ -14,6 +14,7 @@ public class CS_Death : CharacterState
     }
     public override void StateStart()
     {
+        if (!isAlive) return;
         RandomAnimation(random);
     }
 
@@ -32,19 +33,23 @@ public class CS_Death : CharacterState
     }
 
 
-    void RandomAnimation(int random)
+    void RandomAnimation(int random)//how to add bool to individual characters
     {
+        
         if (random == 1)
         {
             character.Animator.CrossFade("Dying_Backwards", 0.1f);
+            isAlive = false;
         }
         else if (random == 2)
         {
             character.Animator.CrossFade("Falling_Back_Death", 0.1f);
+            isAlive = false;
         }
         else if (random == 3)
         {
             character.Animator.CrossFade("Flying_Back_Death", 0.1f);
+            isAlive = false;
         }
         
     }

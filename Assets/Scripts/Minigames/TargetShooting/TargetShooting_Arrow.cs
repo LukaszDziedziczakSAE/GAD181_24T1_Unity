@@ -93,8 +93,9 @@ public class TargetShooting_Arrow : MonoBehaviour
         Character character = other.GetComponent<Character>();
         if (character != null)
         {
-            transform.parent = character.transform;
+            transform.parent = character.transform.GetChild(1);
             character.SetNewState(new CS_Death(character));
+         
         }
 
 
