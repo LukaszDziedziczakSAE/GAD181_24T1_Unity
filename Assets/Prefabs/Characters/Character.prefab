@@ -211,6 +211,7 @@ MonoBehaviour:
   <HorseAnimator>k__BackingField: {fileID: 0}
   <Sounds>k__BackingField: {fileID: 3990833891933335872}
   <Footsteps>k__BackingField: {fileID: 7993163875299521277}
+  <RootTransform>k__BackingField: {fileID: 5432804526007298429}
 --- !u!136 &9047708930033450011
 CapsuleCollider:
   m_ObjectHideFlags: 0

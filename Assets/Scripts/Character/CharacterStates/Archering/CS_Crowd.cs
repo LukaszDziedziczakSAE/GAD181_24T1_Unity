@@ -13,12 +13,9 @@ public class CS_Crowd : CharacterState
 
     public override void StateStart()
     {
-        if (Game.Match.MatchTime >= -0.5f)
-        {
-            if (character.PlayerIndex == -1) character.Animator.CrossFade("Podium_Cheering", 0.1f);
-            if (character.PlayerIndex == -2) character.Animator.CrossFade("Podium_Clapping", 0.1f);
-        }
-
+        float random = Random.Range(0.0f, 1.0f);
+        if (character.PlayerIndex == -1) character.Animator.CrossFade("Podium_Cheering", 0.1f,0,random);
+        if (character.PlayerIndex == -2) character.Animator.CrossFade("Podium_Clapping", 0.1f,0,random);        
     }
 
     public override void Tick()

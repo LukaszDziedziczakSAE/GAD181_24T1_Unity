@@ -31,6 +31,7 @@ public class ArrowShootingMatch : MinigameMatch
     {
         base.PrematchStart();
         Game.CameraManager.SetStartingCamera(preMatchCam);
+        TargetController.LowerAllTargets();
     }
 
     protected override void PrematchTick()
@@ -56,8 +57,9 @@ public class ArrowShootingMatch : MinigameMatch
             character.SetNewState(new CS_Crowd(character));
         }
 
-        TargetController.LowerAllTargets();
+        
         TargetController.RaiseRandomTarget();
+        ShowTutorial(0);
     }
 
 

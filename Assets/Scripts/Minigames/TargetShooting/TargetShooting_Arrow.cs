@@ -93,9 +93,9 @@ public class TargetShooting_Arrow : MonoBehaviour
         }
 
         Character character = other.GetComponent<Character>();
-        if (character != null)
+        if (character != null && character.State.GetType() != new CS_Death(character).GetType())
         {
-            transform.parent = character.transform.GetChild(0);//i'm pretty sure this is childing correctly but the transform doesnt move with the animation maybe?
+            transform.parent = character.RootTransform;//i'm pretty sure this is childing correctly but the transform doesnt move with the animation maybe?
             character.SetNewState(new CS_Death(character));
             sound.PlayGruntSound();
         }

@@ -113,6 +113,12 @@ public class TargetShooting_AI : AI
     {
         get
         {
+            if (match == null)
+            {
+                Debug.LogError(character.name + "(AI): missing match referance");
+                return 0f;
+            }
+
             switch (match.Difficulty)
             {
                 case ArrowShootingMatch.EDifficulty.Easy:

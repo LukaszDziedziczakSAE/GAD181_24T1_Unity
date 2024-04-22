@@ -14,8 +14,8 @@ public class CS_Death : CharacterState
     }
     public override void StateStart()
     {
-        if (!isAlive) return;
-        RandomAnimation(random);
+        character.Animator.CrossFade(randomAnimationName, 0.1f);
+        isAlive = false;
        
     }
 
@@ -34,33 +34,19 @@ public class CS_Death : CharacterState
     }
 
 
-    void RandomAnimation(int random)//how to add bool to individual characters
+    string randomAnimationName//how to add bool to individual characters
     {
-        
-        if (random == 1)
-        {
-            character.Animator.CrossFade("Dying_Backwards", 0.1f);
-            isAlive = false;
-        }
-        else if (random == 2)
-        {
-            character.Animator.CrossFade("Falling_Back_Death", 0.1f);
-            isAlive = false;
-        }
-        else if (random == 3)
-        {
-            character.Animator.CrossFade("Flying_Back_Death", 0.1f);
-            isAlive = false;
-        }
-        
-    }
-
-    int random
-    {
-
         get
         {
-            return Random.Range(0, 3);
+            int random = Random.Range(0, 3);
+
+            switch (random)
+            {
+                case 0: return "Dying_Backwards";
+                case 1: return "Falling_Back_Death";
+                case 2: return "Flying_Back_Death";
+                default: return string.Empty;
+            }
         }
     }
 
