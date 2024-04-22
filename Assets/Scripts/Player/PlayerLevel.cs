@@ -64,6 +64,7 @@ public class PlayerLevel : MonoBehaviour, ISaveable
     {
         Level = 1;
         Experiance = 0;
+        screensSeen.Clear();
     }
 
     public void SeenTitleCard(MinigameConfig config)

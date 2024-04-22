@@ -58,10 +58,15 @@ public class Podium : MonoBehaviour
             third.transform.localPosition = Vector3.zero;
             third.transform.localEulerAngles = characterLocalRotation;
         }
-        
-        if (forth) Destroy(forth.gameObject);
 
-        if (focusOnPlayer && Game.CharacterByIndex(0) != null)
+        bool playerCameForth = false;
+        if (forth != null)
+        {
+            Destroy(forth.gameObject);
+            playerCameForth = forth.PlayerIndex == 0;
+        }
+
+        if (focusOnPlayer && Game.CharacterByIndex(0) != null && !playerCameForth)
         {
             podiumCam.LookAt = Game.CharacterByIndex(0).transform;
         }

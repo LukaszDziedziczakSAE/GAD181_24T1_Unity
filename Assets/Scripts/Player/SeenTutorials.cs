@@ -53,4 +53,9 @@ public class SeenTutorials : MonoBehaviour, ISaveable
 
         return false;
     }
+
+    public void ResetPlayer()
+    {
+        records.Clear();
+    }
 }

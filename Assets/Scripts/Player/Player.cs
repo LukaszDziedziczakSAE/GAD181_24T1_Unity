@@ -81,6 +81,7 @@ public class Player : MonoBehaviour, ISaveable
         MatchesPlayed = 0;
         Level.ResetPlayer();
         Currency.ResetPlayer();
+        SeenTutorials.ResetPlayer();
     }
 
     public void MatchComplete()
