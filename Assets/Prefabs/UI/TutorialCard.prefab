@@ -608,7 +608,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 565.63, y: 100}
+  m_SizeDelta: {x: 900, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4324337998206298905
 CanvasRenderer:
@@ -760,7 +760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20bc4c4b34993114aa43c56898a2f54f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minigameConfig: {fileID: 11400000, guid: 5ac34457ec822d7428b8f4652bec2c7a, type: 2}
   tutorialIndex: 0
   tutorialTitle: Movement
   tutorialText: The the ground where you would like to move your character to.

@@ -12,14 +12,16 @@ public class UI_CharacterList : MonoBehaviour
     [SerializeField] Button backButton;
     List<UI_CharacterCard> characterCards = new List<UI_CharacterCard>();
     [SerializeField] UIMover mover;
- 
+
     private void OnEnable()
     {
         if (mover != null)
         {
             mover.SetOffScreenPosition();
             mover.MoveToOnScreen();
+            mover.MoveOnScreenComplete += ShowTutorial;
         }
+        else ShowTutorial();
 
         Initilise();
         backButton.onClick.AddListener(OnBackButtonPress);
@@ -54,14 +56,14 @@ public class UI_CharacterList : MonoBehaviour
     public void OnBackButtonPress()
     {
         Game.Sound.PlayButtonPressCancelSound();
-        
+
         if (mover != null)
         {
             mover.MoveOffScreenComplete += CompleteOffScreen;
             mover.MoveToOffScreen();
         }
         else CompleteOffScreen();
-        
+
     }
 
     public void ReinitilizeCards()
@@ -77,5 +79,10 @@ public class UI_CharacterList : MonoBehaviour
         UI_MainMenu mainMenu = (UI_MainMenu)Game.UI;
         mainMenu.CharacterList.gameObject.SetActive(false);
         mainMenu.MainMenuStatus.gameObject.SetActive(true);
+    }
+
+    public void ShowTutorial()
+    {
+        Game.Match.ShowTutorial(2);
     }
 }

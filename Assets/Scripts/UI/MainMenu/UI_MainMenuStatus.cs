@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,7 +29,9 @@ public class UI_MainMenuStatus : MonoBehaviour
         {
             mover.SetOffScreenPosition();
             mover.MoveToOnScreen();
+            mover.MoveOnScreenComplete += ShowTutorial;
         }
+        else ShowTutorial();
         if (button1Mover != null)
         {
             button1Mover.SetOffScreenPosition();
@@ -97,5 +100,10 @@ public class UI_MainMenuStatus : MonoBehaviour
     {
         Game.Sound.PlayButtonPressSound();
         Application.OpenURL(surveyURL);
+    }
+
+    private void ShowTutorial()
+    {
+        Game.Match.ShowTutorial(0);
     }
 }

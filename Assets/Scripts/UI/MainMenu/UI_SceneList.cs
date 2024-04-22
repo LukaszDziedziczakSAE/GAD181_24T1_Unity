@@ -19,7 +19,9 @@ public class UI_SceneList : MonoBehaviour
         {
             mover.SetOffScreenPosition();
             mover.MoveToOnScreen();
+            mover.MoveOnScreenComplete += ShowTutorial;
         }
+        else ShowTutorial();
 
         backButton.onClick.AddListener(OnBackButtonPress);
         UpdateList();
@@ -73,5 +75,10 @@ public class UI_SceneList : MonoBehaviour
     {
         mainMenu.MainMenuStatus.gameObject.SetActive(true);
         gameObject.SetActive(false);
+    }
+
+    public void ShowTutorial()
+    {
+        Game.Match.ShowTutorial(1);
     }
 }
