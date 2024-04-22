@@ -19,7 +19,7 @@ public class Character : MonoBehaviour
     [field: SerializeField] public Animator HorseAnimator { get; private set; }
     [field: SerializeField] public CharacterSounds Sounds { get; private set; }
     [field: SerializeField] public Footsteps Footsteps { get; private set; }
-
+    [field: SerializeField] public Transform RootTransform { get; private set; }
     private void Start()
     {
         if (PlayerIndex >= 100) return;

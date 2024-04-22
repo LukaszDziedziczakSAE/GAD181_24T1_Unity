@@ -13,6 +13,7 @@ public class UI_MatchStatus : MonoBehaviour
     [SerializeField] UI_MatchStatusPlayerBox playerBox3;
     [SerializeField] UI_MatchStatusPlayerBox playerBox4;
     [SerializeField] UIMover mover;
+    [SerializeField] bool showCountdown;//countup
 
     private void OnEnable()
     {
@@ -46,8 +47,10 @@ public class UI_MatchStatus : MonoBehaviour
 
     private void Update()
     {
-        matchTimer.text = Game.Match.MatchTime.ToString("F0");
-
+        if (showCountdown)
+            matchTimer.text = ((ArrowShootingMatch)Game.Match).MatchTimeRemaining.ToString("F0");
+        else 
+            matchTimer.text = Game.Match.MatchTime.ToString("F0");
     }
 
     private void OnPauseButtonPress()
