@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dadfb5c660e4039429b23e23cbf97a14, type: 3}
   m_Name: DangerTargetShooting
   m_EditorClassIdentifier: 
-  <BuildIndex>k__BackingField: 6
+  <BuildIndex>k__BackingField: 7
   <Name>k__BackingField: Danger Target Shooting
   <Description>k__BackingField: Aim to hit as many targets as you can within the
     time limit. Pull down to draw your bow and release to fire. Drag left and right
