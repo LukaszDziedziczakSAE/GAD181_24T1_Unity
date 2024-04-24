@@ -12,7 +12,7 @@ public class ScavangerHunt_PickUpSpawner : MonoBehaviour
     [SerializeField] float maxX;
     [SerializeField] float minY;
     [SerializeField] float maxY;
-    [SerializeField] ScavangerHunt_PickUp PickUpPrefab;
+    [SerializeField] ScavangerHunt_PickUp[] PickUpPrefabs;
     [field: SerializeField] public List<ScavangerHunt_PickUp> PickUps { get; private set; } 
         = new List<ScavangerHunt_PickUp>();
     [SerializeField] int numberToSpawn;
@@ -31,7 +31,7 @@ public class ScavangerHunt_PickUpSpawner : MonoBehaviour
 
         if (Physics.SphereCastAll(position, proximity, Vector3.up, proximity, spherCastLayers).Length == 0)
         {
-            ScavangerHunt_PickUp pickUp = Instantiate(PickUpPrefab, position, Quaternion.identity);
+            ScavangerHunt_PickUp pickUp = Instantiate(randomPickUp, position, Quaternion.identity);
             PickUps.Add(pickUp);
             pickUp.Spawner(this);
             pickUp.transform.parent = transform;
@@ -55,6 +55,8 @@ public class ScavangerHunt_PickUpSpawner : MonoBehaviour
             return new Vector3();
         }
     }
+
+    private ScavangerHunt_PickUp randomPickUp => PickUpPrefabs[Random.Range(0, PickUpPrefabs.Length)];
 
     private bool InProximityToOthers(Vector3 position)
     {
