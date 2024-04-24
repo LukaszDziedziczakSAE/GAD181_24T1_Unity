@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dadfb5c660e4039429b23e23cbf97a14, type: 3}
+  m_Name: DangerTargetShooting
+  m_EditorClassIdentifier: 
+  <BuildIndex>k__BackingField: 6
+  <Name>k__BackingField: Danger Target Shooting
+  <Description>k__BackingField: Aim to hit as many targets as you can within the
+    time limit. Pull down to draw your bow and release to fire. Drag left and right
+    to rotate your character. MAKE SURE NOT TO HIT THE CROWD
+  <SelectionCardPicture>k__BackingField: {fileID: 0}
+  <StartTitleCardPicture>k__BackingField: {fileID: 0}
+  <Xp1stPlace>k__BackingField: 3000
+  <Xp2ndPlace>k__BackingField: 2250
+  <Xp3rdPlace>k__BackingField: 1700
+  <Xp4thPlace>k__BackingField: 1000
+  <XpAdditionalPerPoint>k__BackingField: 50
+  <Gold1stPlace>k__BackingField: 2500
+  <Gold2ndPlace>k__BackingField: 2000
+  <Gold3rdPlace>k__BackingField: 1500
+  <Gold4thPlace>k__BackingField: 1000
+  <GoldAdditionalPerPoint>k__BackingField: 50
