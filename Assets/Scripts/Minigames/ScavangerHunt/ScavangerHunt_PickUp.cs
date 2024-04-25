@@ -6,6 +6,7 @@ public class ScavangerHunt_PickUp : MonoBehaviour
 {
     [SerializeField] int pointsAward = 1;
     [SerializeField] AudioSource audioSource;
+    [SerializeField] ParticleSystem glow;
     ScavangerHuntMatch match => (ScavangerHuntMatch)Game.Match;
     ScavangerHunt_PickUpSpawner spawner;
     Character characterInProx;
@@ -21,6 +22,7 @@ public class ScavangerHunt_PickUp : MonoBehaviour
 
             characterInProx = character;
             character.SetNewState(new CS_ScavangerPickUp(character, this));
+            glow.gameObject.SetActive(false);
         }
     }
 
