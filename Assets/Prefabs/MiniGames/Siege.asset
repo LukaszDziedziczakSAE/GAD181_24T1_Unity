@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BuildIndex>k__BackingField: 6
   <Name>k__BackingField: Siege
-  <Description>k__BackingField: ...
-  <SelectionCardPicture>k__BackingField: {fileID: 2800000, guid: ce416f25ed576fe458698476a3b20741,
+  <Description>k__BackingField: '[Incomplete] Launch heavy objects to destroy a wall.'
+  <SelectionCardPicture>k__BackingField: {fileID: 2800000, guid: 7ea2de8ab8e128943bd2324b2d7b95ac,
     type: 3}
-  <StartTitleCardPicture>k__BackingField: {fileID: 2800000, guid: 50c8dded80aa89c4eaeb73c9e44bf41a,
+  <StartTitleCardPicture>k__BackingField: {fileID: 2800000, guid: dc3835ba6851c65499d1a8da362b2904,
     type: 3}
   <Xp1stPlace>k__BackingField: 3000
   <Xp2ndPlace>k__BackingField: 2250
