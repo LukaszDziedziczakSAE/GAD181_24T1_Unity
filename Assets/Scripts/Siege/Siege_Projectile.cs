@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class Siege_Projectile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] SphereCollider sphereCollider;
+    [SerializeField] Rigidbody rb;
+    [SerializeField] float timeToLive = 30;
+    bool launched;
+    float timer;
+
+    private void Update()
     {
-        
+        if (!launched) return;
+        timer += Time.deltaTime;
+        if (timer > timeToLive) Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Launch(Vector3 force)
     {
-        
+        sphereCollider.enabled = true;
+        rb.useGravity = true;
+        transform.parent = null;
+        rb.velocity = force;
+        launched = true;
     }
 }

@@ -12,6 +12,8 @@ public class Siege_Launcher : MonoBehaviour
     [SerializeField] float resetSpeed;
     [SerializeField] Vector3 projectileLocalPostion;
     [SerializeField] Siege_Projectile projectilePrefab;
+    [SerializeField] float forwardForce;
+    [SerializeField] float upForce;
 
     Siege_Projectile projectile;
     float timer;
@@ -94,7 +96,7 @@ public class Siege_Launcher : MonoBehaviour
     {
         if (timer >= launchSpeed) SetLaunch();
 
-        float angle = Mathf.LerpAngle(lastPos, readyPosition, timer / resetSpeed);
+        float angle = Mathf.LerpAngle(lastPos, launchedPosition, timer / launchSpeed);
         SetArmAngle(angle);
     }
 
@@ -127,11 +129,23 @@ public class Siege_Launcher : MonoBehaviour
         SetArmAngle(launchedPosition);
         State = EState.PostLaunch;
 
-        projectile.transform.parent = null;
+        projectile.Launch((transform.forward * forwardForce) + (transform.up * upForce));
     }
 
     private void InputReader_OnTouchPressed()
     {
-        BeginResetting();
+        switch (State)
+        {
+            case EState.Ready:
+                BeginLaunching();
+                break;
+
+            case EState.PostLaunch:
+                BeginResetting();
+                break;
+        }
+
+        
+        
     }
 }
