@@ -18,7 +18,9 @@ public class JoustingMatch : MinigameMatch
     private Jousting_Weapon weapon;
 
     private int completedRounds = 0;
-    
+
+    private bool prematchUIFinished = false;
+
 
     protected override void MatchStart()
     {
@@ -26,7 +28,7 @@ public class JoustingMatch : MinigameMatch
 
         foreach (Character character in Compeditors)
         {
-            character.SetNewState(new CS_Jousting_Idle(character));
+            character.SetNewState(new CS_Jousting_Riding(character));
         }
     }
 
@@ -71,7 +73,7 @@ public class JoustingMatch : MinigameMatch
     {
         foreach (Character character in Compeditors)
         {
-            character.SetNewState(new CS_Jousting_Idle(character));
+            character.SetNewState(new CS_Jousting_Riding(character));
 
             Vector3 newPosition = character.transform.position;
             Transform horsePosition = character.transform.Find("JoustingHorse");
