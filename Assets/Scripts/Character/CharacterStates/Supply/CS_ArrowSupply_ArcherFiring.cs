@@ -25,6 +25,13 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
         firePoint = character.GetComponentInChildren<ArrowSupply_ArrowFirePoint>();
         timer = 0.0f;
         hasFired = false;
+
+        // Determine the firing line index to disable the popup
+        int archerIndex = DetermineFiringLineIndex(character);
+        if (archerIndex != -1)
+        {
+            match.DeactivatePopup(archerIndex); // Deactivate the popup for this archer
+        }
     }
 
     public override void Tick()
@@ -49,11 +56,27 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
 
     public override void StateEnd()
     {
-        
     }
 
     public override void FixedTick()
     {
-        
+    }
+
+    private int DetermineFiringLineIndex(Character archer)
+    {
+        switch (archer.gameObject.name)
+        {
+            case "ArcherOne":
+                return 0;
+            case "ArcherTwo":
+                return 1;
+            case "ArcherThree":
+                return 2;
+            case "ArcherFour":
+                return 3;
+            default:
+                Debug.LogError($"Archer name does not match expected pattern: {archer.gameObject.name}");
+                return -1;
+        }
     }
 }
