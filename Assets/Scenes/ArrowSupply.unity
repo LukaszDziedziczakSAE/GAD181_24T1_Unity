@@ -1090,9 +1090,10 @@ MonoBehaviour:
   <Config>k__BackingField: {fileID: 11400000, guid: 42d0d1fb8ea71e64281e79049737105a,
     type: 2}
   <TutorialCards>k__BackingField: []
-  podiumPrefab: {fileID: 0}
-  podiumPosition: {x: 0, y: 0, z: 0}
-  podiumRotation: {x: 0, y: 0, z: 0}
+  podiumPrefab: {fileID: 6253369507715146248, guid: 680442041cabb3d4da580c6340259e87,
+    type: 3}
+  podiumPosition: {x: 0, y: 0, z: 5}
+  podiumRotation: {x: 0, y: 180, z: 0}
   matchLength: 60
   <EnemySpeed>k__BackingField: 0.1
   selectionIndicatorPrefab: {fileID: 6947832909539836958, guid: b0bac047792c7fc42a0fdd6382acd1a0,
@@ -2816,8 +2817,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961739749}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 1.07, y: 3.8, z: -1.0999999}
+  m_LocalRotation: {x: 0.23534471, y: 0.666793, z: -0.23535645, w: 0.6667888}
+  m_LocalPosition: {x: -1.87, y: 2.262, z: 0.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
