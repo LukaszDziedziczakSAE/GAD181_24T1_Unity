@@ -14,6 +14,10 @@ public class CS_ArrowSupply_ArcherWaiting : CharacterState
 
     private Character lastTargetedEnemy;
 
+    private const float popupChance = 0.2f; // 20% chance to show popup
+    private const float minPopupInterval = 10f; // Minimum 10 seconds between popups
+    private float lastPopupTime; // Track the last time a popup was shown
+
     public CS_ArrowSupply_ArcherWaiting(Character character) : base(character)
     {
         character.Animator.CrossFade("StandingIdle", 0.1f);
@@ -23,16 +27,16 @@ public class CS_ArrowSupply_ArcherWaiting : CharacterState
     {
         archerSupply = character.GetComponentInChildren<ArrowSupply_ArcherSupply>();
         stateStartTime = Time.time;
+        lastPopupTime = -minPopupInterval; // Ensure a popup can appear initially
 
         if (archerSupply == null)
             Debug.LogError("Missing Archer Supply Reference");
 
         lastTargetedEnemy = closestEnemy; // Initialize with the current closest enemy
 
-        // Ensure the popup matches the targeted enemy
         if (lastTargetedEnemy != null)
         {
-            UpdateUIForArcher(lastTargetedEnemy); // Update the popup with the enemy variant
+            TryUpdateUIForArcher(lastTargetedEnemy); // Conditionally update the popup
         }
     }
 
@@ -46,14 +50,13 @@ public class CS_ArrowSupply_ArcherWaiting : CharacterState
             {
                 DeactivatePreviousPopup(); // Deactivate previous popup if the target has changed
                 lastTargetedEnemy = enemy; // Update the last targeted enemy
-                UpdateUIForArcher(lastTargetedEnemy); // Update popup with the new enemy
+                TryUpdateUIForArcher(lastTargetedEnemy); // Conditionally update the popup
             }
 
             // Pass the current target (lastTargetedEnemy) to the firing state
             character.SetNewState(new CS_ArrowSupply_ArcherFiring(character, archerSupply.TakeArrow(), lastTargetedEnemy));
         }
     }
-
 
     private void DeactivatePreviousPopup()
     {
@@ -125,8 +128,14 @@ public class CS_ArrowSupply_ArcherWaiting : CharacterState
         }
     }
 
-    private void UpdateUIForArcher(Character enemy)
+    private void TryUpdateUIForArcher(Character enemy)
     {
+        if (Time.time - lastPopupTime < minPopupInterval || Random.value > popupChance)
+        {
+            // Don't show the popup if it's too soon or if the random chance doesn't pass
+            return;
+        }
+
         int archerIndex = DetermineFiringLineIndex(character);
 
         if (archerIndex != -1 && enemy != null)
@@ -141,6 +150,7 @@ public class CS_ArrowSupply_ArcherWaiting : CharacterState
                 if (popup != null)
                 {
                     popup.UpdateIcon(enemyModel.CurrentConfig.Variant);
+                    lastPopupTime = Time.time; // Record the time of the last popup
                 }
             }
         }
