@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,16 +26,26 @@ public class ArrowSupply_Match : MinigameMatch
 
     [SerializeField] int lowDamagePointAward;
 
+    [SerializeField] CinemachineVirtualCamera mainCam;
+
+    [SerializeField] CinemachineVirtualCamera preMatchCam;
+
     [field: SerializeField] public EnemyDamage[] EnemyDamages { get; private set; } = new EnemyDamage[0];
 
     protected override void PrematchStart()
     {
         base.PrematchStart();
+
+        Game.CameraManager.SetStartingCamera(preMatchCam);
     }
 
     protected override void PrematchTick()
     {
         base.PrematchTick();
+        if (matchTime > -2.5f && !Game.CameraManager.IsCurrentCamera(mainCam))
+        {
+            Game.CameraManager.SwitchTo(mainCam, 2f);
+        }
     }
 
     protected override void MatchStart()

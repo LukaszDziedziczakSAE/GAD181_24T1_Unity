@@ -58,6 +58,18 @@ public class UI_MatchStatus : MonoBehaviour
 
     private void OnPauseButtonPress()
     {
+        if (Game.UI == null)
+        {
+            Debug.LogError("Missing UI referance");
+            return;
+        }
+
+        if (Game.UI.PauseMenu == null)
+        {
+            Debug.LogError("Missing UI Pause Menu referance");
+            return;
+        }
+
         Game.UI.PauseMenu.gameObject.SetActive(true);
     }
 
