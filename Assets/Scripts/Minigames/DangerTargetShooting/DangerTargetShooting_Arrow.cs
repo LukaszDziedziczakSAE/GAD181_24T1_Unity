@@ -10,7 +10,7 @@ public class DangerTargetShooting_Arrow : MonoBehaviour
     [SerializeField] LayerMask hittableLayers;
     [SerializeField] float drop = 1f;
     [SerializeField] int pointPerTargetHit = 1;
-    [SerializeField] int pointPerCrowdHit = 1;
+    [SerializeField] int pointPerCrowdHit = -1;
     [SerializeField] bool dropEnabled;
     float power = 1f;
     float birthTime;

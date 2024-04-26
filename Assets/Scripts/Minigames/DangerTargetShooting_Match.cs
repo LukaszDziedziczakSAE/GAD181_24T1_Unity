@@ -9,7 +9,7 @@ public class DangerTargetShooting_Match : MinigameMatch
 
     [field: SerializeField] public float MinimumDrawDistanceToFire { get; private set; }
     [field: SerializeField] public float MaximumDrawDistanceToFire { get; private set; }
-    [field: SerializeField] public TargetShooting_TargetController TargetController { get; private set; }
+    [field: SerializeField] public DangerTargetShooting_TargetController TargetController { get; private set; }
 
     [SerializeField] float matchLength = 45f;
     [SerializeField] CinemachineVirtualCamera characterChaseCam;
@@ -47,7 +47,7 @@ public class DangerTargetShooting_Match : MinigameMatch
     {
         foreach (Character character in Compeditors)
         {
-            character.SetNewState(new CS_Archering_Standing(character));
+            character.SetNewState(new CS_DangerTargetShooting_Standing(character));
         }
         foreach (Character character in ClappingAudience)
         {
