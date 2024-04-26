@@ -49,8 +49,18 @@ public class UI_MatchStatus : MonoBehaviour
     {
         if (showCountdown)
         {
-            //matchTimer.text = ((ArrowShootingMatch)Game.Match).MatchTimeRemaining.ToString("F0");
-            matchTimer.text = ((DangerTargetShooting_Match)Game.Match).MatchTimeRemaining.ToString("F0");
+            ArrowShootingMatch arrowShootingMatch = (ArrowShootingMatch)Game.Match;
+            //DangerTargetShooting_Match dangerTargetShootingMatch = (DangerTargetShooting_Match)Game.Match;
+            if (arrowShootingMatch != null)
+            {
+                matchTimer.text = arrowShootingMatch.MatchTimeRemaining.ToString("F0");
+            }
+           /* else if(dangerTargetShootingMatch!= null)
+            {
+                matchTimer.text = dangerTargetShootingMatch.MatchTimeRemaining.ToString("F0");
+            }*/
+
+            
         }
         else 
             matchTimer.text = Game.Match.MatchTime.ToString("F0");
