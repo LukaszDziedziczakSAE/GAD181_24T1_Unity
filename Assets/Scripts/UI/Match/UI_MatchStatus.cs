@@ -48,7 +48,10 @@ public class UI_MatchStatus : MonoBehaviour
     private void Update()
     {
         if (showCountdown)
-            matchTimer.text = ((ArrowShootingMatch)Game.Match).MatchTimeRemaining.ToString("F0");
+        {
+            //matchTimer.text = ((ArrowShootingMatch)Game.Match).MatchTimeRemaining.ToString("F0");
+            matchTimer.text = ((DangerTargetShooting_Match)Game.Match).MatchTimeRemaining.ToString("F0");
+        }
         else 
             matchTimer.text = Game.Match.MatchTime.ToString("F0");
     }

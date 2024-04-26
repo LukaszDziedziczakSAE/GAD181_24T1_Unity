@@ -5,8 +5,7 @@ using UnityEngine;
 public class CS_DangerTargetShooting_Drawing : CharacterState
 {
     private DangerTargetShooting_Match match;
-    private UI_TargetShooting ui;
-    private TargetShooting_ShootArrow arrow;
+    private UI_DangerTargetShooting ui;    
     float startingYPostition;
     private float maxAngle = 180f;
     private float startingXPos;
@@ -40,7 +39,7 @@ public class CS_DangerTargetShooting_Drawing : CharacterState
 
     public CS_DangerTargetShooting_Drawing(Character character) : base(character)
     {
-        ui = (UI_TargetShooting)Game.UI;
+        ui = (UI_DangerTargetShooting)Game.UI;
         match = (DangerTargetShooting_Match)Game.Match;
 
     }
