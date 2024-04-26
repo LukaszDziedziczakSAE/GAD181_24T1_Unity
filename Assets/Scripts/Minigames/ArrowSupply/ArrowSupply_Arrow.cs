@@ -24,6 +24,10 @@ public class ArrowSupply_Arrow : MonoBehaviour
 
     [SerializeField] float timeToLiveAfterHit = 0.5f;
 
+    [SerializeField] AudioSource audioSource;
+
+    [SerializeField] AudioClip[] arrowSounds;
+
     [field: SerializeField] public EType Type { get; private set; }
 
     [SerializeField]  Character owner;
@@ -106,6 +110,8 @@ public class ArrowSupply_Arrow : MonoBehaviour
 
         this.target = target;
 
+        PlayArrowFireSound();
+
         StartCoroutine(EnableColliderAfterDelay());
     }
 
@@ -150,6 +156,22 @@ public class ArrowSupply_Arrow : MonoBehaviour
             return;
         }
 
+    }
+
+    private void PlayAudioClip(AudioClip clip)
+    {
+        if (audioSource == null) return;
+
+        if (audioSource.isPlaying) audioSource.Stop();
+        audioSource.clip = clip;
+        audioSource.Play();
+    }
+
+    public void PlayArrowFireSound()
+    {
+        if (arrowSounds.Length == 0) return;
+
+        PlayAudioClip(arrowSounds[Random.Range(0, arrowSounds.Length)]);
     }
 }
 

@@ -29,6 +29,11 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
 
     public override void Tick()
     {
+        if (lastTargetedEnemy == null)
+        {
+            character.SetNewState(new CS_ArrowSupply_ArcherWaiting(character));
+        }
+
         if (!hasFired)
         {
             timer += Time.deltaTime;
@@ -44,7 +49,7 @@ public class CS_ArrowSupply_ArcherFiring : CharacterState
                     character.SetNewState(new CS_ArrowSupply_ArcherWaiting(character)); // Switch to waiting state after firing
                 }
             }
-        }
+        }       
     }
 
     public override void StateEnd()
